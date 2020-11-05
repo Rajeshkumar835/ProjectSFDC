@@ -1,0 +1,101 @@
+<template>
+    hello 
+     <template if:true={valueCombo}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          mplate> 
+    <div class="slds-m-around_medium">
+      
+        <lightning-card>
+            <div class="divcenter"></div>
+            <lightning-layout multiple-rows>
+                        <lightning-layout-item size="2" padding="around-small">
+                            <lightning-combobox name="objectName" 
+                                label="Object"
+                                value="" 
+                                placeholder="Select Object" 
+                                options={objects} 
+                                onchange={handleObjectChange}
+                                required></lightning-combobox>
+                    </lightning-layout-item>
+            </lightning-layout>
+            </lightning-card>
+        </div>
+    </template>
+
+    <template if:true={valueShow}>
+            <lightning-card>
+                <div class="divcenter"></div>
+               <lightning-layout multiple-rows>     
+                <lightning-layout-item size="2" padding="around-small">
+                <lightning-dual-listbox 
+                    name="Fields"
+                    label="Fields"
+                    value={values}
+                   
+                    options={values}
+                    onchange={handleFieldChange}
+                    required>
+                </lightning-dual-listbox>
+            </lightning-layout-item>
+
+      
+    </lightning-layout>
+    
+    <div class="slds-m-around_medium">
+        <lightning-button label="previous" 
+        onclick={handlePrevious}></lightning-button>
+        </div>
+
+        <div class="slds-m-around_medium">
+        <lightning-button label="next" 
+onclick={handlenext}></lightning-button>
+</div>
+    </lightning-card>
+</template>
+
+<template if:true={filterShow}>
+    <lightning-card>
+        <div class="divcenter">Seleted field</div>
+       <lightning-layout multiple-rows>     
+        <lightning-layout-item size="2" padding="around-small">
+<lightning-combobox
+            name="field"
+            label="Field"
+            value={multiSelectedValues}
+            placeholder="Select field"
+            options={multiSelectedValues}
+            onchange={handleChange} ></lightning-combobox>
+        </lightning-layout-item>
+    </lightning-layout>
+    </lightning-card>
+
+    <lightning-card>
+        <div class="divcenter">Operator</div>
+       <lightning-layout multiple-rows>     
+        <lightning-layout-item size="2" padding="around-small">
+<lightning-combobox
+            name="Operator"
+            label="Operator"
+            value={value}
+            placeholder="Select Operator"
+            options={options}
+            onchange={handleOperatorChange} ></lightning-combobox>
+        </lightning-layout-item>
+    </lightning-layout>
+    </lightning-card>
+
+    <lightning-card>
+        <div class="divcenter">values</div>
+       <lightning-layout multiple-rows>     
+        <lightning-layout-item size="2" padding="around-small">
+<lightning-combobox
+            name="values"
+            label="values"
+            value={value}
+            placeholder="Selected values"
+            options={values}
+            onchange={handleValuesChange} ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-input class="compare" type={type} name={name} value={value}  label={label}></lightning-input>
+    </lightning-layout>
+    </lightning-card>
+    </template>
+</template>
