@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,7 +20,7 @@ public class ReportingManager {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String reportingManagercode;
 
 	@Column(nullable = true)
@@ -36,8 +34,11 @@ public class ReportingManager {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 
-	@OneToOne
-	@JoinColumn(name = "empCode", nullable = false)
-	private EmployeeInfo employeeInfo;
+	@Column(nullable = true)
+	private String empCode;
+	
+//	@OneToOne
+//	@JoinColumn(name = "empCode")
+//	private EmployeeInfo employeeInfo;
 
 }

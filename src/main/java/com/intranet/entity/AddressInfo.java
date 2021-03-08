@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,28 +27,31 @@ public class AddressInfo {
 	@CreationTimestamp
 	private Date createdDate;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String addressType;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String addressLine1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String addressLine2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String city;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String state;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String country;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String zipCode;
+	
+	@Column(nullable = true)
+	private String empCode;
 
-	@ManyToOne
-	@JoinColumn(name = "empCode", nullable = false)
-	private EmployeeInfo employeeInfo;
+//	@ManyToOne
+//	@JoinColumn(name = "empCode")
+//	private EmployeeInfo employeeInfo;
 }
