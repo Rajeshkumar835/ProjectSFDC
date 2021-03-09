@@ -11,7 +11,11 @@ import { LmsCourseDetailsComponent } from './components/lms/lms-course-details/l
 import { FavouriteCoursesComponent } from './components/lms/favourite-courses/favourite-courses.component';
 import { OngoingCoursesComponent } from './components/lms/ongoing-courses/ongoing-courses.component';
 import { CompletedCoursesComponent } from './components/lms/completed-courses/completed-courses.component';
-
+import { MediaplayerComponent } from './components/lms/mediaplayer/mediaplayer.component';
+import { PlaylistComponent } from './components/lms/playlist/playlist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +26,16 @@ import { CompletedCoursesComponent } from './components/lms/completed-courses/co
     LmsCourseDetailsComponent,
     FavouriteCoursesComponent,
     OngoingCoursesComponent,
-    CompletedCoursesComponent
+    CompletedCoursesComponent,
+    MediaplayerComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

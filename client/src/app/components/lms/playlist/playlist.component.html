@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let video of videos">
+    <img
+      [src]="video.thumbnail"
+      [alt]="video.name"
+      [ngClass]="{ active: currentVideo.name === video.name }"
+      (click)="onVideoClick(video)"
+    />
+    <h5>{{ video.name }}</h5>
+  </li>
+</ul>
