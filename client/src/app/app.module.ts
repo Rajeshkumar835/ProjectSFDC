@@ -14,6 +14,11 @@ import { CompletedCoursesComponent } from './components/lms/completed-courses/co
 import { EmployeeMasterInfoComponent } from './components/employee-master-info/employee-master-info.component';
 import { EmployeeInfoAddComponent } from './components/employee-master-info/employee-info-add/employee-info-add.component';
 
+import { MediaplayerComponent } from './components/lms/mediaplayer/mediaplayer.component';
+import { PlaylistComponent } from './components/lms/playlist/playlist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,11 +31,15 @@ import { EmployeeInfoAddComponent } from './components/employee-master-info/empl
     OngoingCoursesComponent,
     CompletedCoursesComponent,
     EmployeeMasterInfoComponent,
-    EmployeeInfoAddComponent
+    EmployeeInfoAddComponent,
+    MediaplayerComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

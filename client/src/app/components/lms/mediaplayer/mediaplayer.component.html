@@ -1,0 +1,45 @@
+<div class="player">
+  <video
+    class="player__video viewer"
+    [src]="currentVideo?.source"
+    (timeupdate)="handleProgress()"
+    (ended)="updateButton()"
+    #videoplayer
+  ></video>
+  <div class="player__controls">
+    <div
+      class="progress"
+      (mousedown)="mouseDown = true"
+      (mouseup)="mouseDown = false"
+      (mouseout)="mouseDown = false"
+      (mousemove)="mouseDown && scrub($event)"
+      (click)="scrub($event)"
+    >
+      <div class="progress__filled" [ngStyle]="progressBarStyle"></div>
+    </div>
+    <div class="controls__secondary">
+      <div>
+        <i
+          class="player__button toggle k-icon"
+          [ngClass]="iconClass"
+          title="Toggle Play"
+          (click)="togglePlay()"
+        >
+        </i>
+        <i class="player__button next k-icon k-i-arrow-end-right"> </i>
+      </div>
+      <div>
+        <input
+          type="range"
+          name="volume"
+          class="player__slider"
+          min="0"
+          max="1"
+          step="0.05"
+          value="1"
+          (change)="handleVolumeChange($event)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
