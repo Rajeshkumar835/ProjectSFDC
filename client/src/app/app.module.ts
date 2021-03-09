@@ -11,6 +11,8 @@ import { LmsCourseDetailsComponent } from './components/lms/lms-course-details/l
 import { FavouriteCoursesComponent } from './components/lms/favourite-courses/favourite-courses.component';
 import { OngoingCoursesComponent } from './components/lms/ongoing-courses/ongoing-courses.component';
 import { CompletedCoursesComponent } from './components/lms/completed-courses/completed-courses.component';
+import { EmployeeMasterInfoComponent } from './components/employee-master-info/employee-master-info.component';
+import { EmployeeInfoAddComponent } from './components/employee-master-info/employee-info-add/employee-info-add.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { CompletedCoursesComponent } from './components/lms/completed-courses/co
     LmsCourseDetailsComponent,
     FavouriteCoursesComponent,
     OngoingCoursesComponent,
-    CompletedCoursesComponent
+    CompletedCoursesComponent,
+    EmployeeMasterInfoComponent,
+    EmployeeInfoAddComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
