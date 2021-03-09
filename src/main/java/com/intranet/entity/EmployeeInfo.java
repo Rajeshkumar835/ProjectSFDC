@@ -1,15 +1,13 @@
 package com.intranet.entity;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -70,26 +68,29 @@ public class EmployeeInfo {
 	@Column(nullable = true)
 	private String panCardNo;
 	
-	@ManyToOne
-	@JoinColumn(name = "clientCode")
-	private ClientInfo clientInfo;
-
-	@OneToMany(mappedBy = "employeeInfo")
-	private List<QualificationInfo> qualificationInfo;
-
-	@OneToMany(mappedBy = "employeeInfo")
-	private List<BankInfo> bankInfo;
-
-	@OneToMany(mappedBy = "employeeInfo")
-	private List<AddressInfo> addressInfo;
-
-	@OneToMany(mappedBy = "employeeInfo")
-	private List<CurrentExperience> currentExperience;
-
-	@OneToMany(mappedBy = "employeeInfo")
-	private List<PreviousExperience> previousExperience;
-
-	@OneToOne(mappedBy = "employeeInfo")
-	private ReportingManager reportingManager;
+	@Column(nullable = true)
+	private String clientCode; 
+	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "clientCode")
+//	private ClientInfo clientInfo;
+//
+//	@OneToMany(mappedBy = "employeeInfo")
+//	private List<QualificationInfo> qualificationInfo;
+//
+//	@OneToMany(mappedBy = "employeeInfo")
+//	private List<BankInfo> bankInfo;
+//
+//	@OneToMany(mappedBy = "employeeInfo")
+//	private List<AddressInfo> addressInfo;
+//
+//	@OneToMany(mappedBy = "employeeInfo")
+//	private List<CurrentExperience> currentExperience;
+//
+//	@OneToMany(mappedBy = "employeeInfo")
+//	private List<PreviousExperience> previousExperience;
+//
+//	@OneToOne(mappedBy = "employeeInfo")
+//	private ReportingManager reportingManager;
 
 }
