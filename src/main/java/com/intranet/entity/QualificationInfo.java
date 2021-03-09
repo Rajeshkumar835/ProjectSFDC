@@ -30,7 +30,7 @@ public class QualificationInfo {
 	@Column(nullable = true)
 	private String type;
 
-	@Column(nullable = true)
+	@Column(nullable = false, columnDefinition = "int default 1")
 	private boolean isHighest;
 
 	@Column(nullable = true)
@@ -38,7 +38,7 @@ public class QualificationInfo {
 
 	@Column(nullable = true)
 	private String comments;
-	
+
 	@Column(nullable = true)
 	private String empCode;
 
