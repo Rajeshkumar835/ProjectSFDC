@@ -18,7 +18,7 @@ import { MediaplayerComponent } from './components/lms/mediaplayer/mediaplayer.c
 import { PlaylistComponent } from './components/lms/playlist/playlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

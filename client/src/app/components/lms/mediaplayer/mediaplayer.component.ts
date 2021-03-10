@@ -41,12 +41,14 @@ export class MediaplayerComponent implements OnInit {
       }
     
       seek(e: MouseEvent) {
-        const { srcElement: progress, offsetX } = e;
-        // const { offsetWidth } = progress;
-        // const seekTime = (offsetX / offsetWidth) * this.video.duration;
-        // this.video.currentTime = seekTime;
+          // const { srcElement: progress, offsetX } = e;
+          // const { offsetWidth } = progress;
+          // const seekTime = (offsetX / offsetWidth) * this.video.duration;
+          // this.video.currentTime = seekTime;
       }
-    
+      scrub(event){
+        console.log("event", event)
+      }
       ngOnInit() {
         const { nativeElement } = this.videoElement;
         this.video = nativeElement;
