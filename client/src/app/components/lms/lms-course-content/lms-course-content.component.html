@@ -1,0 +1,27 @@
+<!-- <div class="container">
+      <div>
+        <iframe
+          width="900"
+          height="460"
+          class="embed-responsive-item"
+          src="https://www.youtube.com/embed/9wZYkfnkW2c"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        </div>
+    </div> -->
+<section>
+  <div>
+    <!-- media player comes here -->
+
+    <app-mediaplayer [currentVideo]="currentVideo"></app-mediaplayer>
+  </div>
+  <div>
+    <!-- video playlist comes here -->
+    <app-playlist
+      [videos]="playlist"
+      (videoClicked)="onVideoChange($event)"
+    ></app-playlist>
+  </div>
+</section>

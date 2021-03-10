@@ -3,11 +3,12 @@ package com.intranet.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.intranet.dto.EmployeeInfoDTO;
 import com.intranet.entity.EmployeeInfo;
 
 public interface EmployeeInfoService {
 	
-	EmployeeInfo add(EmployeeInfo employeeInfo);
+	EmployeeInfoDTO add(EmployeeInfoDTO employeeInfo);
 
 	public List<EmployeeInfo> findAll();
 

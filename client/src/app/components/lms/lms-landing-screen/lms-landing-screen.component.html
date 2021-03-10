@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-left">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="searchBarSection">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2 searchPanelWidth" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="searchBarSection">
+        <!-- <form class="form-inline">
+          <input class="form-control mr-sm-2 searchPanelWidth" type="search" placeholder="Search" aria-label="Search">
+        </form> -->
+        <select name="choose_course" id="course" class="searchPanelWidth selectBox">
+          <option>Java</option>
+          <option>Angular</option>
+          <option>React</option>
+          <option>Node.js</option>
+          <option>Spring</option>
+          <option>React Native</option>
+          <option>Hadoop</option>
+          <option>Python</option>
+          <option>Blockchain</option>
+          <option>Data Science</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="container">
+    <div class="row courseCards">
+      <div class="column p-3" *ngFor="let data of dummyObjForCourse">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{data.title}}</h5>
+        <p class="card-text">{{data.name}}</p>
+        <i class="fa fa-heart" ></i>
+      </div>
+      <!-- <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div> -->
+    </div>
+      </div>
+    </div>
+    <!-- <div class="row courseCards">
+      <div class="column p-3" *ngFor="let data of dummyObjForCourse">
+          <div class="card" style="width: 18rem;" >
+            <div class="card-body">
+              <h5 class="card-title">{{data.title}}</h5>
+              <p class="card-text">{{data.name}}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+      </div>
+    </div> -->
+    <!-- <div class="card-group">
+      <div class="card" *ngFor="let data of dummyObjForCourse">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{data.title}}</h5>
+          <p class="card-text">{{data.name}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      
+     
+    </div> -->
+  </div>
+</div>

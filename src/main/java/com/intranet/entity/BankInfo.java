@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -49,9 +47,12 @@ public class BankInfo {
 
 	@Column(nullable = true)
 	private boolean isActive;
+	
+	@Column(nullable = true)
+	private String empCode;
 
-	@ManyToOne
-	@JoinColumn(name = "empCode", nullable = false)
-	private EmployeeInfo employeeInfo;
+//	@ManyToOne
+//	@JoinColumn(name = "empCode")
+//	private EmployeeInfo employeeInfo;
 
 }

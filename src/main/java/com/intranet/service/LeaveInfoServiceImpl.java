@@ -21,8 +21,8 @@ public class LeaveInfoServiceImpl implements LeaveInfoService {
 	}
 
 	@Override
-	public LeaveInfo save(LeaveInfo bankAccount) {
-		return leaveInfoRepository.save(bankAccount);
+	public LeaveInfo save(LeaveInfo leaveInfo) {
+		return leaveInfoRepository.save(leaveInfo);
 	}
 
 	@Override

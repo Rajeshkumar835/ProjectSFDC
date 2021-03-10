@@ -11,8 +11,8 @@ public interface ClientInfoService {
 
 	public ClientInfo save(ClientInfo clientInfo);
 
-	public Optional<ClientInfo> findById(Long id);
+	public Optional<ClientInfo> findById(String id);
 
-	public void deleteById(Long id);
+	public void deleteById(String id);
 
 }

@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,10 +27,10 @@ public class CurrentExperience {
 	@CreationTimestamp
 	private Date createdDate;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String company;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String designation;
 
 	@Column(nullable = true, updatable = true)
@@ -42,9 +40,12 @@ public class CurrentExperience {
 	@Column(nullable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
+	
+	@Column(nullable = true)
+	private String empCode;
 
-	@ManyToOne
-	@JoinColumn(name = "empCode", nullable = false)
-	private EmployeeInfo employeeInfo;
+//	@ManyToOne
+//	@JoinColumn(name = "empCode")
+//	private EmployeeInfo employeeInfo;
 
 }
