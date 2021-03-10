@@ -1,0 +1,153 @@
+<div class="container" style="margin-top: 3%">
+  <button
+    type="button"
+    (click)="myFunctionPrevDate()"
+    style="margin-bottom: 10px"
+  >
+    &laquo;
+  </button>
+  <button type="button" (click)="myFunctionNextdate()" style="margin-left: 2px">
+    &raquo;
+  </button>
+  <input
+    type="checkbox"
+    [checked]="saveUsername"
+    (change)="saveUsername = !saveUsername"
+    style="margin-left: 10px"
+  />
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <!-- <th>Action</th>                    &raquo; -->
+        <th>Project</th>
+
+        <th>{{ mon }}</th>
+        <th>{{ tue }}</th>
+        <th>{{ wed }}</th>
+        <th>{{ thur }}</th>
+        <th>{{ fri }}</th>
+        <th>{{ sat }}</th>
+        <th>{{ sunn }}</th>
+        <th>Total Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dynamic of dynamicArray; let i = index">
+        <!--
+        <td (click)="deleteRow(i)">
+          <i class="fa fa-trash fa-2x"></i>
+        </td>
+        -->
+        <td>
+          <select style="height: 32.5px">
+            [(ngModel)]="dynamicArray[i].title1"
+            <option *ngFor="let use of projects" [value]="use.Id">
+              {{ use.Name }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title2"
+            class="form-control"
+            type="text"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title3"
+            class="form-control"
+            type="text"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title4"
+            class="form-control"
+            type="text"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title5"
+            class="form-control"
+            type="text"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title6"
+            class="form-control"
+            type="text"
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title7"
+            class="form-control"
+            type="text"
+            readonly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title8"
+            class="form-control"
+            type="text"
+            readonly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title9"
+            class="form-control"
+            type="text"
+            readonly
+          />
+        </td>
+      </tr>
+      <!--
+      <tr>
+        <td (click)="addRow(i)">
+          <i class="fa fa-plus fa-2x"></i>
+        </td>
+      </tr>
+      
+    -->
+      <tr class="form-control">
+        Total Time
+      </tr>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+      <td>
+        <input class="form-control" type="text" readonly />
+      </td>
+    </tbody>
+  </table>
+  <button (click)="addRow(i)" type="button">Add New Row</button>
+  <button type="button" (click)="deleteRow(i)" style="margin-left: 10px">
+    Delete Last Row
+  </button>
+  <button type="button" onclick="myFunction()" style="margin-left: 10px">
+    Save
+  </button>
+</div>
