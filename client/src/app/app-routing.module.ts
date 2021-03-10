@@ -7,6 +7,9 @@ import { FavouriteCoursesComponent } from './components/lms/favourite-courses/fa
 import { LmsCourseContentComponent } from './components/lms/lms-course-content/lms-course-content.component';
 import { LmsLandingScreenComponent } from './components/lms/lms-landing-screen/lms-landing-screen.component';
 import { OngoingCoursesComponent } from './components/lms/ongoing-courses/ongoing-courses.component';
+import { TaskManagementComponent } from './components/task-management/task-management.component';
+import { TaskMgmtCreationComponent } from './components/task-management/task-mgmt-creation/task-mgmt-creation.component';
+import { TasksheetCatalogueComponent } from './components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component';
 
 const routes: Routes = [
   {path:"lms-landingPage", component:LmsLandingScreenComponent},
@@ -15,7 +18,10 @@ const routes: Routes = [
   {path:"ongoing-course", component:OngoingCoursesComponent},
   {path:"completed-course", component:CompletedCoursesComponent},
   {path: "employee-master-info",component: EmployeeMasterInfoComponent},
-  {path: "employee-info-add",component: EmployeeInfoAddComponent}
+  {path: "employee-info-add",component: EmployeeInfoAddComponent},
+  {path: "task-management",component: TaskManagementComponent},
+  {path: "task-mgmt-creation",component: TaskMgmtCreationComponent},
+  {path: "tasksheet-catalogue-page",component: TasksheetCatalogueComponent}
 ];
 
 @NgModule({

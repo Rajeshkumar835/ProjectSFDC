@@ -1,212 +1,276 @@
-<div class="container">
-  <h2 class="text-center">Add Employee Information</h2>
-
+<div class="container pt-4">
   <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 pt-4">
-      <!-- Personal Information -->
-      <div class="personalInfo pt-2">
-        <h4>Personal Information</h4>
-        <form>
-          <div>
-            <label for="empCode" class="label">Emp Code</label>
-            <input type="text" class="form-control" id="empCode">
-          </div>
-          <div>
-            <label for="fname" class="label">First Name</label>
-            <input type="text" class="form-control" id="fullName">
-          </div>
-          <div>
-            <label for="mname" class="label">Middle Name</label>
-            <input type="text" class="form-control" id="middleName">
-          </div>
-          <div>
-            <label for="lname" class="label">Last Name</label>
-            <input type="text" class="form-control" id="lastName">
-          </div>
-          <div>
-            <label for="Designation" class="label">Designation</label>
-            <input type="text" class="form-control" id="designation">
-          </div>
-          <div>
-            <label for="hireDate" class="label">Hire Date</label>
-            <input type="date" class="form-control" id="hireDate">
-          </div>
-          <div>
-            <label for="currSalary" class="label">Current Salary</label>
-            <input type="text" class="form-control" id="currSalary">
-          </div>
-          <div>
-            <label for="dob" class="label">Date Of Birth</label>
-            <input type="date" class="form-control" id="dob">
-          </div>
-          <div>
-            <label for="fatherName" class="label">Email Address</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <div>
-            <label for="contactNo" class="label">Contact No</label>
-            <input type="text" class="form-control" id="contactNo">
-          </div>
-          <div>
-            <label for="homePhnNo" class="label">Home Phone No</label>
-            <input type="text" class="form-control" id="homePhnNo">
-          </div>
-          <div>
-            <label for="passportNo" class="label">Passport No</label>
-            <input type="text" class="form-control" id="passportNo">
-          </div>
-          <div>
-            <label for="pancardNo" class="label">Pancard No</label>
-            <input type="text" class="form-control" id="pancardNo">
-          </div>
-          <div class="form-group">
-            <label for="passportNo" class="label">Client Code</label>
-            <input type="text" class="form-control" id="clientCode">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h2 class="text-center">Add Employee Information</h2>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <!-- <mat-panel-title>
+              Personal Information
+            </mat-panel-title> -->
+            <h4>Personal Information</h4>
 
-      <div class="qualInfo pt-2">
-        <h4>Qualification</h4>
-        <form>
-          <div class="form-group">
-            <label for="type" class="label">Type</label>
-            <input type="text" class="form-control" id="type">
-          </div>
-          <div>
-            <label for="highest" class="label">Highest</label>
-            <input type="text" class="form-control" id="highest">
-          </div>
-          <div>
-            <label for="qualification" class="label">Qualification</label>
-            <input type="text" class="form-control" id="qualification">
-          </div>
-          <div class="form-group">
-            <label for="comments" class="label">Comments</label>
-            <input type="text" class="form-control" id="comments">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+          </mat-expansion-panel-header>
 
-      <div class="bankInfo pt-2">
-        <h4>Bank Information</h4>
-        <form>
-          <div>
-            <label for="bankType" class="label">Bank Type</label>
-            <input type="text" class="form-control" id="bankType">
+          <div class="personalInfo">
+            <form>
+              <div class="form-group input-field">
+                <label for="empCode" class="label">Emp Code</label>
+                <input type="text" class="form-control" id="empCode">
+              </div>
+              <div class="form-group input-field">
+                <label for="fname" class="label">First Name</label>
+                <input type="text" class="form-control" id="fullName">
+              </div>
+              <div class="form-group input-field">
+                <label for="mname" class="label">Middle Name</label>
+                <input type="text" class="form-control" id="middleName">
+              </div>
+              <div class="form-group input-field">
+                <label for="lname" class="label">Last Name</label>
+                <input type="text" class="form-control" id="lastName">
+              </div>
+              <div class="form-group input-field">
+                <label for="Designation" class="label">Designation</label>
+                <input type="text" class="form-control" id="designation">
+              </div>
+              <div class="form-group input-field">
+                <label for="dateOfJoin" class="label">Date of Joining</label>
+                <input type="date" class="form-control" id="dateOfJoin">
+              </div>
+              <!-- <div>
+                <label for="currSalary" class="label">Current Salary</label>
+                <input type="text" class="form-control" id="currSalary">
+              </div> -->
+              <div class="form-group input-field">
+                <label for="dob" class="label">Date of Birth</label>
+                <input type="date" class="form-control" id="dob">
+              </div>
+              <div class="form-group input-field">
+                <label for="fatherName" class="label">Email Address</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="form-group input-field">
+                <label for="contactNo" class="label">Contact No</label>
+                <input type="text" class="form-control" id="contactNo">
+              </div>
+              <div class="form-group input-field">
+                <label for="homePhnNo" class="label">Home Phone No</label>
+                <input type="text" class="form-control" id="homePhnNo">
+              </div>
+              <div class="form-group input-field">
+                <label for="passportNo" class="label">Passport No</label>
+                <input type="text" class="form-control" id="passportNo">
+              </div>
+              <div class="form-group input-field">
+                <label for="pancardNo" class="label">Pancard No</label>
+                <input type="text" class="form-control" id="pancardNo">
+              </div>
+              <div class="form-group input-field">
+                <label for="passportNo" class="label">Client Code</label>
+                <input type="text" class="form-control" id="clientCode">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <div>
-            <label for="bankName" class="label">Bank Name</label>
-            <input type="text" class="form-control" id="bankName">
-          </div>
-          <div>
-            <label for="accNo" class="label">Bank Acc No</label>
-            <input type="text" class="form-control" id="accNo">
-          </div>
-          <div>
-            <label for="bankAddress" class="label">Bank Address</label>
-            <input type="text" class="form-control" id="bankAddress">
-          </div>
-          <div>
-            <label for="routingNumber" class="label">Routing Number</label>
-            <input type="text" class="form-control" id="routingNumber">
-          </div>
-          <div>
-            <label for="ifsCode" class="label">IFS Code</label>
-            <input type="text" class="form-control" id="ifsCode">
-          </div>
-          <div class="form-group">
-            <label for="bankActive" class="label">Active</label>
-            <input type="text" class="form-control" id="bankActive">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
 
-      <div class="addressInfo pt-2">
-        <h4>Employee Address</h4>
-        <form>
-          <div>
-            <label for="addressType" class="label">Address Type</label>
-            <input type="text" class="form-control" id="addressType">
-          </div>
-          <div>
-            <label for="addLine1" class="label">Address Line1</label>
-            <input type="text" class="form-control" id="addLine1">
-          </div>
-          <div>
-            <label for="addLine2" class="label">Address Line2</label>
-            <input type="text" class="form-control" id="addLine2">
-          </div>
-          <div>
-            <label for="city" class="label">City</label>
-            <input type="text" class="form-control" id="city">
-          </div>
-          <div>
-            <label for="country" class="label">State</label>
-            <input type="text" class="form-control" id="country">
-          </div>
-          <div class="form-group">
-            <label for="zip" class="label">ZIP Code</label>
-            <input type="date" class="form-control" id="zip">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
 
-      <div class="currExperience pt-2">
-        <h4>Employee Current Experience</h4>
-        <form>
-          <div>
-            <label for="company" class="label">Company Name</label>
-            <input type="text" class="form-control" id="company">
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <!-- <mat-panel-title>
+              Qualification
+            </mat-panel-title> -->
+            <h4>Qualification</h4>
+          </mat-expansion-panel-header>
+
+          <div class="qualification">
+            
+            <form>
+              <div class="form-group input-field">
+                <label for="type" class="label">Type</label>
+                <input type="text" class="form-control" id="type">
+              </div>
+              <div class="form-group input-field">
+                <label for="highest" class="label">Highest</label>
+                <input type="text" class="form-control" id="highest">
+              </div>
+              <div class="form-group input-field">
+                <label for="qualification" class="label">Qualification</label>
+                <input type="text" class="form-control" id="qualification">
+              </div>
+              <div class="form-group input-field">
+                <label for="comments" class="label">Comments</label>
+                <input type="text" class="form-control" id="comments">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <div>
-            <label for="designation" class="label">Designation</label>
-            <input type="text" class="form-control" id="designation">
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Bank Information
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="bankInfo">
+            <h4>Bank Information</h4>
+            <form>
+              <div class="form-group input-field">
+                <label for="bankType" class="label">Bank Type</label>
+                <input type="text" class="form-control" id="bankType">
+              </div>
+              <div class="form-group input-field">
+                <label for="bankName" class="label">Bank Name</label>
+                <input type="text" class="form-control" id="bankName">
+              </div>
+              <div class="form-group input-field">
+                <label for="accNo" class="label">Bank Acc No</label>
+                <input type="text" class="form-control" id="accNo">
+              </div>
+              <div class="form-group input-field">
+                <label for="bankAddress" class="label">Bank Address</label>
+                <input type="text" class="form-control" id="bankAddress">
+              </div>
+              <div class="form-group input-field">
+                <label for="routingNumber" class="label">Routing Number</label>
+                <input type="text" class="form-control" id="routingNumber">
+              </div>
+              <div class="form-group input-field">
+                <label for="ifsCode" class="label">IFS Code</label>
+                <input type="text" class="form-control" id="ifsCode">
+              </div>
+              <div class="form-group input-field">
+                <label for="bankActive" class="label">Active</label>
+                <input type="text" class="form-control" id="bankActive">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <div>
-            <label for="startDate" class="label">Start Date</label>
-            <input type="date" class="form-control" id="middleName">
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Employee Address
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="empAddress">
+            <h4>Employee Address</h4>
+            <form>
+              <div class="form-group input-field">
+                <label for="addressType" class="label">Address Type</label>
+                <input type="text" class="form-control" id="addressType">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine1" class="label">Address Line1</label>
+                <input type="text" class="form-control" id="addLine1">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine2" class="label">Address Line2</label>
+                <input type="text" class="form-control" id="addLine2">
+              </div>
+              <div class="form-group input-field">
+                <label for="city" class="label">City</label>
+                <input type="text" class="form-control" id="city">
+              </div>
+              <div class="form-group input-field">
+                <label for="country" class="label">State</label>
+                <input type="text" class="form-control" id="country">
+              </div>
+              <div class="form-group input-field">
+                <label for="zip" class="label">ZIP Code</label>
+                <input type="date" class="form-control" id="zip">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="endDate" class="label">End Date</label>
-            <input type="date" class="form-control" id="enddate">
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Current Experience
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="currExperience">
+            <h4>Current Experience</h4>
+            <form>
+              <div class="form-group input-field">
+                <label for="company" class="label">Company Name</label>
+                <input type="text" class="form-control" id="company">
+              </div>
+              <div class="form-group input-field">
+                <label for="designation" class="label">Designation</label>
+                <input type="text" class="form-control" id="designation">
+              </div>
+              <div class="form-group input-field">
+                <label for="startDate" class="label">Date of Joining</label>
+                <input type="date" class="form-control" id="middleName">
+              </div>
+              <!-- <div class="form-group input-field">
+                <label for="endDate" class="label">End Date</label>
+                <input type="date" class="form-control" id="enddate">
+              </div> -->
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="prevExperience pt-2">
-        <h4>Employee Previous Experience</h4>
-        <form>
-          <div>
-            <label for="company" class="label">Company Name</label>
-            <input type="text" class="form-control" id="company">
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Previous Experience
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="prevExperience">
+            <h4>Previous Experience</h4>
+            <form>
+              <div class="form-group input-field">
+                <label for="company" class="label">Company Name</label>
+                <input type="text" class="form-control" id="company">
+              </div>
+              <div class="form-group input-field">
+                <label for="designation" class="label">Designation</label>
+                <input type="text" class="form-control" id="designation">
+              </div>
+              <div class="form-group input-field">
+                <label for="lastCTC" class="label">Last CTC</label>
+                <input type="text" class="form-control" id="lastCTC">
+              </div>
+              <div class="form-group input-field">
+                <label for="startDate" class="label">Start Date</label>
+                <input type="date" class="form-control" id="middleName">
+              </div>
+              <div class="form-group input-field">
+                <label for="endDate" class="label">End Date</label>
+                <input type="date" class="form-control" id="enddate">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+            </form>
           </div>
-          <div>
-            <label for="designation" class="label">Designation</label>
-            <input type="text" class="form-control" id="designation">
-          </div>
-          <div>
-            <label for="lastCTC" class="label">Last CTC</label>
-            <input type="text" class="form-control" id="lastCTC">
-          </div>
-          <div>
-            <label for="startDate" class="label">Start Date</label>
-            <input type="date" class="form-control" id="middleName">
-          </div>
-          <div class="form-group">
-            <label for="endDate" class="label">End Date</label>
-            <input type="date" class="form-control" id="enddate">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
 
     </div>
-    <div class="col-sm-4"></div>
+    <div class="col-sm-3"></div>
   </div>
 </div>
