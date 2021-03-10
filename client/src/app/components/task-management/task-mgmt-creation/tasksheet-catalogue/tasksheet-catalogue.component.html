@@ -1,0 +1,81 @@
+<div class="container"
+ style="background-image: url(../../../../../assets/img/task-management/task-mgmt.jpg);
+ background-size: cover;
+ height: 760px;
+ width: 1141px;
+ ">
+  <div class="row">
+    <div class="col-sm-12">
+      <div cdkDropListGroup>
+        <div class="example-container">
+          <h5>Project Backlog</h5>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="projectBacklog"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of projectBacklog" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+          <h5>To Do</h5>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        <div class="example-container">
+          <h4>Doing</h4>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="doing"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of doing" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        <div class="example-container">
+          <h4>Done</h4>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        <div class="example-container">
+          <h4>Testing</h4>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="testing"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of testing" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        <div class="example-container">
+          <h4>UAT</h4>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
