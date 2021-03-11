@@ -2,8 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { EmployeeInfoAddComponent } from "./components/employee-master-info/employee-info-add/employee-info-add.component";
 import { EmployeeMasterInfoComponent } from "./components/employee-master-info/employee-master-info.component";
-import { TimefilltimesheetComponent } from "./timesheet/timefilltimesheet/timefilltimesheet.component";
-import { WelcometimesheetComponent } from "./timesheet/welcometimesheet/welcometimesheet.component";
+import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
+import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
 
 import { CompletedCoursesComponent } from "./components/lms/completed-courses/completed-courses.component";
 import { FavouriteCoursesComponent } from "./components/lms/favourite-courses/favourite-courses.component";
