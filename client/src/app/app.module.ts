@@ -29,10 +29,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TaskManagementComponent } from './components/task-management/task-management.component';
 import { TaskMgmtCreationComponent } from './components/task-management/task-mgmt-creation/task-mgmt-creation.component';
 import { TasksheetCatalogueComponent } from './components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component';
-
-
-// import { TabsModule } from 'ngx-bootstrap/tabs';
-
+import { from } from 'rxjs';
+import { MatVideoModule } from 'mat-video';
 
 
 
@@ -70,6 +68,7 @@ import { TasksheetCatalogueComponent } from './components/task-management/task-m
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    MatVideoModule,
     
   ],
   providers: [],
