@@ -13,6 +13,7 @@ import { OngoingCoursesComponent } from "./components/lms/ongoing-courses/ongoin
 import { TaskManagementComponent } from "./components/task-management/task-management.component";
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
+import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "tasksheet-catalogue-page", component: TasksheetCatalogueComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
+  {path: "timesheet-admin", component: TimesheetAdminComponent}
 ];
 
 @NgModule({

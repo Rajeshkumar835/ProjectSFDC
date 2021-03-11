@@ -39,6 +39,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { TaskManagementComponent } from "./components/task-management/task-management.component";
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
+import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/timesheet-admin.component';
 
 // import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -66,6 +67,7 @@ import { TasksheetCatalogueComponent } from "./components/task-management/task-m
     TaskManagementComponent,
     TaskMgmtCreationComponent,
     TasksheetCatalogueComponent,
+    TimesheetAdminComponent,
   ],
   imports: [
     BrowserModule,
