@@ -6,15 +6,20 @@ import { AppComponent } from "./app.component";
 import { TimesheetComponent } from "./components/timesheet/timesheet.component";
 import { NavbartimesheetComponent } from "./components/timesheet/navbartimesheet/navbartimesheet.component";
 import { FootertimesheetComponent } from "./components/timesheet/footertimesheet/footertimesheet.component";
-
-import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
 import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
 import { GridViewComponent } from "./components/timesheet/grid-view/grid-view.component";
-
-//import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LeavemanagementComponent } from "./leavemanagement/leavemanagement.component";
+import { EmployeeApplyLeaveInfoComponent } from "./Leavemanagement/employee-apply-leave-info/employee-apply-leave-info.component";
+import { MangerViewEmployeeLeaveInfoComponent } from "./Leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
+import { EmployeeViewOwnLeaveInfoComponent } from "./Leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { LeaveService } from "./Leavemanagement/leave.service";
+import { MatTabsModule } from "@angular/material";
+import { DatePipe } from "@angular/common";
 import { LmsComponent } from "./components/lms/lms.component";
 import { ComponentsComponent } from "./components/components.component";
 import { LmsLandingScreenComponent } from "./components/lms/lms-landing-screen/lms-landing-screen.component";
@@ -25,7 +30,6 @@ import { OngoingCoursesComponent } from "./components/lms/ongoing-courses/ongoin
 import { CompletedCoursesComponent } from "./components/lms/completed-courses/completed-courses.component";
 import { EmployeeMasterInfoComponent } from "./components/employee-master-info/employee-master-info.component";
 import { EmployeeInfoAddComponent } from "./components/employee-master-info/employee-info-add/employee-info-add.component";
-
 import { MediaplayerComponent } from "./components/lms/mediaplayer/mediaplayer.component";
 import { PlaylistComponent } from "./components/lms/playlist/playlist.component";
 import { MatSliderModule } from "@angular/material/slider";
@@ -39,13 +43,15 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { TaskManagementComponent } from "./components/task-management/task-management.component";
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
-import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/timesheet-admin.component';
-
-// import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    LeavemanagementComponent,
+    EmployeeApplyLeaveInfoComponent,
+    MangerViewEmployeeLeaveInfoComponent,
+    EmployeeViewOwnLeaveInfoComponent,
     TimesheetComponent,
     NavbartimesheetComponent,
     FootertimesheetComponent,
@@ -73,8 +79,7 @@ import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatExpansionModule,
     ScrollingModule,
@@ -86,8 +91,12 @@ import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    MatSliderModule,
+    MatTabsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [LeaveService, DatePipe],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
