@@ -9,9 +9,9 @@ export class PlaylistComponent implements OnInit {
 
   constructor() { }
 
-  @Input() videos: Array<{}>;
+  @Input() videos: any;
       @Output() videoClicked = new EventEmitter<Object>();
-      currentVideo = {};
+      currentVideo:any;
     
       onVideoClick(video) {
         this.videoClicked.emit(video);
@@ -20,6 +20,7 @@ export class PlaylistComponent implements OnInit {
     
       ngOnInit() {
         this.currentVideo = this.videos[0];
+        console.log("current video", this.currentVideo, typeof(this.currentVideo), this.currentVideo.name)
       }
 
 }

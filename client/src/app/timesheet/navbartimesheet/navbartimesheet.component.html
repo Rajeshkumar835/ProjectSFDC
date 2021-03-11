@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Head part of timesheet-->
+  <head>
+    <!--title of timesheet it is used for show timesheet in browser toolbar.-->
+    <title>timesheet</title>
+    <!--here we give short description of timesheet-->
+    <meta charset="UTF-8" />
+    <meta name="description" content="timesheet for time management " />
+    <meta name="keywords" content="HTML,CSS,JavaScript" />
+    <meta name="author" content="Ashutosh Yadav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--this is style header part of timesheet-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style></style>
+  </head>
+
+  <!--this is body part of header-->
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <nav>
+        <a href="#" routerLink="/Timesheet" routerLinkActive="active"
+          >Timesheet</a
+        >
+      </nav>
+
+      <div>
+        <a href="javascript:void(0);" class="icon" oncli ck="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!--js of header navbar part-->
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
+  </body>
+</html>
+<router-outlet></router-outlet>
