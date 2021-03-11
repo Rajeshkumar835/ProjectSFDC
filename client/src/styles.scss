@@ -1,26 +1,22 @@
-[_nghost-c5] {
-  display: inline-block !important;
-  width: 100%;
+/* You can add global styles to this file, and also import other style files */
+html {
+  box-sizing: border-box;
 }
-.mat-tab-link-active,
-.mat-tab-label-active {
-  color: #008cba;
-  font-size: 15px;
-  background-color: ghostwhite;
-  font-weight: bold;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
-
-.mat-tab-label {
-  color: black;
-  font-weight: bolder;
-  font-size: 17px;
-  line-height: 30px !important;
-  height: 30px !important;
-  min-width: 100px !important;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
-
-.tabContentContainer {
-  height: 25px;
-  border: 1px solid #aaaaaa;
-  background: #ffffff 50% 50% repeat-x;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

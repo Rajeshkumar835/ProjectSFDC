@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intranet.dto.EmployeeInfoDTO;
 import com.intranet.entity.EmployeeInfo;
 import com.intranet.service.EmployeeInfoService;
 
@@ -30,16 +31,15 @@ public class EmployeeInfoController {
 	@Autowired
 	private EmployeeInfoService employeeInfoService;
 
-	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<EmployeeInfo> add(@RequestBody EmployeeInfo employeeInfoModel) {
-		EmployeeInfo employeeInfo = null;
+	public ResponseEntity<EmployeeInfoDTO> add(@RequestBody EmployeeInfoDTO employeeInfoDTO) {
+		EmployeeInfoDTO employeeInfo = null;
 		try {
-			employeeInfo = employeeInfoService.save(employeeInfoModel);
+			employeeInfo = employeeInfoService.add(employeeInfoDTO);
 		} catch (Exception e) {
 			LOGGER.error("Error while adding Employee Info -> ", e);
 		}
-		return new ResponseEntity<EmployeeInfo>(employeeInfo, HttpStatus.OK);
+		return new ResponseEntity<EmployeeInfoDTO>(employeeInfo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
