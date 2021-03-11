@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+[_nghost-c5] {
+  display: inline-block !important;
+  width: 100%;
+}
+.mat-tab-link-active,
+.mat-tab-label-active {
+  color: #008cba;
+  font-size: 15px;
+  background-color: ghostwhite;
+  font-weight: bold;
+}
+
+.mat-tab-label {
+  color: black;
+  font-weight: bolder;
+  font-size: 17px;
+  line-height: 30px !important;
+  height: 30px !important;
+  min-width: 100px !important;
+}
+
+.tabContentContainer {
+  height: 25px;
+  border: 1px solid #aaaaaa;
+  background: #ffffff 50% 50% repeat-x;
+}

@@ -1,0 +1,39 @@
+<div class="card ManagerTable" style="width: 65rem">
+  <div class="card-body">
+    <div class="empHeaderSec">
+      <h2 class="mangerHeading">Leave Detail</h2>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">From Date</th>
+          <th scope="col">To Date</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Status</th>
+          <th scope="col">Total Leaves Avaiable</th>
+          <th scope="col">Leaves Applied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let l of leaveData">
+          <td>{{ l.name }}</td>
+          <td>{{ l.fDate }}</td>
+          <td>{{ l.tdate }}</td>
+          <td>{{ l.reason }}</td>
+          <td>{{ l.status }}</td>
+          <td>{{ l.totalLeaveGrant }}</td>
+          <td>{{ l.LeaveApplied }}</td>
+          <td>
+            <input type="checkbox" [checked]="isChecked" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="abovebuttonBorder">
+      <button type="button" class="btn btn-primary btn-m approove">
+        Withdraw
+      </button>
+    </div>
+  </div>
+</div>
