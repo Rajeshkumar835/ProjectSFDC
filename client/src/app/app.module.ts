@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,13 +31,22 @@ import { TaskMgmtCreationComponent } from './components/task-management/task-mgm
 import { TasksheetCatalogueComponent } from './components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component';
 import { from } from 'rxjs';
 import { MatVideoModule } from 'mat-video';
-
-
-
-
+import { TimesheetComponent } from "./components/timesheet/timesheet.component";
+import { NavbartimesheetComponent } from "./components/timesheet/navbartimesheet/navbartimesheet.component";
+import { FootertimesheetComponent } from "./components/timesheet/footertimesheet/footertimesheet.component";
+import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
+import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
+import { GridViewComponent } from "./components/timesheet/grid-view/grid-view.component";
+import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/timesheet-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
+    TimesheetComponent,
+    NavbartimesheetComponent,
+    FootertimesheetComponent,
+    TimefilltimesheetComponent,
+    WelcometimesheetComponent,
+    GridViewComponent,
     LmsComponent,
     ComponentsComponent,
     LmsLandingScreenComponent,
@@ -52,11 +61,15 @@ import { MatVideoModule } from 'mat-video';
     PlaylistComponent,
     TaskManagementComponent,
     TaskMgmtCreationComponent,
-    TasksheetCatalogueComponent
+    TasksheetCatalogueComponent,
+    TimesheetAdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     BrowserAnimationsModule,
     MatExpansionModule,
     ScrollingModule,
@@ -72,6 +85,6 @@ import { MatVideoModule } from 'mat-video';
     
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
