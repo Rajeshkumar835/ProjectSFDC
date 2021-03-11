@@ -1,0 +1,39 @@
+<div style="margin-top: 10px">
+  <h4><b>Approval Section</b></h4>
+  <form [formGroup]="StartRegisterForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>from Date:</label>
+      <div class="input-group">
+        <input
+          type="date"
+          class="form-control"
+          id="StartDate"
+          name="StartDate"
+          [ngModel]="StartDate | date: 'd/M/y'"
+          formControlName="StartDate"
+          style="width: 200px"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>to Date:</label>
+      <div class="input-group">
+        <input
+          type="date"
+          class="form-control"
+          id="EndDate"
+          name="EndDate"
+          [ngModel]="EndDate | date: 'dd/MM/yyyy'"
+          formControlName="EndDate"
+          style="width: 200px"
+        />
+      </div>
+    </div>
+
+    <button (click)="addRow(i)" type="button">Approve</button>
+    <button type="button" (click)="deleteRow(i)" style="margin-left: 10px">
+      Return
+    </button>
+  </form>
+</div>
