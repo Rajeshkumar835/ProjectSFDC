@@ -87,6 +87,7 @@ import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/
     TasksheetCatalogueComponent,
     TimesheetAdminComponent,
     NavbarLeaveComponent,
+    TimesheetapprovedComponent,
     HeaderComponent,
     FooterComponent,
   ],
