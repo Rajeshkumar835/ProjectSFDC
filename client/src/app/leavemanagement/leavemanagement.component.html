@@ -1,17 +1,19 @@
-<div style="padding: 5px">
-  <nav mat-tab-nav-bar>
-    <a
-      mat-tab-link
-      *ngFor="let routeLink of routeLinks; let i = index"
-      [routerLink]="routeLink.link"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [active]="activeLinkIndex === i"
-      (click)="activeLinkIndex = i"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [class]="getActiveClass(i)"
-    >
-      {{ routeLink.label }}
-    </a>
+<header>
+  <nav>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/ApplyLeaveInfo">Apply Leave</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ManagerViewLeaveInfo">
+          Leave Approval</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employeeOwnLeaveInfo">
+          Leave Details</a
+        >
+      </li>
+    </ul>
   </nav>
-</div>
+</header>

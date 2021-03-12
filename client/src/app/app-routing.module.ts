@@ -17,6 +17,7 @@ import { TaskManagementComponent } from "./components/task-management/task-manag
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
+import { LeavemanagementComponent } from "./leavemanagement/leavemanagement.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -34,7 +35,9 @@ const routes: Routes = [
   { path: "timesheet-admin", component: TimesheetAdminComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
+  { path: "Leavevalue", component: LeavemanagementComponent },
   { path: "ApplyLeaveInfo", component: EmployeeApplyLeaveInfoComponent },
+
   {
     path: "ManagerViewLeaveInfo",
     component: MangerViewEmployeeLeaveInfoComponent,

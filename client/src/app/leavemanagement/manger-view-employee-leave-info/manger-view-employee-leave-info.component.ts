@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LeaveObj } from "../leave-obj";
 import { LeaveService } from "../leave.service";
+
 @Component({
   selector: "app-manger-view-employee-leave-info",
   templateUrl: "./manger-view-employee-leave-info.component.html",
@@ -16,6 +17,7 @@ export class MangerViewEmployeeLeaveInfoComponent implements OnInit {
       fDate: "21-03-2021",
       tdate: "23-03-2021",
       reason: "due to outside to some work",
+      status: "Applied",
       leaveType: "Cassual Leave",
       totalLeaveGrant: 11,
       LeaveApplied: 2,

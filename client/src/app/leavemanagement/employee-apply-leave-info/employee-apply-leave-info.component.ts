@@ -9,7 +9,7 @@ import { DatePipe } from "@angular/common";
   styleUrls: ["./employee-apply-leave-info.component.scss"],
 })
 export class EmployeeApplyLeaveInfoComponent implements OnInit {
-  leaveTypeStore = ["Cassual Leave", "Annual Leave", "Sick Leave"];
+  leaveTypeStore = ["Casual Leave", "Annual Leave", "Sick Leave"];
   leavtype: string;
   leaveReason: string;
   fDate: Date;

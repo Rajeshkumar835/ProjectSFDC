@@ -1,4 +1,4 @@
-<div class="card" style="width: 25rem">
+<div class="card ManagerTable" style="width: 54rem">
   <div class="card-body">
     <div class="container">
       <!-- <div class="row top-head-1">
@@ -98,9 +98,10 @@
           </div>
         </form>
       </div> -->
-      <form #myLeave="ngForm">
+      <!-- <form #myLeave="ngForm">
         <div class="form-group">
           <h2 class="heading_1">Apply Leave</h2>
+          <div class="abovebuttonBorder"></div>
         </div>
         <div class="form-group">
           <label class="labMargin">Leave Type </label>
@@ -186,11 +187,121 @@
             }}</small>
           </ng-container>
         </div>
+
         <div class="form-group">
           <button
             [disabled]="myLeave.invalid"
             id="ApplyLeave"
-            class="btn btn-default btnMargin"
+            class="btn btn-primary"
+            (click)="leaveApply(myLeave.value)"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+      <form #myLeave="ngForm">
+        <div class="form-group">
+          <h2 class="heading_1">Apply Leave</h2>
+          <div class="abovebuttonBorder"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <label class="labMargin">Leave Type </label>
+            <select
+              class="form-control heightselect"
+              id="inputPassword3"
+              name="leave"
+              [(ngModel)]="leaveType"
+              (ngModelChange)="chooseLeave(leaveType)"
+              #leave="ngModel"
+              required
+            >
+              <option *ngFor="let leaveItem of leaveTypeStore">
+                {{ leaveItem }}
+              </option>
+            </select>
+            <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+              <span *ngIf="IsLeaveInvalid" class="text-danger" class="labMargin"
+                >Please select leave type</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">From Date </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputUsername"
+              name="fDate"
+              ngModel
+              #fDate="ngModel"
+              (change)="fromCoDate(fDate.value)"
+              required
+              placeholder="ent"
+            />
+            <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+              <span *ngIf="fDate.errors.required" class="labMargin"
+                >From Date is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">To Date </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputPassword3"
+              name="tdate"
+              ngModel
+              (change)="toDate(tdate.value)"
+              #tdate="ngModel"
+              required
+            />
+            <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+              <span *ngIf="tdate.errors.required" class="labMargin"
+                >To Date is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">Reason </label>
+            <input
+              type="textarea"
+              class="form-control"
+              id="inputPassword3"
+              name="reason"
+              (change)="ChooseReason(reason.value)"
+              ngModel
+              #reason="ngModel"
+              required
+            />
+            <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+              <span *ngIf="reason.errors.required" class="labMargin"
+                >Reason is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <ng-container *ngIf="show">
+              <label class="labMargin totalday">Total Days :</label
+              >&nbsp;&nbsp;&nbsp;&nbsp;
+              <small
+                class="font-weight-bold totalday pl-1"
+                style="font-size: 16px"
+                >{{ totalnOfDays }}</small
+              >
+            </ng-container>
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            [disabled]="myLeave.invalid"
+            id="ApplyLeave"
+            class="btn btn-primary"
             (click)="leaveApply(myLeave.value)"
           >
             Apply

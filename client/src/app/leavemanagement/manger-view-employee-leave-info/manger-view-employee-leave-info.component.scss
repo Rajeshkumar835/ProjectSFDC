@@ -1,21 +1,27 @@
+.card {
+  background-color: whitesmoke;
+}
 .ManagerTable {
-  margin-left: 50px;
+  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 60px;
 }
 .mangerHeading {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+
+  color: dodgerblue;
 }
 .approove {
-  width: 80px;
+  width: 90px;
   margin: 5px;
   height: 30px;
   line-height: 10px;
   margin-top: 15px;
 }
 .reject {
-  width: 80px;
+  width: 90px;
   height: 30px;
   line-height: 10px;
   margin-top: 10px;
