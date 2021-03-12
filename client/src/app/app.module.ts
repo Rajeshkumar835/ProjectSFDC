@@ -47,6 +47,10 @@ import { GridViewComponent } from "./components/timesheet/grid-view/grid-view.co
 import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/timesheet-admin.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EmployeeLoginComponent } from './components/employee-login/employee-login.component';
+import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +79,9 @@ import { FooterComponent } from './components/footer/footer.component';
     TimesheetapprovedComponent,
     HeaderComponent,
     FooterComponent,
+    EmployeeLoginComponent,
+    AdminRegistrationComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +103,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatNativeDateModule,
     MatDatepickerModule,
     MatVideoModule,
+    // BsDropdownModule,
   ],
   providers: [MatDatepickerModule, MatNativeDateModule, DatePipe],
   bootstrap: [AppComponent],
