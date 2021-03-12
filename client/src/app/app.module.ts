@@ -44,7 +44,9 @@ import { DatePipe } from "@angular/common";
 import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
 import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
 import { GridViewComponent } from "./components/timesheet/grid-view/grid-view.component";
-import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
+import { TimesheetAdminComponent } from './components/timesheet/timesheet-admin/timesheet-admin.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,8 @@ import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/
     TaskMgmtCreationComponent,
     TasksheetCatalogueComponent,
     TimesheetAdminComponent,
-    TimesheetapprovedComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
