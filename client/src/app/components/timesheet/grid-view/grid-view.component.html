@@ -2,19 +2,14 @@
   <button
     type="button"
     (click)="myFunctionPrevDate()"
-    style="margin-bottom: 10px"
+    style="margin-bottom: 10px; margin-left: 935px"
   >
     &laquo;
   </button>
   <button type="button" (click)="myFunctionNextdate()" style="margin-left: 2px">
     &raquo;
   </button>
-  <input
-    type="checkbox"
-    [checked]="saveUsername"
-    (change)="saveUsername = !saveUsername"
-    style="margin-left: 10px"
-  />
+
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -114,8 +109,12 @@
       </tr>
       
     -->
-      <tr class="form-control">
-        Total Time
+      <tr
+        class="form-control"
+        timesheet-fill-sheet
+        style="margin-top: 7px; width: auto"
+      >
+        <b> Total Time</b>
       </tr>
       <td>
         <input class="form-control" type="text" readonly />

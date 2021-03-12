@@ -8,8 +8,8 @@
   <section class="UserTimeEntry">
     <div style="margin-left: 100px">
       <h4>
-        <b>Employee :</b>
-        <select>
+        <b>Employee : </b>
+        <select style="padding: 8px">
           <option *ngFor="let use of users" [value]="use.Id">
             {{ use.Name }}
           </option>
@@ -28,7 +28,7 @@
       <button
         type="button"
         (click)="myFunctionNextdate()"
-        style="margin-left: 2px"
+        style="margin-left: 2px; margin-left: 935px"
       >
         &raquo;
       </button>
@@ -132,8 +132,8 @@
       </tr>
       
     -->
-          <tr class="form-control" style="height: 47.5px">
-            Total Time
+          <tr class="form-control" style="margin-top: 7px; width: auto">
+            <b>Total Time</b>
           </tr>
           <td>
             <input class="form-control" type="text" readonly />
