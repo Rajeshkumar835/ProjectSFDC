@@ -17,6 +17,9 @@ import { TaskManagementComponent } from "./components/task-management/task-manag
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
+import { AdminLoginComponent } from "./components/admin-login/admin-login.component";
+import { AdminRegistrationComponent } from "./components/admin-registration/admin-registration.component";
+import { EmployeeLoginComponent } from "./components/employee-login/employee-login.component";
 import { LeavemanagementComponent } from "./leavemanagement/leavemanagement.component";
 
 const routes: Routes = [
@@ -32,6 +35,10 @@ const routes: Routes = [
   { path: "tasksheet-catalogue-page", component: TasksheetCatalogueComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
+  {path: "timesheet-admin", component: TimesheetAdminComponent},
+  {path: "admin-login",component: AdminLoginComponent},
+  {path: "admin-registration",component: AdminRegistrationComponent},
+  {path: "employee-login", component: EmployeeLoginComponent},
   { path: "timesheet-admin", component: TimesheetAdminComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
