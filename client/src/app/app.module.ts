@@ -72,6 +72,7 @@ import { FooterComponent } from './components/footer/footer.component';
     TaskMgmtCreationComponent,
     TasksheetCatalogueComponent,
     TimesheetAdminComponent,
+    TimesheetapprovedComponent,
     HeaderComponent,
     FooterComponent,
   ],
