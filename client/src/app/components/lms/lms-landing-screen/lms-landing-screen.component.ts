@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lms-landing-screen',
@@ -13,20 +14,20 @@ export class LmsLandingScreenComponent implements OnInit {
     name:"Java",
     title:"Java course",
     desc:"this is java course",
-    img:""
+    img:"../../../../assets/Java-Logo.png"
   },
   {
     name:"Angular",
     title:"Angular course",
     desc:"this is Angular course",
-    img:""
+    img:"../../../../assets/angular.png"
 
   },
   {
     name:"React",
     title:"React course",
     desc:"this is React course",
-    img:""
+    img:"../../../../assets/React.png"
 
   },
   
@@ -34,55 +35,56 @@ export class LmsLandingScreenComponent implements OnInit {
     name:"Node.js",
     title:"Node.js course",
     desc:"this is Node.js course",
-    img:""
+    img:"../../../../assets/node.jpg"
 
   },
   {
     name:"Spring",
     title:"Spring course",
     desc:"this is Spring course",
-    img:""
-
+    img:"../../../../assets/spring.png"
   },
   {
     name:"React Native",
     title:"React Native course",
     desc:"this is React Native course",
-    img:""
+    img:"../../../../assets/react_native.png"
 
   },
   {
     name:"Hadoop",
     title:"Hadoop course",
     desc:"this is Hadoop course",
-    img:""
+    img:"../../../../assets/hadoop.jpg"
 
   },
   {
     name:"Python",
     title:"Python course",
     desc:"this is Python course",
-    img:""
+    img:"../../../../assets/python.png"
 
   },
   {
     name:"Blockchain",
     title:"Blockchain course",
     desc:"this is Blockchain course",
-    img:""
+    img:"../../../../assets/blockchain.png"
 
   },
   {
     name:"Data Science",
     title:"Data Science course",
     desc:"this is Data Science course",
-    img:""
+    img:"../../../../assets/data-science.png"
 
   },
 ]
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
-
+  onClickOfCourse(){
+    this.router.navigate(["/course-content"]);
+  }
 }

@@ -1,11 +1,18 @@
 <div class="player">
-  <video
+  <!-- <video
     class="player__video viewer"
     [src]="currentVideo?.source"
     (timeupdate)="handleProgress()"
     (ended)="updateButton()"
     #videoplayer
-  ></video>
+  ></video> -->
+  <mat-video 
+  class="player__video viewer"
+  [src]="currentVideo?.source"
+  (timeupdate)="handleProgress()"
+  (ended)="updateButton()"
+  ></mat-video>
+
   <div class="player__controls">
     <div
       class="progress"
