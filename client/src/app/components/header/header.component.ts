@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class HeaderComponent implements OnInit {
 
+  profileImage="../../assets/profileimage1.png"
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  // D:\anagha project\angular\intranet\client\src\assets\profileimage.webp
 }
