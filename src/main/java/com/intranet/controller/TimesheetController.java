@@ -1,4 +1,4 @@
- package com.intranet.controller;
+package com.intranet.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
 import com.intranet.service.TimesheetService;
 
@@ -32,14 +33,14 @@ public class TimesheetController {
 
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<Timesheet> add(@RequestBody Timesheet timesheetModel) {
-		Timesheet timesheet = null;
+	public ResponseEntity<TimesheetDTO> add(@RequestBody TimesheetDTO timesheetModel) {
+		TimesheetDTO timesheet = null;
 		try {
-			timesheet = timesheetService.save(timesheetModel);
+			timesheet = timesheetService.add(timesheetModel);
 		} catch (Exception e) {
 			LOGGER.error("Error while adding Timesheet -> ", e);
 		}
-		return new ResponseEntity<Timesheet>(timesheet, HttpStatus.OK);
+		return new ResponseEntity<TimesheetDTO>(timesheet, HttpStatus.OK);
 	}
 
 	@CrossOrigin

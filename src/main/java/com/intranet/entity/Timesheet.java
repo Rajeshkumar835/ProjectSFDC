@@ -1,14 +1,12 @@
 package com.intranet.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -42,7 +40,10 @@ public class Timesheet {
 	@Column(nullable = true)
 	private Long totalTimeHour;
 
-	@OneToMany(mappedBy = "timesheet")
-	private List<TimesheetDetails> timesheetdetails;
+	@Column(nullable = true)
+	private String status;
+
+//	@OneToMany(mappedBy = "timesheet")
+//	private List<TimesheetDetails> timesheetdetails;
 
 }

@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -28,8 +26,10 @@ public class TimesheetDetails {
 	@Column(nullable = true)
 	private String comments;
 
-	@ManyToOne
-	@JoinColumn(name = "timesheetId", nullable = false)
-	private Timesheet timesheet;
+	private Long timesheetId;
+
+//	@ManyToOne
+//	@JoinColumn(name = "timesheetId", nullable = false)
+//	private Timesheet timesheet;
 
 }
