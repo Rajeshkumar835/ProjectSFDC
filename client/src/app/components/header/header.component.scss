@@ -1,6 +1,6 @@
 .login-button{
     position: relative;
-    left: 330px;
+    left: 27%;
 }
 .admin-login{
     margin-left:10px;
@@ -44,4 +44,9 @@
   
   .dropdown:hover .dropbtn {
     background-color: #17a2b8;
+  }
+  .profileImageSize{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
   }
