@@ -1,0 +1,318 @@
+<div class="card ManagerTable" style="width: 53rem">
+  <div class="card-body">
+    <div class="container">
+      <!-- <div class="row top-head-1">
+        <h2 class="heading_1">Apply Leave</h2>
+        <form #myLeave="ngForm">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>LeaveType </label>
+                <select
+                  class="form-control"
+                  id="inputPassword3"
+                  name="leave"
+                  ngModel
+                  (change)="verifyLeave(leave.value)"
+                  #leave="ngModel"
+                  required
+                >
+                  <option value="noLeave">Select Leave Type</option>
+                  <option value="SickLeave">Sick Leave</option>
+                  <option value="AnnualLeave">Annual Leave</option>
+                  <option value="casualLeave">Casual Leave</option>
+                </select>
+                <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+                  <span *ngIf="IsLeaveInvalid" class="text-danger"
+                    >please select leave type</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group ml-1">
+                <label>FromDate </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="inputUsername"
+                  name="fDate"
+                  ngModel
+                  #fDate="ngModel"
+                  (change)="fromCoDate(fDate.value)"
+                  required
+                  placeholder="ent"
+                />
+                <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+                  <span *ngIf="fDate.errors.required"
+                    >fromDate is Required</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>ToDate </label>
+              <input
+                type="date"
+                class="form-control"
+                id="inputPassword3"
+                name="tdate"
+                ngModel
+                (change)="toDate(tdate.value)"
+                #tdate="ngModel"
+                required
+                placeholder="Enter date"
+              />
+              <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+                <span *ngIf="tdate.errors.required">ToDate is Required</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Reason </label>
+              <input
+                type="textarea"
+                class="form-control"
+                id="inputPassword3"
+                name="reason"
+                (change)="reason(reason.value)"
+                ngModel
+                #reason="ngModel"
+                required
+              />
+              <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+                <span *ngIf="reason.errors.required">Reason is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-sm-6 mt-2">
+              <ng-container *ngIf="show">
+                <label>TotalDays :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <small class="font-weight-bold pl-1" style="font-size: 16px">{{
+                  totalnOfDays
+                }}</small>
+              </ng-container>
+            </div>
+          </div>
+        </form>
+      </div> -->
+      <!-- <form #myLeave="ngForm">
+        <div class="form-group">
+          <h2 class="heading_1">Apply Leave</h2>
+          <div class="abovebuttonBorder"></div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">Leave Type </label>
+          <select
+            class="form-control heightselect"
+            id="inputPassword3"
+            name="leave"
+            [(ngModel)]="leaveType"
+            (ngModelChange)="chooseLeave(leaveType)"
+            #leave="ngModel"
+            required
+          >
+            <option *ngFor="let leaveItem of leaveTypeStore">
+              {{ leaveItem }}
+            </option>
+          </select>
+          <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+            <span *ngIf="IsLeaveInvalid" class="text-danger" class="labMargin"
+              >Please select leave type</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">From Date </label>
+          <input
+            type="date"
+            class="form-control"
+            id="inputUsername"
+            name="fDate"
+            ngModel
+            #fDate="ngModel"
+            (change)="fromCoDate(fDate.value)"
+            required
+            placeholder="ent"
+          />
+          <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+            <span *ngIf="fDate.errors.required" class="labMargin"
+              >From Date is Required</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">To Date </label>
+          <input
+            type="date"
+            class="form-control"
+            id="inputPassword3"
+            name="tdate"
+            ngModel
+            (change)="toDate(tdate.value)"
+            #tdate="ngModel"
+            required
+          />
+          <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+            <span *ngIf="tdate.errors.required" class="labMargin"
+              >To Date is Required</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">Reason </label>
+          <input
+            type="textarea"
+            class="form-control"
+            id="inputPassword3"
+            name="reason"
+            (change)="ChooseReason(reason.value)"
+            ngModel
+            #reason="ngModel"
+            required
+          />
+          <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+            <span *ngIf="reason.errors.required" class="labMargin"
+              >Reason is Required</span
+            >
+          </div>
+        </div>
+        <div clss="form-group">
+          <ng-container *ngIf="show">
+            <label class="labMargin">TotalDays :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <small class="font-weight-bold pl-1" style="font-size: 16px">{{
+              totalnOfDays
+            }}</small>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <button
+            [disabled]="myLeave.invalid"
+            id="ApplyLeave"
+            class="btn btn-primary"
+            (click)="leaveApply(myLeave.value)"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+      <form #myLeave="ngForm">
+        <div class="form-group">
+          <h2 class="heading_1">Apply Leave</h2>
+          <div class="abovebuttonBorder"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <label class="labMargin1">Leave Type </label>
+            <select
+              class="form-control heightselect"
+              id="inputPassword3"
+              name="leave"
+              [(ngModel)]="leaveItem"
+              (ngModelChange)="chooseLeave(leaveItem.leaveCode)"
+              #leave="ngModel"
+              required
+            >
+              <option value="0"></option>
+
+              <option
+                *ngFor="let leaveItem of LeaveData"
+                value="{{ leaveItem }}"
+              >
+                {{ leaveItem.leaveName }}
+              </option>
+            </select>
+            <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+              <span *ngIf="IsLeaveInvalid" class="text-danger" class="labMargin"
+                >Please select leave type</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">From Date </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputUsername"
+              name="fDate"
+              ngModel
+              #fDate="ngModel"
+              (change)="fromCoDate(fDate.value)"
+              required
+              placeholder="ent"
+            />
+            <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+              <span *ngIf="fDate.errors.required" class="labMargin"
+                >From Date is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">To Date </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputPassword3"
+              name="tdate"
+              ngModel
+              (change)="toDate(tdate.value)"
+              #tdate="ngModel"
+              required
+            />
+            <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+              <span *ngIf="tdate.errors.required" class="labMargin"
+                >To Date is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <label class="labMargin">Reason </label>
+            <input
+              type="textarea"
+              class="form-control"
+              id="inputPassword3"
+              name="reason"
+              (change)="ChooseReason(reason.value)"
+              ngModel
+              #reason="ngModel"
+              required
+            />
+            <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+              <span *ngIf="reason.errors.required" class="labMargin"
+                >Reason is Required</span
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <ng-container *ngIf="show">
+              <label class="labMargin1 totalday">Total Days :</label
+              >&nbsp;&nbsp;&nbsp;&nbsp;
+              <small
+                class="font-weight-bold totalday pl-1"
+                style="font-size: 16px"
+                >{{ totalnOfDays }}</small
+              >
+            </ng-container>
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            [disabled]="myLeave.invalid"
+            id="ApplyLeave"
+            class="btn btn-primary"
+            (click)="leaveApply(myLeave.value)"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

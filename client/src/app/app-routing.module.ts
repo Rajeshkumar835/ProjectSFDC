@@ -4,7 +4,9 @@ import { EmployeeInfoAddComponent } from "./components/employee-master-info/empl
 import { EmployeeMasterInfoComponent } from "./components/employee-master-info/employee-master-info.component";
 import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
 import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
-
+import { EmployeeApplyLeaveInfoComponent } from "./components/leavemanagement/employee-apply-leave-info/employee-apply-leave-info.component";
+import { EmployeeViewOwnLeaveInfoComponent } from "./components/leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
+import { MangerViewEmployeeLeaveInfoComponent } from "./components/leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
 import { CompletedCoursesComponent } from "./components/lms/completed-courses/completed-courses.component";
 import { FavouriteCoursesComponent } from "./components/lms/favourite-courses/favourite-courses.component";
 import { LmsCourseContentComponent } from "./components/lms/lms-course-content/lms-course-content.component";
@@ -14,6 +16,11 @@ import { TaskManagementComponent } from "./components/task-management/task-manag
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
+import { AdminLoginComponent } from "./components/admin-login/admin-login.component";
+import { AdminRegistrationComponent } from "./components/admin-registration/admin-registration.component";
+import { EmployeeLoginComponent } from "./components/employee-login/employee-login.component";
+import { LeavemanagementComponent } from "./components/leavemanagement/leavemanagement.component";
+
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
   { path: "course-content", component: LmsCourseContentComponent },
@@ -27,7 +34,24 @@ const routes: Routes = [
   { path: "tasksheet-catalogue-page", component: TasksheetCatalogueComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
-  {path: "timesheet-admin", component: TimesheetAdminComponent}
+  { path: "timesheet-admin", component: TimesheetAdminComponent },
+  { path: "admin-login", component: AdminLoginComponent },
+  { path: "admin-registration", component: AdminRegistrationComponent },
+  { path: "employee-login", component: EmployeeLoginComponent },
+  { path: "timesheet-admin", component: TimesheetAdminComponent },
+  { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
+  { path: "welcome-timesheet", component: WelcometimesheetComponent },
+  { path: "Leavevalue", component: LeavemanagementComponent },
+  { path: "ApplyLeaveInfo", component: EmployeeApplyLeaveInfoComponent },
+
+  {
+    path: "ManagerViewLeaveInfo",
+    component: MangerViewEmployeeLeaveInfoComponent,
+  },
+  {
+    path: "employeeOwnLeaveInfo",
+    component: EmployeeViewOwnLeaveInfoComponent,
+  },
 ];
 
 @NgModule({
