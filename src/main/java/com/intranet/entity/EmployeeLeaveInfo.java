@@ -1,7 +1,7 @@
 package com.intranet.entity;
 
 import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.ManyToOne;
 
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,25 +20,45 @@ import lombok.Data;
 
 @Data
 @Entity
-public class LeaveInfo {
-
+public class EmployeeLeaveInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "leave_id", nullable = false)
+	private long Id;
+	
+	@Column(nullable = true)
+	private String empCode;
 
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createdDate;
-
+	
 	@Column(nullable = true)
 	private String leaveCode;
-
+		
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = true)
-	private String leaveName;
-
+	private Date fromDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = true)
-	private Long leaveLimit;
+	private Date toDate;
+	
+	@Column(nullable = true)
+	private String leaveReason;
+	
+	@Column(nullable = true)
+	private String status;
+	
+	@Column(nullable = true)
+	private long totalLeaveGranted;
+	
+	@Column(nullable = true)
+	private long leaveApplied;
+	
+	@Column(nullable = true)
+	private String rejectionReason;
 	
 	
 

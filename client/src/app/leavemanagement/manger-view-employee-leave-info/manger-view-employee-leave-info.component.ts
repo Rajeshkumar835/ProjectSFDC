@@ -10,6 +10,13 @@ import { LeaveService } from "../leave.service";
 export class MangerViewEmployeeLeaveInfoComponent implements OnInit {
   isChecked = false;
   rejectReason: boolean = false;
+  empData = [];
+  LeaveObj = {
+    Id: "",
+    empCode: "",
+    status: "",
+  };
+
   leaveData = [
     {
       name: "Rajesh Chaudhari",
@@ -59,20 +66,58 @@ export class MangerViewEmployeeLeaveInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getAllEmployeeLeaveData();
+    this.getAllEmployeeLeaveData();
     console.log("value of leave data", this.leaveData);
   }
-  /* getAllEmployeeLeaveData() {
+  getAllEmployeeLeaveData() {
     this.leaveService.getAllLeaveData().subscribe((response: any) => {
-      const data = JSON.stringify(response);
-      this.leaveData = JSON.parse(data);
+      this.empData = response;
       //this.leaveData = response;
-      console.log("check data", this.leaveData);
+      console.log("check data", this.empData);
     });
-  }*/
-  aprroveLeave() {}
+  }
+  // checkedItems = [];
+  // onChecked(item: any, event: any) {
+  //   let { checked, value } = event.target;
+  //   if (checked) {
+  //     this.checkedItems.push(value);
+  //     console.log("checkbox value is", this.checkedItems);
+  //   } else {
+  //     let index = this.checkedItems.indexOf(value);
+  //     if (index !== -1) this.checkedItems.slice(index, 1);
+  //   }
+  // }
+  //  console.log("check leave value", leaveValue);
+  //   this.leaveService.ApplyLeave(leaveValue).subscribe((response) => {
+  //     console.log("Leave have applied successfully ");
+  name1: string;
+  check(values, name) {
+    if (values.currentTarget.checked) {
+      this.name1 = name;
+      console.log("value of name is", this.name1);
+    }
+  }
+  aprroveLeave() {
+    if (this.name1 != null) {
+      this.LeaveObj.status = "Approved";
+      this.leaveService.approvalPutData(this.LeaveObj).subscribe((response) => {
+        console.log("Leave have approved successfully ");
+      });
+      alert("Approved");
+    } else {
+      alert("Please select any value to approve");
+    }
+  }
   leaveReject() {
-    console.log("reject leave Information");
-    this.rejectReason = true;
+    if (this.name1 != null) {
+      console.log("reject leave Information");
+      this.rejectReason = true;
+    } else {
+      alert("Please select any value to Reject");
+    }
+  }
+  RejectReasonLeave(rejectValue: LeaveObj) {
+    rejectValue.status = "Reject";
+    rejectValue.rejectionReason = " ";
   }
 }

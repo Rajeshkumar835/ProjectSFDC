@@ -55,7 +55,7 @@ public class LeaveInfoController {
 		leaveInfoService.save(leaveInfoModel);
 		return new ResponseEntity<LeaveInfo>(leaveInfoModel, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@GetMapping("/findAll")
 	public ResponseEntity<List<LeaveInfo>> findAll() {
 		return new ResponseEntity<List<LeaveInfo>>(leaveInfoService.findAll(), HttpStatus.OK);
