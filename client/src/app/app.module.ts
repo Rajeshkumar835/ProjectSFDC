@@ -47,7 +47,7 @@ import { TaskMgmtCreationComponent } from "./components/task-management/task-mgm
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
 import { NavbarLeaveComponent } from "./leavemanagement/navbar-leave/navbar-leave.component";
 import { from } from "rxjs";
-//import { MatVideoModule } from "mat-video";
+import { MatVideoModule } from "mat-video";
 import { MatNativeDateModule } from "@angular/material";
 import { TimesheetapprovedComponent } from "./components/timesheet/timesheet-admin/timesheetapproved/timesheetapproved.component";
 import { DatePipe } from "@angular/common";
@@ -113,7 +113,7 @@ import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/
 
     MatNativeDateModule,
     MatDatepickerModule,
-    // MatVideoModule,
+    MatVideoModule,
   ],
   providers: [MatDatepickerModule, LeaveService, MatNativeDateModule, DatePipe],
   bootstrap: [AppComponent],

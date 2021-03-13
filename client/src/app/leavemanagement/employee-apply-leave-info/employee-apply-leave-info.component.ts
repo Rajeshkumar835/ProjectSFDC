@@ -20,7 +20,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   totalnOfDays: number;
   IsLeaveInvalid: boolean = true;
   show: boolean = false;
-  LeaveData: object;
+  LeaveData: any;
   LeaveObj = {
     empCode: "",
     createdDate: "",
@@ -33,7 +33,9 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   };
   constructor(private leaveService: LeaveService, private datePipe: DatePipe) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getLeaveType();
+  }
   toDate(value) {
     console.log("To date", value);
     this.datePipe.transform(this.tDate, "dd/mm/yyyy");
@@ -54,6 +56,12 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     } else {
       this.IsLeaveInvalid = true;
     }
+  }
+  getLeaveType() {
+    this.leaveService.getLeaveTypeData().subscribe((response: any) => {
+      this.LeaveData = response;
+      console.log("Leave Type Date coming from backend ", this.LeaveData);
+    });
   }
 
   calculateDay() {
@@ -85,8 +93,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     leaveValue.status = "Applied";
     leaveValue.leaveReason = this.leaveReason;
     leaveValue.totalLeaveGranted = 11;
-    leaveValue.leaveType = this.leavtype;
-    console.log("leave type  check10", leaveValue.leaveType);
+    leaveValue.leavecode = this.leavtype;
+    console.log("leave type  check10", leaveValue.leavecode);
     leaveValue.leaveApplied = this.totalnOfDays;
     leaveValue.fromDate = this.fDate;
     leaveValue.toDate = this.tDate;

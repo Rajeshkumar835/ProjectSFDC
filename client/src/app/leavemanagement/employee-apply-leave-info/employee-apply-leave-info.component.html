@@ -1,4 +1,4 @@
-<div class="card ManagerTable" style="width: 54rem">
+<div class="card ManagerTable" style="width: 53rem">
   <div class="card-body">
     <div class="container">
       <!-- <div class="row top-head-1">
@@ -210,18 +210,23 @@
         </div>
         <div class="row">
           <div class="col-sm">
-            <label class="labMargin">Leave Type </label>
+            <label class="labMargin1">Leave Type </label>
             <select
               class="form-control heightselect"
               id="inputPassword3"
               name="leave"
-              [(ngModel)]="leaveType"
-              (ngModelChange)="chooseLeave(leaveType)"
+              [(ngModel)]="leaveItem"
+              (ngModelChange)="chooseLeave(leaveItem.leaveCode)"
               #leave="ngModel"
               required
             >
-              <option *ngFor="let leaveItem of leaveTypeStore">
-                {{ leaveItem }}
+              <option value="0"></option>
+
+              <option
+                *ngFor="let leaveItem of LeaveData"
+                value="{{ leaveItem }}"
+              >
+                {{ leaveItem.leaveName }}
               </option>
             </select>
             <div *ngIf="leave.invalid && leave.touched" class="text-danger">
@@ -287,7 +292,7 @@
           </div>
           <div class="col-sm">
             <ng-container *ngIf="show">
-              <label class="labMargin totalday">Total Days :</label
+              <label class="labMargin1 totalday">Total Days :</label
               >&nbsp;&nbsp;&nbsp;&nbsp;
               <small
                 class="font-weight-bold totalday pl-1"
