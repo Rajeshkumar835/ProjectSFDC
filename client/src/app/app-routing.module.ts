@@ -14,7 +14,6 @@ import { TaskManagementComponent } from "./components/task-management/task-manag
 import { TaskMgmtCreationComponent } from "./components/task-management/task-mgmt-creation/task-mgmt-creation.component";
 import { TasksheetCatalogueComponent } from "./components/task-management/task-mgmt-creation/tasksheet-catalogue/tasksheet-catalogue.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
-
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
   { path: "course-content", component: LmsCourseContentComponent },
