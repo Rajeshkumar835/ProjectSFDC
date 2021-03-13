@@ -5,9 +5,9 @@ import { EmployeeMasterInfoComponent } from "./components/employee-master-info/e
 import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
 import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
 
-import { EmployeeApplyLeaveInfoComponent } from "./Leavemanagement/employee-apply-leave-info/employee-apply-leave-info.component";
-import { EmployeeViewOwnLeaveInfoComponent } from "./Leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
-import { MangerViewEmployeeLeaveInfoComponent } from "./Leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
+import { EmployeeApplyLeaveInfoComponent } from "./components/leavemanagement/employee-apply-leave-info/employee-apply-leave-info.component";
+import { EmployeeViewOwnLeaveInfoComponent } from "./components/leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
+import { MangerViewEmployeeLeaveInfoComponent } from "./components/leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
 import { CompletedCoursesComponent } from "./components/lms/completed-courses/completed-courses.component";
 import { FavouriteCoursesComponent } from "./components/lms/favourite-courses/favourite-courses.component";
 import { LmsCourseContentComponent } from "./components/lms/lms-course-content/lms-course-content.component";
@@ -20,7 +20,7 @@ import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/
 import { AdminLoginComponent } from "./components/admin-login/admin-login.component";
 import { AdminRegistrationComponent } from "./components/admin-registration/admin-registration.component";
 import { EmployeeLoginComponent } from "./components/employee-login/employee-login.component";
-import { LeavemanagementComponent } from "./leavemanagement/leavemanagement.component";
+import { LeavemanagementComponent } from "./components/leavemanagement/leavemanagement.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
