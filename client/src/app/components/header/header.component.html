@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#">Intranet Aplication</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-right">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lms-landingPage">LMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/task-mgmt-creation">Task Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/welcome-timesheet">Timesheet Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/welcome-timesheet">Leave Management</a>
+        </li>
+
+        <div class="login-button">
+          <button type="button" class="btn btn-outline-info" routerLink="/employee-login">Employee Login</button>
+          <button type="button" class="btn btn-outline-info admin-login" routerLink="/admin-login">Admin Login</button>
+
+          <div class="dropdown ml-4">
+            <img class="profileImageSize" [src]="profileImage">
+            <div class="dropdown-content">
+              <a routerLink="/ongoing-course">Ongoing courses</a>
+              <a routerLink="/completed-course">Completed courses</a>
+              <a routerLink="/favourite-course">Favourite courses</a>
+              <a href="#">Dashboard</a>
+              <a href="#">Admin area</a>
+              <a href="#">Log Out</a>
+            </div>
+          </div>
+          <!-- <div class="btn-group ml-4" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-info dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              Menu <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+
+</nav>

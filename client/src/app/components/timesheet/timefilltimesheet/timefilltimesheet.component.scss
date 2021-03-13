@@ -1,0 +1,30 @@
+.UserTimeEntry {
+  margin-left: 5%;
+  background-color: whitesmoke;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 5%;
+  padding: 2% 2% 2% 2%;
+  width: 90%;
+  height: 570px;
+  overflow: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 120px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

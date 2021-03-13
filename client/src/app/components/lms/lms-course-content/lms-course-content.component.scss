@@ -1,0 +1,10 @@
+ 
+    section{
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+      }
+      .playList-view{
+          overflow-y: scroll;
+          height: 470px;
+      }
