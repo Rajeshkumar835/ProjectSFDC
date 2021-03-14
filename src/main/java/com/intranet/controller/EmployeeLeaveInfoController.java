@@ -11,30 +11,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intranet.dto.EmployeeLeaveInfoDTO;
 import com.intranet.entity.EmployeeLeaveInfo;
 import com.intranet.service.EmployeeLeaveInfoService;
 
 @RestController
-@RequestMapping(path = BaseController.EMPLOYEELEAVE_INFO)
-public class employeeLeaveInfoController {
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(employeeLeaveInfoController.class);
-	
-	
+@RequestMapping(path = BaseController.EMPLOYEE_LEAVE_INFO)
+public class EmployeeLeaveInfoController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeLeaveInfoController.class);
+
 	@Autowired
 	EmployeeLeaveInfoService employeeLeaveInfoService;
+
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<EmployeeLeaveInfo> add(@RequestBody EmployeeLeaveInfo employeeLeaveInfoModel){
-		EmployeeLeaveInfo employeeLeaveInfo=null;
+	public ResponseEntity<EmployeeLeaveInfo> add(@RequestBody EmployeeLeaveInfoDTO employeeLeaveInfoModel) {
+		EmployeeLeaveInfo employeeLeaveInfo = null;
 		try {
-			employeeLeaveInfo=employeeLeaveInfoService.save(employeeLeaveInfoModel);
-			
+			employeeLeaveInfo = employeeLeaveInfoService.add(employeeLeaveInfoModel);
+
 		} catch (Exception e) {
 			LOGGER.error("Error while adding EmployeeLeaveInfo -> ", e);
 		}
 		return new ResponseEntity<EmployeeLeaveInfo>(employeeLeaveInfo, HttpStatus.OK);
-		
+
 	}
 
 }
