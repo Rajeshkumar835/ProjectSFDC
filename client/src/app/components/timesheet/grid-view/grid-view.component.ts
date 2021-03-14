@@ -101,7 +101,7 @@ export class GridViewComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);
@@ -254,7 +254,7 @@ export class GridViewComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);
@@ -346,7 +346,7 @@ export class GridViewComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);
