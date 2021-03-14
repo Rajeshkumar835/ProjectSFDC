@@ -1,9 +1,6 @@
 package com.intranet.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Tuple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.intranet.dto.EmployeeLeaveInfoDTO;
 import com.intranet.entity.EmployeeLeaveInfo;
 import com.intranet.entity.LeaveInfo;
-import com.intranet.model.EmployeeLeaveInfoModel;
 import com.intranet.repository.EmployeeLeaveInfoRepository;
 
 @Service
@@ -65,6 +61,12 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 	@Override
 	public List<EmployeeLeaveInfo> findAll() {
 		return employeeLeaveInfoRepository.findAll();
+	}
+
+	@Override
+	public List<EmployeeLeaveInfo> findAllNewEmployeeLeaveInfo() {
+
+		return employeeLeaveInfoRepository.findAllNewEmployeeLeaveInfo();
 	}
 
 //	@Override

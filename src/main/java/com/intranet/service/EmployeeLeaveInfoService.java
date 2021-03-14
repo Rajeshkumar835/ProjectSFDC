@@ -13,7 +13,9 @@ public interface EmployeeLeaveInfoService {
 	public EmployeeLeaveInfo save(EmployeeLeaveInfo empLeaveData);
 
 	public List<EmployeeLeaveInfo> findAll();
-	
-	public List<EmployeeLeaveInfoModel> findAllEmployeeLeaveInfo();
+
+//	public List<EmployeeLeaveInfoModel> findAllEmployeeLeaveInfo();
+
+	public List<EmployeeLeaveInfo> findAllNewEmployeeLeaveInfo();
 
 }
