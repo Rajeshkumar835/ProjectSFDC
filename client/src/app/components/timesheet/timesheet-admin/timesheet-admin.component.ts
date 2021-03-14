@@ -46,9 +46,9 @@ export class TimesheetAdminComponent implements OnInit {
   */
     this.users = [
       { Id: 1, Name: "Ashutosh kumar yadav" },
-      { Id: 2, Name: "Joaaaaaaaaaaaaaaaaahn" },
-      { Id: 3, Name: "ASaaaaaaaaaaaaaahutosh" },
-      { Id: 4, Name: "Anaaaaaaaaaaaaaaaaju" },
+      { Id: 2, Name: "Amish sir" },
+      { Id: 3, Name: "Wasi Sir" },
+      { Id: 4, Name: "Satish sir" },
     ];
 
     let i: number = 0;
@@ -115,7 +115,7 @@ export class TimesheetAdminComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);
@@ -268,7 +268,7 @@ export class TimesheetAdminComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);
@@ -360,7 +360,7 @@ export class TimesheetAdminComponent implements OnInit {
       (fifth.getMonth() + 1) +
       "/" +
       fifth.getFullYear() +
-      " (Thur)";
+      " (Thu)";
     console.log(this.thur);
 
     let six: Date = new Date(fifth);

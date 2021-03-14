@@ -50,3 +50,6 @@
   margin-top: 15px;
   margin-left: 105px;
 }
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}

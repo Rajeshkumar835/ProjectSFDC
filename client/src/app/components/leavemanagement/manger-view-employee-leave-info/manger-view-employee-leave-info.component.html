@@ -25,7 +25,11 @@
           <td>{{ l.leaveType }}</td>
           <td>{{ l.LeaveApplied }}</td>
           <td>
-            <input type="checkbox" [checked]="isChecked" />
+            <input
+              type="checkbox"
+              (change)="check($event, l.name)"
+              [(ngModel)]="l.selected"
+            />
           </td>
         </tr>
       </tbody>
@@ -62,14 +66,21 @@
                   #reason="ngModel"
                   required
                 />
+                <div
+                  *ngIf="reason.invalid && reason.touched"
+                  class="text-danger"
+                >
+                  <span *ngIf="reason.errors.required">Reason is Required</span>
+                </div>
               </div>
             </div>
           </form>
           <div class="col-sm-12">
             <button
               type="button"
-              class="btn btn-primary btn-m submit"
-              (click)="aprroveLeave()"
+              [disabled]="myReject.invalid"
+              class="btn btn-primar btn-m submit"
+              (click)="RejectReasonLeave(myReject.value)"
             >
               Submit
             </button>
