@@ -35,4 +35,13 @@ public class LeaveInfoServiceImpl implements LeaveInfoService {
 		leaveInfoRepository.deleteById(id);
 	}
 
+	@Override
+	public LeaveInfo findByLeaveCode(String leaveCode) {
+		LeaveInfo leaveInfo = leaveInfoRepository.findByLeaveCode(leaveCode);
+		if (leaveInfo == null) {
+			return new LeaveInfo();
+		}
+		return leaveInfo;
+	}
+
 }
