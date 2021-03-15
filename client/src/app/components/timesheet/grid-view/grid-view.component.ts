@@ -28,15 +28,6 @@ export class GridViewComponent implements OnInit {
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
   ngOnInit(): void {
-    const anExampleVariable = "Hello World";
-    console.log(anExampleVariable);
-    // let date: Date = new Date();
-
-    //console.log("Year = " + date.getFullYear());
-    //console.log("Date = " + date.getDate());
-    //console.log("Month = " + date.getMonth());
-    //console.log("Day = " + date.getDay());
-
     let i: number = 0;
 
     while (i < 7) {
@@ -193,6 +184,9 @@ export class GridViewComponent implements OnInit {
       // this.toastr.warning("Row deleted successfully", "Delete row");
       return true;
     }
+  }
+  myFunction(index) {
+    console.log(this.dynamicArray);
   }
 
   /*
