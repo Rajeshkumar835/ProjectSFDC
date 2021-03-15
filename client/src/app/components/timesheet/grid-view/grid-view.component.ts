@@ -408,39 +408,88 @@ export class GridViewComponent implements OnInit {
     console.log(this.dynamicArray);
     console.log("this is length of dynamic array " + this.dynamicArray.length);
 
-    for (let i = 0; i < this.dynamicArray.length; i++) {
-      var data1 = this.dynamicArray.map((i) => i.Monday);
-      console.log(this.mon + " " + data1);
-
-      var data2 = this.dynamicArray.map((t) => t.Tuesday);
-      console.log(this.tue + " " + data2);
-
-      var data3 = this.dynamicArray.map((t) => t.Wednesday);
-      console.log(this.thur + " " + data3);
-
-      var data4 = this.dynamicArray.map((t) => t.thursday);
-      console.log(this.fri + " " + data4);
-
-      var data5 = this.dynamicArray.map((t) => t.Friday);
-      console.log(this.sat + " " + data5);
-
-      var data6 = this.dynamicArray.map((t) => t.Saturday);
-      console.log(this.sunn + " " + data6);
-
-      var data7 = this.dynamicArray.map((t) => t.Sunday);
-      console.log(this.mon + " " + data7);
-
-      var total1: number = +data1;
-      var total2: number = +data2;
-      var total3: number = +data3;
-      var total4: number = +data4;
-      var total5: number = +data5;
-      var total6: number = +data6;
-      var total7: number = +data7;
-      var ROWtotal: number =
-        total1 + total2 + total3 + total4 + total5 + total6 + total7;
-
-      console.log("total time " + ROWtotal);
+    var ProjectWise: String[] = this.dynamicArray.map((i) => i.projectName);
+    var str = ProjectWise.toString();
+    var splitted = str.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      //console.log(splitted[mm]);
+      //console.log("hello Ashutosh kumar yadav");
     }
+    // console.log(" Project" + ProjectWise);
+
+    //Monday
+    var data1 = this.dynamicArray.map((i) => i.Monday);
+    //console.log(this.mon + " " + data1);
+    var str1 = data1.toString();
+    var splitted1 = str1.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
+    }
+
+    //Tuesday
+    var data2 = this.dynamicArray.map((t) => t.Tuesday);
+    // console.log(this.tue + " " + data2);
+    var str2 = data2.toString();
+    var splitted2 = str2.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
+    }
+
+    //Wednesday
+    var data3 = this.dynamicArray.map((t) => t.Wednesday);
+    //  console.log(this.thur + " " + data3);
+    var str3 = data3.toString();
+    var splitted3 = str3.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
+    }
+
+    //thrusday
+    var data4 = this.dynamicArray.map((t) => t.thursday);
+    //console.log(this.fri + " " + data4);
+    var str4 = data4.toString();
+    var splitted4 = str4.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
+    }
+
+    //friday
+    var data5 = this.dynamicArray.map((t) => t.Friday);
+    //  console.log(this.sat + " " + data5);
+    var str5 = data5.toString();
+    var splitted5 = str5.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
+    }
+
+    //saturaday
+    var data6 = this.dynamicArray.map((t) => t.Saturday);
+    //  console.log(this.sunn + " " + data6);
+    var str6 = data6.toString();
+    var splitted6 = str6.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
+    }
+
+    //sunday
+    var data7 = this.dynamicArray.map((t) => t.Sunday);
+    // console.log(this.mon + " " + data7);
+    var str7 = data7.toString();
+    var splitted7 = str7.split(",");
+    for (let mm = 0; mm < splitted.length; mm++) {
+      console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
+    }
+
+    var total1: number = +data1;
+    var total2: number = +data2;
+    var total3: number = +data3;
+    var total4: number = +data4;
+    var total5: number = +data5;
+    var total6: number = +data6;
+    var total7: number = +data7;
+    var ROWtotal: number =
+      total1 + total2 + total3 + total4 + total5 + total6 + total7;
+
+    //  console.log("total time " + ROWtotal);
   }
 }
