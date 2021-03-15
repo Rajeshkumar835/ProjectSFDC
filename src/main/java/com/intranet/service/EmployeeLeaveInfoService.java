@@ -16,6 +16,6 @@ public interface EmployeeLeaveInfoService {
 
 //	public List<EmployeeLeaveInfoModel> findAllEmployeeLeaveInfo();
 
-	public List<EmployeeLeaveInfo> findAllNewEmployeeLeaveInfo();
+	public List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(String empCode);
 
 }
