@@ -12,13 +12,13 @@ export class FavouriteCoursesComponent implements OnInit {
     name:"Java",
     title:"Java course",
     desc:"this is java course",
-    img:""
+    img:"../../../../assets/Java-Logo.png"
   },
   {
     name:"Angular",
     title:"Angular course",
     desc:"this is Angular course",
-    img:""
+    img:"../../../../assets/angular.png"
 
   },
  

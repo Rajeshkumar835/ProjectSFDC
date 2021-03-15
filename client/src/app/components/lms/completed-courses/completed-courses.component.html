@@ -37,7 +37,7 @@
     <div class="row courseCards">
       <div class="column p-3" *ngFor="let data of dummyObjForCourse">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
+      <img class="card-img-top" height="100px" width="150px" [src]="data.img">
       <div class="card-body">
         <h5 class="card-title">{{data.title}}</h5>
         <p class="card-text">{{data.name}}</p>
