@@ -143,15 +143,15 @@ export class GridViewComponent implements OnInit {
   this is the part of dynmic table
   */
     this.newDynamic = {
-      title1: "",
-      title2: "",
-      title3: "",
-      title4: "",
-      title5: "",
-      title6: "",
-      title7: "00",
-      title8: "00",
-      title9: "",
+      projectName: "",
+      Monday: "",
+      Tuesday: "",
+      Wednesday: "",
+      thursday: "",
+      Friday: "",
+      Saturday: "00",
+      Sunday: "00",
+      TotaltimeRowwise: "",
     };
     this.dynamicArray.push(this.newDynamic);
   }
@@ -165,15 +165,15 @@ export class GridViewComponent implements OnInit {
   }
   addRow(index) {
     this.newDynamic = {
-      title1: "",
-      title2: "",
-      title3: "",
-      title4: "",
-      title5: "",
-      title6: "",
-      title7: "00",
-      title8: "00",
-      titie9: "",
+      projectName: "",
+      Monday: "",
+      Tuesday: "",
+      Wednesday: "",
+      thursday: "",
+      Friday: "",
+      Saturday: "00",
+      Sunday: "00",
+      TotaltimeRowwise: "",
     };
     this.dynamicArray.push(this.newDynamic);
     //  this.toastr.success("New row added successfully", "New Row");
@@ -409,25 +409,25 @@ export class GridViewComponent implements OnInit {
     console.log("this is length of dynamic array " + this.dynamicArray.length);
 
     for (let i = 0; i < this.dynamicArray.length; i++) {
-      var data1 = this.dynamicArray.map((i) => i.title2);
+      var data1 = this.dynamicArray.map((i) => i.Monday);
       console.log(this.mon + " " + data1);
 
-      var data2 = this.dynamicArray.map((t) => t.title3);
+      var data2 = this.dynamicArray.map((t) => t.Tuesday);
       console.log(this.tue + " " + data2);
 
-      var data3 = this.dynamicArray.map((t) => t.title4);
+      var data3 = this.dynamicArray.map((t) => t.Wednesday);
       console.log(this.thur + " " + data3);
 
-      var data4 = this.dynamicArray.map((t) => t.title5);
+      var data4 = this.dynamicArray.map((t) => t.thursday);
       console.log(this.fri + " " + data4);
 
-      var data5 = this.dynamicArray.map((t) => t.title6);
+      var data5 = this.dynamicArray.map((t) => t.Friday);
       console.log(this.sat + " " + data5);
 
-      var data6 = this.dynamicArray.map((t) => t.title7);
+      var data6 = this.dynamicArray.map((t) => t.Saturday);
       console.log(this.sunn + " " + data6);
 
-      var data7 = this.dynamicArray.map((t) => t.title8);
+      var data7 = this.dynamicArray.map((t) => t.Sunday);
       console.log(this.mon + " " + data7);
 
       var total1: number = +data1;
