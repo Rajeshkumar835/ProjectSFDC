@@ -64,9 +64,9 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 	}
 
 	@Override
-	public List<EmployeeLeaveInfo> findAllNewEmployeeLeaveInfo() {
+	public List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(String empCode) {
 
-		return employeeLeaveInfoRepository.findAllNewEmployeeLeaveInfo();
+		return employeeLeaveInfoRepository.findAllLeaveInfoByEmpCode(empCode);
 	}
 
 //	@Override
