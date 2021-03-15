@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #e8e8e8;
+  background-color: #ddd;
 }
 
 * {
@@ -15,17 +15,17 @@ body {
   //padding: 10px;
   height: 600px;
   background-color: whitesmoke;
-  margin-bottom: 2%;
+  margin-bottom: 0%;
   /* Should be removed. Only for demonstration */
   object-fit: cover;
 }
 
 /* Clear floats after the columns */
 .rowTWOwelcome {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 2.5%;
+  margin-bottom: 0.1%;
 }
 .rowTWOwelcome:after {
   content: "";
@@ -33,4 +33,60 @@ body {
   clear: both;
   object-fit: cover;
   margin-left: 30px;
+}
+.button5 {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  margin-left: 5%;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+
+/*
+this is left side navigation part
+*/
+#mySidenav a {
+  position: absolute;
+  left: -110px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 130px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#Welcome {
+  top: 90px;
+  background-color: #555;
+}
+
+#Timesheet {
+  top: 150px;
+  background-color: #555;
+}
+
+#Admin {
+  top: 210px;
+  background-color: #555;
 }

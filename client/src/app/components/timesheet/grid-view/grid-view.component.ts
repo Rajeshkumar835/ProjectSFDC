@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TimesheetObject } from "src/app/models/timesheet.model";
 import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
@@ -8,24 +9,6 @@ import { project } from "./project";
   styleUrls: ["./grid-view.component.scss"],
 })
 export class GridViewComponent implements OnInit {
-
-  timesheetObject={
-    timesheet: {
-          attedanceDate: "2021-03-15T04:53:06.859Z",
-          empCode: "ABC",
-          empName:"AMISH",
-          status:"NEW",
-          totalTimeHour:10
-        },
-        timesheetDetails: [
-          {
-            comments:"ABCD",
-            hour:10,
-            project:"AAONRI"
-          }
-        ]
-  }
-
   /*
   this is the part of date
   */
@@ -42,13 +25,10 @@ export class GridViewComponent implements OnInit {
   first: Date = new Date(this.date);
 
   projects: project[];
-  constructor(private timesheetService: TimesheetService ) {}
+  constructor(private timesheetService: TimesheetService) {}
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
   ngOnInit(): void {
-    const anExampleVariable = "Hello World";
-    console.log(anExampleVariable);
-
     let i: number = 0;
 
     while (i < 7) {
@@ -176,10 +156,12 @@ export class GridViewComponent implements OnInit {
     this.dynamicArray.push(this.newDynamic);
   }
 
-  postTimesheet(){
-    this.timesheetService.postTimesheet(this.timesheetObject).subscribe((data:any)=>{
-      console.log("timesheet data",data)
-    })
+  postTimesheet() {
+    this.timesheetService
+      .postTimesheet(this.timesheetObject)
+      .subscribe((data: any) => {
+        console.log("timesheet data", data);
+      });
   }
   addRow(index) {
     this.newDynamic = {
@@ -211,6 +193,9 @@ export class GridViewComponent implements OnInit {
       // this.toastr.warning("Row deleted successfully", "Delete row");
       return true;
     }
+  }
+  myFunction(index) {
+    console.log(this.dynamicArray);
   }
 
   /*
@@ -399,5 +384,63 @@ export class GridViewComponent implements OnInit {
       eight.getFullYear() +
       " (Sun)";
     console.log(this.sunn);
+  }
+
+  /*database*/
+  timesheetObject: TimesheetObject = {
+    timesheet: {
+      attedanceDate: "2021-03-15T04:53:06.859Z",
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 10,
+    },
+    timesheetDetails: [
+      {
+        comments: "ABCD",
+        hour: 10,
+        project: "AAONRI",
+      },
+    ],
+  };
+
+  saveEx() {
+    console.log(this.dynamicArray);
+    console.log("this is length of dynamic array " + this.dynamicArray.length);
+
+    for (let i = 0; i < this.dynamicArray.length; i++) {
+      var data1 = this.dynamicArray.map((i) => i.title2);
+      console.log(this.mon + " " + data1);
+
+      var data2 = this.dynamicArray.map((t) => t.title3);
+      console.log(this.tue + " " + data2);
+
+      var data3 = this.dynamicArray.map((t) => t.title4);
+      console.log(this.thur + " " + data3);
+
+      var data4 = this.dynamicArray.map((t) => t.title5);
+      console.log(this.fri + " " + data4);
+
+      var data5 = this.dynamicArray.map((t) => t.title6);
+      console.log(this.sat + " " + data5);
+
+      var data6 = this.dynamicArray.map((t) => t.title7);
+      console.log(this.sunn + " " + data6);
+
+      var data7 = this.dynamicArray.map((t) => t.title8);
+      console.log(this.mon + " " + data7);
+
+      var total1: number = +data1;
+      var total2: number = +data2;
+      var total3: number = +data3;
+      var total4: number = +data4;
+      var total5: number = +data5;
+      var total6: number = +data6;
+      var total7: number = +data7;
+      var ROWtotal: number =
+        total1 + total2 + total3 + total4 + total5 + total6 + total7;
+
+      console.log("total time " + ROWtotal);
+    }
   }
 }
