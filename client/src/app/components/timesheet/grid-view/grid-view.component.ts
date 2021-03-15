@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-//import { ToastrService } from "ngx-toastr";
+import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
 @Component({
@@ -8,6 +8,24 @@ import { project } from "./project";
   styleUrls: ["./grid-view.component.scss"],
 })
 export class GridViewComponent implements OnInit {
+
+  timesheetObject={
+    timesheet: {
+          attedanceDate: "2021-03-15T04:53:06.859Z",
+          empCode: "ABC",
+          empName:"AMISH",
+          status:"NEW",
+          totalTimeHour:10
+        },
+        timesheetDetails: [
+          {
+            comments:"ABCD",
+            hour:10,
+            project:"AAONRI"
+          }
+        ]
+  }
+
   /*
   this is the part of date
   */
@@ -24,18 +42,12 @@ export class GridViewComponent implements OnInit {
   first: Date = new Date(this.date);
 
   projects: project[];
-  //constructor(private toastr: ToastrService) {}
+  constructor(private timesheetService: TimesheetService ) {}
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
   ngOnInit(): void {
     const anExampleVariable = "Hello World";
     console.log(anExampleVariable);
-    // let date: Date = new Date();
-
-    //console.log("Year = " + date.getFullYear());
-    //console.log("Date = " + date.getDate());
-    //console.log("Month = " + date.getMonth());
-    //console.log("Day = " + date.getDay());
 
     let i: number = 0;
 
@@ -162,6 +174,12 @@ export class GridViewComponent implements OnInit {
       title9: "",
     };
     this.dynamicArray.push(this.newDynamic);
+  }
+
+  postTimesheet(){
+    this.timesheetService.postTimesheet(this.timesheetObject).subscribe((data:any)=>{
+      console.log("timesheet data",data)
+    })
   }
   addRow(index) {
     this.newDynamic = {

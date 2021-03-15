@@ -215,16 +215,14 @@
               class="form-control heightselect"
               id="inputPassword3"
               name="leave"
-              [(ngModel)]="leaveItem"
-              (ngModelChange)="chooseLeave(leaveItem.leaveCode)"
+              [(ngModel)]="leaveItemobj"
+              (change)="chooseLeave(leaveItem.leaveCode)"
               #leave="ngModel"
               required
             >
-              <option value="0"></option>
-
               <option
                 *ngFor="let leaveItem of LeaveData"
-                value="{{ leaveItem }}"
+                value="{{ leaveItem.leaveCode }}"
               >
                 {{ leaveItem.leaveName }}
               </option>
