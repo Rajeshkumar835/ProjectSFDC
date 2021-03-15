@@ -57,36 +57,28 @@
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title4"
+            [(ngModel)]="dynamicArray[i].title3"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title5"
+            [(ngModel)]="dynamicArray[i].title3"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title6"
+            [(ngModel)]="dynamicArray[i].title3"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title7"
-            class="form-control"
-            type="text"
-            readonly
-          />
-        </td>
-        <td>
-          <input
-            [(ngModel)]="dynamicArray[i].title8"
+            [(ngModel)]="dynamicArray[i].title3"
             class="form-control"
             type="text"
             readonly
@@ -94,7 +86,15 @@
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title9"
+            [(ngModel)]="dynamicArray[i].title3"
+            class="form-control"
+            type="text"
+            readonly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].title3"
             class="form-control"
             type="text"
             readonly
@@ -142,11 +142,11 @@
       </td>
     </tbody>
   </table>
-  <button (click)="addRow(i)" type="button">Add New Row</button>
-  <button type="button" (click)="deleteRow(i)" style="margin-left: 10px">
+  <button type="button">Add New Row</button>
+  <button type="button" style="margin-left: 10px">
     Delete Last Row
   </button>
-  <button type="button" onclick="myFunction()" style="margin-left: 10px">
+  <button type="button" (click)="postTimesheet()" style="margin-left: 10px">
     Save
   </button>
 </div>
