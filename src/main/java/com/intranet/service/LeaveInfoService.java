@@ -14,5 +14,7 @@ public interface LeaveInfoService {
 	public Optional<LeaveInfo> findById(Long id);
 
 	public void deleteById(Long id);
+	
+	public LeaveInfo findByLeaveCode(String leaveCode);
 
 }

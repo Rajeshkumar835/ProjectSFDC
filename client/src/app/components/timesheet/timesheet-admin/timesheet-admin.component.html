@@ -6,29 +6,29 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <body>
   <section class="UserTimeEntry">
-    <div style="margin-left: 100px">
-      <h4>
-        <b>Employee : </b>
-        <select style="padding: 8px">
-          <option *ngFor="let use of users" [value]="use.Id">
-            {{ use.Name }}
-          </option>
-        </select>
-      </h4>
+    <div style="margin-left: 90px">
+      <span>
+        <b><i style="font-size: 30px">Employee : </i></b>
+      </span>
+      <select style="padding: 12px">
+        <option *ngFor="let use of users" [value]="use.Id">
+          {{ use.Name }}
+        </option>
+      </select>
     </div>
 
     <div class="container" style="margin-top: 3%">
       <button
         type="button"
         (click)="myFunctionPrevDate()"
-        style="margin-bottom: 10px"
+        style="margin-bottom: 10px; width: 50px"
       >
         &laquo;
       </button>
       <button
         type="button"
         (click)="myFunctionNextdate()"
-        style="margin-left: 2px; margin-left: 935px"
+        style="margin-left: 2px; margin-left: 905px; width: 50px"
       >
         &raquo;
       </button>
@@ -37,7 +37,7 @@
         <thead>
           <tr>
             <!-- <th>Action</th>                    &raquo; -->
-            <th>Project</th>
+            <th style="width: 295px; padding: 15px">Project</th>
 
             <th>{{ mon }}</th>
             <th>{{ tue }}</th>
@@ -46,7 +46,9 @@
             <th>{{ fri }}</th>
             <th>{{ sat }}</th>
             <th>{{ sunn }}</th>
-            <th>Total Time</th>
+            <th style="background-color: #ddd; width: 100px; padding: 15px">
+              Total Time
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +59,7 @@
         </td>
         -->
             <td>
-              <select style="height: 32.5px">
+              <select style="height: 32.5px; width: 280px">
                 [(ngModel)]="dynamicArray[i].title1"
                 <option *ngFor="let use of projects" [value]="use.Id">
                   {{ use.Name }}
@@ -80,36 +82,28 @@
             </td>
             <td>
               <input
-                [(ngModel)]="dynamicArray[i].title1"
+                [(ngModel)]="dynamicArray[i].title4"
                 class="form-control"
                 type="text"
               />
             </td>
             <td>
               <input
-                [(ngModel)]="dynamicArray[i].title1"
+                [(ngModel)]="dynamicArray[i].title5"
                 class="form-control"
                 type="text"
               />
             </td>
             <td>
               <input
-                [(ngModel)]="dynamicArray[i].title1"
+                [(ngModel)]="dynamicArray[i].title6"
                 class="form-control"
                 type="text"
               />
             </td>
             <td>
               <input
-                [(ngModel)]="dynamicArray[i].title1"
-                class="form-control"
-                type="text"
-                readonly
-              />
-            </td>
-            <td>
-              <input
-                [(ngModel)]="dynamicArray[i].title1"
+                [(ngModel)]="dynamicArray[i].title7"
                 class="form-control"
                 type="text"
                 readonly
@@ -117,7 +111,15 @@
             </td>
             <td>
               <input
-                [(ngModel)]="dynamicArray[i].title1"
+                [(ngModel)]="dynamicArray[i].title8"
+                class="form-control"
+                type="text"
+                readonly
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="dynamicArray[i].title9"
                 class="form-control"
                 type="text"
                 readonly
@@ -132,8 +134,12 @@
       </tr>
       
     -->
-          <tr class="form-control" style="margin-top: 7px; width: auto">
-            <b>Total Time</b>
+          <tr
+            class="form-control"
+            timesheet-fill-sheet
+            style="margin-top: 7px; width: auto; background-color: #ddd"
+          >
+            <b> Total Time</b>
           </tr>
           <td>
             <input class="form-control" type="text" readonly />

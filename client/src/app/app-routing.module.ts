@@ -4,7 +4,6 @@ import { EmployeeInfoAddComponent } from "./components/employee-master-info/empl
 import { EmployeeMasterInfoComponent } from "./components/employee-master-info/employee-master-info.component";
 import { TimefilltimesheetComponent } from "./components/timesheet/timefilltimesheet/timefilltimesheet.component";
 import { WelcometimesheetComponent } from "./components/timesheet/welcometimesheet/welcometimesheet.component";
-
 import { EmployeeApplyLeaveInfoComponent } from "./components/leavemanagement/employee-apply-leave-info/employee-apply-leave-info.component";
 import { EmployeeViewOwnLeaveInfoComponent } from "./components/leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
 import { MangerViewEmployeeLeaveInfoComponent } from "./components/leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
@@ -35,10 +34,10 @@ const routes: Routes = [
   { path: "tasksheet-catalogue-page", component: TasksheetCatalogueComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
-  {path: "timesheet-admin", component: TimesheetAdminComponent},
-  {path: "admin-login",component: AdminLoginComponent},
-  {path: "admin-registration",component: AdminRegistrationComponent},
-  {path: "employee-login", component: EmployeeLoginComponent},
+  { path: "timesheet-admin", component: TimesheetAdminComponent },
+  { path: "admin-login", component: AdminLoginComponent },
+  { path: "admin-registration", component: AdminRegistrationComponent },
+  { path: "employee-login", component: EmployeeLoginComponent },
   { path: "timesheet-admin", component: TimesheetAdminComponent },
   { path: "timesheet-fill-sheet", component: TimefilltimesheetComponent },
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
