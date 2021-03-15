@@ -1,11 +1,11 @@
 export class DynamicGrid {
-  title1: string;
-  title2: string;
-  title3: string;
-  title4: string;
-  title5: string;
-  title6: string;
-  title7: string;
-  title8: string;
-  title9: string;
+  projectName: string;
+  Monday: string;
+  Tuesday: string;
+  Wednesday: string;
+  thursday: string;
+  Friday: string;
+  Saturday: string;
+  Sunday: string;
+  TotaltimeRowwise: string;
 }

@@ -40,59 +40,53 @@
         </td>
         -->
         <td>
-          <select style="height: 32.5px; width: 280px">
-            [(ngModel)]="dynamicArray[i].title1"
-            <option *ngFor="let use of projects" [value]="use.Id">
+          <select
+            style="height: 32.5px; width: 280px"
+            [(ngModel)]="dynamicArray[i].projectName"
+          >
+            <option *ngFor="let use of projects" [value]="use.Name">
               {{ use.Name }}
             </option>
           </select>
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title2"
+            [(ngModel)]="dynamicArray[i].Monday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Tuesday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title4"
+            [(ngModel)]="dynamicArray[i].Wednesday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title5"
+            [(ngModel)]="dynamicArray[i].thursday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title6"
+            [(ngModel)]="dynamicArray[i].Friday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title7"
-            class="form-control"
-            type="text"
-            readonly
-          />
-        </td>
-        <td>
-          <input
-            [(ngModel)]="dynamicArray[i].title8"
+            [(ngModel)]="dynamicArray[i].Saturday"
             class="form-control"
             type="text"
             readonly
@@ -100,7 +94,15 @@
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title9"
+            [(ngModel)]="dynamicArray[i].Sunday"
+            class="form-control"
+            type="text"
+            readonly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="dynamicArray[i].TotaltimeRowwise"
             class="form-control"
             type="text"
             readonly
