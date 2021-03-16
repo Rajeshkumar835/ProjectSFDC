@@ -1,5 +1,5 @@
 export class Timesheet {
-  public attedanceDate: string;
+  public attedanceDate: Date;
   public empCode: string;
   public empName: string;
   public status: string;

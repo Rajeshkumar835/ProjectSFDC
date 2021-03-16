@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { TimesheetObject } from "src/app/models/timesheet.model";
+import { TimesheetDetails, TimesheetObject } from "src/app/models/timesheet.model";
 import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
@@ -157,10 +157,12 @@ export class GridViewComponent implements OnInit {
   }
 
   postTimesheet() {
+    console.log("Post timesheet",this.timesheetObject)
     this.timesheetService
       .postTimesheet(this.timesheetObject)
       .subscribe((data: any) => {
         console.log("timesheet data", data);
+        // this.timesheetObject=null;
       });
   }
   addRow(index) {
@@ -389,21 +391,72 @@ export class GridViewComponent implements OnInit {
   /*database*/
   timesheetObject: TimesheetObject = {
     timesheet: {
-      attedanceDate: "2021-03-15T04:53:06.859Z",
+      attedanceDate: null,
       empCode: "ABC",
       empName: "AMISH",
       status: "NEW",
-      totalTimeHour: 10,
+      totalTimeHour: 0,
     },
-    timesheetDetails: [
-      {
-        comments: "ABCD",
-        hour: 10,
-        project: "AAONRI",
-      },
+    timesheetDetails: [ 
     ],
   };
 
+  dateFormatChange(dateString) {
+    // let dateString = "15/03/2021 (Mon)";
+    let dateStrin = dateString.split(" ", 1);
+
+    var strrr = dateStrin.toString();
+    console.log(strrr);
+    var first = "";
+    var sec = "";
+    var third = "";
+    var temp = 0;
+    for (let iii = 0; iii < strrr.length; iii++) {
+      if (temp == 0) {
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+          iii++;
+        }
+
+        if (temp == 0) {
+          first = first + strrr.charAt(iii);
+        }
+      }
+      if (temp == 1) {
+        console.log("hii");
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+          iii++;
+        }
+        if (temp == 1) {
+          sec = sec + strrr.charAt(iii);
+        }
+      }
+      if (temp == 2) {
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+        }
+        if (temp == 2) {
+          third = third + strrr.charAt(iii);
+        }
+      }
+    }
+
+    var str = third + "/" + sec + "/" + first;
+    console.log(str);
+    let newDate = new Date(str);
+
+    console.log(newDate);
+    return newDate;
+  }
+  
+  timesheetArray=[];
+
+  timesheetDetailsArray={
+    comments: "", 
+    hour: 0, 
+    project: ""
+  }
   saveEx() {
     console.log(this.dynamicArray);
     console.log("this is length of dynamic array " + this.dynamicArray.length);
@@ -411,24 +464,35 @@ export class GridViewComponent implements OnInit {
     var ProjectWise: String[] = this.dynamicArray.map((i) => i.projectName);
     var str = ProjectWise.toString();
     var splitted = str.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      //console.log(splitted[mm]);
-      //console.log("hello Ashutosh kumar yadav");
-    }
-    // console.log(" Project" + ProjectWise);
+    for (let mm = 0; mm < splitted.length; mm++) {}
 
     //Monday
     var data1 = this.dynamicArray.map((i) => i.Monday);
-    //console.log(this.mon + " " + data1);
     var str1 = data1.toString();
     var splitted1 = str1.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
+    let totalTime=0;
+    if(splitted!=null){
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr= this.timesheetArray;
+        // let x= [...timesheetArr];
+        let newDate = new Date(this.dateFormatChange(this.mon));
+        this.timesheetObject.timesheet.attedanceDate = newDate;
+        console.log("string to date", newDate);
+        totalTime=totalTime+(+splitted1[mm]);
+        console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
+        this.timesheetDetailsArray.comments="ABCD";
+        this.timesheetDetailsArray.hour=+splitted1[mm];
+        this.timesheetDetailsArray.project=splitted[mm];
+        this.timesheetObject.timesheetDetails.push(JSON.parse(JSON.stringify(this.timesheetDetailsArray)));
+      }
+      this.timesheetObject.timesheet.totalTimeHour=totalTime;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet();
+
     }
 
     //Tuesday
     var data2 = this.dynamicArray.map((t) => t.Tuesday);
-    // console.log(this.tue + " " + data2);
     var str2 = data2.toString();
     var splitted2 = str2.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -437,7 +501,6 @@ export class GridViewComponent implements OnInit {
 
     //Wednesday
     var data3 = this.dynamicArray.map((t) => t.Wednesday);
-    //  console.log(this.thur + " " + data3);
     var str3 = data3.toString();
     var splitted3 = str3.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -446,7 +509,6 @@ export class GridViewComponent implements OnInit {
 
     //thrusday
     var data4 = this.dynamicArray.map((t) => t.thursday);
-    //console.log(this.fri + " " + data4);
     var str4 = data4.toString();
     var splitted4 = str4.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -455,7 +517,6 @@ export class GridViewComponent implements OnInit {
 
     //friday
     var data5 = this.dynamicArray.map((t) => t.Friday);
-    //  console.log(this.sat + " " + data5);
     var str5 = data5.toString();
     var splitted5 = str5.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -464,7 +525,6 @@ export class GridViewComponent implements OnInit {
 
     //saturaday
     var data6 = this.dynamicArray.map((t) => t.Saturday);
-    //  console.log(this.sunn + " " + data6);
     var str6 = data6.toString();
     var splitted6 = str6.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -473,7 +533,6 @@ export class GridViewComponent implements OnInit {
 
     //sunday
     var data7 = this.dynamicArray.map((t) => t.Sunday);
-    // console.log(this.mon + " " + data7);
     var str7 = data7.toString();
     var splitted7 = str7.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {
@@ -489,7 +548,5 @@ export class GridViewComponent implements OnInit {
     var total7: number = +data7;
     var ROWtotal: number =
       total1 + total2 + total3 + total4 + total5 + total6 + total7;
-
-    //  console.log("total time " + ROWtotal);
   }
 }
