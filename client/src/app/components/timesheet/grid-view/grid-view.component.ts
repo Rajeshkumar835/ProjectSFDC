@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { TimesheetDetails, TimesheetObject } from "src/app/models/timesheet.model";
+import {
+  TimesheetDetails,
+  TimesheetObject,
+} from "src/app/models/timesheet.model";
 import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
@@ -24,10 +27,21 @@ export class GridViewComponent implements OnInit {
   date: Date = new Date();
   first: Date = new Date(this.date);
 
+  /*
+  this is the part of project dropdown
+  */
   projects: project[];
+
   constructor(private timesheetService: TimesheetService) {}
+
+  /*this is the part of dynamic array
+   */
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
+
+  /*
+this is the part of week wise date
+**/
   ngOnInit(): void {
     let i: number = 0;
 
@@ -155,16 +169,27 @@ export class GridViewComponent implements OnInit {
     };
     this.dynamicArray.push(this.newDynamic);
   }
-
-  postTimesheet() {
-    console.log("Post timesheet",this.timesheetObject1)
+  //monday posttimesheet
+  postTimesheet(timesheetObject) {
+    console.log("Post timesheet", timesheetObject);
     this.timesheetService
-      .postTimesheet(this.timesheetObject1)
+      .postTimesheet(timesheetObject)
       .subscribe((data: any) => {
         console.log("timesheet data", data);
         // this.timesheetObject=null;
       });
   }
+  //tuesday post timesheet
+  // postTimesheet2() {
+  //   console.log("Post timesheet", this.timesheetObject2);
+  //   this.timesheetService
+  //     .postTimesheet(this.timesheetObject2)
+  //     .subscribe((data: any) => {
+  //       console.log("timesheet data", data);
+  //       // this.timesheetObject=null;
+  //     });
+  // }
+
   addRow(index) {
     this.newDynamic = {
       projectName: "",
@@ -388,7 +413,7 @@ export class GridViewComponent implements OnInit {
     console.log(this.sunn);
   }
 
-  /*database*/
+  /*database part of monday*/
   timesheetObject1: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
@@ -397,10 +422,77 @@ export class GridViewComponent implements OnInit {
       status: "NEW",
       totalTimeHour: 0,
     },
-    timesheetDetails: [ 
-    ],
+    timesheetDetails: [],
   };
 
+  /*database part of tuesday*/
+  timesheetObject2: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
+
+  /*database part of wednesday*/
+  timesheetObject3: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
+
+  /*database part of thurusday*/
+  timesheetObject4: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
+  /*database part of friday*/
+  timesheetObject5: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
+  /*database part of saturday*/
+  timesheetObject6: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
+  /*database part of sunday*/
+  timesheetObject7: TimesheetObject = {
+    timesheet: {
+      attedanceDate: null,
+      empCode: "ABC",
+      empName: "AMISH",
+      status: "NEW",
+      totalTimeHour: 0,
+    },
+    timesheetDetails: [],
+  };
   dateFormatChange(dateString) {
     // let dateString = "15/03/2021 (Mon)";
     let dateStrin = dateString.split(" ", 1);
@@ -449,14 +541,71 @@ export class GridViewComponent implements OnInit {
     console.log(newDate);
     return newDate;
   }
-  
-  timesheetArray=[];
 
-  timesheetDetailsArray={
-    comments: "", 
-    hour: 0, 
-    project: ""
-  }
+  //Monday database array
+  timesheetArray = [];
+
+  timesheetDetailsArray = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Tuesday database array
+  timesheetArray2 = [];
+
+  timesheetDetailsArray2 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Wednesday database array
+  timesheetArray3 = [];
+
+  timesheetDetailsArray3 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Thurusday database array
+  timesheetArray4 = [];
+
+  timesheetDetailsArray4 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Friday database array
+  timesheetArray5 = [];
+
+  timesheetDetailsArray5 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Satuday database array
+  timesheetArray6 = [];
+
+  timesheetDetailsArray6 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //Sunday database array
+  timesheetArray7 = [];
+
+  timesheetDetailsArray7 = {
+    comments: "",
+    hour: 0,
+    project: "",
+  };
+
+  //common save for all the fill date
   saveEx() {
     console.log(this.dynamicArray);
     console.log("this is length of dynamic array " + this.dynamicArray.length);
@@ -470,73 +619,170 @@ export class GridViewComponent implements OnInit {
     var data1 = this.dynamicArray.map((i) => i.Monday);
     var str1 = data1.toString();
     var splitted1 = str1.split(",");
-    let totalTime=0;
-    if(splitted!=null){
+    let totalTime = 0;
+    if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr= this.timesheetArray;
+        let timesheetArr = this.timesheetArray;
         // let x= [...timesheetArr];
         let newDate = new Date(this.dateFormatChange(this.mon));
         this.timesheetObject1.timesheet.attedanceDate = newDate;
         console.log("string to date", newDate);
-        totalTime=totalTime+(+splitted1[mm]);
+        totalTime = totalTime + +splitted1[mm];
         console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
-        this.timesheetDetailsArray.comments="ABCD";
-        this.timesheetDetailsArray.hour=+splitted1[mm];
-        this.timesheetDetailsArray.project=splitted[mm];
-        this.timesheetObject1.timesheetDetails.push(JSON.parse(JSON.stringify(this.timesheetDetailsArray)));
+        this.timesheetDetailsArray.comments = "ABCD";
+        this.timesheetDetailsArray.hour = +splitted1[mm];
+        this.timesheetDetailsArray.project = splitted[mm];
+        this.timesheetObject1.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray))
+        );
       }
-      this.timesheetObject1.timesheet.totalTimeHour=totalTime;
+      this.timesheetObject1.timesheet.totalTimeHour = totalTime;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet();
-
+      this.postTimesheet(this.timesheetObject1);
     }
 
     //Tuesday
     var data2 = this.dynamicArray.map((t) => t.Tuesday);
     var str2 = data2.toString();
     var splitted2 = str2.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
+    let totalTimeTueCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr2 = this.timesheetArray2;
+        let newDate2 = new Date(this.dateFormatChange(this.tue));
+        this.timesheetObject2.timesheet.attedanceDate = newDate2;
+        totalTimeTueCol = totalTimeTueCol + +splitted2[mm];
+        console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
+        this.timesheetDetailsArray2.comments = "ABCD";
+        this.timesheetDetailsArray2.hour = +splitted2[mm];
+        this.timesheetDetailsArray2.project = splitted[mm];
+        this.timesheetObject2.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray2))
+        );
+      }
+      this.timesheetObject2.timesheet.totalTimeHour = totalTimeTueCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject2);
     }
 
     //Wednesday
     var data3 = this.dynamicArray.map((t) => t.Wednesday);
     var str3 = data3.toString();
     var splitted3 = str3.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
+    let totalTimeWedCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr3 = this.timesheetArray3;
+        let newDate3 = new Date(this.dateFormatChange(this.wed));
+        this.timesheetObject3.timesheet.attedanceDate = newDate3;
+        totalTimeWedCol = totalTimeWedCol + +splitted3[mm];
+        console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
+        this.timesheetDetailsArray3.comments = "ABCD";
+        this.timesheetDetailsArray3.hour = +splitted3[mm];
+        this.timesheetDetailsArray3.project = splitted[mm];
+        this.timesheetObject3.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray3))
+        );
+      }
+      this.timesheetObject3.timesheet.totalTimeHour = totalTimeWedCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject3);
     }
 
     //thrusday
     var data4 = this.dynamicArray.map((t) => t.thursday);
     var str4 = data4.toString();
     var splitted4 = str4.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
+    let totalTimeThurCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr4 = this.timesheetArray4;
+        let newDate4 = new Date(this.dateFormatChange(this.thur));
+        this.timesheetObject4.timesheet.attedanceDate = newDate4;
+        totalTimeThurCol = totalTimeThurCol + +splitted4[mm];
+        console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
+        this.timesheetDetailsArray4.comments = "ABCD";
+        this.timesheetDetailsArray4.hour = +splitted4[mm];
+        this.timesheetDetailsArray4.project = splitted[mm];
+        this.timesheetObject4.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray4))
+        );
+      }
+      this.timesheetObject4.timesheet.totalTimeHour = totalTimeThurCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject4);
     }
 
     //friday
     var data5 = this.dynamicArray.map((t) => t.Friday);
     var str5 = data5.toString();
     var splitted5 = str5.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
+    let totalTimeFriCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr5 = this.timesheetArray5;
+        let newDate5 = new Date(this.dateFormatChange(this.fri));
+        this.timesheetObject5.timesheet.attedanceDate = newDate5;
+        totalTimeFriCol = totalTimeFriCol + +splitted5[mm];
+        console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
+        this.timesheetDetailsArray5.comments = "ABCD";
+        this.timesheetDetailsArray5.hour = +splitted5[mm];
+        this.timesheetDetailsArray5.project = splitted[mm];
+        this.timesheetObject5.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray5))
+        );
+      }
+      this.timesheetObject5.timesheet.totalTimeHour = totalTimeFriCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject5);
     }
 
     //saturaday
     var data6 = this.dynamicArray.map((t) => t.Saturday);
     var str6 = data6.toString();
     var splitted6 = str6.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
+    let totalTimeSatCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr6 = this.timesheetArray6;
+        let newDate6 = new Date(this.dateFormatChange(this.sat));
+        this.timesheetObject6.timesheet.attedanceDate = newDate6;
+        totalTimeSatCol = totalTimeSatCol + +splitted6[mm];
+        console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
+        this.timesheetDetailsArray6.comments = "ABCD";
+        this.timesheetDetailsArray6.hour = +splitted6[mm];
+        this.timesheetDetailsArray6.project = splitted[mm];
+        this.timesheetObject6.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray6))
+        );
+      }
+      this.timesheetObject6.timesheet.totalTimeHour = totalTimeSatCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject6);
     }
 
     //sunday
     var data7 = this.dynamicArray.map((t) => t.Sunday);
     var str7 = data7.toString();
     var splitted7 = str7.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {
-      console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
+    let totalTimeSunCol = 0;
+    if (splitted != null) {
+      for (let mm = 0; mm < splitted.length; mm++) {
+        let timesheetArr7 = this.timesheetArray2;
+        let newDate7 = new Date(this.dateFormatChange(this.sunn));
+        this.timesheetObject7.timesheet.attedanceDate = newDate7;
+        totalTimeSunCol = totalTimeSunCol + +splitted7[mm];
+        console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
+        this.timesheetDetailsArray7.comments = "ABCD";
+        this.timesheetDetailsArray7.hour = +splitted7[mm];
+        this.timesheetDetailsArray7.project = splitted[mm];
+        this.timesheetObject7.timesheetDetails.push(
+          JSON.parse(JSON.stringify(this.timesheetDetailsArray7))
+        );
+      }
+      this.timesheetObject7.timesheet.totalTimeHour = totalTimeSunCol;
+      // this.timesheetObject.timesheetDetails=this.timesheetArray;
+      this.postTimesheet(this.timesheetObject7);
     }
 
     var total1: number = +data1;
