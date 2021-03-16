@@ -157,9 +157,9 @@ export class GridViewComponent implements OnInit {
   }
 
   postTimesheet() {
-    console.log("Post timesheet",this.timesheetObject)
+    console.log("Post timesheet",this.timesheetObject1)
     this.timesheetService
-      .postTimesheet(this.timesheetObject)
+      .postTimesheet(this.timesheetObject1)
       .subscribe((data: any) => {
         console.log("timesheet data", data);
         // this.timesheetObject=null;
@@ -389,7 +389,7 @@ export class GridViewComponent implements OnInit {
   }
 
   /*database*/
-  timesheetObject: TimesheetObject = {
+  timesheetObject1: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
       empCode: "ABC",
@@ -476,16 +476,16 @@ export class GridViewComponent implements OnInit {
         let timesheetArr= this.timesheetArray;
         // let x= [...timesheetArr];
         let newDate = new Date(this.dateFormatChange(this.mon));
-        this.timesheetObject.timesheet.attedanceDate = newDate;
+        this.timesheetObject1.timesheet.attedanceDate = newDate;
         console.log("string to date", newDate);
         totalTime=totalTime+(+splitted1[mm]);
         console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
         this.timesheetDetailsArray.comments="ABCD";
         this.timesheetDetailsArray.hour=+splitted1[mm];
         this.timesheetDetailsArray.project=splitted[mm];
-        this.timesheetObject.timesheetDetails.push(JSON.parse(JSON.stringify(this.timesheetDetailsArray)));
+        this.timesheetObject1.timesheetDetails.push(JSON.parse(JSON.stringify(this.timesheetDetailsArray)));
       }
-      this.timesheetObject.timesheet.totalTimeHour=totalTime;
+      this.timesheetObject1.timesheet.totalTimeHour=totalTime;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet();
 
