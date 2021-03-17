@@ -20,7 +20,7 @@ export class CompletedCoursesComponent implements OnInit {
       name:"Blockchain",
       title:"Blockchain course",
       desc:"this is Blockchain course",
-      img:""
+      img:"../../../../assets/blockchain.png"
   
     },
    

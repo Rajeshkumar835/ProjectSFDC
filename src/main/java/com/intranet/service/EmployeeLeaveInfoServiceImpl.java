@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.intranet.dto.EmployeeLeaveInfoDTO;
 import com.intranet.entity.EmployeeLeaveInfo;
@@ -53,20 +54,24 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 		return employeeLeaveInfo;
 	}
 
+	@CrossOrigin
 	@Override
 	public EmployeeLeaveInfo save(EmployeeLeaveInfo empLeaveData) {
 		return employeeLeaveInfoRepository.save(empLeaveData);
 	}
 
+	@CrossOrigin
 	@Override
 	public List<EmployeeLeaveInfo> findAll() {
-		return employeeLeaveInfoRepository.findAll();
+		List<EmployeeLeaveInfo> listEmpLeaveInfo = employeeLeaveInfoRepository.findAll();
+		return listEmpLeaveInfo;
 	}
 
+	@CrossOrigin
 	@Override
-	public List<EmployeeLeaveInfo> findAllNewEmployeeLeaveInfo() {
-
-		return employeeLeaveInfoRepository.findAllNewEmployeeLeaveInfo();
+	public List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(String empCode) {
+		List<EmployeeLeaveInfo> listEmpLeaveInfo = employeeLeaveInfoRepository.findAllLeaveInfoByEmpCode(empCode);
+		return listEmpLeaveInfo;
 	}
 
 //	@Override

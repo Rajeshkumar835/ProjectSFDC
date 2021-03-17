@@ -23,8 +23,8 @@ import { LmsCourseDetailsComponent } from "./components/lms/lms-course-details/l
 import { FavouriteCoursesComponent } from "./components/lms/favourite-courses/favourite-courses.component";
 import { OngoingCoursesComponent } from "./components/lms/ongoing-courses/ongoing-courses.component";
 import { CompletedCoursesComponent } from "./components/lms/completed-courses/completed-courses.component";
-import { EmployeeMasterInfoComponent } from "./components/employee-master-info/employee-master-info.component";
-import { EmployeeInfoAddComponent } from "./components/employee-master-info/employee-info-add/employee-info-add.component";
+import { EmployeeMasterInfoComponent } from "./components/admin/employee-master-info/employee-master-info.component";
+import { EmployeeInfoAddComponent } from "./components/admin/employee-master-info/employee-info-add/employee-info-add.component";
 import { MediaplayerComponent } from "./components/lms/mediaplayer/mediaplayer.component";
 import { PlaylistComponent } from "./components/lms/playlist/playlist.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -46,12 +46,19 @@ import { MatNativeDateModule } from "@angular/material";
 import { TimesheetapprovedComponent } from "./components/timesheet/timesheet-admin/timesheetapproved/timesheetapproved.component";
 import { DatePipe } from "@angular/common";
 import { EmployeeLoginComponent } from "./components/employee-login/employee-login.component";
-import { AdminRegistrationComponent } from "./components/admin-registration/admin-registration.component";
-import { AdminLoginComponent } from "./components/admin-login/admin-login.component";
+import { AdminRegistrationComponent } from "./components/admin/admin-registration/admin-registration.component";
+import { AdminLoginComponent } from "./components/admin/admin-login/admin-login.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
 import { LeaveMgmtService } from "./services/leave-mgmt.service";
+import { TimesheetService } from "./services/timesheet.service";
+import { LmsService } from "./services/lms.service";
+import { TaskMgmtService } from "./services/task-mgmt.service";
+import { AdminComponent } from "./components/admin/admin.component";
+import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +95,9 @@ import { LeaveMgmtService } from "./services/leave-mgmt.service";
     EmployeeLoginComponent,
     AdminRegistrationComponent,
     AdminLoginComponent,
+    AdminComponent,
+    AdminMasterDataComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,9 +122,13 @@ import { LeaveMgmtService } from "./services/leave-mgmt.service";
     MatDatepickerModule,
     MatVideoModule,
   ],
+
   providers: [
     MatDatepickerModule,
     LeaveMgmtService,
+    TimesheetService,
+    LmsService,
+    TaskMgmtService,
     MatNativeDateModule,
     DatePipe,
   ],
