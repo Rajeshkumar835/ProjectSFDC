@@ -14,7 +14,6 @@ import { EmployeeApplyLeaveInfoComponent } from "./components/leavemanagement/em
 import { MangerViewEmployeeLeaveInfoComponent } from "./components/leavemanagement/manger-view-employee-leave-info/manger-view-employee-leave-info.component";
 import { EmployeeViewOwnLeaveInfoComponent } from "./components/leavemanagement/employee-view-own-leave-info/employee-view-own-leave-info.component";
 import { HttpClientModule } from "@angular/common/http";
-import { LeaveService } from "./components/leavemanagement/leave.service";
 import { MatTabsModule } from "@angular/material";
 import { LmsComponent } from "./components/lms/lms.component";
 import { ComponentsComponent } from "./components/components.component";
@@ -52,6 +51,7 @@ import { AdminLoginComponent } from "./components/admin-login/admin-login.compon
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/timesheet-admin.component";
+import { LeaveMgmtService } from "./services/leave-mgmt.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +112,12 @@ import { TimesheetAdminComponent } from "./components/timesheet/timesheet-admin/
     MatDatepickerModule,
     MatVideoModule,
   ],
-  providers: [MatDatepickerModule, LeaveService, MatNativeDateModule, DatePipe],
+  providers: [
+    MatDatepickerModule,
+    LeaveMgmtService,
+    MatNativeDateModule,
+    DatePipe,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
