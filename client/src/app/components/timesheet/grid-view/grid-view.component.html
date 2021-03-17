@@ -40,51 +40,53 @@
         </td>
         -->
         <td>
-          <select style="height: 32.5px; width: 280px">
-            [(ngModel)]="dynamicArray[i].title1"
-            <option *ngFor="let use of projects" [value]="use.Id">
+          <select
+            style="height: 32.5px; width: 280px"
+            [(ngModel)]="dynamicArray[i].projectName"
+          >
+            <option *ngFor="let use of projects" [value]="use.Name">
               {{ use.Name }}
             </option>
           </select>
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title2"
+            [(ngModel)]="dynamicArray[i].Monday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Tuesday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Wednesday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].thursday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Friday"
             class="form-control"
             type="text"
           />
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Saturday"
             class="form-control"
             type="text"
             readonly
@@ -92,7 +94,7 @@
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].Sunday"
             class="form-control"
             type="text"
             readonly
@@ -100,9 +102,10 @@
         </td>
         <td>
           <input
-            [(ngModel)]="dynamicArray[i].title3"
+            [(ngModel)]="dynamicArray[i].TotaltimeRowwise"
             class="form-control"
             type="text"
+            value=" {{ totalTimeRow[i] }}"
             readonly
           />
         </td>
@@ -123,36 +126,81 @@
         <b> Total Time</b>
       </tr>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeMonCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeTueCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeWedCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeThurCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeFriCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeSatCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeSunCol }}"
+          readonly
+        />
       </td>
       <td>
-        <input class="form-control" type="text" readonly />
+        <input
+          class="form-control"
+          type="text"
+          value=" {{ totalTimeCol }}"
+          readonly
+        />
       </td>
     </tbody>
   </table>
-  <button type="button">Add New Row</button>
-  <button type="button" style="margin-left: 10px">
+  <button type="button" (click)="addRow()">Add New Row</button>
+  <button type="button" (click)="deleteRow()" style="margin-left: 10px">
     Delete Last Row
   </button>
-  <button type="button" (click)="postTimesheet()" style="margin-left: 10px">
+  <button type="button" (click)="saveEx()" style="margin-left: 10px">
+    <!--postTimesheet-->
     Save
   </button>
+
+  <div style="margin-left: 1px; margin-top: 2%">
+    <app-timesheetapproved></app-timesheetapproved>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LeaveMgmtService } from "src/app/services/leave-mgmt.service";
 
 @Component({
   selector: "app-employee-view-own-leave-info",
@@ -57,7 +58,16 @@ export class EmployeeViewOwnLeaveInfoComponent implements OnInit {
       LeaveApplied: 2,
     },
   ];
-  constructor() {}
+  constructor(private leavemanagementService: LeaveMgmtService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this. getAllEmployeeLeave();
+  }
+empCode="AA";
+  getAllEmployeeLeave(){
+    console.log("Employee Leave Info Data")
+    this.leavemanagementService.getAllEmployeeLeaveInfoByEmpCode(this.empCode).subscribe((data:any)=>{
+      console.log("Employee Leave Info data",data)
+    })
+  }
 }

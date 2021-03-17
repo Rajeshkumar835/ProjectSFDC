@@ -3,10 +3,41 @@
   background-color: whitesmoke;
   margin-right: 5%;
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 0%;
   margin-left: 5%;
   padding: 1% 1% 1% 1%;
   width: 90%;
   height: 570px;
   overflow: auto;
+}
+
+#mySidenav a {
+  position: absolute;
+  left: -110px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 130px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#Welcome {
+  top: 90px;
+  background-color: #555;
+}
+
+#Timesheet {
+  top: 150px;
+  background-color: #555;
+}
+
+#Admin {
+  top: 210px;
+  background-color: #555;
 }

@@ -1,0 +1,110 @@
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <h2 class="text-center">Add Company Details</h2>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <h4>Company Holiday Type</h4>
+          </mat-expansion-panel-header>
+
+          <div class="personalInfo">
+            <form>
+              <div class="form-group input-field">
+                <label for="empCode" class="label">Holiday Type Code</label>
+                <input type="text" class="form-control" id="empCode" placeholder="Holiday Type Code">
+              </div>
+              <div class="form-group input-field">
+                <label for="fname" class="label">Holiday Type Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Company Holiday Type">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+            </form>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <h4>Company Holiday List</h4>
+          </mat-expansion-panel-header>
+
+          <div class="qualification">
+            
+            <form>
+              <div>
+                <mat-form-field class="input-field">
+                  <mat-select placeholder="Holiday Type" [formControl]="toppings" [(value)]="selectedToppings" multiple>
+                    <mat-option *ngFor="let topping of holidayList" [value]="topping">{{topping}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group input-field">
+                <label for="type" class="label">Holiday Date</label>
+                <input type="date" class="form-control" id="type" placeholder="Holiday Date">
+              </div>
+              <div class="form-group input-field">
+                <label for="highest" class="label">Holiday Name</label>
+                <input type="text" class="form-control" id="highest" placeholder="Holiday Name">
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+            </form>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <h4>Company Weekly off Days List</h4>
+          </mat-expansion-panel-header>
+
+          <div class="bankInfo">
+            <form>
+              <div class="form-group input-field">
+                <label for="bankType" class="label">Company Off Days</label>
+                <input type="date" class="form-control" id="bankType" placeholder="Company Off Days">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine2" class="label">Company Name</label>
+                <input type="text" class="form-control" id="addLine2" placeholder="Company Name"
+                value="Anagha Infotech" disabled="true"
+                >
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+            </form>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <!-- <mat-panel-title>
+              Employee Address
+            </mat-panel-title> -->
+            <h4>Company Leave Information</h4>
+          </mat-expansion-panel-header>
+          <div class="empAddress">
+            <form>
+              <div class="form-group input-field">
+                <label for="addressType" class="label">Leave Code</label>
+                <input type="text" class="form-control" id="addressType" placeholder="Leave Code">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine1" class="label">Leave Name</label>
+                <input type="text" class="form-control" id="addLine1" placeholder="Leave Name">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine2" class="label">Leave Limit</label>
+                <input type="text" class="form-control" id="addLine2" placeholder="Leave Limit">
+              </div>
+              <div class="form-group input-field">
+                <label for="addLine2" class="label">Company Name</label>
+                <input type="text" class="form-control" id="addLine2" placeholder="Company Name"
+                value="Anagha Infotech" disabled="true"
+                >
+              </div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+            </form>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
