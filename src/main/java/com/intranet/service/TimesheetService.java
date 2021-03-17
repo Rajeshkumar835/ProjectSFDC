@@ -18,4 +18,6 @@ public interface TimesheetService {
 
 	public void deleteById(Long id);
 
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode);
+
 }

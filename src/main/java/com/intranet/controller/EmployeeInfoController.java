@@ -31,6 +31,7 @@ public class EmployeeInfoController {
 	@Autowired
 	private EmployeeInfoService employeeInfoService;
 
+	@CrossOrigin
 	@PostMapping(path = "/add")
 	public ResponseEntity<EmployeeInfoDTO> add(@RequestBody EmployeeInfoDTO employeeInfoDTO) {
 		EmployeeInfoDTO employeeInfo = null;
