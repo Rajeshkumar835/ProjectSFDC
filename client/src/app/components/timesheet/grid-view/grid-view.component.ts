@@ -28,6 +28,24 @@ export class GridViewComponent implements OnInit {
   first: Date = new Date(this.date);
 
   /*
+     total time column wise part part
+  */
+  totalTimeMonCol: number = 0;
+  totalTimeTueCol: number = 0;
+  totalTimeWedCol: number = 0;
+  totalTimeThurCol: number = 0;
+  totalTimeFriCol: number = 0;
+  totalTimeSatCol: number = 0;
+  totalTimeSunCol: number = 0;
+  totalTimeCol: number = 0;
+
+  /*
+     total time row wise part part
+  */
+
+  totalTimeRow = new Array();
+
+  /*
   this is the part of project dropdown
   */
   projects: project[];
@@ -163,8 +181,8 @@ this is the part of week wise date
       Wednesday: "",
       thursday: "",
       Friday: "",
-      Saturday: "00",
-      Sunday: "00",
+      Saturday: "0",
+      Sunday: "0",
       TotaltimeRowwise: "",
     };
     this.dynamicArray.push(this.newDynamic);
@@ -198,8 +216,8 @@ this is the part of week wise date
       Wednesday: "",
       thursday: "",
       Friday: "",
-      Saturday: "00",
-      Sunday: "00",
+      Saturday: "0",
+      Sunday: "0",
       TotaltimeRowwise: "",
     };
     this.dynamicArray.push(this.newDynamic);
@@ -619,7 +637,7 @@ this is the part of week wise date
     var data1 = this.dynamicArray.map((i) => i.Monday);
     var str1 = data1.toString();
     var splitted1 = str1.split(",");
-    let totalTime = 0;
+    this.totalTimeMonCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr = this.timesheetArray;
@@ -627,7 +645,7 @@ this is the part of week wise date
         let newDate = new Date(this.dateFormatChange(this.mon));
         this.timesheetObject1.timesheet.attedanceDate = newDate;
         console.log("string to date", newDate);
-        totalTime = totalTime + +splitted1[mm];
+        this.totalTimeMonCol = this.totalTimeMonCol + +splitted1[mm];
         console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
         this.timesheetDetailsArray.comments = "ABCD";
         this.timesheetDetailsArray.hour = +splitted1[mm];
@@ -636,7 +654,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray))
         );
       }
-      this.timesheetObject1.timesheet.totalTimeHour = totalTime;
+      this.timesheetObject1.timesheet.totalTimeHour = this.totalTimeMonCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject1);
     }
@@ -645,13 +663,13 @@ this is the part of week wise date
     var data2 = this.dynamicArray.map((t) => t.Tuesday);
     var str2 = data2.toString();
     var splitted2 = str2.split(",");
-    let totalTimeTueCol = 0;
+    this.totalTimeTueCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr2 = this.timesheetArray2;
         let newDate2 = new Date(this.dateFormatChange(this.tue));
         this.timesheetObject2.timesheet.attedanceDate = newDate2;
-        totalTimeTueCol = totalTimeTueCol + +splitted2[mm];
+        this.totalTimeTueCol = this.totalTimeTueCol + +splitted2[mm];
         console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
         this.timesheetDetailsArray2.comments = "ABCD";
         this.timesheetDetailsArray2.hour = +splitted2[mm];
@@ -660,7 +678,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray2))
         );
       }
-      this.timesheetObject2.timesheet.totalTimeHour = totalTimeTueCol;
+      this.timesheetObject2.timesheet.totalTimeHour = this.totalTimeTueCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject2);
     }
@@ -669,13 +687,13 @@ this is the part of week wise date
     var data3 = this.dynamicArray.map((t) => t.Wednesday);
     var str3 = data3.toString();
     var splitted3 = str3.split(",");
-    let totalTimeWedCol = 0;
+    this.totalTimeWedCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr3 = this.timesheetArray3;
         let newDate3 = new Date(this.dateFormatChange(this.wed));
         this.timesheetObject3.timesheet.attedanceDate = newDate3;
-        totalTimeWedCol = totalTimeWedCol + +splitted3[mm];
+        this.totalTimeWedCol = this.totalTimeWedCol + +splitted3[mm];
         console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
         this.timesheetDetailsArray3.comments = "ABCD";
         this.timesheetDetailsArray3.hour = +splitted3[mm];
@@ -684,7 +702,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray3))
         );
       }
-      this.timesheetObject3.timesheet.totalTimeHour = totalTimeWedCol;
+      this.timesheetObject3.timesheet.totalTimeHour = this.totalTimeWedCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject3);
     }
@@ -693,13 +711,13 @@ this is the part of week wise date
     var data4 = this.dynamicArray.map((t) => t.thursday);
     var str4 = data4.toString();
     var splitted4 = str4.split(",");
-    let totalTimeThurCol = 0;
+    this.totalTimeThurCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr4 = this.timesheetArray4;
         let newDate4 = new Date(this.dateFormatChange(this.thur));
         this.timesheetObject4.timesheet.attedanceDate = newDate4;
-        totalTimeThurCol = totalTimeThurCol + +splitted4[mm];
+        this.totalTimeThurCol = this.totalTimeThurCol + +splitted4[mm];
         console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
         this.timesheetDetailsArray4.comments = "ABCD";
         this.timesheetDetailsArray4.hour = +splitted4[mm];
@@ -708,7 +726,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray4))
         );
       }
-      this.timesheetObject4.timesheet.totalTimeHour = totalTimeThurCol;
+      this.timesheetObject4.timesheet.totalTimeHour = this.totalTimeThurCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject4);
     }
@@ -717,13 +735,13 @@ this is the part of week wise date
     var data5 = this.dynamicArray.map((t) => t.Friday);
     var str5 = data5.toString();
     var splitted5 = str5.split(",");
-    let totalTimeFriCol = 0;
+    this.totalTimeFriCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr5 = this.timesheetArray5;
         let newDate5 = new Date(this.dateFormatChange(this.fri));
         this.timesheetObject5.timesheet.attedanceDate = newDate5;
-        totalTimeFriCol = totalTimeFriCol + +splitted5[mm];
+        this.totalTimeFriCol = this.totalTimeFriCol + +splitted5[mm];
         console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
         this.timesheetDetailsArray5.comments = "ABCD";
         this.timesheetDetailsArray5.hour = +splitted5[mm];
@@ -732,7 +750,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray5))
         );
       }
-      this.timesheetObject5.timesheet.totalTimeHour = totalTimeFriCol;
+      this.timesheetObject5.timesheet.totalTimeHour = this.totalTimeFriCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject5);
     }
@@ -741,13 +759,13 @@ this is the part of week wise date
     var data6 = this.dynamicArray.map((t) => t.Saturday);
     var str6 = data6.toString();
     var splitted6 = str6.split(",");
-    let totalTimeSatCol = 0;
+    this.totalTimeSatCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr6 = this.timesheetArray6;
         let newDate6 = new Date(this.dateFormatChange(this.sat));
         this.timesheetObject6.timesheet.attedanceDate = newDate6;
-        totalTimeSatCol = totalTimeSatCol + +splitted6[mm];
+        this.totalTimeSatCol = this.totalTimeSatCol + +splitted6[mm];
         console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
         this.timesheetDetailsArray6.comments = "ABCD";
         this.timesheetDetailsArray6.hour = +splitted6[mm];
@@ -756,7 +774,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray6))
         );
       }
-      this.timesheetObject6.timesheet.totalTimeHour = totalTimeSatCol;
+      this.timesheetObject6.timesheet.totalTimeHour = this.totalTimeSatCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject6);
     }
@@ -765,13 +783,13 @@ this is the part of week wise date
     var data7 = this.dynamicArray.map((t) => t.Sunday);
     var str7 = data7.toString();
     var splitted7 = str7.split(",");
-    let totalTimeSunCol = 0;
+    this.totalTimeSunCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
         let timesheetArr7 = this.timesheetArray2;
         let newDate7 = new Date(this.dateFormatChange(this.sunn));
         this.timesheetObject7.timesheet.attedanceDate = newDate7;
-        totalTimeSunCol = totalTimeSunCol + +splitted7[mm];
+        this.totalTimeSunCol = this.totalTimeSunCol + +splitted7[mm];
         console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
         this.timesheetDetailsArray7.comments = "ABCD";
         this.timesheetDetailsArray7.hour = +splitted7[mm];
@@ -780,7 +798,7 @@ this is the part of week wise date
           JSON.parse(JSON.stringify(this.timesheetDetailsArray7))
         );
       }
-      this.timesheetObject7.timesheet.totalTimeHour = totalTimeSunCol;
+      this.timesheetObject7.timesheet.totalTimeHour = this.totalTimeSunCol;
       // this.timesheetObject.timesheetDetails=this.timesheetArray;
       this.postTimesheet(this.timesheetObject7);
     }
@@ -794,5 +812,35 @@ this is the part of week wise date
     var total7: number = +data7;
     var ROWtotal: number =
       total1 + total2 + total3 + total4 + total5 + total6 + total7;
+
+    /*
+      total time column wise
+      */
+    this.totalTimeCol =
+      this.totalTimeMonCol +
+      this.totalTimeTueCol +
+      this.totalTimeWedCol +
+      this.totalTimeThurCol +
+      this.totalTimeSunCol +
+      this.totalTimeFriCol +
+      this.totalTimeSatCol;
+
+    /*
+      total time row wise
+      */
+
+    for (let mm = 0; mm < splitted.length; mm++) {
+      this.totalTimeRow.push(
+        +splitted1[mm] +
+          +splitted2[mm] +
+          +splitted3[mm] +
+          +splitted4[mm] +
+          +splitted5[mm] +
+          +splitted6[mm] +
+          +splitted7[mm]
+      );
+
+      console.log("this is total row wise time" + this.totalTimeRow);
+    }
   }
 }
