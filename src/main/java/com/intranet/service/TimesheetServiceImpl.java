@@ -1,5 +1,6 @@
 package com.intranet.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +60,22 @@ public class TimesheetServiceImpl implements TimesheetService {
 	@Override
 	public void deleteById(Long id) {
 		timesheetRepository.deleteById(id);
+	}
+
+	@Override
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode) {
+		List<TimesheetDTO> timesheetDTOList = new ArrayList<TimesheetDTO>();
+		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode);
+		for (Timesheet timesheet : timesheetList) {
+			TimesheetDTO timesheetDTO = new TimesheetDTO();
+			List<TimesheetDetails> timesheetDetailsList = timesheetDetailsRepository
+					.getAllTimesheetDetailsByTimesheetId(timesheet.getTimesheetId());
+			timesheetDTO.setTimesheet(timesheet);
+			timesheetDTO.setTimesheetDetails(timesheetDetailsList);
+			timesheetDTOList.add(timesheetDTO);
+
+		}
+		return timesheetDTOList;
 	}
 
 }
