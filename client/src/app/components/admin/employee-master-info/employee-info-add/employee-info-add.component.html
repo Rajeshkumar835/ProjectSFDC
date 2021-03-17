@@ -2,14 +2,11 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-      <h2 class="text-center">Add Employee Information</h2>
+      <h2 class="text-center pb-4">Add Employee Information</h2>
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <!-- <mat-panel-title>
-              Personal Information
-            </mat-panel-title> -->
-            <h4>Personal Information</h4>
+            <p class="accordian-heading">Personal Information</p>
           </mat-expansion-panel-header>
 
           <div class="personalInfo">
@@ -38,10 +35,6 @@
                 <label for="dateOfJoin" class="label">Date of Joining</label>
                 <input type="date" class="form-control" id="dateOfJoin">
               </div>
-              <!-- <div>
-                <label for="currSalary" class="label">Current Salary</label>
-                <input type="text" class="form-control" id="currSalary">
-              </div> -->
               <div class="form-group input-field">
                 <label for="dob" class="label">Date of Birth</label>
                 <input type="date" class="form-control" id="dob">
@@ -66,31 +59,23 @@
                 <label for="pancardNo" class="label">Pancard No</label>
                 <input type="text" class="form-control" id="pancardNo">
               </div>
-              <!-- <div class="form-group input-field">
-                <label for="passportNo" class="label">Client Code</label>
-                <input type="text" class="form-control" id="clientCode">
-              </div> -->
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
-
-
         </mat-expansion-panel>
-
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <!-- <mat-panel-title>
-              Qualification
-            </mat-panel-title> -->
-            <h4>Qualification</h4>
+            <p class="accordian-heading">Qualification</p>
           </mat-expansion-panel-header>
-
           <div class="qualification">
-            
             <form>
-              <div class="form-group input-field">
-                <label for="type" class="label">Type</label>
-                <input type="text" class="form-control" id="type">
+              <div>
+                <mat-form-field class="input-field">
+                  <mat-select placeholder="Qualification Type" [formControl]="toppings" [(value)]="selectedToppings"
+                    multiple>
+                    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
               <div class="form-group input-field">
                 <label for="highest" class="label">Highest</label>
@@ -104,7 +89,7 @@
                 <label for="comments" class="label">Comments</label>
                 <input type="text" class="form-control" id="comments">
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
 
@@ -113,7 +98,7 @@
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <h4>Bank Information</h4>
+            <p class="accordian-heading">Bank Information</p>
           </mat-expansion-panel-header>
 
           <div class="bankInfo">
@@ -146,7 +131,7 @@
                 <label for="bankActive" class="label">Active</label>
                 <input type="text" class="form-control" id="bankActive">
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
 
@@ -158,7 +143,7 @@
             <!-- <mat-panel-title>
               Employee Address
             </mat-panel-title> -->
-            <h4>Employee Address</h4>
+            <p class="accordian-heading">Employee Address</p>
           </mat-expansion-panel-header>
 
           <div class="empAddress">
@@ -187,7 +172,7 @@
                 <label for="zip" class="label">ZIP Code</label>
                 <input type="date" class="form-control" id="zip">
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
 
@@ -196,7 +181,7 @@
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <h4>Current Experience</h4>
+            <p class="accordian-heading">Current Experience</p>
           </mat-expansion-panel-header>
 
           <div class="currExperience">
@@ -213,7 +198,7 @@
                 <label for="startDate" class="label">Date of Joining</label>
                 <input type="date" class="form-control" id="middleName">
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
 
@@ -225,7 +210,7 @@
             <!-- <mat-panel-title>
               Previous Experience
             </mat-panel-title> -->
-            <h4>Previous Experience</h4>
+            <p class="accordian-heading">Previous Experience</p>
           </mat-expansion-panel-header>
 
           <div class="prevExperience">
@@ -250,7 +235,7 @@
                 <label for="endDate" class="label">End Date</label>
                 <input type="date" class="form-control" id="enddate">
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
           </div>
 
