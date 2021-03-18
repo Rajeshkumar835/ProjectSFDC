@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intranet.entity.ClientInfo;
+import com.intranet.entity.ClientRegistrationInfo;
 import com.intranet.repository.ClientInfoRepository;
 
 @Service
@@ -16,17 +16,17 @@ public class ClientInfoServiceImpl implements ClientInfoService {
 	private ClientInfoRepository clientInfoRepository;
 
 	@Override
-	public List<ClientInfo> findAll() {
+	public List<ClientRegistrationInfo> findAll() {
 		return clientInfoRepository.findAll();
 	}
 
 	@Override
-	public ClientInfo save(ClientInfo clientInfo) {
-		return clientInfoRepository.save(clientInfo);
+	public ClientRegistrationInfo save(ClientRegistrationInfo clientRegistrationInfo) {
+		return clientInfoRepository.save(clientRegistrationInfo);
 	}
 
 	@Override
-	public Optional<ClientInfo> findById(String id) {
+	public Optional<ClientRegistrationInfo> findById(String id) {
 		return clientInfoRepository.findById(id);
 	}
 

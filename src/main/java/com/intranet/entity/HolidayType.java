@@ -20,7 +20,7 @@ public class HolidayType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long holidayId;
 
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)

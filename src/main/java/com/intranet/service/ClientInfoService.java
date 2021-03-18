@@ -3,15 +3,15 @@ package com.intranet.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.intranet.entity.ClientInfo;
+import com.intranet.entity.ClientRegistrationInfo;
 
 public interface ClientInfoService {
 
-	public List<ClientInfo> findAll();
+	public List<ClientRegistrationInfo> findAll();
 
-	public ClientInfo save(ClientInfo clientInfo);
+	public ClientRegistrationInfo save(ClientRegistrationInfo clientRegistrationInfo);
 
-	public Optional<ClientInfo> findById(String id);
+	public Optional<ClientRegistrationInfo> findById(String id);
 
 	public void deleteById(String id);
 

@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ClientInfo {
+public class ClientRegistrationInfo {
 
 	@Id
 	private String clientCode;
