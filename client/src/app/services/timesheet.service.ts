@@ -14,4 +14,11 @@ export class TimesheetService {
       timesheetObject
     );
   }
+
+  getAllTimesheetByEmpCode(empCode) {
+    return this.http.get(
+      "http://localhost:8443/api/v1/timesheet/getAllTimesheetByEmpCode/" +
+        empCode
+    );
+  }
 }
