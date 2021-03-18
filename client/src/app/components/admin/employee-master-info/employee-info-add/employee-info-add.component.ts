@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
-// import { TabsetConfig } from 'ngx-bootstrap/tabs';
-// import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import {FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-employee-info-add',
   templateUrl: './employee-info-add.component.html',
@@ -9,6 +9,11 @@ import {MatAccordion} from '@angular/material/expansion';
 })
 export class EmployeeInfoAddComponent implements OnInit {
   panelOpenState = false;
+
+  toppings = new FormControl();
+
+  toppingList = ['Secondary', 'Higher Secondary', 'Bachelor Degree With Honours', 'Non-Honours Bachelor Degree', 'Masters Degree','Doctoral Degree'];
+  selectedToppings;
 
   constructor() { }
 

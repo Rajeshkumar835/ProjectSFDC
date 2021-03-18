@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { LeaveObj } from "../leave-obj";
-import { LeaveService } from "../leave.service";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+
 import { DatePipe } from "@angular/common";
+import { LeaveMgmtService } from "src/app/services/leave-mgmt.service";
+import { LeaveMgmt } from "src/app/models/leave-mgmt.model";
 
 @Component({
   selector: "app-employee-apply-leave-info",
@@ -9,7 +10,6 @@ import { DatePipe } from "@angular/common";
   styleUrls: ["./employee-apply-leave-info.component.scss"],
 })
 export class EmployeeApplyLeaveInfoComponent implements OnInit {
-  leaveTypeStore = ["Casual Leave", "Annual Leave", "Sick Leave"];
   leavtype: string;
   leaveReason: string;
   fDate: Date;
@@ -20,9 +20,14 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   totalnOfDays: number;
   IsLeaveInvalid: boolean = true;
   show: boolean = false;
+  leaveLimit: any;
+
   LeaveData: any;
   LeaveObj = {
     empCode: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
     createdDate: "",
     leaveType: "",
     formDate: "",
@@ -31,11 +36,15 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     Status: "",
     LeaveApplied: "",
   };
-  constructor(private leaveService: LeaveService, private datePipe: DatePipe) {}
+  constructor(
+    private leaveService: LeaveMgmtService,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit() {
     this.getLeaveType();
   }
+
   toDate(value) {
     console.log("To date", value);
     this.datePipe.transform(this.tDate, "dd/mm/yyyy");
@@ -48,6 +57,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     this.datePipe.transform(this.fDate, "dd/mm/yyyy");
     this.fDate = value;
     console.log("from date", this.fDate);
+    this.calculateDay();
   }
   verifyLeave(value) {
     this.leaveValue = value;
@@ -87,14 +97,18 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     console.log("check4 leave2 Reason", value);
     this.leaveReason = value;
     console.log("check4 leave Reason", this.leaveReason);
+    console.log("value limit", this.leaveLimit);
   }
-  leaveApply(leaveValue: LeaveObj) {
-    leaveValue.empCode = "A2";
+  leaveApply(leaveValue: LeaveMgmt) {
+    leaveValue.firstName = "Amish";
+    leaveValue.lastName = "Yadav";
+    leaveValue.emailId = "amish@1234.com";
+    leaveValue.empCode = "A3";
     leaveValue.status = "Applied";
     leaveValue.leaveReason = this.leaveReason;
     leaveValue.totalLeaveGranted = 11;
-    leaveValue.leavecode = this.leavtype;
-    console.log("leave type  check10", leaveValue.leavecode);
+    leaveValue.leaveCode = this.leavtype;
+    console.log("leave type  check10", leaveValue.leaveCode);
     leaveValue.leaveApplied = this.totalnOfDays;
     leaveValue.fromDate = this.fDate;
     leaveValue.toDate = this.tDate;
@@ -104,8 +118,11 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       console.log("Leave have applied successfully ");
     });
   }
-  chooseLeave(value) {
-    console.log("leave value is", value);
+  chooseLeave(values, value, value2) {
+    const secLeaveN = values;
+    console.log("leave value is", secLeaveN);
+    const lfcode = value2;
+    console.log("leave value is", value2);
     this.leavtype = value;
     console.log("leave value2 is", this.leavtype);
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { EmailValidator } from "@angular/forms";
+import { LeaveMgmtService } from "src/app/services/leave-mgmt.service";
 import { LeaveObj } from "../leave-obj";
-import { LeaveService } from "../leave.service";
+import { LeaveMgmt } from "src/app/models/leave-mgmt.model";
 
 @Component({
   selector: "app-manger-view-employee-leave-info",
@@ -11,71 +13,68 @@ export class MangerViewEmployeeLeaveInfoComponent implements OnInit {
   isChecked = false;
   rejectReason: boolean = false;
   empData = [];
-  LeaveObj = {
-    Id: "",
-    empCode: "",
+  LeaveMgmt = {
     status: "",
+    empCode: "",
+    createdDate: "",
+    leaveCode: "",
+    fromDate: "",
+    toDate: "",
+    leaveReason: "",
+    totalLeaveGranted: 0,
+    leaveApplied: 0,
+    leaveInfo: {},
+    rejectionReason: "",
   };
 
   leaveData = [
     {
       name: "Rajesh Chaudhari",
       email: "rajesh@anagah.com",
-      fDate: "21-03-2021",
-      tdate: "23-03-2021",
-      reason: "due to outside to some work",
-      status: "Applied",
-      leaveType: "Cassual Leave",
-      totalLeaveGrant: 11,
-      LeaveApplied: 2,
     },
     {
       name: "Satish Sharma",
       email: "satish@anagaha.com",
-      fDate: "16-03-2021",
-      tdate: "18-03-2021",
-      reason: "Due to Some worship",
-      status: "Applied",
-      leaveType: "Annual Leave",
-      LeaveApplied: 2,
     },
     {
       name: "Pankaj Raut",
       email: "pankaj@anagaha.com",
-      fDate: "04-03-2021",
-      tdate: "05-03-2021",
-      reason: "Due to sick",
-      status: "Applied",
-      leaveType: "Cassual Leave",
-      LeaveApplied: 1,
     },
     {
       name: "Ashutosh Yadav",
       email: "ashutosh@anagaha.com",
-      fDate: "08-03-2021",
-      tdate: "09-03-2021",
-      reason: "going outside some work",
-      status: "Applied",
-      leaveType: "Sick Leave",
-      LeaveApplied: 1,
+    },
+  ];
+  finalLeaveObje = {
+    firstName: String,
+    lastName: String,
+    email: EmailValidator,
+    fDate: Date,
+    tdate: Date,
+    reason: String,
+    status: String,
+    leaveCode: String,
+    totalLeaveGrant: Number,
+    LeaveApplied: Number,
+  };
+
+  leaveData3 = [
+    {
+      data1: this.empData,
+      data2: this.leaveData[0].email,
     },
   ];
 
-  constructor(private leaveService: LeaveService) {
+  constructor(private leaveService: LeaveMgmtService) {
     console.log("value of leave data", this.leaveData);
   }
 
   ngOnInit() {
+    this.getEmployeesLeaveInfoDataValues();
     this.getAllEmployeeLeaveData();
     console.log("value of leave data", this.leaveData);
   }
-  getAllEmployeeLeaveData() {
-    this.leaveService.getAllLeaveData().subscribe((response: any) => {
-      this.empData = response;
-      //this.leaveData = response;
-      console.log("check data", this.empData);
-    });
-  }
+  getAllEmployeeLeaveData() {}
   // checkedItems = [];
   // onChecked(item: any, event: any) {
   //   let { checked, value } = event.target;
@@ -90,34 +89,115 @@ export class MangerViewEmployeeLeaveInfoComponent implements OnInit {
   //  console.log("check leave value", leaveValue);
   //   this.leaveService.ApplyLeave(leaveValue).subscribe((response) => {
   //     console.log("Leave have applied successfully ");
-  name1: string;
-  check(values, name) {
-    if (values.currentTarget.checked) {
-      this.name1 = name;
-      console.log("value of name is", this.name1);
+  resultArray: any;
+  getEmployeesLeaveInfoDataValues() {
+    console.log("employee leave info");
+    this.leaveService.getEmployeeDataByStatus().subscribe((response1: any) => {
+      this.empData = response1;
+      this.resultArray = this.empData.map(function (a) {
+        return a["empCode"];
+      });
+      console.log("resultArray value is", this.resultArray);
+      console.log("Manager Leave data isshown ", this.empData);
+    });
+  }
+  empCodeData: any;
+  getEmployeeDataByEmpCode() {
+    this.leaveService
+      .getEmployeeDataByEmpCode(this.resultArray)
+      .subscribe((response1: any) => {
+        this.empCodeData = response1;
+        console.log("Manager Leave data isshown ", this.empCodeData);
+      });
+  }
+  leaveId: Number;
+  empcode: String;
+  fDate: Date;
+  tDate: Date;
+  reason: String;
+  leavename: String;
+  leaveAppliedval: Number;
+  totalLeaveValue: number;
+  check(
+    values,
+    leaveId1,
+    empCode,
+    fromDate,
+    toDate,
+    reason,
+
+    leavename,
+    leaveApplied,
+    totalLeave
+  ) {
+    this.LeaveMgmt.empCode = empCode;
+    this.LeaveMgmt.status = "Approved";
+    this.LeaveMgmt.fromDate = fromDate;
+    this.LeaveMgmt.toDate = toDate;
+    this.LeaveMgmt.leaveReason = reason;
+    this.LeaveMgmt.leaveApplied = leaveApplied;
+    this.LeaveMgmt.totalLeaveGranted = totalLeave;
+    this.LeaveMgmt.leaveInfo = leavename;
+
+    this.fDate = fromDate;
+    console.log("value of LeaveId is", this.fDate);
+    this.empcode = empCode;
+    console.log("value of LeaveId is", this.empcode);
+    this.tDate = toDate;
+    console.log("value of LeaveId is", this.tDate);
+    this.totalLeaveValue = totalLeave;
+    console.log("value total leave", this.totalLeaveValue);
+    this.reason = reason;
+    console.log("value of LeaveId is", this.reason);
+
+    this.leavename = leavename;
+    console.log("value of LeaveId is", this.leavename);
+
+    this.leaveAppliedval = leaveApplied;
+    console.log("value of LeaveId is", this.leavename);
+
+    if (!values.currentTarget.checked) {
+      this.leaveId = null;
+      this.rejectReason = false;
+    } else {
+      this.leaveId = leaveId1;
+      console.log("value of LeaveId is", this.leaveId);
     }
   }
+  ChooseReason(value) {
+    console.log("check4 leave2 Reason", value);
+    this.LeaveMgmt.leaveReason = value;
+    console.log("check4 leave Reason", this.LeaveMgmt.leaveReason);
+
+    this.LeaveMgmt.status = "Rejected";
+    console.log("value is", this.LeaveMgmt);
+  }
   aprroveLeave() {
-    if (this.name1 != null) {
-      this.LeaveObj.status = "Approved";
-      this.leaveService.approvalPutData(this.LeaveObj).subscribe((response) => {
-        console.log("Leave have approved successfully ");
-      });
+    console.log("leaveId is ", this.leaveId);
+    if (this.leaveId != null) {
+      this.leaveService
+        .putEmployeeDataForApproval(this.LeaveMgmt, this.leaveId)
+        .subscribe((response1: any) => {
+          console.log("Manager Approved Leave data  ", response1);
+        });
       alert("Approved");
     } else {
       alert("Please select any value to approve");
     }
   }
   leaveReject() {
-    if (this.name1 != null) {
+    if (this.leaveId != null) {
       console.log("reject leave Information");
       this.rejectReason = true;
     } else {
       alert("Please select any value to Reject");
     }
   }
-  RejectReasonLeave(rejectValue: LeaveObj) {
-    rejectValue.status = "Reject";
-    rejectValue.rejectionReason = " ";
+  RejectReasonLeave(rejectValue: LeaveMgmt) {
+    this.leaveService
+      .putEmployeeDataForApproval(this.LeaveMgmt, this.leaveId)
+      .subscribe((response1: any) => {
+        console.log("Manager Approved Leave data  ", response1);
+      });
   }
 }

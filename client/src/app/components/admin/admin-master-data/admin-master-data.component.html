@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-      <h2 class="text-center">Add Company Details</h2>
+      <h2 class="text-center pb-4">Add Company Details</h2>
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <h4>Company Holiday Type</h4>
+            <p class="accordian-heading">Company Holiday Type</p>
           </mat-expansion-panel-header>
 
           <div class="personalInfo">
@@ -17,7 +17,7 @@
               </div>
               <div class="form-group input-field">
                 <label for="fname" class="label">Holiday Type Name</label>
-                <input type="text" class="form-control" id="fullName" placeholder="Company Holiday Type">
+                <input type="text" class="form-control" id="fullName" placeholder="Holiday Type Name">
               </div>
               <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
             </form>
@@ -26,7 +26,7 @@
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <h4>Company Holiday List</h4>
+            <p class="accordian-heading">Company Holiday List</p>
           </mat-expansion-panel-header>
 
           <div class="qualification">
@@ -53,7 +53,7 @@
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <h4>Company Weekly off Days List</h4>
+            <p class="accordian-heading">Company Weekly off Days List</p>
           </mat-expansion-panel-header>
 
           <div class="bankInfo">
@@ -77,7 +77,7 @@
             <!-- <mat-panel-title>
               Employee Address
             </mat-panel-title> -->
-            <h4>Company Leave Information</h4>
+            <p class="accordian-heading">Company Leave Information</p>
           </mat-expansion-panel-header>
           <div class="empAddress">
             <form>

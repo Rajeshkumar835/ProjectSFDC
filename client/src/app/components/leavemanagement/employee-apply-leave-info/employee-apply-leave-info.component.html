@@ -215,20 +215,26 @@
               class="form-control heightselect"
               id="inputPassword3"
               name="leave"
-              [(ngModel)]="leaveItemobj"
-              (change)="chooseLeave(leaveItem.leaveCode)"
+              [(ngModel)]="leaveItem"
+              (ngModelChange)="
+                chooseLeave($event, leaveItem.leaveCode, leaveItem.leaveLimit)
+              "
               #leave="ngModel"
               required
             >
               <option
                 *ngFor="let leaveItem of LeaveData"
+                leaveLimit=" leaveItem.leaveLimit "
                 value="{{ leaveItem.leaveCode }}"
               >
                 {{ leaveItem.leaveName }}
               </option>
             </select>
             <div *ngIf="leave.invalid && leave.touched" class="text-danger">
-              <span *ngIf="IsLeaveInvalid" class="text-danger" class="labMargin"
+              <span
+                *ngIf="IsLeaveInvalid"
+                class="text-danger"
+                class="labMargin2"
                 >Please select leave type</span
               >
             </div>
@@ -247,7 +253,7 @@
               placeholder="ent"
             />
             <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
-              <span *ngIf="fDate.errors.required" class="labMargin"
+              <span *ngIf="fDate.errors.required" class="labMargin2"
                 >From Date is Required</span
               >
             </div>
@@ -265,7 +271,7 @@
               required
             />
             <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
-              <span *ngIf="tdate.errors.required" class="labMargin"
+              <span *ngIf="tdate.errors.required" class="labMargin2"
                 >To Date is Required</span
               >
             </div>
@@ -283,7 +289,7 @@
               required
             />
             <div *ngIf="reason.invalid && reason.touched" class="text-danger">
-              <span *ngIf="reason.errors.required" class="labMargin"
+              <span *ngIf="reason.errors.required" class="labMargin2"
                 >Reason is Required</span
               >
             </div>
@@ -300,6 +306,7 @@
             </ng-container>
           </div>
         </div>
+
         <div class="form-group">
           <button
             [disabled]="myLeave.invalid"
