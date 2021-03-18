@@ -1,6 +1,7 @@
 package com.intranet.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +57,11 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 
 	@CrossOrigin
 	@Override
+	public Optional<EmployeeLeaveInfo> findById(Long id){
+		return employeeLeaveInfoRepository.findById(id);
+	}
+	
+	@Override
 	public EmployeeLeaveInfo save(EmployeeLeaveInfo empLeaveData) {
 		return employeeLeaveInfoRepository.save(empLeaveData);
 	}
@@ -65,6 +71,12 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 	public List<EmployeeLeaveInfo> findAll() {
 		List<EmployeeLeaveInfo> listEmpLeaveInfo = employeeLeaveInfoRepository.findAll();
 		return listEmpLeaveInfo;
+	}
+	
+	@Override
+	public List<EmployeeLeaveInfo>findAllLeaveInfoByStatus(){
+		List<EmployeeLeaveInfo> listEmpLeaveInfo2=employeeLeaveInfoRepository.findAllLeaveInfoByStatus();
+		return listEmpLeaveInfo2;
 	}
 
 	@CrossOrigin

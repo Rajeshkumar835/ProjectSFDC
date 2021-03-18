@@ -27,6 +27,18 @@ public class EmployeeLeaveInfo {
 
 	@Column(nullable = true)
 	private String empCode;
+	
+	@Column(nullable = true)
+	private String firstName;
+
+	@Column(nullable = true)
+	private String middleName;
+
+	@Column(nullable = true)
+	private String lastName;
+	
+	@Column(nullable = true)
+	private String emailId;
 
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)

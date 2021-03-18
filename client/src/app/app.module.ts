@@ -55,9 +55,9 @@ import { LeaveMgmtService } from "./services/leave-mgmt.service";
 import { TimesheetService } from "./services/timesheet.service";
 import { LmsService } from "./services/lms.service";
 import { TaskMgmtService } from "./services/task-mgmt.service";
-import { AdminComponent } from './components/admin/admin.component';
-import { AdminMasterDataComponent } from './components/admin/admin-master-data/admin-master-data.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminComponent } from "./components/admin/admin.component";
+import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [
@@ -122,7 +122,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatDatepickerModule,
     MatVideoModule,
   ],
-  providers: [MatDatepickerModule, LeaveMgmtService,TimesheetService,LmsService,TaskMgmtService, MatNativeDateModule, DatePipe],
+
+  providers: [
+    MatDatepickerModule,
+    LeaveMgmtService,
+    TimesheetService,
+    LmsService,
+    TaskMgmtService,
+    MatNativeDateModule,
+    DatePipe,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
