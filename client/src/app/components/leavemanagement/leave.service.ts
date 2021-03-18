@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class LeaveService {
   constructor(private _http: HttpClient) {}
-  ApplyLeave(leave) {
+  ApplyLeave(leave: any) {
     console.log("value check1", leave);
     return this._http.post(
       "http://localhost:8443/api/v1/employeeLeaveInfo/add",
@@ -18,11 +18,5 @@ export class LeaveService {
   }
   getAllLeaveData() {
     return this._http.get("http://localhost:8443//api/v1/employeeInfo/findAll");
-  }
-  approvalPutData(aprData) {
-    return this._http.put(
-      "https://applyleavedb-default-rtdb.firebaseio.com/leavs.json",
-      aprData
-    );
   }
 }

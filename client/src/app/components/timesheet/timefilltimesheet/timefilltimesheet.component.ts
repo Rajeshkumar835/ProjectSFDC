@@ -19,9 +19,9 @@ export class TimefilltimesheetComponent implements OnInit {
   ngOnInit() {
     this.users = [
       { Id: 1, Name: "Ashutosh kumar yadav" },
-      { Id: 2, Name: "Joaaaaaaaaaaaaaaaaahn" },
-      { Id: 3, Name: "ASaaaaaaaaaaaaaahutosh" },
-      { Id: 4, Name: "Anaaaaaaaaaaaaaaaaju" },
+      { Id: 2, Name: "Amish Yadav" },
+      { Id: 3, Name: "Satish jee" },
+      { Id: 4, Name: "Ujwal jee" },
     ];
 
     this.FillDate = new Date();
