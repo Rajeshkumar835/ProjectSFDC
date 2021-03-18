@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.intranet.entity.ClientRegistrationInfo;
 
-public interface ClientInfoService {
+public interface ClientRegistrationInfoService {
 
 	public List<ClientRegistrationInfo> findAll();
 
@@ -14,5 +14,7 @@ public interface ClientInfoService {
 	public Optional<ClientRegistrationInfo> findById(String id);
 
 	public void deleteById(String id);
+
+	public ClientRegistrationInfo clientRegistrationInfoByClientCode(String clientCode);
 
 }

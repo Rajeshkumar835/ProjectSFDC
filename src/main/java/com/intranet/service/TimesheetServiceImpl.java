@@ -1,6 +1,7 @@
 package com.intranet.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +64,7 @@ public class TimesheetServiceImpl implements TimesheetService {
 	}
 
 	@Override
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode) {
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode,Date startDate, Date endDate) {
 		List<TimesheetDTO> timesheetDTOList = new ArrayList<TimesheetDTO>();
 		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode);
 		for (Timesheet timesheet : timesheetList) {
