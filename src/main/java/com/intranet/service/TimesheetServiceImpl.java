@@ -73,7 +73,6 @@ public class TimesheetServiceImpl implements TimesheetService {
 			timesheetDTO.setTimesheet(timesheet);
 			timesheetDTO.setTimesheetDetails(timesheetDetailsList);
 			timesheetDTOList.add(timesheetDTO);
-
 		}
 		return timesheetDTOList;
 	}
