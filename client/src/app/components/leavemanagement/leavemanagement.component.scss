@@ -1,6 +1,20 @@
-.nav-link {
-  color: black;
+[_nghost-c5] {
+  display: inline-block !important;
+  width: 100%;
 }
-a.nav-link:hover {
-  color: dodgerblue;
+
+.mat-tab-label-active {
+  background-color: whitesmoke;
+  color: black;
+
+  font-weight: bold;
+}
+.mat-tab-link,
+.mat-tab-label {
+  line-height: 30px !important;
+  height: 30px !important;
+  min-width: 100px !important;
+}
+.tabContentContainer {
+  background: #ffffff 50% 50% repeat-x;
 }

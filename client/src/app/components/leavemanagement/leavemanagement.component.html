@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <nav>
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -16,5 +16,23 @@
       </li>
     </ul>
   </nav>
-</header>
+</header> -->
+
+<!-- <div style="padding: 5px;">
+    <h1>Angular Material 2 Tab Example using md-tab-nav-bar and md-tab-link.</h1>
+    <nav md-tab-nav-bar >
+        <a md-tab-link
+           *ngFor="let routeLink of routeLinks; let i = index;"
+           [routerLink]="routeLink.link"
+           routerLinkActive="mat-tab-link-active"
+           #rla="routerLinkActive"
+           [active]="activeLinkIndex === i"
+           (click)="activeLinkIndex = i"
+           [routerLinkActiveOptions]="{exact: true}"
+        >
+            {{routeLink.label}}
+        </a>
+    </nav>
 <router-outlet></router-outlet>
+</div> -->
+<app-employee-apply-leave-info></app-employee-apply-leave-info>
