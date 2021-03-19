@@ -1,3 +1,6 @@
+mat-tab-group {
+  width: 74rem;
+}
 h2.heading_1 {
   text-align: left;
   font-weight: bolder;
@@ -131,11 +134,94 @@ inputPassword3 {
   line-height: 10px;
   margin-left: 340px;
   margin-right: 0px;
-  margin-top: 65px;
+  margin-top: 76px;
 }
 input.ng-touched.ng-invalid {
   border: 1px solid red;
 }
 select.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+.ManagerTable1 {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.card {
+  background-color: whitesmoke;
+}
+.mangerHeading {
+  font-size: 20px;
+  line-height: 25px;
+  padding-top: 20px;
+  color: dodgerblue;
+  padding-left: 10px;
+  font-weight: bold;
+}
+.approove {
+  width: 100px;
+  margin: 15px 10px 10px 10px;
+  height: 30px;
+  line-height: 10px;
+}
+.abovebuttonBorder {
+  border-width: 2px;
+  border-top-style: groove;
+  color: lightgrey;
+}
+.card {
+  background-color: whitesmoke;
+}
+.ManagerTable {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.mangerHeading {
+  font-size: 20px;
+  line-height: 25px;
+
+  color: dodgerblue;
+}
+.approove {
+  width: 100px;
+  margin: 5px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 15px;
+}
+.reject {
+  width: 90px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 10px;
+}
+.abovebuttonBorder {
+  border-width: 2px;
+  border-top-style: groove;
+}
+.rejectform {
+  width: 25rem;
+  border-style: 5px solid darkgrey;
+  margin-top: 10px;
+}
+.col-sm-7 {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.col-sm-3 {
+  margin-left: 10px;
+}
+.submit {
+  width: 80px;
+  margin: 5px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 15px;
+  margin-left: 105px;
+}
+input.ng-touched.ng-invalid {
   border: 1px solid red;
 }
