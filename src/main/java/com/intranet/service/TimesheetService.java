@@ -1,5 +1,6 @@
 package com.intranet.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,6 @@ public interface TimesheetService {
 
 	public void deleteById(Long id);
 
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode);
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, Date startDate, Date endDate);
 
 }

@@ -60,7 +60,9 @@ export class GridViewComponent implements OnInit {
   /*
 this is the part of week wise date
 **/
+empCode="ABC";
   ngOnInit(): void {
+    this.getAllTimesheetByEmpCode();
     let i: number = 0;
 
     while (i < 7) {
@@ -186,6 +188,13 @@ this is the part of week wise date
       TotaltimeRowwise: "",
     };
     this.dynamicArray.push(this.newDynamic);
+  }
+  getAllTimesheetByEmpCode(){
+    this.timesheetService.getAllTimesheetByEmpCode(this.empCode).subscribe((data:any)=>{
+      console.log("Timesheet data by Emp Code",data);
+      this.dynamicArray=data;
+    })
+
   }
   //monday posttimesheet
   postTimesheet(timesheetObject) {

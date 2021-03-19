@@ -1,16 +1,8 @@
 <div class="container" style="margin-top: 3%">
-  <button
-    type="button"
-    (click)="myFunctionPrevDate()"
-    style="margin-bottom: 10px; width: 50px"
-  >
+  <button type="button" (click)="myFunctionPrevDate()" style="margin-bottom: 10px; width: 50px">
     &laquo;
   </button>
-  <button
-    type="button"
-    (click)="myFunctionNextdate()"
-    style="margin-left: 2px; margin-left: 905px; width: 50px"
-  >
+  <button type="button" (click)="myFunctionNextdate()" style="margin-left: 2px; margin-left: 905px; width: 50px">
     &raquo;
   </button>
 
@@ -40,74 +32,36 @@
         </td>
         -->
         <td>
-          <select
-            style="height: 32.5px; width: 280px"
-            [(ngModel)]="dynamicArray[i].projectName"
-          >
+          <select name="projectName" style="height: 32.5px; width: 280px" [(ngModel)]="dynamicArray[i].projectName">
             <option *ngFor="let use of projects" [value]="use.Name">
               {{ use.Name }}
             </option>
           </select>
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Monday"
-            class="form-control"
-            type="text"
-          />
+          <input name="monday" [(ngModel)]="dynamicArray[i].Monday" class="form-control" type="text" />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Tuesday"
-            class="form-control"
-            type="text"
-          />
+          <input  name="tuesday"[(ngModel)]="dynamicArray[i].Tuesday" class="form-control" type="text" />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Wednesday"
-            class="form-control"
-            type="text"
-          />
+          <input  name="wednesday" [(ngModel)]="dynamicArray[i].Wednesday" class="form-control" type="text" />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].thursday"
-            class="form-control"
-            type="text"
-          />
+          <input  name="thursday" [(ngModel)]="dynamicArray[i].thursday" class="form-control" type="text" />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Friday"
-            class="form-control"
-            type="text"
-          />
+          <input  name="friday" [(ngModel)]="dynamicArray[i].Friday" class="form-control" type="text" />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Saturday"
-            class="form-control"
-            type="text"
-            readonly
-          />
+          <input  name="saturday" [(ngModel)]="dynamicArray[i].Saturday" class="form-control" type="text" readonly />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].Sunday"
-            class="form-control"
-            type="text"
-            readonly
-          />
+          <input  name="sunday" [(ngModel)]="dynamicArray[i].Sunday" class="form-control" type="text" readonly />
         </td>
         <td>
-          <input
-            [(ngModel)]="dynamicArray[i].TotaltimeRowwise"
-            class="form-control"
-            type="text"
-            value=" {{ totalTimeRow[i] }}"
-            readonly
-          />
+          <input  name="totalTime" [(ngModel)]="dynamicArray[i].TotaltimeRowwise" class="form-control" type="text"
+            value=" {{ totalTimeRow[i] }}" readonly />
         </td>
       </tr>
       <!--
@@ -118,76 +72,32 @@
       </tr>
       
     -->
-      <tr
-        class="form-control"
-        timesheet-fill-sheet
-        style="margin-top: 7px; width: auto; background-color: #ddd"
-      >
+      <tr class="form-control" timesheet-fill-sheet style="margin-top: 7px; width: auto; background-color: #ddd">
         <b> Total Time</b>
       </tr>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeMonCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeMonCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeTueCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeTueCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeWedCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeWedCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeThurCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeThurCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeFriCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeFriCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeSatCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeSatCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeSunCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeSunCol }}" readonly />
       </td>
       <td>
-        <input
-          class="form-control"
-          type="text"
-          value=" {{ totalTimeCol }}"
-          readonly
-        />
+        <input class="form-control" type="text" value=" {{ totalTimeCol }}" readonly />
       </td>
     </tbody>
   </table>

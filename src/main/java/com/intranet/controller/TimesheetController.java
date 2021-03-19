@@ -1,5 +1,6 @@
 package com.intranet.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,10 +66,10 @@ public class TimesheetController {
 	
 	@CrossOrigin
 	@GetMapping("/getAllTimesheetByEmpCode/{empCode}")
-	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode) {
+	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode,Date startDate, Date endDate) {
 		List<TimesheetDTO> listTimesheet = null;
 		try {
-			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode);
+			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode,startDate,endDate);
 		} catch (Exception e) {
 			LOGGER.error("Error while getting All Timesheet -> ", e);
 		}

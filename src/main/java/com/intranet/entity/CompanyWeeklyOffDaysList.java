@@ -19,51 +19,22 @@ import lombok.Data;
 
 @Data
 @Entity
-public class EmployeeLeaveInfo {
+public class CompanyWeeklyOffDaysList {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-	private Long leaveId;
-
-	@Column(nullable = true)
-	private String empCode;
-	
-	@Column(nullable = true)
-	private String empName;
-	
-	@Column(nullable = true)
-	private String emailId;
+	private Long id;
 
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createdDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = true)
-	private Date fromDate;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = true)
-	private Date toDate;
-
-	@Column(nullable = true)
-	private String leaveReason;
-
-	@Column(nullable = true)
-	private String status;
-
-	@Column(nullable = true)
-	private Long totalLeaveGranted;
-
-	@Column(nullable = true)
-	private Long leaveApplied;
-
-	@Column(nullable = true)
-	private String rejectionReason;
+	private String dayCode;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "leave_code")
-	private LeaveInfo leaveInfo;
+	@JoinColumn(name = "clientCode")
+	private ClientRegistrationInfo clientRegistrationInfo;
 
 }

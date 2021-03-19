@@ -24,7 +24,10 @@ public class ReportingManager {
 	private String reportingManagercode;
 
 	@Column(nullable = true)
-	private String name;
+	private String managerName;
+
+	@Column(nullable = true)
+	private String designation;
 
 	@Column(nullable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -36,9 +39,5 @@ public class ReportingManager {
 
 	@Column(nullable = true)
 	private String empCode;
-	
-//	@OneToOne
-//	@JoinColumn(name = "empCode")
-//	private EmployeeInfo employeeInfo;
 
 }
