@@ -14,37 +14,7 @@ import lombok.Data;
 
 @Data
 public class EmployeeInfoDTO {
-	
-//	private String empCode;
-//
-//	private String firstName;
-//
-//	private String middleName;
-//
-//	private String lastName;
-//
-//	private String designation;
-//
-//	private Date hireDate;
-//
-//	private double currSalary;
-//
-//	private Date dob;
-//
-//	private String fatherName;
-//
-//	private String contactNo;
-//
-//	private String emailId;
-//
-//	private String homePhoneNo;
-//
-//	private String passportNo;
-//
-//	private String panCardNo;
-//
-//	private String clientCode;
-	
+
 	private EmployeeInfo employeeInfo;
 
 	private List<QualificationInfo> qualificationInfo;

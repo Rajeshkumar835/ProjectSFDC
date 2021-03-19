@@ -1,11 +1,11 @@
 package com.intranet.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
+import com.intranet.model.TimesheetDateModel;
 
 public interface TimesheetService {
 
@@ -19,6 +19,6 @@ public interface TimesheetService {
 
 	public void deleteById(Long id);
 
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, Date startDate, Date endDate);
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, String startDate, String endDate);
 
 }
