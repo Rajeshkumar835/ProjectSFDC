@@ -64,7 +64,7 @@ public class TimesheetController {
 	}
 
 	@CrossOrigin
-	@GetMapping("/getAllTimesheetByEmpCode/{empCode}{startDate}{endDate}")
+	@GetMapping("/getAllTimesheetByEmpCode/{empCode}/{startDate}/{endDate}")
 	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode,
 			@PathVariable String startDate, @PathVariable String endDate) {
 		List<TimesheetDTO> listTimesheet = null;
