@@ -1,5 +1,6 @@
 export class LeaveMgmt {
   id: number;
+  empName: String;
   leaveId: number;
   empCode: string;
   firstName: String;

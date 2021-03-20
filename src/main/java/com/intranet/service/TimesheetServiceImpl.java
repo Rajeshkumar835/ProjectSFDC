@@ -63,9 +63,9 @@ public class TimesheetServiceImpl implements TimesheetService {
 	}
 
 	@Override
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode) {
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, String startDate, String endDate) {
 		List<TimesheetDTO> timesheetDTOList = new ArrayList<TimesheetDTO>();
-		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode);
+		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode, startDate, endDate);
 		for (Timesheet timesheet : timesheetList) {
 			TimesheetDTO timesheetDTO = new TimesheetDTO();
 			List<TimesheetDetails> timesheetDetailsList = timesheetDetailsRepository

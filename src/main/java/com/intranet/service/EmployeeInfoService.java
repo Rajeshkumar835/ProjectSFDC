@@ -17,5 +17,7 @@ public interface EmployeeInfoService {
 	public Optional<EmployeeInfo> findById(String id);
 
 	public void deleteById(String id);
+	
+	public EmployeeInfoDTO findByEmpCode(String empCode);
 
 }
