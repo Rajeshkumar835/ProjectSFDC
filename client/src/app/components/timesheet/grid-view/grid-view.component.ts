@@ -56,15 +56,26 @@ export class GridViewComponent implements OnInit {
    */
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
+  checkDyanamicTemp = 0;
 
   /*
-this is the part of week wise date
-**/
-empCode="ABC";
+  this part is used for testing purpose
+  */
+  testDynamic: any = {};
+
+  empCode = "ABC";
+  startDate = "";
+  endDate = "";
+
+  /*
+  ngOnInit is started
+  */
   ngOnInit(): void {
-    this.getAllTimesheetByEmpCode();
     let i: number = 0;
 
+    /*
+this is the part of week wise date
+**/
     while (i < 7) {
       if (this.date.getDay() == 0) {
         // console.log("Day = " + date.getDay());
@@ -174,27 +185,155 @@ empCode="ABC";
     ];
 
     /*
+here we call main retrive
+*/
+    if (this.mon) {
+      this.getAllTimesheetByEmpCode();
+    }
+
+    /*
+    this part is used for testing purpose
+   
+    this.testDynamic = {
+      projectName: "Aaonri",
+      Monday: "2",
+      Tuesday: "3",
+      Wednesday: "3",
+      thursday: "3",
+      Friday: "3",
+      Saturday: "3",
+      Sunday: "0",
+      TotaltimeRowwise: "0",
+    };
+    this.dynamicArray.push(this.testDynamic);
+     */
+    // this.dynamicArray.push(this.testDynamic);
+    /*
+
+    
   this is the part of dynmic table
   */
+
     this.newDynamic = {
       projectName: "",
-      Monday: "",
-      Tuesday: "",
-      Wednesday: "",
-      thursday: "",
-      Friday: "",
+      Monday: "0",
+      Tuesday: "0",
+      Wednesday: "0",
+      thursday: "0",
+      Friday: "0",
       Saturday: "0",
       Sunday: "0",
-      TotaltimeRowwise: "",
+      TotaltimeRowwise: "0",
     };
     this.dynamicArray.push(this.newDynamic);
   }
-  getAllTimesheetByEmpCode(){
-    this.timesheetService.getAllTimesheetByEmpCode(this.empCode).subscribe((data:any)=>{
-      console.log("Timesheet data by Emp Code",data);
-      this.dynamicArray=data;
-    })
 
+  getAllTimesheetByEmpCode() {
+    console.log(
+      "heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
+        this.mon
+    );
+    console.log(
+      "sheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +
+        this.sunn
+    );
+
+    this.timesheetService
+      .getAllTimesheetByEmpCode(
+        this.empCode,
+        this.dateFormatChangeee(this.mon),
+        this.dateFormatChangeee(this.sunn)
+      )
+      .subscribe((data: any) => {
+        console.log("Timesheet data by Emp Code", data);
+        //  this.dynamicArray = this.testDynamic;
+        // console.log("this dynamic test is working " + this.dynamicArray);
+        /*this is testing part*/
+        let result = data;
+        let test11Project;
+        let test22Monday;
+        let test33Tuesday;
+        let test44Wednesday;
+        let test55Thursday;
+        let test66Friday;
+        let test77Saturday;
+        let test88Sunday;
+        let test99RowWisetotal;
+        let test10Shift: number = 0;
+
+        // for (let t1 = 0; t1 < 7; t1++) {
+        // console.log(data[0].timesheetDetails.length);
+        if (data.length >= 1) {
+          let rowLength = data.length;
+          let rowLength2 = rowLength - 7;
+
+          for (
+            let t2 = 0;
+            t2 < data[rowLength2].timesheetDetails.length;
+            t2++
+          ) {
+            console.log("second time for loop");
+            test11Project = data[rowLength2].timesheetDetails[t2].project;
+            test22Monday = data[rowLength2].timesheetDetails[t2].hour;
+            test33Tuesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+            test44Wednesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+            test55Thursday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+            test66Friday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+            //  test77Saturday = data[rowLength2+5].timesheetDetails[t2].hour;
+            // test88Sunday = data[rowLength2+6].timesheetDetails[t2].hour;
+            test99RowWisetotal =
+              test22Monday +
+              test33Tuesday +
+              test44Wednesday +
+              test55Thursday +
+              test66Friday; //test77Saturday+test88Sunday
+            console.log("this is inside ashutosh " + test11Project);
+            console.log("this is inside ashutosh " + test22Monday);
+            console.log("this is inside ashutosh " + test33Tuesday);
+            console.log("this is inside ashutosh " + test44Wednesday);
+            console.log("this is inside ashutosh " + test55Thursday);
+            console.log("this is inside ashutosh " + test66Friday);
+            console.log("this is inside ashutosh " + test77Saturday);
+            console.log("this is inside ashutosh " + test88Sunday);
+            this.totalTimeMonCol = data[rowLength2].timesheet.totalTimeHour;
+            this.totalTimeTueCol = data[rowLength2 + 1].timesheet.totalTimeHour;
+            this.totalTimeWedCol = data[rowLength2 + 2].timesheet.totalTimeHour;
+            this.totalTimeThurCol =
+              data[rowLength2 + 3].timesheet.totalTimeHour;
+            this.totalTimeFriCol = data[rowLength2 + 4].timesheet.totalTimeHour;
+            // this.totalTimeSatCol = data[rowLength2+5].timesheet.totalTimeHour;
+            //    this.totalTimeSunCol = data[rowLength2+6].timesheet.totalTimeHour;
+            //   this.totalTimeCol = data[47].timesheet.totalTimeHour;
+            this.totalTimeCol =
+              this.totalTimeMonCol +
+              this.totalTimeTueCol +
+              this.totalTimeWedCol +
+              this.totalTimeThurCol +
+              this.totalTimeSunCol +
+              this.totalTimeFriCol +
+              this.totalTimeSatCol;
+            this.testDynamic = {
+              projectName: test11Project,
+              Monday: test22Monday,
+              Tuesday: test33Tuesday,
+              Wednesday: test44Wednesday,
+              thursday: test55Thursday,
+              Friday: test66Friday,
+              Saturday: test77Saturday,
+              Sunday: test88Sunday,
+              TotaltimeRowwise: test99RowWisetotal,
+            };
+
+            this.dynamicArray.push(this.testDynamic);
+            if (test10Shift == 0) {
+              this.dynamicArray.shift();
+              test10Shift = 1;
+            }
+          }
+        }
+
+        //  }
+      });
   }
   //monday posttimesheet
   postTimesheet(timesheetObject) {
@@ -220,14 +359,14 @@ empCode="ABC";
   addRow(index) {
     this.newDynamic = {
       projectName: "",
-      Monday: "",
-      Tuesday: "",
-      Wednesday: "",
-      thursday: "",
-      Friday: "",
+      Monday: "0",
+      Tuesday: "0",
+      Wednesday: "0",
+      thursday: "0",
+      Friday: "0",
       Saturday: "0",
       Sunday: "0",
-      TotaltimeRowwise: "",
+      TotaltimeRowwise: "0",
     };
     this.dynamicArray.push(this.newDynamic);
     //  this.toastr.success("New row added successfully", "New Row");
@@ -243,7 +382,8 @@ empCode="ABC";
       //);
       return false;
     } else {
-      this.dynamicArray.splice(index, 1);
+      // this.dynamicArray.splice(index, 1);
+      this.dynamicArray.pop();
       // this.toastr.warning("Row deleted successfully", "Delete row");
       return true;
     }
@@ -346,6 +486,46 @@ empCode="ABC";
       eight.getFullYear() +
       " (Sun)";
     console.log(this.sunn);
+
+    /*
+    api operation and push pop operation in prev date is 
+      performed here
+    */
+    //here first we delte the all value of dynamic array
+    this.dynamicArray.length = 0;
+    //here we add one single value which is empty
+    this.newDynamic = {
+      projectName: "",
+      Monday: "0",
+      Tuesday: "0",
+      Wednesday: "0",
+      thursday: "0",
+      Friday: "0",
+      Saturday: "0",
+      Sunday: "0",
+      TotaltimeRowwise: "0",
+    };
+    this.dynamicArray.push(this.newDynamic);
+    //here we zero the total time
+    this.totalTimeMonCol = 0;
+    this.totalTimeTueCol = 0;
+    this.totalTimeWedCol = 0;
+    this.totalTimeThurCol = 0;
+    this.totalTimeFriCol = 0;
+    // this.totalTimeSatCol = data[47].timesheet.totalTimeHour;
+    //    this.totalTimeSunCol = data[47].timesheet.totalTimeHour;
+    //   this.totalTimeCol = data[47].timesheet.totalTimeHour;
+    this.totalTimeCol =
+      this.totalTimeMonCol +
+      this.totalTimeTueCol +
+      this.totalTimeWedCol +
+      this.totalTimeThurCol +
+      this.totalTimeSunCol +
+      this.totalTimeFriCol +
+      this.totalTimeSatCol;
+
+    //calling a retrive data function
+    this.getAllTimesheetByEmpCode();
   }
   myFunctionNextdate() {
     //let first: Date = new Date(this.date);
@@ -438,6 +618,46 @@ empCode="ABC";
       eight.getFullYear() +
       " (Sun)";
     console.log(this.sunn);
+
+    /*
+    api operation and push pop operation in next date is 
+      performed here
+    */
+    //here first we delte the all value of dynamic array
+    this.dynamicArray.length = 0;
+    //here we add one single value which is empty
+    this.newDynamic = {
+      projectName: "",
+      Monday: "0",
+      Tuesday: "0",
+      Wednesday: "0",
+      thursday: "0",
+      Friday: "0",
+      Saturday: "0",
+      Sunday: "0",
+      TotaltimeRowwise: "0",
+    };
+    this.dynamicArray.push(this.newDynamic);
+    //here we zero the total time
+    this.totalTimeMonCol = 0;
+    this.totalTimeTueCol = 0;
+    this.totalTimeWedCol = 0;
+    this.totalTimeThurCol = 0;
+    this.totalTimeFriCol = 0;
+    // this.totalTimeSatCol = data[47].timesheet.totalTimeHour;
+    //    this.totalTimeSunCol = data[47].timesheet.totalTimeHour;
+    //   this.totalTimeCol = data[47].timesheet.totalTimeHour;
+    this.totalTimeCol =
+      this.totalTimeMonCol +
+      this.totalTimeTueCol +
+      this.totalTimeWedCol +
+      this.totalTimeThurCol +
+      this.totalTimeSunCol +
+      this.totalTimeFriCol +
+      this.totalTimeSatCol;
+
+    //calling a retrive data function
+    this.getAllTimesheetByEmpCode();
   }
 
   /*database part of monday*/
@@ -524,12 +744,12 @@ empCode="ABC";
     // let dateString = "15/03/2021 (Mon)";
     let dateStrin = dateString.split(" ", 1);
 
-    var strrr = dateStrin.toString();
+    let strrr = dateStrin.toString();
     console.log(strrr);
-    var first = "";
-    var sec = "";
-    var third = "";
-    var temp = 0;
+    let first = "";
+    let sec = "";
+    let third = "";
+    let temp = 0;
     for (let iii = 0; iii < strrr.length; iii++) {
       if (temp == 0) {
         if (strrr.charAt(iii) == "/") {
@@ -561,12 +781,60 @@ empCode="ABC";
       }
     }
 
-    var str = third + "/" + sec + "/" + first;
+    let str = third + "/" + sec + "/" + first;
     console.log(str);
     let newDate = new Date(str);
 
     console.log(newDate);
     return newDate;
+  }
+  dateFormatChangeee(dateString) {
+    // let dateString = "15/03/2021 (Mon)";
+    let dateStrin = dateString.split(" ", 1);
+
+    let strrr = dateStrin.toString();
+    console.log(strrr);
+    let first = "";
+    let sec = "";
+    let third = "";
+    let temp = 0;
+    for (let iii = 0; iii < strrr.length; iii++) {
+      if (temp == 0) {
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+          iii++;
+        }
+
+        if (temp == 0) {
+          first = first + strrr.charAt(iii);
+        }
+      }
+      if (temp == 1) {
+        console.log("hii");
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+          iii++;
+        }
+        if (temp == 1) {
+          sec = sec + strrr.charAt(iii);
+        }
+      }
+      if (temp == 2) {
+        if (strrr.charAt(iii) == "/") {
+          temp++;
+        }
+        if (temp == 2) {
+          third = third + strrr.charAt(iii);
+        }
+      }
+    }
+
+    let str = third + "-" + sec + "-" + first;
+    console.log(str);
+    //  let newDate = new Date(str);
+
+    //  console.log(newDate);
+    return str;
   }
 
   //Monday database array
@@ -637,15 +905,20 @@ empCode="ABC";
     console.log(this.dynamicArray);
     console.log("this is length of dynamic array " + this.dynamicArray.length);
 
-    var ProjectWise: String[] = this.dynamicArray.map((i) => i.projectName);
-    var str = ProjectWise.toString();
-    var splitted = str.split(",");
+    let ProjectWise: String[];
+    ProjectWise = this.dynamicArray.map((i) => i.projectName);
+    let str = "";
+    str = ProjectWise.toString();
+    let splitted = str.split(",");
     for (let mm = 0; mm < splitted.length; mm++) {}
 
     //Monday
-    var data1 = this.dynamicArray.map((i) => i.Monday);
-    var str1 = data1.toString();
-    var splitted1 = str1.split(",");
+    let data1: String[];
+    data1 = this.dynamicArray.map((i) => i.Monday);
+    let str1 = "";
+    str1 = data1.toString();
+    let splitted1: String[];
+    splitted1 = str1.split(",");
     this.totalTimeMonCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -669,9 +942,9 @@ empCode="ABC";
     }
 
     //Tuesday
-    var data2 = this.dynamicArray.map((t) => t.Tuesday);
-    var str2 = data2.toString();
-    var splitted2 = str2.split(",");
+    let data2 = this.dynamicArray.map((t) => t.Tuesday);
+    let str2 = data2.toString();
+    let splitted2 = str2.split(",");
     this.totalTimeTueCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -693,9 +966,9 @@ empCode="ABC";
     }
 
     //Wednesday
-    var data3 = this.dynamicArray.map((t) => t.Wednesday);
-    var str3 = data3.toString();
-    var splitted3 = str3.split(",");
+    let data3 = this.dynamicArray.map((t) => t.Wednesday);
+    let str3 = data3.toString();
+    let splitted3 = str3.split(",");
     this.totalTimeWedCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -717,9 +990,9 @@ empCode="ABC";
     }
 
     //thrusday
-    var data4 = this.dynamicArray.map((t) => t.thursday);
-    var str4 = data4.toString();
-    var splitted4 = str4.split(",");
+    let data4 = this.dynamicArray.map((t) => t.thursday);
+    let str4 = data4.toString();
+    let splitted4 = str4.split(",");
     this.totalTimeThurCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -741,9 +1014,9 @@ empCode="ABC";
     }
 
     //friday
-    var data5 = this.dynamicArray.map((t) => t.Friday);
-    var str5 = data5.toString();
-    var splitted5 = str5.split(",");
+    let data5 = this.dynamicArray.map((t) => t.Friday);
+    let str5 = data5.toString();
+    let splitted5 = str5.split(",");
     this.totalTimeFriCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -765,9 +1038,9 @@ empCode="ABC";
     }
 
     //saturaday
-    var data6 = this.dynamicArray.map((t) => t.Saturday);
-    var str6 = data6.toString();
-    var splitted6 = str6.split(",");
+    let data6 = this.dynamicArray.map((t) => t.Saturday);
+    let str6 = data6.toString();
+    let splitted6 = str6.split(",");
     this.totalTimeSatCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -789,9 +1062,9 @@ empCode="ABC";
     }
 
     //sunday
-    var data7 = this.dynamicArray.map((t) => t.Sunday);
-    var str7 = data7.toString();
-    var splitted7 = str7.split(",");
+    let data7 = this.dynamicArray.map((t) => t.Sunday);
+    let str7 = data7.toString();
+    let splitted7 = str7.split(",");
     this.totalTimeSunCol = 0;
     if (splitted != null) {
       for (let mm = 0; mm < splitted.length; mm++) {
@@ -812,14 +1085,14 @@ empCode="ABC";
       this.postTimesheet(this.timesheetObject7);
     }
 
-    var total1: number = +data1;
-    var total2: number = +data2;
-    var total3: number = +data3;
-    var total4: number = +data4;
-    var total5: number = +data5;
-    var total6: number = +data6;
-    var total7: number = +data7;
-    var ROWtotal: number =
+    let total1: number = +data1;
+    let total2: number = +data2;
+    let total3: number = +data3;
+    let total4: number = +data4;
+    let total5: number = +data5;
+    let total6: number = +data6;
+    let total7: number = +data7;
+    let ROWtotal: number =
       total1 + total2 + total3 + total4 + total5 + total6 + total7;
 
     /*
