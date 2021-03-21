@@ -12,6 +12,7 @@ import { project } from "./project";
   styleUrls: ["./grid-view.component.scss"],
 })
 export class GridViewComponent implements OnInit {
+  testNumberSave: number = 0;
   /*
   this is the part of date
   */
@@ -44,6 +45,7 @@ export class GridViewComponent implements OnInit {
   */
 
   totalTimeRow = new Array();
+  // TotaltimeRowwise: number = 0;
 
   /*
   this is the part of project dropdown
@@ -246,6 +248,7 @@ here we call main retrive
       )
       .subscribe((data: any) => {
         console.log("Timesheet data by Emp Code", data);
+
         //  this.dynamicArray = this.testDynamic;
         // console.log("this dynamic test is working " + this.dynamicArray);
         /*this is testing part*/
@@ -274,33 +277,326 @@ here we call main retrive
           ) {
             console.log("second time for loop");
             test11Project = data[rowLength2].timesheetDetails[t2].project;
+            /*
             test22Monday = data[rowLength2].timesheetDetails[t2].hour;
             test33Tuesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
             test44Wednesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
             test55Thursday = data[rowLength2 + 3].timesheetDetails[t2].hour;
             test66Friday = data[rowLength2 + 4].timesheetDetails[t2].hour;
-            //  test77Saturday = data[rowLength2+5].timesheetDetails[t2].hour;
-            // test88Sunday = data[rowLength2+6].timesheetDetails[t2].hour;
+            test77Saturday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+            test88Sunday = data[rowLength2 + 6].timesheetDetails[t2].hour;
             test99RowWisetotal =
               test22Monday +
               test33Tuesday +
               test44Wednesday +
               test55Thursday +
               test66Friday; //test77Saturday+test88Sunday
-            console.log("this is inside ashutosh " + test11Project);
-            console.log("this is inside ashutosh " + test22Monday);
-            console.log("this is inside ashutosh " + test33Tuesday);
+         */
+            let Checkdate: Date = new Date(
+              data[rowLength2].timesheet.attedanceDate
+            );
+            let Checkdate1: Date = new Date(
+              data[rowLength2 + 1].timesheet.attedanceDate
+            );
+            let Checkdate2: Date = new Date(
+              data[rowLength2 + 2].timesheet.attedanceDate
+            );
+            let Checkdate3: Date = new Date(
+              data[rowLength2 + 3].timesheet.attedanceDate
+            );
+            let Checkdate4: Date = new Date(
+              data[rowLength2 + 4].timesheet.attedanceDate
+            );
+            let Checkdate5: Date = new Date(
+              data[rowLength2 + 5].timesheet.attedanceDate
+            );
+            let Checkdate6: Date = new Date(
+              data[rowLength2 + 6].timesheet.attedanceDate
+            );
+
+            //Monday
+            if (Checkdate.getDay() == 1) {
+              test22Monday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 1) {
+              test22Monday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 1) {
+              test22Monday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 1) {
+              test22Monday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 1) {
+              test22Monday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 1) {
+              test22Monday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 1) {
+              test22Monday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello monday");
+              this.totalTimeMonCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Tuesday
+            if (Checkdate.getDay() == 2) {
+              test33Tuesday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 2) {
+              test33Tuesday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Tuesday");
+              this.totalTimeTueCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Wednesday
+            if (Checkdate.getDay() == 3) {
+              test44Wednesday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 3) {
+              test44Wednesday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Wednesday");
+              this.totalTimeWedCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Thursday
+            if (Checkdate.getDay() == 4) {
+              test55Thursday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 4) {
+              test55Thursday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Thursday");
+              this.totalTimeThurCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Friday
+            if (Checkdate.getDay() == 5) {
+              test66Friday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 5) {
+              test66Friday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 5) {
+              test66Friday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 5) {
+              test66Friday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 5) {
+              test66Friday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 5) {
+              test66Friday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 5) {
+              test66Friday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Friday");
+              this.totalTimeFriCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Saturday
+            if (Checkdate.getDay() == 6) {
+              test77Saturday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 6) {
+              test77Saturday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Saturday");
+              this.totalTimeSatCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+
+            //Sunday
+            if (Checkdate.getDay() == 0) {
+              test88Sunday = data[rowLength2].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol = data[rowLength2].timesheet.totalTimeHour;
+            } else if (Checkdate1.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 1].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 1].timesheet.totalTimeHour;
+            } else if (Checkdate2.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 2].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 2].timesheet.totalTimeHour;
+            } else if (Checkdate3.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 3].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 3].timesheet.totalTimeHour;
+            } else if (Checkdate4.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 4].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 4].timesheet.totalTimeHour;
+            } else if (Checkdate5.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 5].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 5].timesheet.totalTimeHour;
+            } else if (Checkdate6.getDay() == 0) {
+              test88Sunday = data[rowLength2 + 6].timesheetDetails[t2].hour;
+              console.log("hello Sunday");
+              this.totalTimeSunCol =
+                data[rowLength2 + 6].timesheet.totalTimeHour;
+            }
+            //total time row wise
+            test99RowWisetotal =
+              test22Monday +
+              test33Tuesday +
+              test44Wednesday +
+              test55Thursday +
+              test66Friday;
+
+            console.log(
+              "this is inside ashutosh " +
+                data[rowLength2 + 1].timesheet.attedanceDate
+            );
+
+            console.log(" ashutosh " + Checkdate1.getDay());
+            console.log("this is inside ashutosh " + Checkdate1);
             console.log("this is inside ashutosh " + test44Wednesday);
             console.log("this is inside ashutosh " + test55Thursday);
             console.log("this is inside ashutosh " + test66Friday);
             console.log("this is inside ashutosh " + test77Saturday);
             console.log("this is inside ashutosh " + test88Sunday);
-            this.totalTimeMonCol = data[rowLength2].timesheet.totalTimeHour;
-            this.totalTimeTueCol = data[rowLength2 + 1].timesheet.totalTimeHour;
-            this.totalTimeWedCol = data[rowLength2 + 2].timesheet.totalTimeHour;
-            this.totalTimeThurCol =
-              data[rowLength2 + 3].timesheet.totalTimeHour;
-            this.totalTimeFriCol = data[rowLength2 + 4].timesheet.totalTimeHour;
+            //this.totalTimeMonCol = data[rowLength2].timesheet.totalTimeHour;
+            // this.totalTimeTueCol = data[rowLength2 + 1].timesheet.totalTimeHour;
+            //  this.totalTimeWedCol = data[rowLength2 + 2].timesheet.totalTimeHour;
+            //   this.totalTimeThurCol =     data[rowLength2 + 3].timesheet.totalTimeHour;
+            //    this.totalTimeFriCol = data[rowLength2 + 4].timesheet.totalTimeHour;
             // this.totalTimeSatCol = data[rowLength2+5].timesheet.totalTimeHour;
             //    this.totalTimeSunCol = data[rowLength2+6].timesheet.totalTimeHour;
             //   this.totalTimeCol = data[47].timesheet.totalTimeHour;
@@ -902,227 +1198,266 @@ here we call main retrive
 
   //common save for all the fill date
   saveEx() {
-    console.log(this.dynamicArray);
-    console.log("this is length of dynamic array " + this.dynamicArray.length);
+    //this.timesheetObject1.timesheet = null;
+    this.timesheetObject1.timesheetDetails = [];
+    this.timesheetObject2.timesheetDetails = [];
+    this.timesheetObject3.timesheetDetails = [];
+    this.timesheetObject4.timesheetDetails = [];
+    this.timesheetObject5.timesheetDetails = [];
+    this.timesheetObject6.timesheetDetails = [];
+    this.timesheetObject7.timesheetDetails = [];
+    if (this.testNumberSave == 0) {
+      console.log(this.dynamicArray);
+      console.log(
+        "this is length of dynamic array " + this.dynamicArray.length
+      );
 
-    let ProjectWise: String[];
-    ProjectWise = this.dynamicArray.map((i) => i.projectName);
-    let str = "";
-    str = ProjectWise.toString();
-    let splitted = str.split(",");
-    for (let mm = 0; mm < splitted.length; mm++) {}
-
-    //Monday
-    let data1: String[];
-    data1 = this.dynamicArray.map((i) => i.Monday);
-    let str1 = "";
-    str1 = data1.toString();
-    let splitted1: String[];
-    splitted1 = str1.split(",");
-    this.totalTimeMonCol = 0;
-    if (splitted != null) {
+      let ProjectWise: String[];
+      ProjectWise = this.dynamicArray.map((i) => i.projectName);
+      let str = "";
+      str = ProjectWise.toString();
+      let splitted = null;
+      splitted = str.split(",");
       for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr = this.timesheetArray;
-        // let x= [...timesheetArr];
-        let newDate = new Date(this.dateFormatChange(this.mon));
-        this.timesheetObject1.timesheet.attedanceDate = newDate;
-        console.log("string to date", newDate);
-        this.totalTimeMonCol = this.totalTimeMonCol + +splitted1[mm];
-        console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
-        this.timesheetDetailsArray.comments = "ABCD";
-        this.timesheetDetailsArray.hour = +splitted1[mm];
-        this.timesheetDetailsArray.project = splitted[mm];
-        this.timesheetObject1.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray))
+        console.log(
+          "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjppppppppppppppprrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrroooooooooooooooooooooooojjjjjjjjjjjjjjjjjjjjjeeeeeeeeeeeeeeeeeeeeeeecccccccccccccccccttttttttttttttttttttttttttttttttt" +
+            splitted[mm]
         );
       }
-      this.timesheetObject1.timesheet.totalTimeHour = this.totalTimeMonCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject1);
-    }
 
-    //Tuesday
-    let data2 = this.dynamicArray.map((t) => t.Tuesday);
-    let str2 = data2.toString();
-    let splitted2 = str2.split(",");
-    this.totalTimeTueCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr2 = this.timesheetArray2;
-        let newDate2 = new Date(this.dateFormatChange(this.tue));
-        this.timesheetObject2.timesheet.attedanceDate = newDate2;
-        this.totalTimeTueCol = this.totalTimeTueCol + +splitted2[mm];
-        console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
-        this.timesheetDetailsArray2.comments = "ABCD";
-        this.timesheetDetailsArray2.hour = +splitted2[mm];
-        this.timesheetDetailsArray2.project = splitted[mm];
-        this.timesheetObject2.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray2))
-        );
+      //Monday
+      var data1: String[];
+      data1 = this.dynamicArray.map((i) => i.Monday);
+      let str1 = "";
+      str1 = data1.toString();
+      var splitted1: String[];
+      splitted1 = str1.split(",");
+      this.totalTimeMonCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr = this.timesheetArray;
+          // let x= [...timesheetArr];
+          let newDate = new Date(this.dateFormatChange(this.mon));
+          this.timesheetObject1.timesheet.attedanceDate = newDate;
+          console.log("string to date", newDate);
+          this.totalTimeMonCol = this.totalTimeMonCol + +splitted1[mm];
+          console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
+          this.timesheetDetailsArray.comments = "ABCD";
+          this.timesheetDetailsArray.hour = +splitted1[mm];
+          this.timesheetDetailsArray.project = splitted[mm];
+          this.timesheetObject1.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray))
+          );
+        }
+        this.timesheetObject1.timesheet.totalTimeHour = this.totalTimeMonCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject1);
       }
-      this.timesheetObject2.timesheet.totalTimeHour = this.totalTimeTueCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject2);
-    }
 
-    //Wednesday
-    let data3 = this.dynamicArray.map((t) => t.Wednesday);
-    let str3 = data3.toString();
-    let splitted3 = str3.split(",");
-    this.totalTimeWedCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr3 = this.timesheetArray3;
-        let newDate3 = new Date(this.dateFormatChange(this.wed));
-        this.timesheetObject3.timesheet.attedanceDate = newDate3;
-        this.totalTimeWedCol = this.totalTimeWedCol + +splitted3[mm];
-        console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
-        this.timesheetDetailsArray3.comments = "ABCD";
-        this.timesheetDetailsArray3.hour = +splitted3[mm];
-        this.timesheetDetailsArray3.project = splitted[mm];
-        this.timesheetObject3.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray3))
-        );
+      //Tuesday
+      var data2: String[];
+      data2 = this.dynamicArray.map((t) => t.Tuesday);
+      let str2 = "";
+      str2 = data2.toString();
+      var splitted2: String[];
+      splitted2 = str2.split(",");
+      this.totalTimeTueCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr2 = this.timesheetArray2;
+          let newDate2 = new Date(this.dateFormatChange(this.tue));
+          this.timesheetObject2.timesheet.attedanceDate = newDate2;
+          this.totalTimeTueCol = this.totalTimeTueCol + +splitted2[mm];
+          console.log(this.tue + " " + splitted[mm] + " " + splitted2[mm]);
+          this.timesheetDetailsArray2.comments = "ABCD";
+          this.timesheetDetailsArray2.hour = +splitted2[mm];
+          this.timesheetDetailsArray2.project = splitted[mm];
+          this.timesheetObject2.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray2))
+          );
+        }
+        this.timesheetObject2.timesheet.totalTimeHour = this.totalTimeTueCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject2);
       }
-      this.timesheetObject3.timesheet.totalTimeHour = this.totalTimeWedCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject3);
-    }
 
-    //thrusday
-    let data4 = this.dynamicArray.map((t) => t.thursday);
-    let str4 = data4.toString();
-    let splitted4 = str4.split(",");
-    this.totalTimeThurCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr4 = this.timesheetArray4;
-        let newDate4 = new Date(this.dateFormatChange(this.thur));
-        this.timesheetObject4.timesheet.attedanceDate = newDate4;
-        this.totalTimeThurCol = this.totalTimeThurCol + +splitted4[mm];
-        console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
-        this.timesheetDetailsArray4.comments = "ABCD";
-        this.timesheetDetailsArray4.hour = +splitted4[mm];
-        this.timesheetDetailsArray4.project = splitted[mm];
-        this.timesheetObject4.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray4))
-        );
+      //Wednesday
+      var data3: String[];
+      data3 = this.dynamicArray.map((t) => t.Wednesday);
+      let str3 = "";
+      str3 = data3.toString();
+      var splitted3: String[];
+      splitted3 = str3.split(",");
+      this.totalTimeWedCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr3 = this.timesheetArray3;
+          let newDate3 = new Date(this.dateFormatChange(this.wed));
+          this.timesheetObject3.timesheet.attedanceDate = newDate3;
+          this.totalTimeWedCol = this.totalTimeWedCol + +splitted3[mm];
+          console.log(this.wed + " " + splitted[mm] + " " + splitted3[mm]);
+          this.timesheetDetailsArray3.comments = "ABCD";
+          this.timesheetDetailsArray3.hour = +splitted3[mm];
+          this.timesheetDetailsArray3.project = splitted[mm];
+          this.timesheetObject3.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray3))
+          );
+        }
+        this.timesheetObject3.timesheet.totalTimeHour = this.totalTimeWedCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject3);
       }
-      this.timesheetObject4.timesheet.totalTimeHour = this.totalTimeThurCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject4);
-    }
 
-    //friday
-    let data5 = this.dynamicArray.map((t) => t.Friday);
-    let str5 = data5.toString();
-    let splitted5 = str5.split(",");
-    this.totalTimeFriCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr5 = this.timesheetArray5;
-        let newDate5 = new Date(this.dateFormatChange(this.fri));
-        this.timesheetObject5.timesheet.attedanceDate = newDate5;
-        this.totalTimeFriCol = this.totalTimeFriCol + +splitted5[mm];
-        console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
-        this.timesheetDetailsArray5.comments = "ABCD";
-        this.timesheetDetailsArray5.hour = +splitted5[mm];
-        this.timesheetDetailsArray5.project = splitted[mm];
-        this.timesheetObject5.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray5))
-        );
+      //thrusday
+      var data4: String[];
+      data4 = this.dynamicArray.map((t) => t.thursday);
+      let str4 = "";
+      str4 = data4.toString();
+      var splitted4: String[];
+      splitted4 = str4.split(",");
+      this.totalTimeThurCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr4 = this.timesheetArray4;
+          let newDate4 = new Date(this.dateFormatChange(this.thur));
+          this.timesheetObject4.timesheet.attedanceDate = newDate4;
+          this.totalTimeThurCol = this.totalTimeThurCol + +splitted4[mm];
+          console.log(this.thur + " " + splitted[mm] + " " + splitted4[mm]);
+          this.timesheetDetailsArray4.comments = "ABCD";
+          this.timesheetDetailsArray4.hour = +splitted4[mm];
+          this.timesheetDetailsArray4.project = splitted[mm];
+          this.timesheetObject4.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray4))
+          );
+        }
+        this.timesheetObject4.timesheet.totalTimeHour = this.totalTimeThurCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject4);
       }
-      this.timesheetObject5.timesheet.totalTimeHour = this.totalTimeFriCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject5);
-    }
 
-    //saturaday
-    let data6 = this.dynamicArray.map((t) => t.Saturday);
-    let str6 = data6.toString();
-    let splitted6 = str6.split(",");
-    this.totalTimeSatCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr6 = this.timesheetArray6;
-        let newDate6 = new Date(this.dateFormatChange(this.sat));
-        this.timesheetObject6.timesheet.attedanceDate = newDate6;
-        this.totalTimeSatCol = this.totalTimeSatCol + +splitted6[mm];
-        console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
-        this.timesheetDetailsArray6.comments = "ABCD";
-        this.timesheetDetailsArray6.hour = +splitted6[mm];
-        this.timesheetDetailsArray6.project = splitted[mm];
-        this.timesheetObject6.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray6))
-        );
+      //friday
+      var data5: String[];
+      data5 = this.dynamicArray.map((t) => t.Friday);
+      let str5 = "";
+      str5 = data5.toString();
+      var splitted5: String[];
+      splitted5 = str5.split(",");
+      this.totalTimeFriCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr5 = this.timesheetArray5;
+          let newDate5 = new Date(this.dateFormatChange(this.fri));
+          this.timesheetObject5.timesheet.attedanceDate = newDate5;
+          this.totalTimeFriCol = this.totalTimeFriCol + +splitted5[mm];
+          console.log(this.fri + " " + splitted[mm] + " " + splitted5[mm]);
+          this.timesheetDetailsArray5.comments = "ABCD";
+          this.timesheetDetailsArray5.hour = +splitted5[mm];
+          this.timesheetDetailsArray5.project = splitted[mm];
+          this.timesheetObject5.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray5))
+          );
+        }
+        this.timesheetObject5.timesheet.totalTimeHour = this.totalTimeFriCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject5);
       }
-      this.timesheetObject6.timesheet.totalTimeHour = this.totalTimeSatCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject6);
-    }
 
-    //sunday
-    let data7 = this.dynamicArray.map((t) => t.Sunday);
-    let str7 = data7.toString();
-    let splitted7 = str7.split(",");
-    this.totalTimeSunCol = 0;
-    if (splitted != null) {
-      for (let mm = 0; mm < splitted.length; mm++) {
-        let timesheetArr7 = this.timesheetArray2;
-        let newDate7 = new Date(this.dateFormatChange(this.sunn));
-        this.timesheetObject7.timesheet.attedanceDate = newDate7;
-        this.totalTimeSunCol = this.totalTimeSunCol + +splitted7[mm];
-        console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
-        this.timesheetDetailsArray7.comments = "ABCD";
-        this.timesheetDetailsArray7.hour = +splitted7[mm];
-        this.timesheetDetailsArray7.project = splitted[mm];
-        this.timesheetObject7.timesheetDetails.push(
-          JSON.parse(JSON.stringify(this.timesheetDetailsArray7))
-        );
+      //saturaday
+      var data6: String[];
+      data6 = this.dynamicArray.map((t) => t.Saturday);
+      let str6 = "";
+      str6 = data6.toString();
+      var splitted6: String[];
+      splitted6 = str6.split(",");
+      this.totalTimeSatCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr6 = this.timesheetArray6;
+          let newDate6 = new Date(this.dateFormatChange(this.sat));
+          this.timesheetObject6.timesheet.attedanceDate = newDate6;
+          this.totalTimeSatCol = this.totalTimeSatCol + +splitted6[mm];
+          console.log(this.sat + " " + splitted[mm] + " " + splitted6[mm]);
+          this.timesheetDetailsArray6.comments = "ABCD";
+          this.timesheetDetailsArray6.hour = +splitted6[mm];
+          this.timesheetDetailsArray6.project = splitted[mm];
+          this.timesheetObject6.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray6))
+          );
+        }
+        this.timesheetObject6.timesheet.totalTimeHour = this.totalTimeSatCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject6);
       }
-      this.timesheetObject7.timesheet.totalTimeHour = this.totalTimeSunCol;
-      // this.timesheetObject.timesheetDetails=this.timesheetArray;
-      this.postTimesheet(this.timesheetObject7);
-    }
 
-    let total1: number = +data1;
-    let total2: number = +data2;
-    let total3: number = +data3;
-    let total4: number = +data4;
-    let total5: number = +data5;
-    let total6: number = +data6;
-    let total7: number = +data7;
-    let ROWtotal: number =
-      total1 + total2 + total3 + total4 + total5 + total6 + total7;
+      //sunday
+      var data7: String[];
+      data7 = this.dynamicArray.map((t) => t.Sunday);
+      let str7 = "";
+      str7 = data7.toString();
+      var splitted7: String[];
+      splitted7 = str7.split(",");
+      this.totalTimeSunCol = 0;
+      if (splitted != null) {
+        for (let mm = 0; mm < splitted.length; mm++) {
+          let timesheetArr7 = this.timesheetArray2;
+          let newDate7 = new Date(this.dateFormatChange(this.sunn));
+          this.timesheetObject7.timesheet.attedanceDate = newDate7;
+          this.totalTimeSunCol = this.totalTimeSunCol + +splitted7[mm];
+          console.log(this.sunn + " " + splitted[mm] + " " + splitted7[mm]);
+          this.timesheetDetailsArray7.comments = "ABCD";
+          this.timesheetDetailsArray7.hour = +splitted7[mm];
+          this.timesheetDetailsArray7.project = splitted[mm];
+          this.timesheetObject7.timesheetDetails.push(
+            JSON.parse(JSON.stringify(this.timesheetDetailsArray7))
+          );
+        }
+        this.timesheetObject7.timesheet.totalTimeHour = this.totalTimeSunCol;
+        // this.timesheetObject.timesheetDetails=this.timesheetArray;
+        this.postTimesheet(this.timesheetObject7);
+      }
 
-    /*
+      splitted.length = 0;
+      /*
+      let total1: number = +data1;
+      let total2: number = +data2;
+      let total3: number = +data3;
+      let total4: number = +data4;
+      let total5: number = +data5;
+      let total6: number = +data6;
+      let total7: number = +data7;
+      this.TotaltimeRowwise =
+        total1 + total2 + total3 + total4 + total5 + total6 + total7;
+         */
+      /*
       total time column wise
       */
-    this.totalTimeCol =
-      this.totalTimeMonCol +
-      this.totalTimeTueCol +
-      this.totalTimeWedCol +
-      this.totalTimeThurCol +
-      this.totalTimeSunCol +
-      this.totalTimeFriCol +
-      this.totalTimeSatCol;
+      this.totalTimeCol =
+        this.totalTimeMonCol +
+        this.totalTimeTueCol +
+        this.totalTimeWedCol +
+        this.totalTimeThurCol +
+        this.totalTimeSunCol +
+        this.totalTimeFriCol +
+        this.totalTimeSatCol;
 
-    /*
+      /*
       total time row wise
       */
 
-    for (let mm = 0; mm < splitted.length; mm++) {
-      this.totalTimeRow.push(
-        +splitted1[mm] +
-          +splitted2[mm] +
-          +splitted3[mm] +
-          +splitted4[mm] +
-          +splitted5[mm] +
-          +splitted6[mm] +
-          +splitted7[mm]
-      );
+      for (let mm = 0; mm < splitted.length; mm++) {
+        this.totalTimeRow.push(
+          +splitted1[mm] +
+            +splitted2[mm] +
+            +splitted3[mm] +
+            +splitted4[mm] +
+            +splitted5[mm] +
+            +splitted6[mm] +
+            +splitted7[mm]
+        );
 
-      console.log("this is total row wise time" + this.totalTimeRow);
+        console.log("this is total row wise time" + this.totalTimeRow);
+      }
+      //this.testNumberSave = 1;
     }
   }
 }
