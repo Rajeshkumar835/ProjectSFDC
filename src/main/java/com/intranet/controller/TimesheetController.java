@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
+import com.intranet.model.TimesheetApproval;
 import com.intranet.service.TimesheetService;
 
 @RestController
@@ -74,6 +75,20 @@ public class TimesheetController {
 			LOGGER.error("Error while getting All Timesheet -> ", e);
 		}
 		return new ResponseEntity<List<TimesheetDTO>>(listTimesheet, HttpStatus.OK);
+
+	}
+	
+	//Timesheet approval
+	@CrossOrigin
+	@PostMapping("/getAllApprovalByEmpCode")
+	public ResponseEntity<List<Timesheet>> getAllApprovalByEmpCode(@RequestBody TimesheetApproval timesheetApproval) {
+		List<Timesheet> listTimesheet = null;
+		try {
+			listTimesheet = timesheetService.getAllApprovalByEmpCode(timesheetApproval);
+		} catch (Exception e) {
+			LOGGER.error("Error while getting All Timesheet -> ", e);
+		}
+		return new ResponseEntity<List<Timesheet>>(listTimesheet, HttpStatus.OK);
 
 	}
 

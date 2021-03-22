@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
 import com.intranet.entity.TimesheetDetails;
+import com.intranet.model.TimesheetApproval;
 import com.intranet.repository.TimesheetDetailsRepository;
 import com.intranet.repository.TimesheetRepository;
 
@@ -75,6 +76,21 @@ public class TimesheetServiceImpl implements TimesheetService {
 			timesheetDTOList.add(timesheetDTO);
 		}
 		return timesheetDTOList;
+	}
+	
+	//this service implementation for service part
+	
+	@Override
+	public List<Timesheet> getAllApprovalByEmpCode(TimesheetApproval timesheetApproval) {
+		String empCode=timesheetApproval.getEmpCpde();
+		String startDate = timesheetApproval.getStartDate();
+		String endDate=timesheetApproval.getEndDate();
+		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode, startDate, endDate);
+		for (Timesheet timesheet : timesheetList) {
+			timesheet.setStatus("Approved");
+			timesheetRepository.save(timesheet);
+		}
+		return timesheetList;
 	}
 
 }

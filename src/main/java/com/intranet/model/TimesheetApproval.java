@@ -3,7 +3,7 @@ package com.intranet.model;
 import lombok.Data;
 
 @Data
-public class TimesheetDateModel {
+public class TimesheetApproval {
 
 	private String empCpde;
 
