@@ -100,37 +100,6 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 		return responseEmployeeInfoDTO;
 	}
 
-//	private EmployeeInfo transformDTOtoBO(EmployeeInfoDTO employeeInfoDTO, EmployeeInfo employeeInfo) {
-//
-//		// Get Client Info Object by Code
-//		Optional<ClientInfo> clientOpt = clientInfoService.findById(employeeInfoDTO.getClientCode());
-//		ClientInfo clientInfo = null;
-//		if (clientOpt.isPresent()) {
-//			clientInfo = clientOpt.get();
-//		} else {
-//			return null;
-//		}
-//
-//		employeeInfo.setEmpCode(employeeInfoDTO.getEmpCode());
-//		employeeInfo.setFirstName(employeeInfoDTO.getFirstName());
-//		employeeInfo.setMiddleName(employeeInfoDTO.getMiddleName());
-//		employeeInfo.setLastName(employeeInfoDTO.getLastName());
-//		employeeInfo.setDesignation(employeeInfoDTO.getDesignation());
-//		employeeInfo.setHireDate(employeeInfoDTO.getHireDate());
-//		employeeInfo.setCurrSalary(employeeInfoDTO.getCurrSalary());
-//		employeeInfo.setDob(employeeInfoDTO.getDob());
-//		employeeInfo.setFatherName(employeeInfoDTO.getFatherName());
-//		employeeInfo.setContactNo(employeeInfoDTO.getContactNo());
-//		employeeInfo.setEmailId(employeeInfoDTO.getEmailId());
-//		employeeInfo.setHomePhoneNo(employeeInfoDTO.getHomePhoneNo());
-//		employeeInfo.setPassportNo(employeeInfoDTO.getPassportNo());
-//		employeeInfo.setPanCardNo(employeeInfoDTO.getPanCardNo());
-//		employeeInfo.setClientInfo(clientInfo);
-//
-//		return employeeInfo;
-//
-//	}
-
 	@Override
 	public List<EmployeeInfo> findAll() {
 		return employeeInfoRepository.findAll();
@@ -149,6 +118,33 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	@Override
 	public void deleteById(String id) {
 		employeeInfoRepository.deleteById(id);
+	}
+
+	@Override
+	public EmployeeInfoDTO findByEmpCode(String empCode) {
+		EmployeeInfoDTO empInfoDTO = new EmployeeInfoDTO();
+		EmployeeInfo empInfo = employeeInfoRepository.findByEmpCode(empCode);
+		empInfoDTO.setEmployeeInfo(empInfo);
+
+		List<QualificationInfo> qualificationInfoList = qualificationInfoRepository.findByEmpCode(empCode);
+		empInfoDTO.setQualificationInfo(qualificationInfoList);
+
+		List<BankInfo> bankInfoList = bankInfoRepository.findByEmpCode(empCode);
+		empInfoDTO.setBankInfo(bankInfoList);
+
+		List<AddressInfo> addressInfoList = addressInfoRepository.findByEmpCode(empCode);
+		empInfoDTO.setAddressInfo(addressInfoList);
+
+		List<CurrentExperience> currExperienceList = currentExperienceRepository.findByEmpCode(empCode);
+		empInfoDTO.setCurrentExperience(currExperienceList);
+
+		List<PreviousExperience> previousExperienceList = previousExperienceRepository.findByEmpCode(empCode);
+		empInfoDTO.setPreviousExperience(previousExperienceList);
+
+		ReportingManager reportingManager = reportingManagerRepository.findByEmpCode(empCode);
+		empInfoDTO.setReportingManager(reportingManager);
+
+		return empInfoDTO;
 	}
 
 }

@@ -9,7 +9,11 @@ public class EmployeeLeaveInfoDTO {
 
 	private long id;
 
+	private String empName;
+
 	private String empCode;
+
+	private String emailId;
 
 	private Date createdDate;
 

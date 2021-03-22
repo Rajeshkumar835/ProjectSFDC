@@ -15,10 +15,14 @@ export class TimesheetService {
     );
   }
 
-  getAllTimesheetByEmpCode(empCode) {
+  getAllTimesheetByEmpCode(empCode, startDate, endDate) {
     return this.http.get(
       "http://localhost:8443/api/v1/timesheet/getAllTimesheetByEmpCode/" +
-        empCode
+        empCode +
+        "/" +
+        startDate +
+        "/" +
+        endDate
     );
   }
 }

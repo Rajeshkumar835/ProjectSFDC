@@ -29,13 +29,7 @@ public class EmployeeLeaveInfo {
 	private String empCode;
 	
 	@Column(nullable = true)
-	private String firstName;
-
-	@Column(nullable = true)
-	private String middleName;
-
-	@Column(nullable = true)
-	private String lastName;
+	private String empName;
 	
 	@Column(nullable = true)
 	private String emailId;

@@ -62,13 +62,14 @@ public class TimesheetController {
 	public ResponseEntity<List<Timesheet>> findAll() {
 		return new ResponseEntity<List<Timesheet>>(timesheetService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
-	@GetMapping("/getAllTimesheetByEmpCode/{empCode}")
-	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode) {
+	@GetMapping("/getAllTimesheetByEmpCode/{empCode}/{startDate}/{endDate}")
+	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode,
+			@PathVariable String startDate, @PathVariable String endDate) {
 		List<TimesheetDTO> listTimesheet = null;
 		try {
-			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode);
+			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode, startDate, endDate);
 		} catch (Exception e) {
 			LOGGER.error("Error while getting All Timesheet -> ", e);
 		}

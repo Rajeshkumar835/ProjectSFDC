@@ -1,35 +1,60 @@
 <nav class="navbar navbar-dark bg-dark">
-  <nav class="navbar navbar-expand-lg navbar-light ">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">Intranet Application</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-right">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#"
+            >Home <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/lms-landingPage">LMS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/task-mgmt-creation">Task Management</a>
+          <a class="nav-link" routerLink="/task-mgmt-creation"
+            >Task Management</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/welcome-timesheet">Timesheet Management</a>
+          <a class="nav-link" routerLink="/welcome-timesheet"
+            >Timesheet Management</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/ApplyLeaveInfo">Leave Management</a>
+          <a class="nav-link" routerLink="/Leavevalue">Leave Management</a>
         </li>
 
         <div class="login-button">
-          <button type="button" class="btn btn-outline-info" routerLink="/employee-login">Employee Login</button>
-          <button type="button" class="btn btn-outline-info admin-login" routerLink="/admin-login">Admin Login</button>
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            routerLink="/employee-login"
+          >
+            Employee Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-info admin-login"
+            routerLink="/admin-login"
+          >
+            Admin Login
+          </button>
 
           <div class="dropdown ml-4">
-            <img class="profileImageSize" [src]="profileImage">
+            <img class="profileImageSize" [src]="profileImage" />
             <div class="dropdown-content">
               <a routerLink="/ongoing-course">Ongoing courses</a>
               <a routerLink="/completed-course">Completed courses</a>
@@ -58,6 +83,4 @@
       </ul>
     </div>
   </nav>
-
-
 </nav>

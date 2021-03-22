@@ -42,6 +42,8 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 
 		employeeLeaveInfo.setLeaveId(employeeLeaveInfoDTO.getId());
 		employeeLeaveInfo.setEmpCode(employeeLeaveInfoDTO.getEmpCode());
+		employeeLeaveInfo.setEmpName(employeeLeaveInfoDTO.getEmpName());
+		employeeLeaveInfo.setEmailId(employeeLeaveInfoDTO.getEmailId());
 		employeeLeaveInfo.setCreatedDate(employeeLeaveInfoDTO.getCreatedDate());
 		employeeLeaveInfo.setFromDate(employeeLeaveInfoDTO.getFromDate());
 		employeeLeaveInfo.setToDate(employeeLeaveInfoDTO.getToDate());
@@ -57,10 +59,10 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 
 	@CrossOrigin
 	@Override
-	public Optional<EmployeeLeaveInfo> findById(Long id){
+	public Optional<EmployeeLeaveInfo> findById(Long id) {
 		return employeeLeaveInfoRepository.findById(id);
 	}
-	
+
 	@Override
 	public EmployeeLeaveInfo save(EmployeeLeaveInfo empLeaveData) {
 		return employeeLeaveInfoRepository.save(empLeaveData);
@@ -72,10 +74,10 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 		List<EmployeeLeaveInfo> listEmpLeaveInfo = employeeLeaveInfoRepository.findAll();
 		return listEmpLeaveInfo;
 	}
-	
+
 	@Override
-	public List<EmployeeLeaveInfo>findAllLeaveInfoByStatus(){
-		List<EmployeeLeaveInfo> listEmpLeaveInfo2=employeeLeaveInfoRepository.findAllLeaveInfoByStatus();
+	public List<EmployeeLeaveInfo> findAllLeaveInfoByStatus() {
+		List<EmployeeLeaveInfo> listEmpLeaveInfo2 = employeeLeaveInfoRepository.findAllLeaveInfoByStatus();
 		return listEmpLeaveInfo2;
 	}
 
