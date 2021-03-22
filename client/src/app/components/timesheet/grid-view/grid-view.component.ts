@@ -29,6 +29,18 @@ export class GridViewComponent implements OnInit {
   first: Date = new Date(this.date);
 
   /*
+  this is approval part variables
+  */
+  MonApproval: boolean = false;
+  TueApproval: boolean = false;
+  WedApproval: boolean = false;
+  ThurApproval: boolean = false;
+  FriApproval: boolean = false;
+  SatApproval: boolean = false;
+  SunApproval: boolean = false;
+  //MonApproval: string = "";
+
+  /*
      total time column wise part part
   */
   totalTimeMonCol: number = 0;
@@ -317,36 +329,83 @@ here we call main retrive
             //Monday
             if (Checkdate.getDay() == 1) {
               test22Monday = data[rowLength2].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log("hello monday" + data[rowLength2].timesheet.status);
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 1) {
               test22Monday = data[rowLength2 + 1].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 1].timesheet.status
+              );
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 1) {
               test22Monday = data[rowLength2 + 2].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 2].timesheet.status
+              );
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 1) {
               test22Monday = data[rowLength2 + 3].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 3].timesheet.status
+              );
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 1) {
               test22Monday = data[rowLength2 + 4].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 4].timesheet.status
+              );
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 1) {
               test22Monday = data[rowLength2 + 5].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 5].timesheet.status
+              );
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 1) {
               test22Monday = data[rowLength2 + 6].timesheetDetails[t2].hour;
-              console.log("hello monday");
+              console.log(
+                "hello monday" + data[rowLength2 + 6].timesheet.status
+              );
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.MonApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.MonApproval = false;
+              }
               this.totalTimeMonCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -355,35 +414,70 @@ here we call main retrive
             if (Checkdate.getDay() == 2) {
               test33Tuesday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 2) {
               test33Tuesday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Tuesday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.TueApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.TueApproval = false;
+              }
               this.totalTimeTueCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -392,35 +486,70 @@ here we call main retrive
             if (Checkdate.getDay() == 3) {
               test44Wednesday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.WedApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.WedApproval = false;
+              }
               this.totalTimeWedCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -429,35 +558,70 @@ here we call main retrive
             if (Checkdate.getDay() == 4) {
               test55Thursday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 4) {
               test55Thursday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 4) {
               test55Thursday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 4) {
               test55Thursday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 4) {
               test55Thursday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 4) {
               test55Thursday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 4) {
               test55Thursday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Thursday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.ThurApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.ThurApproval = false;
+              }
               this.totalTimeThurCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -466,35 +630,70 @@ here we call main retrive
             if (Checkdate.getDay() == 5) {
               test66Friday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 5) {
               test66Friday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 5) {
               test66Friday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 5) {
               test66Friday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 5) {
               test66Friday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 5) {
               test66Friday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 5) {
               test66Friday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Friday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.FriApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.FriApproval = false;
+              }
               this.totalTimeFriCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -503,35 +702,70 @@ here we call main retrive
             if (Checkdate.getDay() == 6) {
               test77Saturday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 6) {
               test77Saturday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 6) {
               test77Saturday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 6) {
               test77Saturday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 6) {
               test77Saturday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 6) {
               test77Saturday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 6) {
               test77Saturday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Saturday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.SatApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.SatApproval = false;
+              }
               this.totalTimeSatCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }
@@ -540,35 +774,70 @@ here we call main retrive
             if (Checkdate.getDay() == 0) {
               test88Sunday = data[rowLength2].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol = data[rowLength2].timesheet.totalTimeHour;
             } else if (Checkdate1.getDay() == 0) {
               test88Sunday = data[rowLength2 + 1].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 1].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 1].timesheet.totalTimeHour;
             } else if (Checkdate2.getDay() == 0) {
               test88Sunday = data[rowLength2 + 2].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 2].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 2].timesheet.totalTimeHour;
             } else if (Checkdate3.getDay() == 0) {
               test88Sunday = data[rowLength2 + 3].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 3].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 3].timesheet.totalTimeHour;
             } else if (Checkdate4.getDay() == 0) {
               test88Sunday = data[rowLength2 + 4].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 4].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 4].timesheet.totalTimeHour;
             } else if (Checkdate5.getDay() == 0) {
               test88Sunday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 5].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 5].timesheet.totalTimeHour;
             } else if (Checkdate6.getDay() == 0) {
               test88Sunday = data[rowLength2 + 6].timesheetDetails[t2].hour;
               console.log("hello Sunday");
+              if (data[rowLength2 + 6].timesheet.status == "Approved") {
+                this.SunApproval = true;
+              } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
+                this.SunApproval = false;
+              }
               this.totalTimeSunCol =
                 data[rowLength2 + 6].timesheet.totalTimeHour;
             }

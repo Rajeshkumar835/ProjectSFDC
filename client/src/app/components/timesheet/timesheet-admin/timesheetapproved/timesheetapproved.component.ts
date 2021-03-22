@@ -8,9 +8,10 @@ import { DatePipe } from "@angular/common";
 })
 export class TimesheetapprovedComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
-  //constructor(public datepipe: DatePipe) {}
-  //, public datepipe: DatePipe
+
   //start date and end date part this is the part of approval/
+
+  //
   StartDate: Date;
   StartRegisterForm;
   EndDate: Date;
@@ -33,7 +34,5 @@ export class TimesheetapprovedComponent implements OnInit {
     console.log(this.EndDate);
     console.log(this.StartRegisterForm);
   }
-  onSubmit(){
-    
-  }
+  onSubmit() {}
 }
