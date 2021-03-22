@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div style="margin-top: 10px">
@@ -8,12 +11,27 @@
       <label>From Date:</label>
       <label style="margin-left: 13%">To Date:</label>
       <div class="input-group">
-        <input type="date" class="form-control" id="StartDate" name="StartDate" [(ngModel)]="StartDate"
-          (ngModelChange)="approvedTimesheetStart(StartDate)" formControlName="StartDate" style="width: 152px" />
+        <input
+          type="date"
+          class="form-control"
+          id="StartDate"
+          name="StartDate"
+          [(ngModel)]="StartDate"
+          (ngModelChange)="approvedTimesheetStart(StartDate)"
+          formControlName="StartDate"
+          style="width: 152px"
+        />
         <span>
-          <input type="date" class="form-control" id="EndDate" name="EndDate" [(ngModel)]="EndDate"
-            (ngModelChange)="approvedTimesheetEnd(EndDate)" formControlName="EndDate"
-            style="width: 152px; margin-left: 6%" />
+          <input
+            type="date"
+            class="form-control"
+            id="EndDate"
+            name="EndDate"
+            [(ngModel)]="EndDate"
+            (ngModelChange)="approvedTimesheetEnd(EndDate)"
+            formControlName="EndDate"
+            style="width: 152px; margin-left: 6%"
+          />
         </span>
       </div>
     </div>
@@ -22,7 +40,8 @@
       <div class="input-group"></div>
     </div>
 
-    <button type="button">Approve</button>
+    <!--<button type="button">Approve</button> -->
+    <button type="button" (click)="ApproveButton()">Approve</button>
     <!---  <button type="button" style="margin-left: 20px">Return</button>   -->
   </form>
 </div>
