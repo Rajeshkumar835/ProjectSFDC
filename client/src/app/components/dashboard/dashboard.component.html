@@ -11,53 +11,53 @@
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="empCode" class="label">Emp Code</label>
-                <input type="text" class="form-control" id="empCode" disabled="true" value="AIC-01">
+                <input type="text" class="form-control" id="empCode" disabled="true" value={{employeeAllData?.employeeInfo?.empCode}}>
               </div>
               <div class="form-group input-field">
                 <label for="mname" class="label">Middle Name</label>
-                <input type="text" class="form-control" id="middleName" disabled="true" value="Prasad">
+                <input type="text" class="form-control" id="middleName" disabled="true" value={{employeeAllData?.employeeInfo?.middleName}}>
               </div>
               <div class="form-group input-field">
                 <label for="Designation" class="label">Designation</label>
-                <input type="text" class="form-control" id="designation" disabled="true" value="Software Engineer">
+                <input type="text" class="form-control" id="designation" disabled="true" value={{employeeAllData?.employeeInfo?.designation}}>
               </div>
               <div class="form-group input-field">
                 <label for="dob" class="label">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" disabled="true" value="19-01-1998">
+                <input type="date" class="form-control" id="dob" disabled="true" value={{employeeAllData?.employeeInfo?.dob}}>
               </div>
               <div class="form-group input-field">
                 <label for="contactNo" class="label">Contact No</label>
-                <input type="text" class="form-control" id="contactNo" disabled="true" value="9836628263">
+                <input type="text" class="form-control" id="contactNo" disabled="true" value={{employeeAllData?.employeeInfo?.contactNo}}>
               </div>
               <div class="form-group input-field">
                 <label for="passportNo" class="label">Passport No</label>
-                <input type="text" class="form-control" id="passportNo" disabled="true" value="CBJTDHH8754">
+                <input type="text" class="form-control" id="passportNo" disabled="true" value={{employeeAllData?.employeeInfo?.passportNo}}>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="fname" class="label">First Name</label>
-                <input type="text" class="form-control" id="fullName" disabled="true" value="Amish">
+                <input type="text" class="form-control" id="fullName" disabled="true" value={{employeeAllData?.employeeInfo?.firstName}}>
               </div>
               <div class="form-group input-field">
                 <label for="lname" class="label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" disabled="true" value="Yadav">
+                <input type="text" class="form-control" id="lastName" disabled="true" value={{employeeAllData?.employeeInfo?.lastName}}>
               </div>
               <div class="form-group input-field">
                 <label for="dateOfJoin" class="label">Date of Joining</label>
-                <input type="date" class="form-control" id="dateOfJoin" disabled="true" value="10-01-2019">
+                <input type="date" class="form-control" id="dateOfJoin" disabled="true" value={{employeeAllData?.employeeInfo?.hireDate}}>
               </div>
               <div class="form-group input-field">
                 <label for="fatherName" class="label">Email Address</label>
-                <input type="email" class="form-control" id="email" disabled="true" value="amish.yadav@anaghainfotech.com">
+                <input type="email" class="form-control" id="email" disabled="true" value={{employeeAllData?.employeeInfo?.emailId}}>
               </div>
               <div class="form-group input-field">
                 <label for="homePhnNo" class="label">Home Phone No</label>
-                <input type="text" class="form-control" id="homePhnNo" disabled="true" value="8967452345">
+                <input type="text" class="form-control" id="homePhnNo" disabled="true" value={{employeeAllData?.employeeInfo?.homePhoneNo}}>
               </div>
               <div class="form-group input-field">
-                <label for="pancardNo" class="label">Pancard No</label>
-                <input type="text" class="form-control" id="pancardNo" disabled="true" value="APMNH6546Y">
+                <label for="pancardNo" class="label">PAN No</label>
+                <input type="text" class="form-control" id="pancardNo" disabled="true" value={{employeeAllData?.employeeInfo?.panCardNo}}>
               </div>
             </div>
           </div>
@@ -67,21 +67,21 @@
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="type" class="label">Type</label>
-                <input type="text" class="form-control" id="type" disabled="true" value="Bachelor Degree With Honours">
+                <input type="text" class="form-control" id="type" disabled="true" value={{employeeAllData?.qualificationInfo[0]?.type}}>
               </div>
               <div class="form-group input-field">
                 <label for="qualification" class="label">Qualification</label>
-                <input type="text" class="form-control" id="qualification" disabled="true" value="B.Tech">
+                <input type="text" class="form-control" id="qualification" disabled="true" value={{employeeAllData?.qualificationInfo[0]?.qualification}}>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="highest" class="label">Highest</label>
-                <input type="text" class="form-control" id="highest" disabled="true" value="Yes">
+                <input type="text" class="form-control" id="highest" disabled="true" value={{employeeAllData?.qualificationInfo[0]?.highest}}>
               </div>
               <div class="form-group input-field">
                 <label for="comments" class="label">Comments</label>
-                <input type="text" class="form-control" id="comments" disabled="true" value="No comments">
+                <input type="text" class="form-control" id="comments" disabled="true" value={{employeeAllData?.qualificationInfo[0]?.comments}}>
               </div>
             </div>
           </div>
@@ -91,33 +91,33 @@
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="bankType" class="label">Bank Type</label>
-                <input type="text" class="form-control" id="bankType" disabled="true" value="Saving Account">
+                <input type="text" class="form-control" id="bankType" disabled="true" value={{employeeAllData?.bankInfo[0]?.bankType}}>
               </div>
               <div class="form-group input-field">
                 <label for="accNo" class="label">Bank Acc No</label>
-                <input type="text" class="form-control" id="accNo" disabled="true" value="896745234569">
+                <input type="text" class="form-control" id="accNo" disabled="true" value={{employeeAllData?.bankInfo[0]?.bankAccNo}}>
               </div>
               <div class="form-group input-field">
                 <label for="routingNumber" class="label">Routing Number</label>
-                <input type="text" class="form-control" id="routingNumber" disabled="true">
+                <input type="text" class="form-control" id="routingNumber" disabled="true" value={{employeeAllData?.bankInfo[0]?.routingNumber}}>
               </div>
               <div class="form-group input-field">
                 <label for="bankActive" class="label">Active</label>
-                <input type="text" class="form-control" id="bankActive" disabled="true" value="SBIN7765789">
+                <input type="text" class="form-control" id="bankActive" disabled="true" value={{employeeAllData?.bankInfo[0]?.active}}>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="bankName" class="label">Bank Name</label>
-                <input type="text" class="form-control" id="bankName" disabled="true" value="Amish Bank of India">
+                <input type="text" class="form-control" id="bankName" disabled="true" value={{employeeAllData?.bankInfo[0]?.bankName}}>
               </div>
               <div class="form-group input-field">
                 <label for="bankAddress" class="label">Bank Address</label>
-                <input type="text" class="form-control" id="bankAddress" disabled="true" value="Hajipur, Vaishali, Bihar">
+                <input type="text" class="form-control" id="bankAddress" disabled="true" value={{employeeAllData?.bankInfo[0]?.bankAddress}}>
               </div>
               <div class="form-group input-field">
                 <label for="ifsCode" class="label">IFS Code</label>
-                <input type="text" class="form-control" id="ifsCode" disabled="true" value="SBHG9876B6">
+                <input type="text" class="form-control" id="ifsCode" disabled="true" value={{employeeAllData?.bankInfo[0]?.ifsCode}}>
               </div>
             </div>
           </div>
@@ -127,49 +127,73 @@
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="addressType" class="label">Address Type</label>
-                <input type="text" class="form-control" id="addressType" disabled="true" value="Current Address">
+                <input type="text" class="form-control" id="addressType" disabled="true" value={{employeeAllData?.addressInfo[0]?.addressType}}>
               </div>
               <div class="form-group input-field">
                 <label for="addLine2" class="label">Address Line2</label>
-                <input type="text" class="form-control" id="addLine2" disabled="true" value="Hajipur, Vaishali">
+                <input type="text" class="form-control" id="addLine2" disabled="true" value={{employeeAllData?.addressInfo[0]?.addressLine2}}>
               </div>
               <div class="form-group input-field">
                 <label for="country" class="label">State</label>
-                <input type="text" class="form-control" id="country" disabled="true" value="Bihar">
+                <input type="text" class="form-control" id="country" disabled="true" value={{employeeAllData?.addressInfo[0]?.state}}>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="addLine1" class="label">Address Line1</label>
-                <input type="text" class="form-control" id="addLine1" disabled="true" value="Rajapakar">
+                <input type="text" class="form-control" id="addLine1" disabled="true" value={{employeeAllData?.addressInfo[0]?.addressLine1}}>
               </div>
               <div class="form-group input-field">
                 <label for="city" class="label">City</label>
-                <input type="text" class="form-control" id="city" disabled="true" value="Hajipur">
+                <input type="text" class="form-control" id="city" disabled="true" value={{employeeAllData?.addressInfo[0]?.city}}>
               </div>
               <div class="form-group input-field">
                 <label for="zip" class="label">ZIP Code</label>
-                <input type="text" class="form-control" id="zip" disabled="true" value="844502">
+                <input type="text" class="form-control" id="zip" disabled="true" value={{employeeAllData?.addressInfo[0]?.zipCode}}>
               </div>
             </div>
           </div>
         </mat-tab>
-        <mat-tab label="Experience ">
+        <mat-tab label="Current Experience ">
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="company" class="label">Company Name</label>
-                <input type="text" class="form-control" id="company" disabled="true" value="Google">
+                <input type="text" class="form-control" id="company" disabled="true" value={{employeeAllData?.currentExperience[0]?.company}}>
               </div>
               <div class="form-group input-field">
                 <label for="startDate" class="label">Date of Joining</label>
-                <input type="date" class="form-control" id="middleName" disabled="true" value="10-06-2015">
+                <input type="date" class="form-control" id="middleName" disabled="true" value={{employeeAllData?.currentExperience[0]?.startDate}}>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group input-field">
                 <label for="designation" class="label">Designation</label>
-                <input type="text" class="form-control" id="designation" disabled="true" value="Sr. Software Engineer">
+                <input type="text" class="form-control" id="designation" disabled="true" value={{employeeAllData?.currentExperience[0]?.designation}}>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Previous Experience ">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group input-field">
+                <label for="company" class="label">Company Name</label>
+                <input type="text" class="form-control" id="company" disabled="true" value={{employeeAllData?.previousExperience[0]?.company}}>
+              </div>
+              <div class="form-group input-field">
+                <label for="startDate" class="label">Date of Joining</label>
+                <input type="date" class="form-control" id="middleName" disabled="true" value={{employeeAllData?.previousExperience[0]?.joiningdate}}>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group input-field">
+                <label for="startDate" class="label">Date of Leaving</label>
+                <input type="date" class="form-control" id="middleName" disabled="true" value={{employeeAllData?.previousExperience[0]?.leavingDate}}>
+              </div>
+              <div class="form-group input-field">
+                <label for="designation" class="label">Designation</label>
+                <input type="text" class="form-control" id="designation" disabled="true" value={{employeeAllData?.previousExperience[0]?.designation}}>
               </div>
             </div>
           </div>

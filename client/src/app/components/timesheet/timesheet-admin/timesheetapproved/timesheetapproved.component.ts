@@ -33,6 +33,12 @@ export class TimesheetapprovedComponent implements OnInit {
     console.log(this.EndDate);
     console.log(this.StartRegisterForm);
   }
+  approvedTimesheetEnd(endDate){
+    console.log("approved End Date",endDate)
+  }
+  approvedTimesheetStart(startDate){
+    console.log("approved Start Date",startDate)
+  }
   onSubmit(){
     
   }
