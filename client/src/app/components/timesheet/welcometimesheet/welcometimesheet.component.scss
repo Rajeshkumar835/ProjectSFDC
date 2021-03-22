@@ -34,8 +34,8 @@ body {
   object-fit: cover;
   margin-left: 30px;
 }
-.button5 {
-  background-color: #4caf50; /* Green */
+.buttonNavbar {
+  background-color: white; /* Green */
   border: none;
   color: white;
   padding: 16px 32px;
@@ -46,47 +46,15 @@ body {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color: white;
+  margin-left: 30px;
+}
+
+.button5 {
   color: black;
   border: 2px solid #555555;
-  margin-left: 5%;
 }
 
 .button5:hover {
-  background-color: #555555;
-  color: white;
-}
-
-/*
-this is left side navigation part
-*/
-#mySidenav a {
-  position: absolute;
-  left: 50px;
-  transition: 0.3s;
-  padding: 15px;
-  width: 130px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  border-radius: 0 5px 5px 0;
-}
-
-#mySidenav a:hover {
-  left: 0;
-}
-
-#Timesheet {
-  top: 90px;
-  background-color: #555;
-}
-
-#Timesheetttt {
-  top: 150px;
-  background-color: #555;
-}
-
-#Admin {
-  top: 210px;
-  background-color: #555;
+  background-color: #aaa;
+  color: rgb(133, 133, 133);
 }
