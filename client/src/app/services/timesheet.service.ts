@@ -34,7 +34,7 @@ export class TimesheetService {
   getAllApprovalByEmpCode(approvedStatus: TimesheetApprovedStatus) {
     const data = approvedStatus;
     return this.http.post(
-      "http://localhost:8443/api/v1/timesheet/getAllApprovalByEmpCode/",
+      "http://localhost:8443/api/v1/timesheet/timesheetApprovalByEmpCode",
       data
     );
   }

@@ -9,6 +9,11 @@ import { TimesheetApprovedStatus } from "src/app/models/timesheet.model";
   styleUrls: ["./timesheetapproved.component.scss"],
 })
 export class TimesheetapprovedComponent implements OnInit {
+  timesheetApproval: TimesheetApprovedStatus = {
+    empCode: "ABC",
+    startDate: "",
+    endDate: "",
+  };
   constructor(
     private formBuilder: FormBuilder,
     private timesheetService: TimesheetService
@@ -39,11 +44,7 @@ export class TimesheetapprovedComponent implements OnInit {
     console.log(this.EndDate);
     console.log(this.StartRegisterForm);
   }
-  timesheetApproval: TimesheetApprovedStatus = {
-    empCode: "ABC",
-    startDate: "",
-    endDate: "",
-  };
+
   ApproveButton() {
     this.timesheetService
       .getAllApprovalByEmpCode(this.timesheetApproval)
@@ -55,6 +56,7 @@ export class TimesheetapprovedComponent implements OnInit {
     this.timesheetApproval.endDate = endDate;
     console.log("approved End Date", endDate);
     console.log("timesheet approved End Date", this.timesheetApproval.endDate);
+    console.log("approved object",this.timesheetApproval)
   }
   approvedTimesheetStart(startDate) {
     this.timesheetApproval.startDate = startDate;
@@ -63,6 +65,8 @@ export class TimesheetapprovedComponent implements OnInit {
       "timesheet approved Start Date",
       this.timesheetApproval.startDate
     );
+    console.log("approved object",this.timesheetApproval)
+
   }
   // ApproveButton() {}
   onSubmit() {}
