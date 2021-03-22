@@ -24,6 +24,7 @@ import com.intranet.model.TimesheetApproval;
 import com.intranet.service.TimesheetService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = BaseController.TIMESHEET)
 public class TimesheetController {
 
@@ -78,9 +79,8 @@ public class TimesheetController {
 
 	}
 	
-	//Timesheet approval
 	@CrossOrigin
-	@PostMapping("/getAllApprovalByEmpCode")
+	@PostMapping(path= "/timesheetApprovalByEmpCode")
 	public ResponseEntity<List<Timesheet>> getAllApprovalByEmpCode(@RequestBody TimesheetApproval timesheetApproval) {
 		List<Timesheet> listTimesheet = null;
 		try {

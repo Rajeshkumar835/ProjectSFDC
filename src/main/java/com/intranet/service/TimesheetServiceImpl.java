@@ -82,7 +82,7 @@ public class TimesheetServiceImpl implements TimesheetService {
 	
 	@Override
 	public List<Timesheet> getAllApprovalByEmpCode(TimesheetApproval timesheetApproval) {
-		String empCode=timesheetApproval.getEmpCpde();
+		String empCode=timesheetApproval.getEmpCode();
 		String startDate = timesheetApproval.getStartDate();
 		String endDate=timesheetApproval.getEndDate();
 		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode, startDate, endDate);
