@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intranet.entity.ClientRegistrationInfo;
+import com.intranet.model.AdminLogin;
 import com.intranet.repository.ClientRegistrationInfoRepository;
 
 @Service
@@ -40,6 +41,18 @@ public class ClientRegistrationInfoServiceImpl implements ClientRegistrationInfo
 		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoRepository
 				.clientRegistrationInfoByClientCode(clientCode);
 		return clientRegInfo;
+	}
+
+	@Override
+	public boolean adminLogin(String companyEmail, String password) {
+		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoRepository
+				.getClientInfoByEmailId(companyEmail);
+		if (clientRegInfo.getCompanyEmail().equals(companyEmail)
+				&& clientRegInfo.getPassowrd().equals(password)) {
+			return true;
+		}
+
+		return false;
 	}
 
 }

@@ -12,7 +12,7 @@ public abstract class BaseController {
 	public static final String TIMESHEET = "/api/v1/timesheet";
 	public static final String HOLIDAY_TYPE = "/api/v1/holidayType";
 	public static final String COMPANY_HOLIDAY_LIST = "/api/v1/companyHolidayList";
-	public static final String COMPANY_WEEKLY_OFF_DAYS_LIST = "/api/v1/companyWeeklyOffDaysList";
-	//public static final String UNIVERSITY = "/api/v1/university";
+	public static final String COMPANY_WEEKLY_OFF = "/api/v1/companyWeeklyOff";
+	public static final String CLIENT_REGISTRATION_INFO = "/api/v1/clientRegistrationInfo";
 
 }
