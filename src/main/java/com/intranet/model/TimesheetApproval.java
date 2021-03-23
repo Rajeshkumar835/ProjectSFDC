@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class TimesheetApproval {
 
-	private String empCpde;
+	private String empCode;
 
 	private String startDate;
 
