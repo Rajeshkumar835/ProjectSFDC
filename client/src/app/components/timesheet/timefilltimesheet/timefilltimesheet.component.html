@@ -1,13 +1,13 @@
-<!--this is welcome part
-
+<!--this is welcome part-->
+<!-- 
 <link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
--->
-<!--
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+<body>
   <div id="mySidenav" class="sidenav">
     <a
       href="#"
@@ -31,20 +31,21 @@
       >Admin</a
     >
   </div>
--->
-<section class="UserTimeEntry">
-  <div style="margin-left: 115px">
-    <span>
-      <b style="font-size: 20px">Employee : </b>
-    </span>
-    <select style="padding: 11px">
-      <option *ngFor="let use of users" [value]="use.Id">
-        {{ use.Name }}
-      </option>
-    </select>
-  </div>
+  -->
+  <section class="UserTimeEntry">
+    <div style="margin-left: 115px">
+      <span>
+        <b style="font-size: 20px">Employee : </b>
+      </span>
+      <select style="padding: 11px">
+        <option *ngFor="let use of users" [value]="use.Id">
+          {{ use.Name }}
+        </option>
+      </select>
+    </div>
 
-  <div class="container">
-    <app-grid-view></app-grid-view>
-  </div>
-</section>
+    <div class="container">
+      <app-grid-view></app-grid-view>
+    </div>
+  </section>
+</body>
