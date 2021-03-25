@@ -44,9 +44,6 @@ public class BankInfo {
 
 	@Column(nullable = true)
 	private String ifsCode;
-
-	@Column(nullable = true)
-	private boolean isActive;
 	
 	@Column(nullable = true)
 	private String empCode;

@@ -11,9 +11,16 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService : DashbaordService) { }
 
   ngOnInit() {
-    this.getEmployeeInfoByEmpCode(this.empCode);
+    let empCode=localStorage.getItem("employeeInfo");
+    this.empCode=empCode;
+    console.log("empCode",empCode);
+    if(empCode)
+    {
+      this.getEmployeeInfoByEmpCode(this.empCode);
+
+    }
   }
-  empCode="A1";
+  empCode="";
   employeeAllData;
   getEmployeeInfoByEmpCode(empCode){
     this.dashboardService.getEmployeeInfoByEmpCode(empCode).subscribe((data:any)=>{

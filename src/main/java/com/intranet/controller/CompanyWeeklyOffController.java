@@ -23,10 +23,10 @@ import com.intranet.entity.CompanyWeeklyOffDaysList;
 import com.intranet.service.CompanyWeeklyOffDaysListService;
 
 @RestController
-@RequestMapping(path = BaseController.COMPANY_WEEKLY_OFF_DAYS_LIST)
-public class CompanyWeeklyOffDaysListController {
+@RequestMapping(path = BaseController.COMPANY_WEEKLY_OFF)
+public class CompanyWeeklyOffController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CompanyWeeklyOffDaysListController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CompanyWeeklyOffController.class);
 
 	@Autowired
 	private CompanyWeeklyOffDaysListService companyWeeklyOffDaysListService;

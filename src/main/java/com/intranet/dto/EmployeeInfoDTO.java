@@ -1,5 +1,6 @@
 package com.intranet.dto;
 
+import java.util.Date;
 import java.util.List;
 
 import com.intranet.entity.AddressInfo;
@@ -14,8 +15,40 @@ import lombok.Data;
 
 @Data
 public class EmployeeInfoDTO {
+	
+	private String empCode;
 
-	private EmployeeInfo employeeInfo;
+	private Date createdDate;
+
+	private String firstName;
+
+	private String middleName;
+
+	private String lastName;
+
+	private String designation;
+
+	private Date hireDate;
+
+	private Double currSalary;
+
+	private Date dob;
+
+	private String fatherName;
+
+	private String contactNo;
+
+	private String emailId;
+
+	private String homePhoneNo;
+
+	private String passportNo;
+
+	private String panCardNo;
+
+	private String clientCode;
+
+	//private EmployeeInfo employeeInfo;
 
 	private List<QualificationInfo> qualificationInfo;
 
