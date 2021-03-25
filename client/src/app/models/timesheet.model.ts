@@ -14,3 +14,8 @@ export class TimesheetObject {
   public timesheet: Timesheet;
   public timesheetDetails: Array<TimesheetDetails>;
 }
+export class TimesheetApprovedStatus {
+  public empCode: string;
+  public startDate: string;
+  public endDate: string;
+}

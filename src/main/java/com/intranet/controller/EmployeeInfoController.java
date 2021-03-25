@@ -86,4 +86,15 @@ public class EmployeeInfoController {
 		return new ResponseEntity<EmployeeInfo>(employeeInfo, HttpStatus.OK);
 	}
 
+	@CrossOrigin
+	@GetMapping(path = "/findByEmpCode/{empCode}")
+	public ResponseEntity<EmployeeInfoDTO> findByEmpCode(@PathVariable String empCode) {
+		EmployeeInfoDTO employeeInfoOptional = employeeInfoService.findByEmpCode(empCode);
+
+		if (employeeInfoOptional==null) {
+			return new ResponseEntity<EmployeeInfoDTO>(new EmployeeInfoDTO(), HttpStatus.OK);
+		}
+		return new ResponseEntity<EmployeeInfoDTO>(employeeInfoOptional, HttpStatus.OK);
+	}
+
 }

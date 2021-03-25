@@ -1,6 +1,5 @@
 package com.intranet.controller;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
+import com.intranet.model.TimesheetApproval;
 import com.intranet.service.TimesheetService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = BaseController.TIMESHEET)
 public class TimesheetController {
 
@@ -63,17 +64,31 @@ public class TimesheetController {
 	public ResponseEntity<List<Timesheet>> findAll() {
 		return new ResponseEntity<List<Timesheet>>(timesheetService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
-	@GetMapping("/getAllTimesheetByEmpCode/{empCode}")
-	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode,Date startDate, Date endDate) {
+	@GetMapping("/getAllTimesheetByEmpCode/{empCode}/{startDate}/{endDate}")
+	public ResponseEntity<List<TimesheetDTO>> getAllTimesheetByEmpCode(@PathVariable String empCode,
+			@PathVariable String startDate, @PathVariable String endDate) {
 		List<TimesheetDTO> listTimesheet = null;
 		try {
-			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode,startDate,endDate);
+			listTimesheet = timesheetService.getAllTimesheetByEmpCode(empCode, startDate, endDate);
 		} catch (Exception e) {
 			LOGGER.error("Error while getting All Timesheet -> ", e);
 		}
 		return new ResponseEntity<List<TimesheetDTO>>(listTimesheet, HttpStatus.OK);
+
+	}
+	
+	@CrossOrigin
+	@PostMapping(path= "/timesheetApprovalByEmpCode")
+	public ResponseEntity<List<Timesheet>> getAllApprovalByEmpCode(@RequestBody TimesheetApproval timesheetApproval) {
+		List<Timesheet> listTimesheet = null;
+		try {
+			listTimesheet = timesheetService.getAllApprovalByEmpCode(timesheetApproval);
+		} catch (Exception e) {
+			LOGGER.error("Error while getting All Timesheet -> ", e);
+		}
+		return new ResponseEntity<List<Timesheet>>(listTimesheet, HttpStatus.OK);
 
 	}
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.intranet.entity.ClientRegistrationInfo;
+import com.intranet.model.AdminLogin;
 
 public interface ClientRegistrationInfoService {
 
@@ -16,5 +17,7 @@ public interface ClientRegistrationInfoService {
 	public void deleteById(String id);
 
 	public ClientRegistrationInfo clientRegistrationInfoByClientCode(String clientCode);
+
+	public ClientRegistrationInfo adminLogin(String companyEmail, String password);
 
 }
