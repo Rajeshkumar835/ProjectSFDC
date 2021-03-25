@@ -29,3 +29,11 @@ export class LeaveInfo{
     public leaveName: string;
     public leaveLimit: number;
 }
+
+export class CreateEmployee{
+  public empCode: string;
+  public clientCode: string;
+  public contactNo: string;
+  public empName: string;
+  public dob: string;
+}

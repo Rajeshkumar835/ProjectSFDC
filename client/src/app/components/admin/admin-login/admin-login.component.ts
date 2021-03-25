@@ -17,7 +17,8 @@ cEmail:"";
   adminLoginAuthenticate(){
     this.adminService.adminLoginAuthentication(this.cEmail,this.cPass).subscribe((data:any)=>{
       console.log("Logged in successfully : ",data)
-      if(data){
+      if(data!=null){
+        localStorage.setItem("clientInfo",data.clientCode);
         this.router.navigate(["/admin-master-add"]);
       }
     })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { ClientRegistrationInfo, CompanyOffDays, HolidayList, HolidayType, LeaveInfo } from '../models/admin.model';
+import { ClientRegistrationInfo, CompanyOffDays, CreateEmployee, HolidayList, HolidayType, LeaveInfo } from '../models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,13 @@ export class AdminService {
 
   postLeaveInfo(leaveInfo: LeaveInfo){
     return this.http.post("http://localhost:8443/api/v1/leaveInfo/add",leaveInfo);
+  }
+
+  createEmployeeInfo(createEmployee:CreateEmployee){
+    return this.http.post("http://localhost:8443/api/v1/createEmployee/add",createEmployee);
+  }
+
+  employeeLogin(empCode,password){
+    return this.http.get("http://localhost:8443/api/v1/createEmployee/employeeLogin/"+empCode+"/"+password);
   }
 }
