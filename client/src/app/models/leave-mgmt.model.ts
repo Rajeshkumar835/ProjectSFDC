@@ -3,8 +3,7 @@ export class LeaveMgmt {
   empName: String;
   leaveId: number;
   empCode: string;
-  firstName: String;
-  lastName: String;
+
   emailId: String;
   createdDate: Date;
   leaveCode: string;
@@ -13,6 +12,7 @@ export class LeaveMgmt {
   leaveReason: string;
   status: string;
   totalLeaveGranted: number;
+  totalLeaveAvaiable: number;
   leaveApplied: number;
   rejectionReason: string;
 }
