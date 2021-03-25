@@ -197,6 +197,78 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
+      <div class="employee mt-4">
+        <div class="emp-add mt-4 text-center">
+          <button 
+            type="button" 
+            class="btn btn-primary"
+            (click)="employeeCreation()"
+            >Create Employee Info</button>
+        </div>
+        <div class="emp-creation mt-4" *ngIf="employeeCreationEnable">
+          <form>
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Code</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Code"
+                name="employeeCode"
+                [(ngModel)]="createEmployee.empCode" 
+                #EmployeeCode="ngModel" 
+                required minlength="3" 
+                maxlength="300"
+                >
+              
+            </div>
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Name"
+                name="employeeName"
+                [(ngModel)]="createEmployee.empName" 
+                #EmployeeName="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Contact No</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Contact No"
+                name="employeeContactNo"
+                [(ngModel)]="createEmployee.contactNo" 
+                #EmployeeContactNo="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="fname" class="label">Employee DOB</label>
+              <input 
+              type="date" 
+              class="form-control" 
+              placeholder="Employee DOB"
+              name="empDOB"
+              [(ngModel)]="createEmployee.dob" 
+              #EmpDOB="ngModel" 
+              required minlength="3" 
+              maxlength="300">
+            </div>
+            <div class="text-center">
+              <button 
+              type="submit" 
+              class="btn btn-primary"
+              (click)="postEmployeeCreation()"
+              >Save</button></div>
+          </form>
+        </div>
+
+      </div>
     </div>
     <div class="col-sm-3"></div>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { CompanyOffDays, HolidayList, HolidayType, LeaveInfo } from 'src/app/models/admin.model';
+import { CompanyOffDays, CreateEmployee, HolidayList, HolidayType, LeaveInfo } from 'src/app/models/admin.model';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class AdminMasterDataComponent implements OnInit {
 
   constructor(private adminService: AdminService) { }
   postHoliday: HolidayType={
-    clientCode:"AIC",
+    clientCode:"",
     holidayCode: "",
     holidayName:""
   }
@@ -32,16 +32,31 @@ export class AdminMasterDataComponent implements OnInit {
     holidayName:""
   }
   companyOffDays: CompanyOffDays={
-    clientCode:"AIC",
+    clientCode:"",
     dayCode:""
   }
   leaveInfo :LeaveInfo={
-    clientCode:"AIC",
+    clientCode:"",
     leaveCode:"",
     leaveName:"",
     leaveLimit:0
   }
+  employeeCreationEnable:boolean=false;
+  createEmployee: CreateEmployee={
+    empCode:"",
+    clientCode:"",
+    contactNo:"",
+    empName:"",
+    dob:""
+  }
   ngOnInit() {
+
+    let clientCode=localStorage.getItem("clientInfo");
+    this.createEmployee.clientCode=clientCode;
+    this.leaveInfo.clientCode=clientCode;
+    this.companyOffDays.clientCode=clientCode;
+    this.postHoliday.clientCode=clientCode;
+    console.log("clientCode",clientCode);
   }
   postHolidayType(){
     this.adminService.addHolidayType(this.postHoliday).subscribe((data:any)=>{
@@ -74,6 +89,15 @@ export class AdminMasterDataComponent implements OnInit {
   postLeaveInfo(){
     this.adminService.postLeaveInfo(this.leaveInfo).subscribe((data:any)=>{
       console.log("Leave info post data",data);
+    })
+  }
+  employeeCreation(){
+    this.employeeCreationEnable=true;
+  }
+
+  postEmployeeCreation(){
+    this.adminService.createEmployeeInfo(this.createEmployee).subscribe((data:any)=>{
+      console.log("Employee creation data",data);
     })
   }
 
