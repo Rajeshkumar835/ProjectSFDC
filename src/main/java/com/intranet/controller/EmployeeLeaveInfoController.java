@@ -77,5 +77,12 @@ public class EmployeeLeaveInfoController {
 		return new ResponseEntity<List<EmployeeLeaveInfo>>(employeeLeaveInfoService.findAllLeaveInfoByEmpCode(empCode),
 				HttpStatus.OK);
 	}
+	
+	@CrossOrigin
+	@GetMapping("/findLeaveInfoByEmpCodeandLeaveCode/{empCode}/{leaveCode}")
+	public ResponseEntity<List<EmployeeLeaveInfo>> findLeaveInfoByEmpCodeandLeaveCode(@PathVariable String empCode, @PathVariable String leaveCode) {
+		return new ResponseEntity<List<EmployeeLeaveInfo>>(employeeLeaveInfoService.findLeaveInfoByEmpCodeandLeaveCode(empCode, leaveCode),
+				HttpStatus.OK);
+	}
 
 }
