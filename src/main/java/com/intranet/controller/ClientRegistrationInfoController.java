@@ -87,14 +87,15 @@ public class ClientRegistrationInfoController {
 
 	@CrossOrigin
 	@GetMapping(path = "/adminLogin/{companyEmail}/{password}")
-	public ResponseEntity<Boolean> adminLogin(@PathVariable String companyEmail, @PathVariable String password) {
-		boolean isVerified = false;
+	public ResponseEntity<ClientRegistrationInfo> adminLogin(@PathVariable String companyEmail,
+			@PathVariable String password) {
+		ClientRegistrationInfo isVerified = null;
 		try {
 			isVerified = clientRegistrationInfoService.adminLogin(companyEmail, password);
 		} catch (Exception e) {
 			LOGGER.error("Error while login -> " + isVerified, e);
 		}
-		return new ResponseEntity<Boolean>(isVerified, HttpStatus.OK);
+		return new ResponseEntity<ClientRegistrationInfo>(isVerified, HttpStatus.OK);
 	}
 
 }

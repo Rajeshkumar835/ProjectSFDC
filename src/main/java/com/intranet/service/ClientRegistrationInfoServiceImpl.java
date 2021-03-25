@@ -44,15 +44,16 @@ public class ClientRegistrationInfoServiceImpl implements ClientRegistrationInfo
 	}
 
 	@Override
-	public boolean adminLogin(String companyEmail, String password) {
+	public ClientRegistrationInfo adminLogin(String companyEmail, String password) {
 		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoRepository
 				.getClientInfoByEmailId(companyEmail);
 		if (clientRegInfo.getCompanyEmail().equals(companyEmail)
 				&& clientRegInfo.getPassowrd().equals(password)) {
-			return true;
+			ClientRegistrationInfo clientRegistrationInfo=clientRegistrationInfoRepository.getClientInfoByEmailId(companyEmail);
+			return clientRegistrationInfo;
 		}
 
-		return false;
+		return null;
 	}
 
 }

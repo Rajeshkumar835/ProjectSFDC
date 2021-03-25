@@ -18,6 +18,6 @@ public interface ClientRegistrationInfoService {
 
 	public ClientRegistrationInfo clientRegistrationInfoByClientCode(String clientCode);
 
-	public boolean adminLogin(String companyEmail, String password);
+	public ClientRegistrationInfo adminLogin(String companyEmail, String password);
 
 }

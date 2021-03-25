@@ -14,5 +14,6 @@ public abstract class BaseController {
 	public static final String COMPANY_HOLIDAY_LIST = "/api/v1/companyHolidayList";
 	public static final String COMPANY_WEEKLY_OFF = "/api/v1/companyWeeklyOff";
 	public static final String CLIENT_REGISTRATION_INFO = "/api/v1/clientRegistrationInfo";
+	public static final String CREATE_EMPLOYEE = "/api/v1/createEmployee";
 
 }
