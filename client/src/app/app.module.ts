@@ -58,6 +58,7 @@ import { TaskMgmtService } from "./services/task-mgmt.service";
 import { AdminComponent } from "./components/admin/admin.component";
 import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
     MatNativeDateModule,
     MatDatepickerModule,
     MatVideoModule,
+    MatSnackBarModule,
   ],
 
   providers: [

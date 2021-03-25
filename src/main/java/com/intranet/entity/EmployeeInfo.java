@@ -55,7 +55,7 @@ public class EmployeeInfo {
 
 	@Column(nullable = true)
 	private String contactNo;
-	
+
 	@Column(nullable = true)
 	private String emailId;
 
@@ -67,10 +67,11 @@ public class EmployeeInfo {
 
 	@Column(nullable = true)
 	private String panCardNo;
-	
-	@Column(nullable = true)
-	private String clientCode; 
-	
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "clientCode")
+	private ClientRegistrationInfo clientRegistrationInfo;
+
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "clientCode")
 //	private ClientInfo clientInfo;

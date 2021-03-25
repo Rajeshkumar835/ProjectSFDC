@@ -1,16 +1,27 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormsModule } from "@angular/forms";
 import { DatePipe } from "@angular/common";
+import { TimesheetService } from "src/app/services/timesheet.service";
+import { TimesheetApprovedStatus } from "src/app/models/timesheet.model";
 @Component({
   selector: "app-timesheetapproved",
   templateUrl: "./timesheetapproved.component.html",
   styleUrls: ["./timesheetapproved.component.scss"],
 })
 export class TimesheetapprovedComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
-  //constructor(public datepipe: DatePipe) {}
-  //, public datepipe: DatePipe
+  timesheetApproval: TimesheetApprovedStatus = {
+    empCode: "ABC",
+    startDate: "",
+    endDate: "",
+  };
+  constructor(
+    private formBuilder: FormBuilder,
+    private timesheetService: TimesheetService
+  ) {}
+
   //start date and end date part this is the part of approval/
+
+  //
   StartDate: Date;
   StartRegisterForm;
   EndDate: Date;
@@ -33,7 +44,30 @@ export class TimesheetapprovedComponent implements OnInit {
     console.log(this.EndDate);
     console.log(this.StartRegisterForm);
   }
-  onSubmit(){
-    
+
+  ApproveButton() {
+    this.timesheetService
+      .getAllApprovalByEmpCode(this.timesheetApproval)
+      .subscribe((data: any) => {
+        console.log("kkkkk", data);
+      });
   }
+  approvedTimesheetEnd(endDate) {
+    this.timesheetApproval.endDate = endDate;
+    console.log("approved End Date", endDate);
+    console.log("timesheet approved End Date", this.timesheetApproval.endDate);
+    console.log("approved object",this.timesheetApproval)
+  }
+  approvedTimesheetStart(startDate) {
+    this.timesheetApproval.startDate = startDate;
+    console.log("approved Start Date", startDate);
+    console.log(
+      "timesheet approved Start Date",
+      this.timesheetApproval.startDate
+    );
+    console.log("approved object",this.timesheetApproval)
+
+  }
+  // ApproveButton() {}
+  onSubmit() {}
 }

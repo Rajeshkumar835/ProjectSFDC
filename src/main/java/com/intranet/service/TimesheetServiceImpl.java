@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
 import com.intranet.entity.TimesheetDetails;
+import com.intranet.model.TimesheetApproval;
 import com.intranet.repository.TimesheetDetailsRepository;
 import com.intranet.repository.TimesheetRepository;
 
@@ -63,9 +64,9 @@ public class TimesheetServiceImpl implements TimesheetService {
 	}
 
 	@Override
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode) {
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, String startDate, String endDate) {
 		List<TimesheetDTO> timesheetDTOList = new ArrayList<TimesheetDTO>();
-		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode);
+		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode, startDate, endDate);
 		for (Timesheet timesheet : timesheetList) {
 			TimesheetDTO timesheetDTO = new TimesheetDTO();
 			List<TimesheetDetails> timesheetDetailsList = timesheetDetailsRepository
@@ -75,6 +76,21 @@ public class TimesheetServiceImpl implements TimesheetService {
 			timesheetDTOList.add(timesheetDTO);
 		}
 		return timesheetDTOList;
+	}
+	
+	//this service implementation for service part
+	
+	@Override
+	public List<Timesheet> getAllApprovalByEmpCode(TimesheetApproval timesheetApproval) {
+		String empCode=timesheetApproval.getEmpCode();
+		String startDate = timesheetApproval.getStartDate();
+		String endDate=timesheetApproval.getEndDate();
+		List<Timesheet> timesheetList = timesheetRepository.getAllTimesheetByEmpCode(empCode, startDate, endDate);
+		for (Timesheet timesheet : timesheetList) {
+			timesheet.setStatus("Approved");
+			timesheetRepository.save(timesheet);
+		}
+		return timesheetList;
 	}
 
 }

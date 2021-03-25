@@ -19,12 +19,27 @@ public class ClientRegistrationInfo {
 	@Id
 	private String clientCode;
 
-	@Column(nullable = true)
-	private String companyName;
-
 	@Column(updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createdDate;
+
+	@Column(nullable = true)
+	private String companyName;
+
+	@Column(nullable = true)
+	private String website;
+
+	@Column(nullable = true)
+	private String companyEmail;
+
+	@Column(nullable = true)
+	private String companyLocation;
+
+	@Column(nullable = true)
+	private String companyTinVatNo;
+
+	@Column(nullable = true)
+	private String passowrd;
 
 }

@@ -13,19 +13,43 @@
             <form>
               <div class="form-group input-field">
                 <label for="empCode" class="label">Holiday Type Code</label>
-                <input type="text" class="form-control" id="empCode" placeholder="Holiday Type Code">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Holiday Type Code"
+                  name="holidayTypeCode"
+                  [(ngModel)]="postHoliday.holidayCode" 
+                  #HolidayTypeCode="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
+                
               </div>
               <div class="form-group input-field">
                 <label for="fname" class="label">Holiday Type Name</label>
-                <input type="text" class="form-control" id="fullName" placeholder="Holiday Type Name">
+                <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Holiday Type Name"
+                name="holidayName"
+                [(ngModel)]="postHoliday.holidayName" 
+                #HolidayName="ngModel" 
+                required minlength="3" 
+                maxlength="300"
+                >
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+              <div class="text-center">
+                <button 
+                type="submit" 
+                class="btn btn-primary"
+                (click)="postHolidayType()"
+                >Save</button></div>
             </form>
           </div>
         </mat-expansion-panel>
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header (click)="getHolidayType()">
             <p class="accordian-heading">Company Holiday List</p>
           </mat-expansion-panel-header>
 
@@ -34,20 +58,56 @@
             <form>
               <div>
                 <mat-form-field class="input-field">
-                  <mat-select placeholder="Holiday Type" [formControl]="toppings" [(value)]="selectedToppings" multiple>
-                    <mat-option *ngFor="let topping of holidayList" [value]="topping">{{topping}}</mat-option>
+                  <mat-select 
+                  placeholder="Holiday Type" 
+                  [formControl]="toppings" 
+                  [(value)]="selectedToppings" 
+                  >
+                    <mat-option 
+                    *ngFor="let val of holidayTypeList" 
+                    [value]="val.holidayName"
+                    name="holidayCode"
+                    (click)="holidayTypeSelection(val.holidayId)"
+                    >
+                    {{val.holidayName}}
+                  </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="form-group input-field">
                 <label for="type" class="label">Holiday Date</label>
-                <input type="date" class="form-control" id="type" placeholder="Holiday Date">
+                <input 
+                  type="date" 
+                  class="form-control" 
+                  placeholder="Holiday Date"
+                  name="holidayDate"
+                  [(ngModel)]="holidayListName.holidayDate" 
+                  #Holidaydate="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+
+                  >
               </div>
               <div class="form-group input-field">
                 <label for="highest" class="label">Holiday Name</label>
-                <input type="text" class="form-control" id="highest" placeholder="Holiday Name">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Holiday Name"
+                  name="holidayName"
+                  [(ngModel)]="holidayListName.holidayName" 
+                  #HolidayName="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+              <div class="text-center">
+                <button 
+                type="submit" 
+                class="btn btn-primary"
+                (click)="postHolidayList()"
+                >
+                Save</button></div>
             </form>
           </div>
         </mat-expansion-panel>
@@ -59,51 +119,156 @@
           <div class="bankInfo">
             <form>
               <div class="form-group input-field">
-                <label for="bankType" class="label">Company Off Days</label>
-                <input type="date" class="form-control" id="bankType" placeholder="Company Off Days">
+                <label for="bankType" class="label">Company Off Days Code</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Company Off Days Code"
+                  name="weeklyOffDays"
+                  [(ngModel)]="companyOffDays.dayCode" 
+                  #WeeklyOffDays="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
               </div>
-              <div class="form-group input-field">
-                <label for="addLine2" class="label">Company Name</label>
-                <input type="text" class="form-control" id="addLine2" placeholder="Company Name"
-                value="Anagha Infotech" disabled="true"
-                >
-              </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+              <div class="text-center">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  (click)="postWeeklyOffDays()"
+                  >
+                  Save</button></div>
             </form>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <!-- <mat-panel-title>
-              Employee Address
-            </mat-panel-title> -->
             <p class="accordian-heading">Company Leave Information</p>
           </mat-expansion-panel-header>
           <div class="empAddress">
             <form>
               <div class="form-group input-field">
                 <label for="addressType" class="label">Leave Code</label>
-                <input type="text" class="form-control" id="addressType" placeholder="Leave Code">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Leave Code"
+                  name="leaveCode"
+                  [(ngModel)]="leaveInfo.leaveCode" 
+                  #LeaveCode="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
               </div>
               <div class="form-group input-field">
                 <label for="addLine1" class="label">Leave Name</label>
-                <input type="text" class="form-control" id="addLine1" placeholder="Leave Name">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Leave Name"
+                  name="leaveName"
+                  [(ngModel)]="leaveInfo.leaveName" 
+                  #LeaveName="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
               </div>
               <div class="form-group input-field">
                 <label for="addLine2" class="label">Leave Limit</label>
-                <input type="text" class="form-control" id="addLine2" placeholder="Leave Limit">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="addLine2" 
+                  placeholder="Leave Limit"
+                  name="leaveLimit"
+                  [(ngModel)]="leaveInfo.leaveLimit" 
+                  #Leavelimit="ngModel" 
+                  required minlength="3" 
+                  maxlength="300"
+                  >
               </div>
-              <div class="form-group input-field">
-                <label for="addLine2" class="label">Company Name</label>
-                <input type="text" class="form-control" id="addLine2" placeholder="Company Name"
-                value="Anagha Infotech" disabled="true"
-                >
-              </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Save</button></div>
+              <div class="text-center">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  (click)="postLeaveInfo()"
+                  >Save</button></div>
             </form>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
+      <div class="employee mt-4">
+        <div class="emp-add mt-4 text-center">
+          <button 
+            type="button" 
+            class="btn btn-primary"
+            (click)="employeeCreation()"
+            >Create Employee Info</button>
+        </div>
+        <div class="emp-creation mt-4" *ngIf="employeeCreationEnable">
+          <form>
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Code</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Code"
+                name="employeeCode"
+                [(ngModel)]="createEmployee.empCode" 
+                #EmployeeCode="ngModel" 
+                required minlength="3" 
+                maxlength="300"
+                >
+              
+            </div>
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Name"
+                name="employeeName"
+                [(ngModel)]="createEmployee.empName" 
+                #EmployeeName="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Contact No</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Contact No"
+                name="employeeContactNo"
+                [(ngModel)]="createEmployee.contactNo" 
+                #EmployeeContactNo="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="fname" class="label">Employee DOB</label>
+              <input 
+              type="date" 
+              class="form-control" 
+              placeholder="Employee DOB"
+              name="empDOB"
+              [(ngModel)]="createEmployee.dob" 
+              #EmpDOB="ngModel" 
+              required minlength="3" 
+              maxlength="300">
+            </div>
+            <div class="text-center">
+              <button 
+              type="submit" 
+              class="btn btn-primary"
+              (click)="postEmployeeCreation()"
+              >Save</button></div>
+          </form>
+        </div>
+
+      </div>
     </div>
     <div class="col-sm-3"></div>
   </div>

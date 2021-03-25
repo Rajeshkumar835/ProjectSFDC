@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.intranet.dto.TimesheetDTO;
 import com.intranet.entity.Timesheet;
+import com.intranet.model.TimesheetApproval;
 
 public interface TimesheetService {
 
@@ -18,6 +19,9 @@ public interface TimesheetService {
 
 	public void deleteById(Long id);
 
-	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode);
+	public List<TimesheetDTO> getAllTimesheetByEmpCode(String empCode, String startDate, String endDate);
+	
+	//this is a service for approval part 
+	public List<Timesheet> getAllApprovalByEmpCode(TimesheetApproval timesheetApproval);
 
 }

@@ -38,10 +38,18 @@ export class LeaveMgmtService {
       leaveStatus
     );
   }
-  getEmployeeDataByEmpCode(listOfEmpCode) {
+  // getEmployeeDataByEmpCode(listOfEmpCode) {
+  //   return this._http.get(
+  //     "http://localhost:8443/api/v1/employeeLeaveInfo/findAllLeaveInfoByStatus",
+  //     listOfEmpCode
+  //   );
+  // }
+  getEmpDataByEmpcodeAndLeaveCode(empCode, leavCode) {
     return this._http.get(
-      "http://localhost:8443/api/v1/employeeLeaveInfo/findAllLeaveInfoByStatus",
-      listOfEmpCode
+      "http://localhost:8443/api/v1/employeeLeaveInfo/findLeaveInfoByEmpCodeandLeaveCode/" +
+        empCode +
+        "/" +
+        leavCode
     );
   }
 }

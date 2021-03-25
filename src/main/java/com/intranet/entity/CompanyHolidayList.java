@@ -31,10 +31,11 @@ public class CompanyHolidayList {
 	private Date createdDate;
 
 	@Column(nullable = true)
-	private String holidayCode;
-
-	@Column(nullable = true)
 	private String holidayName;
+	
+	@Column(nullable = true, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date holidayDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "holidayId")
