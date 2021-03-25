@@ -12,4 +12,7 @@ public interface ClientRegistrationInfoRepository
 
 	@Query(value = "select * from client_registration_info where client_code=:clientCode", nativeQuery = true)
 	public ClientRegistrationInfo clientRegistrationInfoByClientCode(@Param("clientCode") String clientCode);
+	
+	@Query(value ="select * from client_registration_info where company_email=:companyEmail",nativeQuery = true)
+	public ClientRegistrationInfo getClientInfoByEmailId(@Param("companyEmail") String companyEmail);
 }
