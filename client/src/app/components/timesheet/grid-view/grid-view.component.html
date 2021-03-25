@@ -4,6 +4,7 @@
       <button
         type="button"
         (click)="myFunctionPrevDate()"
+        class="btn btn-outline-secondary"
         style="margin-bottom: 10px; width: 50px"
       >
         &laquo;
@@ -11,13 +12,14 @@
       <button
         type="button"
         (click)="myFunctionNextdate()"
-        style="margin-left: 2px; margin-left: 905px; width: 50px"
+        class="btn btn-outline-secondary"
+        style="margin-left: 2px; margin-left: 935px; width: 50px"
       >
         &raquo;
       </button>
-    
+
       <table class="table table-striped table-bordered">
-        <thead>
+        <thead style="background-color: whitesmoke">
           <tr>
             <th>Project</th>
             <th>{{ mon }}</th>
@@ -27,12 +29,12 @@
             <th>{{ fri }}</th>
             <th>{{ sat }}</th>
             <th>{{ sunn }}</th>
-            <th style="background-color: #ddd; width: 130px; padding: 15px">
+            <th style="background-color: #ddd; width: 80px; padding: 15px">
               Total Time
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: whitesmoke">
           <tr *ngFor="let dynamic of dynamicArray; let i = index">
             <!--
             <td (click)="deleteRow(i)">
@@ -41,9 +43,12 @@
             -->
             <td>
               <select
+                class="form-select"
+                aria-label="Default select example"
                 name="projectName"
                 style="height: 32.5px; width: 280px"
                 [(ngModel)]="dynamicArray[i].projectName"
+                (change)="getValidationOfProject(dynamicArray[i].projectName)"
               >
                 <option *ngFor="let use of projects" [value]="use.Name">
                   {{ use.Name }}
@@ -57,6 +62,7 @@
                 [(ngModel)]="dynamicArray[i].Monday"
                 class="form-control"
                 type="text"
+                (ngModelChange)="getValidationOfValue(dynamicArray[i].Monday)"
               />
             </td>
             <td>
@@ -66,6 +72,7 @@
                 [(ngModel)]="dynamicArray[i].Tuesday"
                 class="form-control"
                 type="text"
+                (ngModelChange)="getValidationOfValue(dynamicArray[i].Tuesday)"
               />
             </td>
             <td>
@@ -75,6 +82,9 @@
                 [(ngModel)]="dynamicArray[i].Wednesday"
                 class="form-control"
                 type="text"
+                (ngModelChange)="
+                  getValidationOfValue(dynamicArray[i].Wednesday)
+                "
               />
             </td>
             <td>
@@ -84,6 +94,7 @@
                 [(ngModel)]="dynamicArray[i].thursday"
                 class="form-control"
                 type="text"
+                (ngModelChange)="getValidationOfValue(dynamicArray[i].thursday)"
               />
             </td>
             <td>
@@ -93,6 +104,7 @@
                 [(ngModel)]="dynamicArray[i].Friday"
                 class="form-control"
                 type="text"
+                (ngModelChange)="getValidationOfValue(dynamicArray[i].Friday)"
               />
             </td>
             <td>
@@ -137,7 +149,7 @@
           <tr
             class="form-control"
             timesheet-fill-sheet
-            style="margin-top: 11px; width: auto; background-color: #ddd"
+            style="margin-top: 11px; width: auto; background-color: #ccc"
           >
             <b> Total Time</b>
           </tr>
@@ -207,16 +219,42 @@
           </td>
         </tbody>
       </table>
-      <button type="button" (click)="addRow()">Add New Row</button>
-      <button type="button" (click)="deleteRow()" style="margin-left: 10px">
+      <button
+        type="button"
+        class="btn btn-outline-info"
+        (click)="addRow()"
+        style="width: 140px"
+      >
+        Add New Row
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-info"
+        (click)="deleteRow()"
+        style="margin-left: 10px; width: 140px"
+      >
         Delete Last Row
       </button>
-      <button type="button" (click)="saveEx()" style="margin-left: 10px">
-        <!--postTimesheet-->
+      <button
+        type="button"
+        (click)="saveEx()"
+        style="margin-left: 10px"
+        class="btn btn-outline-info"
+        style="margin-left: 10px; width: 80px"
+      >
         Save
       </button>
-    
-      <div style="margin-left: 1px; margin-top: 2%">
+      <!--this div is for success message-->
+      <div *ngIf="SaveMessageTemp" class="alert">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        <strong>Save Successfully!</strong> Your data is successfully save in
+        timesheet
+      </div>
+      <div style="margin-left: 5px; margin-top: 2%">
         <app-timesheetapproved></app-timesheetapproved>
       </div>
     </div>

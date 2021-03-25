@@ -6,46 +6,40 @@
 />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-
-<body>
-  <div id="mySidenav" class="sidenav">
-    <a
-      href="#"
-      routerLink="/welcome-timesheet"
-      routerLinkActive="active"
-      id="Welcome"
-      >Welcome</a
-    >
-    <a
-      href="#"
-      routerLink="/timesheet-fill-sheet"
-      routerLinkActive="active"
-      id="Timesheet"
-      >Timesheet</a
-    >
-    <a
-      href="#"
-      routerLink="/timesheet-admin"
-      routerLinkActive="active"
-      id="Admin"
-      >Admin</a
-    >
+<!--
+<div id="mySidenav" class="sidenav">
+  <a
+    href="#"
+    routerLink="/welcome-timesheet"
+    routerLinkActive="active"
+    id="Welcome"
+    >Welcome</a
+  >
+  <a
+    href="#"
+    routerLink="/timesheet-fill-sheet"
+    routerLinkActive="active"
+    id="Timesheet"
+    >Timesheet</a
+  >
+  <a href="#" routerLink="/timesheet-admin" routerLinkActive="active" id="Admin"
+    >Admin</a
+  >
+</div>
+-->
+<section class="UserTimeEntry">
+  <div style="margin-left: 115px">
+    <span>
+      <b style="font-size: 22px">Employee : </b>
+    </span>
+    <select class="btn btn-light dropdown-toggle" style="padding: 13px">
+      <option *ngFor="let use of users" [value]="use.Id">
+        {{ use.Name }}
+      </option>
+    </select>
   </div>
-  -->
-  <section class="UserTimeEntry">
-    <div style="margin-left: 115px">
-      <span>
-        <b style="font-size: 20px">Employee : </b>
-      </span>
-      <select style="padding: 11px">
-        <option *ngFor="let use of users" [value]="use.Id">
-          {{ use.Name }}
-        </option>
-      </select>
-    </div>
 
-    <div class="container">
-      <app-grid-view></app-grid-view>
-    </div>
-  </section>
-</body>
+  <div class="container">
+    <app-grid-view></app-grid-view>
+  </div>
+</section>

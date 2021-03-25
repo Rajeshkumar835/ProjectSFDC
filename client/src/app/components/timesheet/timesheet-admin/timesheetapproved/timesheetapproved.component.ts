@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { TimesheetService } from "src/app/services/timesheet.service";
 import { TimesheetApprovedStatus } from "src/app/models/timesheet.model";
+
 @Component({
   selector: "app-timesheetapproved",
   templateUrl: "./timesheetapproved.component.html",
@@ -14,6 +15,10 @@ export class TimesheetapprovedComponent implements OnInit {
     startDate: "",
     endDate: "",
   };
+
+  //this part for save sucess message
+
+  ApprovalMessageTemp = false;
   constructor(
     private formBuilder: FormBuilder,
     private timesheetService: TimesheetService
@@ -30,8 +35,8 @@ export class TimesheetapprovedComponent implements OnInit {
   ngOnInit() {
     //start date and end date part this is the part of approval/
 
-    this.StartDate = new Date();
-
+    // this.StartDate = new Date();
+    //this.EndDate = new Date();
     /* this.datepipe.transform(this.StartDate, "dd/MM/yyyy");  */
     this.StartRegisterForm = this.formBuilder.group({
       StartDate: "",
@@ -46,27 +51,46 @@ export class TimesheetapprovedComponent implements OnInit {
   }
 
   ApproveButton() {
-    this.timesheetService
-      .getAllApprovalByEmpCode(this.timesheetApproval)
-      .subscribe((data: any) => {
-        console.log("kkkkk", data);
-      });
+    if (this.timesheetApproval.endDate < this.timesheetApproval.startDate) {
+      alert("Invalid date format");
+    } else {
+      this.timesheetService
+        .getAllApprovalByEmpCode(this.timesheetApproval)
+        .subscribe((data: any) => {
+          console.log("kkkkk", data);
+        });
+      this.ApprovalMessageTemp = true;
+    }
   }
   approvedTimesheetEnd(endDate) {
+    this.ApprovalMessageTemp = false;
     this.timesheetApproval.endDate = endDate;
     console.log("approved End Date", endDate);
     console.log("timesheet approved End Date", this.timesheetApproval.endDate);
-    console.log("approved object",this.timesheetApproval)
+    console.log("approved object", this.timesheetApproval);
+
+    this.EndDate = endDate;
+    if (this.EndDate < this.StartDate) {
+      this.EndDate = this.StartDate;
+      alert("Please enter valid Date");
+      // this.toastr.success("Hello, I'm the toastr message.");
+    }
   }
   approvedTimesheetStart(startDate) {
+    this.ApprovalMessageTemp = false;
+    this.StartDate = startDate;
     this.timesheetApproval.startDate = startDate;
     console.log("approved Start Date", startDate);
     console.log(
       "timesheet approved Start Date",
       this.timesheetApproval.startDate
     );
-    console.log("approved object",this.timesheetApproval)
+    console.log("approved object", this.timesheetApproval);
 
+    if (this.EndDate < this.StartDate) {
+      this.EndDate = this.StartDate;
+      alert("Please enter valid Date");
+    }
   }
   // ApproveButton() {}
   onSubmit() {}
