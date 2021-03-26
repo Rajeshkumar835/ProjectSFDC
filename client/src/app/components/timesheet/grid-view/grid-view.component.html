@@ -1,3 +1,16 @@
+<div style="margin-left: 10px">
+  <span>
+    <b style="font-size: 22px">Employee : </b>
+  </span>
+  <select
+    class="btn btn-light dropdown-toggle"
+    style="padding: 13px; width: 300px"
+  >
+    <option *ngFor="let use of users" [value]="use.Name">
+      {{ use.Name }}
+    </option>
+  </select>
+</div>
 <div class="row">
   <div class="col-sm-12">
     <div class="container pt-4">
@@ -21,14 +34,16 @@
       <table class="table table-striped table-bordered">
         <thead style="background-color: whitesmoke">
           <tr>
-            <th>Project</th>
-            <th>{{ mon }}</th>
-            <th>{{ tue }}</th>
-            <th>{{ wed }}</th>
-            <th>{{ thur }}</th>
-            <th>{{ fri }}</th>
-            <th>{{ sat }}</th>
-            <th>{{ sunn }}</th>
+            <th style="text-align: center; margin-bottom: auto; padding: 25px">
+              Project
+            </th>
+            <th style="text-align: center">{{ mon }}</th>
+            <th style="text-align: center">{{ tue }}</th>
+            <th style="text-align: center">{{ wed }}</th>
+            <th style="text-align: center">{{ thur }}</th>
+            <th style="text-align: center">{{ fri }}</th>
+            <th style="text-align: center">{{ sat }}</th>
+            <th style="text-align: center">{{ sunn }}</th>
             <th style="background-color: #ddd; width: 80px; padding: 15px">
               Total Time
             </th>
@@ -46,7 +61,7 @@
                 class="form-select"
                 aria-label="Default select example"
                 name="projectName"
-                style="height: 32.5px; width: 280px"
+                style="height: 40.5px; width: 280px"
                 [(ngModel)]="dynamicArray[i].projectName"
                 (change)="getValidationOfProject(dynamicArray[i].projectName)"
               >
@@ -244,6 +259,7 @@
       >
         Save
       </button>
+
       <!--this div is for success message-->
       <div *ngIf="SaveMessageTemp" class="alert">
         <span
@@ -251,8 +267,7 @@
           onclick="this.parentElement.style.display='none';"
           >&times;</span
         >
-        <strong>Save Successfully!</strong> Your data is successfully save in
-        timesheet
+        <strong> Your data is successfully saved!</strong>
       </div>
       <div style="margin-left: 5px; margin-top: 2%">
         <app-timesheetapproved></app-timesheetapproved>
