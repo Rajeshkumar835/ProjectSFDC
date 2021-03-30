@@ -15,25 +15,26 @@ export class HolidayType {
 }
 
 export class HolidayList {
-  public holidayId:number;
-  public holidayDate:Date;
-  public holidayName:string;
+  public holidayId: number;
+  public holidayDate: Date;
+  public holidayName: string;
 }
-export class CompanyOffDays{
-    public clientCode:string;
-    public dayCode:string;
+export class CompanyOffDays {
+  public clientCode: string;
+  public dayCode: string;
 }
-export class LeaveInfo{
-    public clientCode: string;
-    public leaveCode: string;
-    public leaveName: string;
-    public leaveLimit: number;
+export class LeaveInfo {
+  public clientCode: string;
+  public leaveCode: string;
+  public leaveName: string;
+  public leaveLimit: number;
 }
-
-export class CreateEmployee{
+export class CreateEmployee {
   public empCode: string;
+  public firstName: string;
+  public lastName: string;
+  public password: string;
   public clientCode: string;
   public contactNo: string;
-  public empName: string;
-  public dob: string;
+  public managerCode: string;
 }

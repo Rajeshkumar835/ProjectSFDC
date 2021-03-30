@@ -222,14 +222,27 @@
               
             </div>
             <div class="form-group input-field">
-              <label for="empCode" class="label">Employee Name</label>
+              <label for="empCode" class="label">Employee First Name</label>
               <input 
                 type="text" 
                 class="form-control" 
-                placeholder="Employee Name"
-                name="employeeName"
-                [(ngModel)]="createEmployee.empName" 
-                #EmployeeName="ngModel" 
+                placeholder="Employee Last Name"
+                name="employeeFirstName"
+                [(ngModel)]="createEmployee.firstName" 
+                #EmployeeFirstName="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Last Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Last Name"
+                name="employeeLastName"
+                [(ngModel)]="createEmployee.lastName" 
+                #EmployeeLastName="ngModel" 
                 required minlength="3" 
                 maxlength="300">
             </div>
@@ -254,7 +267,7 @@
               class="form-control" 
               placeholder="Employee DOB"
               name="empDOB"
-              [(ngModel)]="createEmployee.dob" 
+              [(ngModel)]="createEmployee.password" 
               #EmpDOB="ngModel" 
               required minlength="3" 
               maxlength="300">
@@ -280,6 +293,25 @@
         </div>
         <div class="emp-creation mt-4" *ngIf="employeeCreationEnable">
           <form>
+            <div>
+              <mat-form-field class="input-field">
+                <mat-select 
+                placeholder="Select Manager" 
+                [formControl]="toppings" 
+                [(value)]="selectedToppings" 
+                >
+                  <mat-option 
+                  *ngFor="let val of empManagerData" 
+                  [value]="val.firstName"
+                  name="empName"
+                  (click)="empManagerSelection(val.empCode)"
+                  >
+                  {{val.firstName}} {{val.lastName}} 
+                </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
             <div class="form-group input-field">
               <label for="empCode" class="label">Employee Code</label>
               <input 
@@ -295,14 +327,27 @@
               
             </div>
             <div class="form-group input-field">
-              <label for="empCode" class="label">Employee Name</label>
+              <label for="empCode" class="label">Employee First Name</label>
               <input 
                 type="text" 
                 class="form-control" 
-                placeholder="Employee Name"
-                name="employeeName"
-                [(ngModel)]="createEmployee.empName" 
-                #EmployeeName="ngModel" 
+                placeholder="Employee Last Name"
+                name="employeeFirstName"
+                [(ngModel)]="createEmployee.firstName" 
+                #EmployeeFirstName="ngModel" 
+                required minlength="3" 
+                maxlength="300">
+            </div>
+
+            <div class="form-group input-field">
+              <label for="empCode" class="label">Employee Last Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Employee Last Name"
+                name="employeeLastName"
+                [(ngModel)]="createEmployee.lastName" 
+                #EmployeeLastName="ngModel" 
                 required minlength="3" 
                 maxlength="300">
             </div>
@@ -327,7 +372,7 @@
               class="form-control" 
               placeholder="Employee DOB"
               name="empDOB"
-              [(ngModel)]="createEmployee.dob" 
+              [(ngModel)]="createEmployee.password" 
               #EmpDOB="ngModel" 
               required minlength="3" 
               maxlength="300">
