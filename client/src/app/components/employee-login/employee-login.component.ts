@@ -17,10 +17,11 @@ ePass:"";
   }
   empLogin(){
     this.adminService.employeeLogin(this.eCode,this.ePass).subscribe((data:any)=>{
+      console.log("Login Successfull",data);
       console.log("Login Successfull",data.empCode);
       if(data!=null){
         localStorage.setItem("employeeInfo",data.empCode);
-        this.router.navigate(["/employee-info-add"]);
+        this.router.navigate(["/"]);
       }
     })
   }
