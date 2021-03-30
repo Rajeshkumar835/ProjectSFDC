@@ -42,6 +42,7 @@ export class AdminMasterDataComponent implements OnInit {
     leaveLimit:0
   }
   employeeCreationEnable:boolean=false;
+  employeeManagerCreationEnable:boolean=false;
   createEmployee: CreateEmployee={
     empCode:"",
     clientCode:"",
@@ -95,6 +96,9 @@ export class AdminMasterDataComponent implements OnInit {
     this.employeeCreationEnable=true;
   }
 
+  employeeManagerCreation(){
+    this.employeeManagerCreationEnable=true;
+  }
   postEmployeeCreation(){
     this.adminService.createEmployeeInfo(this.createEmployee).subscribe((data:any)=>{
       console.log("Employee creation data",data);
