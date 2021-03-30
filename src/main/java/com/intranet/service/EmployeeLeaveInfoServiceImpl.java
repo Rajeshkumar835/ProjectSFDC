@@ -49,6 +49,7 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 		employeeLeaveInfo.setToDate(employeeLeaveInfoDTO.getToDate());
 		employeeLeaveInfo.setLeaveReason(employeeLeaveInfoDTO.getLeaveReason());
 		employeeLeaveInfo.setStatus(employeeLeaveInfoDTO.getStatus());
+		employeeLeaveInfo.setTotalLeaveAvaiable(employeeLeaveInfoDTO.getTotalLeaveAvaiable());
 		employeeLeaveInfo.setTotalLeaveGranted(employeeLeaveInfoDTO.getTotalLeaveGranted());
 		employeeLeaveInfo.setLeaveApplied(employeeLeaveInfoDTO.getLeaveApplied());
 		employeeLeaveInfo.setRejectionReason(employeeLeaveInfoDTO.getRejectionReason());
@@ -86,6 +87,13 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 	public List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(String empCode) {
 		List<EmployeeLeaveInfo> listEmpLeaveInfo = employeeLeaveInfoRepository.findAllLeaveInfoByEmpCode(empCode);
 		return listEmpLeaveInfo;
+	}
+	
+	@CrossOrigin
+	@Override
+	public List<EmployeeLeaveInfo> findLeaveInfoByEmpCodeandLeaveCode(String empCode, String leaveCode) {
+		List<EmployeeLeaveInfo> listEmpCodeandLeaveCodeLeaveInfo = employeeLeaveInfoRepository.findLeaveInfoByEmpCodeandLeaveCode(empCode, leaveCode);
+		return listEmpCodeandLeaveCodeLeaveInfo;
 	}
 
 //	@Override

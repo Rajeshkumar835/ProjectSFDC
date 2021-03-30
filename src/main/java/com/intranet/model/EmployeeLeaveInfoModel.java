@@ -22,6 +22,8 @@ public class EmployeeLeaveInfoModel {
 	private String leaveReason;
 
 	private String status;
+	
+	private Long totalLeaveAvaiable;
 
 	private Long totalLeaveGranted;
 

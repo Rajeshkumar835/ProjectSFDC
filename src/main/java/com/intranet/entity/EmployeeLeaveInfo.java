@@ -52,6 +52,9 @@ public class EmployeeLeaveInfo {
 
 	@Column(nullable = true)
 	private String status;
+	
+	@Column(nullable = true)
+	private Long totalLeaveAvaiable;
 
 	@Column(nullable = true)
 	private Long totalLeaveGranted;

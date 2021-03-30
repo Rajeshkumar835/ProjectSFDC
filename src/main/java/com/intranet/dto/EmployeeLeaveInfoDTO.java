@@ -24,6 +24,8 @@ public class EmployeeLeaveInfoDTO {
 	private String leaveReason;
 
 	private String status;
+	
+	private Long totalLeaveAvaiable;
 
 	private long totalLeaveGranted;
 

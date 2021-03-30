@@ -20,8 +20,8 @@ export class TimefilltimesheetComponent implements OnInit {
     this.users = [
       { Id: 1, Name: "Ashutosh kumar yadav" },
       { Id: 2, Name: "Amish Yadav" },
-      { Id: 3, Name: "Satish jee" },
-      { Id: 4, Name: "Ujwal jee" },
+      { Id: 3, Name: "Satish kumar" },
+      { Id: 4, Name: "Ujwal Singhal" },
     ];
 
     this.FillDate = new Date();

@@ -1,19 +1,12 @@
-<!-- <link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <div style="margin-top: 10px">
-  <h4><b>Approval Section</b></h4>
+  <h4 style="font-size: 22px"><b>Approval Section</b></h4>
   <form [formGroup]="StartRegisterForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>From Date:</label>
-      <label style="margin-left: 13%">To Date:</label>
-      <div class="input-group">
+      <label style="margin-left: 12.5%">To Date:</label>
+      <div>
         <input
           type="date"
-          class="form-control"
           id="StartDate"
           name="StartDate"
           [(ngModel)]="StartDate"
@@ -24,7 +17,6 @@
         <span>
           <input
             type="date"
-            class="form-control"
             id="EndDate"
             name="EndDate"
             [(ngModel)]="EndDate"
@@ -41,7 +33,20 @@
     </div>
 
     <!--<button type="button">Approve</button> -->
-    <button type="button" (click)="ApproveButton()">Approve</button>
+    <button
+      type="button"
+      (click)="ApproveButton()"
+      class="btn btn-outline-info"
+    >
+      Approve
+    </button>
+    <!--this div is for success message-->
+    <div *ngIf="ApprovalMessageTemp" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <strong>Your have successfully Approve!</strong>
+    </div>
     <!---  <button type="button" style="margin-left: 20px">Return</button>   -->
   </form>
 </div>
