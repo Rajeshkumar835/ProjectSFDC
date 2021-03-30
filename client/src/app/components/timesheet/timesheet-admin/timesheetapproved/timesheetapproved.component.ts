@@ -11,7 +11,7 @@ import { TimesheetApprovedStatus } from "src/app/models/timesheet.model";
 })
 export class TimesheetapprovedComponent implements OnInit {
   timesheetApproval: TimesheetApprovedStatus = {
-    empCode: "ABC",
+    empCode: "AMZ01",
     startDate: "",
     endDate: "",
   };
