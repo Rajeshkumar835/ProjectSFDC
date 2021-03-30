@@ -2,10 +2,12 @@
 this part for after successfuly save or approval message
 */
 .alert {
-  padding: 20px;
+  padding: 2px;
   background-color: Green;
   color: white;
-  margin-top: 5px;
+  margin-top: 8px;
+  height: auto;
+  width: fit-content;
 }
 
 .closebtn {

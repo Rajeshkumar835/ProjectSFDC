@@ -6,6 +6,7 @@ import {
 import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
+import { user } from "./user";
 @Component({
   selector: "app-grid-view",
   templateUrl: "./grid-view.component.html",
@@ -55,6 +56,19 @@ export class GridViewComponent implements OnInit {
   //
   WeekApprovalTemp = 0;
 
+  //now day wise approval part
+  //yee 7 var ka use nhi kiya gya hai use kiya jaaaiga lekin manager approval ke baad..................isme maine kya kiya ki jab value retrive karega then..........agar woo ...........status Approve hua then isme ............Approve assign ho jaaiga............or yee wooo jo saath object banai hai ussme NEW ke jagah Approve send karega .....
+
+  //ubhi hmmne sirf value jav retrive kar rahi hai tab status approve ko in 7 variable me store karwaaa rahr h...........un saath object me baad me daal denge
+  //nhi kie assign ubhi stop
+  MonApprovalTemp = "NEW";
+  TueApprovalTemp = "NEW";
+  WedApprovalTemp = "NEW";
+  ThurApprovalTemp = "NEW";
+  FriApprovalTemp = "NEW";
+  SatApprovalTemp = "NEW";
+  SunApprovalTemp = "NEW";
+
   /*
      total time column wise part part
   */
@@ -72,6 +86,7 @@ export class GridViewComponent implements OnInit {
   */
 
   totalTimeRow = new Array();
+
   // TotaltimeRowwise: number = 0;
 
   /*
@@ -92,14 +107,31 @@ export class GridViewComponent implements OnInit {
   */
   testDynamic: any = {};
 
-  empCode = "ABC";
+  empCode = "";
   startDate = "";
   endDate = "";
-
+  //variables of users/employee/manager
+  users: user[];
+  empNameEmp: any = {};
   /*
   ngOnInit is started
   */
-  ngOnInit(): void {
+  ngOnInit() {
+    let empCode = localStorage.getItem("employeeInfo");
+    console.log("empCode : ", empCode);
+    this.timesheetObject1.timesheet.empCode = empCode;
+    this.timesheetObject2.timesheet.empCode = empCode;
+    this.timesheetObject3.timesheet.empCode = empCode;
+    this.timesheetObject4.timesheet.empCode = empCode;
+    this.timesheetObject5.timesheet.empCode = empCode;
+    this.timesheetObject6.timesheet.empCode = empCode;
+    this.timesheetObject7.timesheet.empCode = empCode;
+
+    this.getEmployeeInfoByEmpCode(empCode);
+    //this part will store the info of Employee/manager
+    this.users = [];
+
+    //
     let i: number = 0;
 
     /*
@@ -216,9 +248,6 @@ this is the part of week wise date
     /*
 here we call main retrive
 */
-    if (this.mon) {
-      this.getAllTimesheetByEmpCode();
-    }
 
     /*
     this part is used for testing purpose
@@ -255,6 +284,38 @@ here we call main retrive
       TotaltimeRowwise: "0",
     };
     this.dynamicArray.push(this.newDynamic);
+  }
+  //this service is used to get the information of current login employee or user or manager
+  empName: "";
+  getEmployeeInfoByEmpCode(empCode) {
+    this.timesheetService
+      .getEmployeeInfoByEmpCode(empCode)
+      .subscribe((data: any) => {
+        console.log("Employee info data ", data);
+        this.empCode = data.empCode;
+        console.log(" Assign empCode" + this.empCode);
+        let firstNameString: String = " ";
+        this.empName = data.firstName + firstNameString + data.lastName;
+        //here we put the ampName into seven object
+        this.timesheetObject1.timesheet.empName = this.empName;
+        this.timesheetObject2.timesheet.empName = this.empName;
+        this.timesheetObject3.timesheet.empName = this.empName;
+        this.timesheetObject4.timesheet.empName = this.empName;
+        this.timesheetObject5.timesheet.empName = this.empName;
+        this.timesheetObject6.timesheet.empName = this.empName;
+        this.timesheetObject7.timesheet.empName = this.empName;
+        //
+        console.log("empName", this.empName);
+        this.empNameEmp = {
+          Name: this.empName,
+        };
+        this.users.push(this.empNameEmp);
+        if (this.mon) {
+          this.getAllTimesheetByEmpCode();
+        } else {
+          console.log("Annn" + this.mon);
+        }
+      });
   }
 
   getAllTimesheetByEmpCode() {
@@ -1337,8 +1398,8 @@ here we call main retrive
   timesheetObject1: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1349,8 +1410,8 @@ here we call main retrive
   timesheetObject2: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1361,8 +1422,8 @@ here we call main retrive
   timesheetObject3: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1373,8 +1434,8 @@ here we call main retrive
   timesheetObject4: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1384,8 +1445,8 @@ here we call main retrive
   timesheetObject5: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1395,8 +1456,8 @@ here we call main retrive
   timesheetObject6: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1406,8 +1467,8 @@ here we call main retrive
   timesheetObject7: TimesheetObject = {
     timesheet: {
       attedanceDate: null,
-      empCode: "ABC",
-      empName: "AMISH",
+      empCode: "",
+      empName: "",
       status: "NEW",
       totalTimeHour: 0,
     },
@@ -1911,18 +1972,28 @@ here we call main retrive
             this.postTimesheet(this.timesheetObject7);
           }
 
-          splitted.length = 0;
           /*
-      let total1: number = +data1;
-      let total2: number = +data2;
-      let total3: number = +data3;
-      let total4: number = +data4;
-      let total5: number = +data5;
-      let total6: number = +data6;
-      let total7: number = +data7;
-      this.TotaltimeRowwise =
-        total1 + total2 + total3 + total4 + total5 + total6 + total7;
-         */
+      total time row wise
+      */
+
+          for (let mm = 0; mm < splitted.length; mm++) {
+            let rowWiseTime =
+              +splitted1[mm] +
+              +splitted2[mm] +
+              +splitted3[mm] +
+              +splitted4[mm] +
+              +splitted5[mm] +
+              +splitted6[mm] +
+              +splitted7[mm];
+            let rowWiseTimeString: string;
+            rowWiseTimeString = String(rowWiseTime);
+            this.dynamicArray[mm].TotaltimeRowwise = rowWiseTimeString;
+
+            console.log("this is total row wise time" + rowWiseTimeString);
+          }
+          //here we do project is zero
+          splitted.length = 0;
+
           /*
       total time column wise
       */
@@ -1939,23 +2010,6 @@ here we call main retrive
 
           this.SaveMessageTemp = true;
 
-          /*
-      total time row wise
-      */
-
-          for (let mm = 0; mm < splitted.length; mm++) {
-            this.totalTimeRow.push(
-              +splitted1[mm] +
-                +splitted2[mm] +
-                +splitted3[mm] +
-                +splitted4[mm] +
-                +splitted5[mm] +
-                +splitted6[mm] +
-                +splitted7[mm]
-            );
-
-            console.log("this is total row wise time" + this.totalTimeRow);
-          }
           //this.testNumberSave = 1;
         }
       }
