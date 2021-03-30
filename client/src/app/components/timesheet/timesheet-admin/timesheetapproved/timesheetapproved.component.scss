@@ -1,0 +1,26 @@
+/*
+this part for after successfuly save or approval message
+*/
+.alert {
+  padding: 2px;
+  background-color: Green;
+  color: white;
+  margin-top: 8px;
+  height: auto;
+  width: fit-content;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

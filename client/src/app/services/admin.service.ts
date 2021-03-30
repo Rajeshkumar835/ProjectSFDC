@@ -39,10 +39,15 @@ export class AdminService {
   }
 
   createEmployeeInfo(createEmployee:CreateEmployee){
-    return this.http.post("http://localhost:8443/api/v1/createEmployee/add",createEmployee);
+    const body=createEmployee;
+    return this.http.post("http://localhost:8443/api/v1/employeeInfo/createEmployee",body);
   }
 
   employeeLogin(empCode,password){
-    return this.http.get("http://localhost:8443/api/v1/createEmployee/employeeLogin/"+empCode+"/"+password);
+    return this.http.get("http://localhost:8443/api/v1/employeeInfo/employeeLogin/"+empCode+"/"+password);
+  }
+
+  getAllEmpManagerList(){
+    return this.http.get("http://localhost:8443/api/v1/employeeInfo/getEmployeeManagerList");
   }
 }

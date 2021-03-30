@@ -38,4 +38,10 @@ export class TimesheetService {
       data
     );
   }
+
+  getEmployeeInfoByEmpCode(empCode) {
+    return this.http.get(
+      "http://localhost:8443/api/v1/employeeInfo/findByEmpCode/" + empCode
+    );
+  }
 }

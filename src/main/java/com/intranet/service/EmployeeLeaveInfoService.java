@@ -13,7 +13,7 @@ public interface EmployeeLeaveInfoService {
 	public EmployeeLeaveInfo add(EmployeeLeaveInfoDTO employeeLeaveInfoDTO);
 
 	public EmployeeLeaveInfo save(EmployeeLeaveInfo empLeaveData);
-	public Optional<EmployeeLeaveInfo> findById(Long id);
+	public Optional<EmployeeLeaveInfo> findById(Long id);     
 
 	public List<EmployeeLeaveInfo> findAll();
 
@@ -21,5 +21,6 @@ public interface EmployeeLeaveInfoService {
 	List<EmployeeLeaveInfo> findAllLeaveInfoByStatus();
 
 	public List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(String empCode);
+	public List<EmployeeLeaveInfo> findLeaveInfoByEmpCodeandLeaveCode(String empCode, String leaveCode);
 
 }
