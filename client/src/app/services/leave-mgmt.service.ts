@@ -52,4 +52,14 @@ export class LeaveMgmtService {
         leavCode
     );
   }
+  getWeekOfDays() {
+    return this._http.get(
+      "http://localhost:8443/api/v1/companyWeeklyOff/findAll"
+    );
+  }
+  getHolidays() {
+    return this._http.get(
+      "http://localhost:8443/api/v1/companyHolidayList/findAll"
+    );
+  }
 }

@@ -5,6 +5,9 @@ import { LeaveMgmtService } from "src/app/services/leave-mgmt.service";
 import { LeaveMgmt } from "src/app/models/leave-mgmt.model";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { AdminService } from "src/app/services/admin.service";
+import { Router } from "@angular/router";
+import { DashbaordService } from "src/app/services/dashbaord.service";
 
 @Component({
   selector: "app-employee-apply-leave-info",
@@ -58,22 +61,32 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     totalLeaveAvaiable: 0,
     totalLeaveGranted: 0,
   };
+  ecode1: any;
   constructor(
     private leaveService: LeaveMgmtService,
+    private adminService: AdminService,
+    private dashbordService: DashbaordService,
     private datePipe: DatePipe,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
   ) {
     console.log("value of LeaveLimit is", this.leaveLimit);
   }
 
   ngOnInit() {
+    let userDataCode = localStorage.getItem("employeeInfo");
+    this.ecode1 = userDataCode;
+    this.getDataByLocalStorageByEmpCode(userDataCode);
+    console.log("empcode is", userDataCode);
     this.getLeaveType();
     this.getEmployeesLeaveInfoDataValues();
     console.log("Manager Leave data isshown ", this.empData);
     this.getAllEmployeeLeaveData();
     this.getEmployeesLeaveInfoDataValue();
-    this.getLeaveTypeDataValues(this.empcode1);
+    this.getLeaveTypeDataValues();
+    this.getWeeklyOfDays();
+    this.getAllHolidays();
     this.calculateToday();
     //this.getEmpDatabyLeaveCodeAndLeaveCode();
   }
@@ -93,6 +106,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     //  );
     this.totalgrantleave();
   }
+
+  //totalgrantleave function calculate ToatalAvaiableLeave totalGrantLeave Days .
   totalgrantleave() {
     let arrayRes2 = this.availableLeave.map((a) => a.totalLeaveGranted);
     console.log("this.avaiableExaDt value2  ", arrayRes2[0]);
@@ -103,6 +118,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       this.avaiableExaGrantData
     );
   }
+
+  //from Date calculation
   fromCoDate(value) {
     console.log("fom date", value);
     this.datePipe.transform(this.fDate, "dd/mm/yyyy");
@@ -111,13 +128,21 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     this.calculateDay();
     this.totalgrantleave();
   }
-  verifyLeave(value) {
-    this.leaveValue = value;
-    if (value != "noLeave") {
-      this.IsLeaveInvalid = false;
-    } else {
-      this.IsLeaveInvalid = true;
-    }
+
+  weekDays: any;
+  weekendDay1: any;
+  weekendDay2: any;
+  getWeeklyOfDays() {
+    this.leaveService.getWeekOfDays().subscribe((response: any) => {
+      this.weekDays = response;
+      let weekRes = this.weekDays.map((e) => e.dayCode);
+      console.log("weekRes coming from backend ", weekRes);
+      this.weekendDay1 = weekRes[0];
+      console.log(" this.weekendDay1 coming from backend ", this.weekendDay1);
+      this.weekendDay2 = weekRes[1];
+      console.log(" this.weekendDay2 coming from backend ", this.weekendDay2);
+      console.log("this.weekDays coming from backend ", this.weekDays);
+    });
   }
   getLeaveType() {
     this.leaveService.getLeaveTypeData().subscribe((response: any) => {
@@ -125,14 +150,112 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       console.log("Leave Type Date coming from backend ", this.LeaveData);
     });
   }
-  getLeaveLimit() {
-    var result = this.LeaveData.filter((obj) => {
-      return obj.leaveCode === 6;
+
+  holidays: any;
+  holidayDateValList: any;
+  getAllHolidays() {
+    this.leaveService.getHolidays().subscribe((response: any) => {
+      this.holidays = response;
+      let holiRes = this.holidays.map((f) => f.holidayDate);
+      this.holidayDateValList = holiRes;
+      console.log(
+        "   this.holidayDateValList coming from backend ",
+        this.holidayDateValList
+      );
+      // this.holidays.push(this.holidayDate);
+      console.log(" this.holidays coming from backend ", holiRes);
     });
   }
+  // getLeaveLimit() {
+  //   var result = this.LeaveData.filter((obj) => {
+  //     return obj.leaveCode === 6;
+  //   });
+  // }
+
+  //get the employeecode Data through localstorage logged in empCode
+
+  localDataEmpcode: any;
+  empFirstName: any;
+  empName: any;
+  empCodeVal: any;
+  empEmailId: any;
+  getDataByLocalStorageByEmpCode(userDataCode) {
+    this.dashbordService
+      .getEmployeeInfoByEmpCode(userDataCode)
+      .subscribe((response: any) => {
+        this.localDataEmpcode = response;
+        console.log("LocalSotarage empCode Data ", this.localDataEmpcode);
+        this.empCodeVal = response.empCode;
+        console.log("LocalSotarage empCode Data ", this.empCodeVal);
+        this.empName = response.firstName + " " + response.lastName;
+        console.log("LocalSotarage this.empName ", this.empName);
+        this.empEmailId = response.emailId;
+        console.log("LocalSotarage this.empEmailId ", this.empEmailId);
+      });
+  }
+
+  /*.....This calculateDay() function calculate  number of days between two dates to substract weekly off Daya and Holidays........*/
 
   calculateDay() {
-    var holidays = ["03-25-2021", "03-27-2021", "03-28-2021"];
+    var weekDaysNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    console.log(" weekDaysNames.length", weekDaysNames.length);
+    var dayCodeValue1;
+    var dayCodeValue2;
+    console.log("dayCodeValue1 is", dayCodeValue1);
+    console.log("dayCodeValue2 is", dayCodeValue2);
+    console.log(" this.weekendDay1 coming from backend ", this.weekendDay1);
+    console.log(" this.weekendDay2 coming from backend ", this.weekendDay2);
+    console.log(" weekDaysNames[0] coming from backend ", weekDaysNames[0]);
+
+    if (weekDaysNames[0] === this.weekendDay1) {
+      dayCodeValue1 = 0;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[1] === this.weekendDay1) {
+      dayCodeValue1 = 1;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[2] === this.weekendDay1) {
+      dayCodeValue1 = 2;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[3] === this.weekendDay1) {
+      dayCodeValue1 = 3;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[4] === this.weekendDay1) {
+      dayCodeValue1 = 4;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[5] === this.weekendDay1) {
+      dayCodeValue1 = 5;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    } else if (weekDaysNames[6] === this.weekendDay1) {
+      dayCodeValue1 = 6;
+      console.log("dayCodeValue1 is", dayCodeValue1);
+    }
+
+    if (weekDaysNames[0] === this.weekendDay2) {
+      dayCodeValue2 = 0;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[1] === this.weekendDay2) {
+      dayCodeValue2 = 1;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[2] === this.weekendDay2) {
+      dayCodeValue2 = 2;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[3] === this.weekendDay2) {
+      dayCodeValue2 = 3;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[4] === this.weekendDay2) {
+      dayCodeValue2 = 4;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[5] === this.weekendDay2) {
+      dayCodeValue2 = 5;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    } else if (weekDaysNames[6] === this.weekendDay2) {
+      dayCodeValue2 = 6;
+      console.log("dayCodeValue2 is", dayCodeValue2);
+    }
+
+    var holidaysVal = [];
+    holidaysVal = this.holidayDateValList;
+    console.log("holidays values is", holidaysVal);
     var days = 0;
     var startDate = new Date(this.fDate);
     var endDate = new Date(this.tDate);
@@ -165,11 +288,11 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       days -= 2;
     }
     // Remove start day if span starts on Sunday but ends before Saturday
-    if (startDay == 0 && endDay != 6) {
+    if (startDay == dayCodeValue2 && endDay != dayCodeValue1) {
       days--;
     }
     // Remove end day if span ends on Saturday but starts after Sunday
-    if (endDay == 6 && startDay != 0) {
+    if (endDay == dayCodeValue1 && startDay != dayCodeValue2) {
       days--;
     }
     // var count = 0;
@@ -179,12 +302,12 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     //   if (!(dayOfWeek == 6 || dayOfWeek == 0)) count++;
     //   curDate.setDate(curDate.getDate() + 1);
     // }
-    holidays.forEach((d) => {
-      var day = this.stringToDate(d, "mm-dd-yyyy", "-");
-      console.log("day value foreach is", day);
+    holidaysVal.forEach((d) => {
+      let day = new Date(d);
+      console.log("day values is", day);
       if (day >= startDate && day <= endDate) {
         /* If it is not saturday (6) or sunday (0), substract it */
-        if (day.getDay() % 6 != 0) {
+        if (day.getDay() % dayCodeValue1 != 0) {
           days--;
         }
       }
@@ -195,23 +318,23 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
 
     this.show = true;
   }
-  stringToDate(_date, _format, _delimiter) {
-    var formatLowerCase = _format.toLowerCase();
-    var formatItems = formatLowerCase.split(_delimiter);
-    var dateItems = _date.split(_delimiter);
-    var monthIndex = formatItems.indexOf("mm");
-    var dayIndex = formatItems.indexOf("dd");
-    var yearIndex = formatItems.indexOf("yyyy");
-    var year = parseInt(dateItems[yearIndex]);
-    // adjust for 2 digit year
-    if (year < 100) {
-      year += 2000;
-    }
-    var month = parseInt(dateItems[monthIndex]);
-    month -= 1;
-    var formatedDate = new Date(year, month, dateItems[dayIndex]);
-    return formatedDate;
-  }
+  // stringToDate(_date, _format, _delimiter) {
+  //   var formatLowerCase = _format.toLowerCase();
+  //   var formatItems = formatLowerCase.split(_delimiter);
+  //   var dateItems = _date.split(_delimiter);
+  //   var monthIndex = formatItems.indexOf("mm");
+  //   var dayIndex = formatItems.indexOf("dd");
+  //   var yearIndex = formatItems.indexOf("yyyy");
+  //   var year = parseInt(dateItems[yearIndex]);
+  //   // adjust for 2 digit year
+  //   if (year < 100) {
+  //     year += 2000;
+  //   }
+  //   var month = parseInt(dateItems[monthIndex]);
+  //   month -= 1;
+  //   var formatedDate = new Date(year, month, dateItems[dayIndex]);
+  //   return formatedDate;
+  // }
   // getEmpDatabyLeaveCodeAndLeaveCode() {
   //   this.leaveService
   //     .getEmpDataByEmpcodeAndLeaveCode(this.empcode1, this.leavtype)
@@ -255,9 +378,9 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
         this.remainingAvaiable
       );
 
-      leaveValue.empName = "Shayam Chaudhary";
-      leaveValue.emailId = "shayam@1234.com";
-      leaveValue.empCode = "A5";
+      leaveValue.empName = this.empName;
+      leaveValue.emailId = this.empEmailId;
+      leaveValue.empCode = this.empCodeVal;
       leaveValue.status = "Applied";
       leaveValue.leaveReason = this.leaveReason;
 
@@ -305,9 +428,9 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
           this.remainingAvaiable
         );
 
-        leaveValue.empName = "Shayam Chaudhary";
-        leaveValue.emailId = "shayam@1234.com";
-        leaveValue.empCode = "A5";
+        leaveValue.empName = this.empName;
+        leaveValue.emailId = this.empEmailId;
+        leaveValue.empCode = this.empCodeVal;
         leaveValue.status = "Applied";
         leaveValue.leaveReason = this.leaveReason;
 
@@ -344,8 +467,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     }
   }
   reasonval: string;
-  onMouseEnter(): void {}
-  //here choose leave Type send leaveCode  such as "AL"for Annual Leave
+
+  //here choose leave Type and send leaveCode  such as "AL"for Annual Leave
 
   chooseLeave(value) {
     this.leavtype = value;
@@ -360,7 +483,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     console.log("leaveLimit value4 is", this.intialalLeaveValue);
     // let arrayRes = this.availableLeave.map((a) => a.totalLeaveAvaiable);
     // console.log("this.avaiableExaDt value  ", arrayRes);
-    var eCode = "A5";
+    var eCode = this.empCodeVal;
+    console.log("eCode value is ", eCode);
     this.leaveService
       .getEmpDataByEmpcodeAndLeaveCode(eCode, this.leavtype)
       .subscribe((response1: any) => {
@@ -562,7 +686,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
 
   LeavTypeData: any;
   todayvalue: any;
-  empcode1 = "A4";
+  empcode1: any;
   getEmployeesLeaveInfoDataValue() {
     console.log("employee leave info");
     this.leaveService.getAllLeaveData().subscribe((response1: any) => {
@@ -570,9 +694,10 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       console.log("Leave data is LeaveIfo method  shown", this.LeaveInfoData);
     });
   }
-  getLeaveTypeDataValues(empcode1) {
+  getLeaveTypeDataValues() {
+    this.empcode1 = this.ecode1;
     this.leaveService
-      .getEmployeeLeaveInfoData(empcode1)
+      .getEmployeeLeaveInfoData(this.empcode1)
       .subscribe((response) => {
         this.LeavTypeData = response;
         console.log("Leave Type Data coming from backend2 ", this.LeavTypeData);
@@ -608,8 +733,9 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     this.LeaveMgmt.toDate = toDate;
     this.LeaveMgmt.leaveReason = reason;
     this.LeaveMgmt.leaveApplied = leaveApplied;
-    this.leaveAppliedvalue = leaveApplied;
-    console.log("value of LeaveApplied is", this.leaveAppliedval);
+    console.log("value of LeaveApplied is", this.LeaveMgmt.leaveApplied);
+    this.leaveAppliedvalue = this.LeaveMgmt.leaveApplied;
+    console.log("value of LeaveApplied is", this.leaveAppliedvalue);
 
     this.LeaveMgmt.totalLeaveGranted = totalLeave;
     this.LeaveMgmt.totalLeaveAvaiable = totalLeaveAvaiable;

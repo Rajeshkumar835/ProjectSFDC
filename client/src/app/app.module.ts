@@ -63,6 +63,9 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { TicketManagementComponent } from './components/ticket-management/ticket-management.component';
+import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +106,8 @@ import {MatListModule} from '@angular/material/list';
     AdminMasterDataComponent,
     DashboardComponent,
     AdminDashboardComponent,
+    TicketManagementComponent,
+    RaiseTicketComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,7 +41,15 @@ export class TimesheetService {
 
   getEmployeeInfoByEmpCode(empCode) {
     return this.http.get(
-      "http://localhost:8443/api/v1/employeeInfo/findByEmpCode/" + empCode
+      "http://localhost:8443/api/v1/employeeInfo/findById/" + empCode
+    );
+  }
+
+  //get all employee in hierarchy(manager h)
+  getEmployeeInfoByEmpCodeHierarchy(empCode) {
+    return this.http.get(
+      "http://localhost:8443/api/v1/employeeInfo/getEmployeeByManagerEmpCode/" +
+        empCode
     );
   }
 }
