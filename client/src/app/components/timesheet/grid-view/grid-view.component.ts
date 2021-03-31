@@ -318,7 +318,7 @@ here we call main retrive
           Id: this.empCode,
           Name: this.empName,
         };
-        // this.Id = this.empCode;
+         this.Id = this.empCode;
         console.log("aaa" + this.empNameEmp);
         console.log("aaa" + this.empNameEmp.Id);
         this.users.push(this.empNameEmp);

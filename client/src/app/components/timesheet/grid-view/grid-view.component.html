@@ -5,8 +5,8 @@
   <select
     class="btn btn-light dropdown-toggle"
     style="padding-bottom: 13px; width: 300px; font-size: 18px"
-    [(ngModel)]="users.Id"
-    (change)="getEmployeeHierarchy(users.Id)"
+    [(ngModel)]="Id"
+    (change)="getEmployeeHierarchy(Id)"
   >
     <option *ngFor="let emp of users" [value]="emp.Id">
       {{ emp.Name }}
