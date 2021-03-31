@@ -59,6 +59,8 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { TicketManagementComponent } from './components/ticket-management/ticket-management.component';
+import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AdminComponent,
     AdminMasterDataComponent,
     DashboardComponent,
+    TicketManagementComponent,
+    RaiseTicketComponent,
   ],
   imports: [
     BrowserModule,
