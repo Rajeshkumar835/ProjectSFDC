@@ -357,7 +357,15 @@ here we call main retrive
         if (data.length >= 1) {
           //this is weekly approval
           this.WeekApprovalTemp = 1;
-
+          //this is for ay wise approval
+          this.MonApprovalTemp = "NEW";
+          this.TueApprovalTemp = "NEW";
+          this.WedApprovalTemp = "NEW";
+          this.ThurApprovalTemp = "NEW";
+          this.FriApprovalTemp = "NEW";
+          this.SatApprovalTemp = "NEW";
+          this.SunApprovalTemp = "NEW";
+          //end
           //
           let rowLength = data.length;
           let rowLength2 = rowLength - 7;
@@ -412,6 +420,7 @@ here we call main retrive
               console.log("hello monday" + data[rowLength2].timesheet.status);
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -424,6 +433,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -437,6 +447,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -450,6 +461,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -463,6 +475,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -476,6 +489,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -489,6 +503,7 @@ here we call main retrive
               );
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.MonApproval = true;
+                this.MonApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.MonApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -503,6 +518,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -513,6 +529,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -524,6 +541,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -535,6 +553,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -546,6 +565,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -557,6 +577,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -568,6 +589,7 @@ here we call main retrive
               console.log("hello Tuesday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.TueApproval = true;
+                this.TueApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.TueApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -582,6 +604,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -592,6 +615,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -603,6 +627,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -614,6 +639,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -625,6 +651,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -634,8 +661,10 @@ here we call main retrive
             } else if (Checkdate5.getDay() == 3) {
               test44Wednesday = data[rowLength2 + 5].timesheetDetails[t2].hour;
               console.log("hello Wednesday");
+
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -647,6 +676,7 @@ here we call main retrive
               console.log("hello Wednesday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.WedApproval = true;
+                this.WedApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.WedApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -661,6 +691,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -671,6 +702,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -682,6 +714,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -693,6 +726,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -704,6 +738,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -715,6 +750,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -726,6 +762,7 @@ here we call main retrive
               console.log("hello Thursday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.ThurApproval = true;
+                this.ThurApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.ThurApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -740,6 +777,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -750,6 +788,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -761,6 +800,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -772,6 +812,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -783,6 +824,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -794,6 +836,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -805,6 +848,7 @@ here we call main retrive
               console.log("hello Friday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.FriApproval = true;
+                this.FriApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.FriApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -819,6 +863,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -829,6 +874,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -840,6 +886,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -851,6 +898,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -862,6 +910,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -873,6 +922,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -884,6 +934,7 @@ here we call main retrive
               console.log("hello Saturday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.SatApproval = true;
+                this.SatApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.SatApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -898,6 +949,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -908,6 +960,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 1].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 1].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -919,6 +972,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 2].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 2].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -930,6 +984,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 3].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 3].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -941,6 +996,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 4].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 4].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -952,6 +1008,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 5].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 5].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -963,6 +1020,7 @@ here we call main retrive
               console.log("hello Sunday");
               if (data[rowLength2 + 6].timesheet.status == "Approved") {
                 this.SunApproval = true;
+                this.SunApprovalTemp = "Approved";
               } else if (data[rowLength2 + 6].timesheet.status == "NEW") {
                 this.SunApproval = false;
                 this.WeekApprovalTemp = 0;
@@ -1100,6 +1158,17 @@ here we call main retrive
   this is the part of date
   */
   myFunctionPrevDate() {
+    //this is for weekly approval
+    this.WeekApprovalTemp = 0;
+    //this is for ay wise approval
+    this.MonApprovalTemp = "NEW";
+    this.TueApprovalTemp = "NEW";
+    this.WedApprovalTemp = "NEW";
+    this.ThurApprovalTemp = "NEW";
+    this.FriApprovalTemp = "NEW";
+    this.SatApprovalTemp = "NEW";
+    this.SunApprovalTemp = "NEW";
+    //end
     //let first: Date = new Date(this.date);
     this.first.setDate(this.date.getDate() - 7);
     this.sun =
@@ -1246,6 +1315,16 @@ here we call main retrive
     this.getAllTimesheetByEmpCode();
   }
   myFunctionNextdate() {
+    //this is for weekly approval
+    this.WeekApprovalTemp = 0;
+    //this is for ay wise approval
+    this.MonApprovalTemp = "NEW";
+    this.TueApprovalTemp = "NEW";
+    this.WedApprovalTemp = "NEW";
+    this.ThurApprovalTemp = "NEW";
+    this.FriApprovalTemp = "NEW";
+    this.SatApprovalTemp = "NEW";
+    this.SunApprovalTemp = "NEW";
     //let first: Date = new Date(this.date);
     this.first.setDate(this.date.getDate() + 7);
     this.sun =
@@ -1400,7 +1479,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1412,7 +1491,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1424,7 +1503,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1436,7 +1515,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1447,7 +1526,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1458,7 +1537,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1469,7 +1548,7 @@ here we call main retrive
       attedanceDate: null,
       empCode: "",
       empName: "",
-      status: "NEW",
+      status: "",
       totalTimeHour: 0,
     },
     timesheetDetails: [],
@@ -1695,7 +1774,7 @@ here we call main retrive
           }
         }
 
-        //this if is used for validation
+        //this if is used for validation of project validaton
         if (ProjectValidationTemp == 1) {
           //Monday
           var data1: String[];
@@ -1705,6 +1784,15 @@ here we call main retrive
           var splitted1: String[];
           splitted1 = str1.split(",");
           this.totalTimeMonCol = 0;
+          //this validation is used for day wise calculation of approval part appprove or new
+          console.log("amish" + this.MonApprovalTemp);
+          if (this.MonApprovalTemp == "Approved") {
+            this.timesheetObject1.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject1.timesheet.status = "NEW";
+          }
+
+          //end
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr = this.timesheetArray;
@@ -1717,7 +1805,7 @@ here we call main retrive
               console.log(this.mon + " " + splitted[mm] + " " + splitted1[mm]);
               this.timesheetDetailsArray.comments = "ABCD";
               //   this.timesheetDetailsArray.hour = +splitted1[mm];
-              //validation part start
+              //validation part start of grid table
               let testIf = +splitted1[mm];
               if (testIf > 24) {
                 this.timesheetDetailsArray.hour = 24;
@@ -1732,7 +1820,7 @@ here we call main retrive
                 this.timesheetDetailsArray.hour = 0;
                 this.totalTimeMonCol = this.totalTimeMonCol + 0;
               }
-              //validation part end
+              //validation part end of grid table
 
               this.timesheetDetailsArray.project = splitted[mm];
               this.timesheetObject1.timesheetDetails.push(
@@ -1752,6 +1840,15 @@ here we call main retrive
           var splitted2: String[];
           splitted2 = str2.split(",");
           this.totalTimeTueCol = 0;
+
+          //this validation is used for day wise calculation of approval part appprove or new
+          if (this.TueApprovalTemp == "Approved") {
+            this.timesheetObject2.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject2.timesheet.status = "NEW";
+          }
+
+          //end
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr2 = this.timesheetArray2;
@@ -1795,6 +1892,15 @@ here we call main retrive
           var splitted3: String[];
           splitted3 = str3.split(",");
           this.totalTimeWedCol = 0;
+
+          //this validation is used for day wise calculation of approval part appprove or new
+          if (this.WedApprovalTemp == "Approved") {
+            this.timesheetObject3.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject3.timesheet.status = "NEW";
+          }
+
+          //end
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr3 = this.timesheetArray3;
@@ -1839,6 +1945,15 @@ here we call main retrive
           var splitted4: String[];
           splitted4 = str4.split(",");
           this.totalTimeThurCol = 0;
+
+          //this validation is used for day wise calculation of approval part appprove or new
+          if (this.ThurApprovalTemp == "Approved") {
+            this.timesheetObject4.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject4.timesheet.status = "NEW";
+          }
+
+          //end
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr4 = this.timesheetArray4;
@@ -1882,6 +1997,15 @@ here we call main retrive
           var splitted5: String[];
           splitted5 = str5.split(",");
           this.totalTimeFriCol = 0;
+
+          //this validation is used for day wise calculation of approval part appprove or new
+          if (this.FriApprovalTemp == "Approved") {
+            this.timesheetObject5.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject5.timesheet.status = "NEW";
+          }
+          //end
+
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr5 = this.timesheetArray5;
@@ -1926,6 +2050,15 @@ here we call main retrive
           var splitted6: String[];
           splitted6 = str6.split(",");
           this.totalTimeSatCol = 0;
+          //this validation is used for day wise calculation of approval part appprove or new
+
+          if (this.SatApprovalTemp == "Approved") {
+            this.timesheetObject6.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject6.timesheet.status = "NEW";
+          }
+          //end
+
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr6 = this.timesheetArray6;
@@ -1953,6 +2086,15 @@ here we call main retrive
           var splitted7: String[];
           splitted7 = str7.split(",");
           this.totalTimeSunCol = 0;
+          //this validation is used for day wise calculation of approval part appprove or new
+
+          if (this.SunApprovalTemp == "Approved") {
+            this.timesheetObject7.timesheet.status = "Approved";
+          } else {
+            this.timesheetObject7.timesheet.status = "NEW";
+          }
+          //end
+
           if (splitted != null) {
             for (let mm = 0; mm < splitted.length; mm++) {
               let timesheetArr7 = this.timesheetArray2;
