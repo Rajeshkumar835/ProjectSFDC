@@ -22,6 +22,7 @@ import { EmployeeLoginComponent } from "./components/employee-login/employee-log
 import { LeavemanagementComponent } from "./components/leavemanagement/leavemanagement.component";
 import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AdminDashboardComponent } from "./components/admin/admin-dashboard/admin-dashboard.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: "ManagerViewLeaveInfo",component: MangerViewEmployeeLeaveInfoComponent },
   { path: "employeeOwnLeaveInfo",component: EmployeeViewOwnLeaveInfoComponent },
   { path: "admin-master-add",component: AdminMasterDataComponent},
-  {path: "dashboard",component: DashboardComponent}
+  {path: "dashboard",component: DashboardComponent},
+  {path: "admin-dashboard", component: AdminDashboardComponent}
 ];
 
 @NgModule({

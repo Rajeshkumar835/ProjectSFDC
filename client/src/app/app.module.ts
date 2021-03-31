@@ -59,7 +59,10 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,6 +102,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AdminComponent,
     AdminMasterDataComponent,
     DashboardComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +127,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatVideoModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
   ],
 
   providers: [
