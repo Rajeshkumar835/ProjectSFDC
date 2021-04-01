@@ -59,6 +59,12 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { AdminMasterDataComponent } from "./components/admin/admin-master-data/admin-master-data.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import { TicketManagementComponent } from './components/ticket-management/ticket-management.component';
+import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +105,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AdminComponent,
     AdminMasterDataComponent,
     DashboardComponent,
+    AdminDashboardComponent,
+    TicketManagementComponent,
+    RaiseTicketComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +132,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatVideoModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
   ],
 
   providers: [
