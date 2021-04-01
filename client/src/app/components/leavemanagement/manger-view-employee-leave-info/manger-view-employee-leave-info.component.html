@@ -1,0 +1,107 @@
+<!-- <div class="card ManagerTable" style="width: 75rem">
+  <div class="card-body">
+    <h2 class="mangerHeading">Leave Approval</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">empCode</th>
+          <th scope="col">From Date</th>
+          <th scope="col">To Date</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Status</th>
+          <th scope="col">Leave Type</th>
+
+          <th scope="col">Leave Applied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let l of empData">
+          <td>{{ l.empCode }}</td>
+          <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ l.leaveReason }}</td>
+          <td>{{ l.status }}</td>
+
+          <td>{{ l.leaveInfo.leaveName }}</td>
+
+          <td>{{ l.leaveApplied }}</td>
+          <td>
+            <input
+              type="checkbox"
+              (change)="
+                check(
+                  $event,
+                  l.leaveId,
+                  l.empCode,
+                  l.fromDate,
+                  l.toDate,
+                  l.leaveReason,
+                  l.leaveInfo,
+                  l.leaveInfo,
+                  l.leaveApplied,
+                  l.totalLeaveGrant
+                )
+              "
+              [(ngModel)]="l.selected"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="abovebuttonBorder">
+      <button
+        type="button"
+        class="btn btn-primary btn-m approove"
+        (click)="aprroveLeave()"
+      >
+        Approve
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger btn-m reject"
+        (click)="leaveReject()"
+      >
+        Reject
+      </button>
+    </div>
+
+    <div *ngIf="rejectReason" class="rejectform">
+      <div class="card" style="width: 22rem">
+        <div class="card-body">
+          <form #myReject="ngForm">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"> Reason</label>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="reason"
+                  ngModel
+                  (change)="ChooseReason(reason.value)"
+                  #reason="ngModel"
+                  required
+                />
+                <div
+                  *ngIf="reason.invalid && reason.touched"
+                  class="text-danger"
+                >
+                  <span *ngIf="reason.errors.required">Reason is Required</span>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col-sm-12">
+            <button
+              type="button"
+              [disabled]="myReject.invalid"
+              class="btn btn-primary btn-m submit"
+              (click)="RejectReasonLeave(myReject.value)"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

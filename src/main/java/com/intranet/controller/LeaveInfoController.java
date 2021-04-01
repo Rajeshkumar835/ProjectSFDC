@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intranet.dto.LeaveInfoDTO;
 import com.intranet.entity.LeaveInfo;
 import com.intranet.service.LeaveInfoService;
 
@@ -32,10 +33,10 @@ public class LeaveInfoController {
 
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<LeaveInfo> add(@RequestBody LeaveInfo leaveInfoModel) {
+	public ResponseEntity<LeaveInfo> add(@RequestBody LeaveInfoDTO leaveInfoDTO) {
 		LeaveInfo leaveInfo = null;
 		try {
-			leaveInfo = leaveInfoService.save(leaveInfoModel);
+			leaveInfo = leaveInfoService.add(leaveInfoDTO);
 		} catch (Exception e) {
 			LOGGER.error("Error while adding LeaveInfo -> ", e);
 		}
@@ -56,6 +57,7 @@ public class LeaveInfoController {
 		return new ResponseEntity<LeaveInfo>(leaveInfoModel, HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@GetMapping("/findAll")
 	public ResponseEntity<List<LeaveInfo>> findAll() {
 		return new ResponseEntity<List<LeaveInfo>>(leaveInfoService.findAll(), HttpStatus.OK);

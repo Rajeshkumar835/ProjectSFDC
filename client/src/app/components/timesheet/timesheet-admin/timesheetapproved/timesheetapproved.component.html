@@ -1,0 +1,52 @@
+<div style="margin-top: 10px">
+  <h4 style="font-size: 22px"><b>Approval Section</b></h4>
+  <form [formGroup]="StartRegisterForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>From Date:</label>
+      <label style="margin-left: 12.5%">To Date:</label>
+      <div>
+        <input
+          type="date"
+          id="StartDate"
+          name="StartDate"
+          [(ngModel)]="StartDate"
+          (ngModelChange)="approvedTimesheetStart(StartDate)"
+          formControlName="StartDate"
+          style="width: 152px"
+        />
+        <span>
+          <input
+            type="date"
+            id="EndDate"
+            name="EndDate"
+            [(ngModel)]="EndDate"
+            (ngModelChange)="approvedTimesheetEnd(EndDate)"
+            formControlName="EndDate"
+            style="width: 152px; margin-left: 6%"
+          />
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group"></div>
+    </div>
+
+    <!--<button type="button">Approve</button> -->
+    <button
+      type="button"
+      (click)="ApproveButton()"
+      class="btn btn-outline-info"
+    >
+      Approve
+    </button>
+    <!--this div is for success message-->
+    <div *ngIf="ApprovalMessageTemp" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <strong>Your have successfully Approve!</strong>
+    </div>
+    <!---  <button type="button" style="margin-left: 20px">Return</button>   -->
+  </form>
+</div>

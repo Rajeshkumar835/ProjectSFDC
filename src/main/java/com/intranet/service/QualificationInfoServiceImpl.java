@@ -35,4 +35,10 @@ public class QualificationInfoServiceImpl implements QualificationInfoService {
 		qualificationInfoRepository.deleteById(id);
 	}
 
+	@Override
+	public List<QualificationInfo> findByEmpCode(String empCode) {
+		List<QualificationInfo> qInfo = qualificationInfoRepository.findByEmpCode(empCode);
+		return qInfo;
+	}
+
 }

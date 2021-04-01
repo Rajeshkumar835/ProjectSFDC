@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="text-center pt-4">
+        <h2>Employee Login</h2>
+      </div>
+      <form class="pt-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Employee Code</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            placeholder="Employee Code"
+            name="empCode"
+            [(ngModel)]="eCode" 
+            #EmpCode="ngModel" 
+            required minlength="3" 
+            maxlength="300"
+
+            >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input 
+            type="password" 
+            class="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="ePass" 
+            #EmpCode="ngModel" 
+            required minlength="3" 
+            maxlength="300"
+            >
+        </div>
+        <div class="text-center">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            (click)="empLogin()"
+            >Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>

@@ -51,11 +51,14 @@ public class EmployeeInfo {
 	private Date dob;
 
 	@Column(nullable = true)
+	private String password;
+
+	@Column(nullable = true)
 	private String fatherName;
 
 	@Column(nullable = true)
 	private String contactNo;
-	
+
 	@Column(nullable = true)
 	private String emailId;
 
@@ -68,9 +71,17 @@ public class EmployeeInfo {
 	@Column(nullable = true)
 	private String panCardNo;
 	
-	@Column(nullable = true)
-	private String clientCode; 
-	
+//	@Column(nullable = false, columnDefinition = "int default 1")
+//	private boolean isMgr;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "clientCode")
+	private ClientRegistrationInfo clientRegistrationInfo;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "managerCode", referencedColumnName = "empCode")
+	private EmployeeInfo reportingManager;
+
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "clientCode")
 //	private ClientInfo clientInfo;

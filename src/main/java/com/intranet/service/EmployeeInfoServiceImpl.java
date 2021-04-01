@@ -6,21 +6,21 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.intranet.dto.EmployeeCreationDTO;
 import com.intranet.dto.EmployeeInfoDTO;
 import com.intranet.entity.AddressInfo;
 import com.intranet.entity.BankInfo;
+import com.intranet.entity.ClientRegistrationInfo;
 import com.intranet.entity.CurrentExperience;
 import com.intranet.entity.EmployeeInfo;
 import com.intranet.entity.PreviousExperience;
 import com.intranet.entity.QualificationInfo;
-import com.intranet.entity.ReportingManager;
 import com.intranet.repository.AddressInfoRepository;
 import com.intranet.repository.BankInfoRepository;
 import com.intranet.repository.CurrentExperienceRepository;
 import com.intranet.repository.EmployeeInfoRepository;
 import com.intranet.repository.PreviousExperienceRepository;
 import com.intranet.repository.QualificationInfoRepository;
-import com.intranet.repository.ReportingManagerRepository;
 
 @Service
 public class EmployeeInfoServiceImpl implements EmployeeInfoService {
@@ -44,92 +44,128 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	private PreviousExperienceRepository previousExperienceRepository;
 
 	@Autowired
-	private ReportingManagerRepository reportingManagerRepository;
+	private ClientRegistrationInfoService clientRegistrationInfoService;
 
 	@Override
-	public EmployeeInfoDTO add(EmployeeInfoDTO employeeInfoDTO) {
+	public EmployeeInfoDTO add(EmployeeInfoDTO employeeInfoDTOObj) {
 		EmployeeInfoDTO responseEmployeeInfoDTO = new EmployeeInfoDTO();
-		EmployeeInfo employeeInfo = employeeInfoDTO.getEmployeeInfo();
+		EmployeeInfo employeeInfo = transformObject(employeeInfoDTOObj, new EmployeeInfo());
 		if (employeeInfo == null) {
 			return new EmployeeInfoDTO();
 		}
 
 		EmployeeInfo employeeInfoSaved = employeeInfoRepository.save(employeeInfo);
-		responseEmployeeInfoDTO.setEmployeeInfo(employeeInfoSaved);
+
+		responseEmployeeInfoDTO.setEmpCode(employeeInfoSaved.getEmpCode());
+		responseEmployeeInfoDTO.setCreatedDate(employeeInfoSaved.getCreatedDate());
+		responseEmployeeInfoDTO.setFirstName(employeeInfoSaved.getFirstName());
+		responseEmployeeInfoDTO.setMiddleName(employeeInfoSaved.getMiddleName());
+		responseEmployeeInfoDTO.setLastName(employeeInfoSaved.getLastName());
+		responseEmployeeInfoDTO.setDesignation(employeeInfoSaved.getDesignation());
+		responseEmployeeInfoDTO.setHireDate(employeeInfoSaved.getHireDate());
+		responseEmployeeInfoDTO.setCurrSalary(employeeInfoSaved.getCurrSalary());
+		responseEmployeeInfoDTO.setDob(employeeInfoSaved.getDob());
+		responseEmployeeInfoDTO.setPassword(employeeInfoSaved.getPassword());
+		responseEmployeeInfoDTO.setFatherName(employeeInfoSaved.getFatherName());
+		responseEmployeeInfoDTO.setContactNo(employeeInfoSaved.getContactNo());
+		responseEmployeeInfoDTO.setEmailId(employeeInfoSaved.getEmailId());
+		responseEmployeeInfoDTO.setHomePhoneNo(employeeInfoSaved.getHomePhoneNo());
+		responseEmployeeInfoDTO.setPassportNo(employeeInfoSaved.getPassportNo());
+		responseEmployeeInfoDTO.setPanCardNo(employeeInfoSaved.getPanCardNo());
+		responseEmployeeInfoDTO.setClientCode(employeeInfoSaved.getClientRegistrationInfo().getClientCode());
+		responseEmployeeInfoDTO.setManagerCode(employeeInfoSaved.getReportingManager().getEmpCode());
+
 		String empCode = employeeInfoSaved.getEmpCode();
 
-		List<QualificationInfo> qualificationInfoList = employeeInfoDTO.getQualificationInfo();
+		List<QualificationInfo> qualificationInfoList = employeeInfoDTOObj.getQualificationInfo();
 		for (QualificationInfo qInfo : qualificationInfoList) {
 			qInfo.setEmpCode(empCode);
 			qualificationInfoRepository.save(qInfo);
 		}
 		responseEmployeeInfoDTO.setQualificationInfo(qualificationInfoList);
 
-		List<BankInfo> bankInfoList = employeeInfoDTO.getBankInfo();
+		List<BankInfo> bankInfoList = employeeInfoDTOObj.getBankInfo();
 		for (BankInfo bank : bankInfoList) {
 			bank.setEmpCode(empCode);
 			bankInfoRepository.save(bank);
 		}
 		responseEmployeeInfoDTO.setBankInfo(bankInfoList);
 
-		List<AddressInfo> addressInfoList = employeeInfoDTO.getAddressInfo();
+		List<AddressInfo> addressInfoList = employeeInfoDTOObj.getAddressInfo();
 		for (AddressInfo address : addressInfoList) {
 			address.setEmpCode(empCode);
 			addressInfoRepository.save(address);
 		}
 		responseEmployeeInfoDTO.setAddressInfo(addressInfoList);
 
-		List<CurrentExperience> currentExperienceList = employeeInfoDTO.getCurrentExperience();
+		List<CurrentExperience> currentExperienceList = employeeInfoDTOObj.getCurrentExperience();
 		for (CurrentExperience currExp : currentExperienceList) {
 			currExp.setEmpCode(empCode);
 			currentExperienceRepository.save(currExp);
 		}
 		responseEmployeeInfoDTO.setCurrentExperience(currentExperienceList);
 
-		List<PreviousExperience> previousExperienceList = employeeInfoDTO.getPreviousExperience();
+		List<PreviousExperience> previousExperienceList = employeeInfoDTOObj.getPreviousExperience();
 		for (PreviousExperience prev : previousExperienceList) {
 			prev.setEmpCode(empCode);
 			previousExperienceRepository.save(prev);
 		}
 		responseEmployeeInfoDTO.setPreviousExperience(previousExperienceList);
 
-		ReportingManager reportingManager = employeeInfoDTO.getReportingManager();
-		reportingManager.setEmpCode(empCode);
-		responseEmployeeInfoDTO.setReportingManager(reportingManagerRepository.save(reportingManager));
-
 		return responseEmployeeInfoDTO;
 	}
 
-//	private EmployeeInfo transformDTOtoBO(EmployeeInfoDTO employeeInfoDTO, EmployeeInfo employeeInfo) {
-//
-//		// Get Client Info Object by Code
-//		Optional<ClientInfo> clientOpt = clientInfoService.findById(employeeInfoDTO.getClientCode());
-//		ClientInfo clientInfo = null;
-//		if (clientOpt.isPresent()) {
-//			clientInfo = clientOpt.get();
-//		} else {
-//			return null;
-//		}
-//
-//		employeeInfo.setEmpCode(employeeInfoDTO.getEmpCode());
-//		employeeInfo.setFirstName(employeeInfoDTO.getFirstName());
-//		employeeInfo.setMiddleName(employeeInfoDTO.getMiddleName());
-//		employeeInfo.setLastName(employeeInfoDTO.getLastName());
-//		employeeInfo.setDesignation(employeeInfoDTO.getDesignation());
-//		employeeInfo.setHireDate(employeeInfoDTO.getHireDate());
-//		employeeInfo.setCurrSalary(employeeInfoDTO.getCurrSalary());
-//		employeeInfo.setDob(employeeInfoDTO.getDob());
-//		employeeInfo.setFatherName(employeeInfoDTO.getFatherName());
-//		employeeInfo.setContactNo(employeeInfoDTO.getContactNo());
-//		employeeInfo.setEmailId(employeeInfoDTO.getEmailId());
-//		employeeInfo.setHomePhoneNo(employeeInfoDTO.getHomePhoneNo());
-//		employeeInfo.setPassportNo(employeeInfoDTO.getPassportNo());
-//		employeeInfo.setPanCardNo(employeeInfoDTO.getPanCardNo());
-//		employeeInfo.setClientInfo(clientInfo);
-//
-//		return employeeInfo;
-//
-//	}
+	public EmployeeInfo transformObject(EmployeeInfoDTO employeeInfoDTO, EmployeeInfo employeeInfo) {
+
+		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
+				.clientRegistrationInfoByClientCode(employeeInfoDTO.getClientCode());
+
+		EmployeeInfo empManagerInfo = employeeInfoRepository.findByEmpCode(employeeInfoDTO.getManagerCode());
+
+		employeeInfo.setEmpCode(employeeInfoDTO.getEmpCode());
+		employeeInfo.setCreatedDate(employeeInfoDTO.getCreatedDate());
+		employeeInfo.setFirstName(employeeInfoDTO.getFirstName());
+		employeeInfo.setMiddleName(employeeInfoDTO.getMiddleName());
+		employeeInfo.setLastName(employeeInfoDTO.getLastName());
+		employeeInfo.setDesignation(employeeInfoDTO.getDesignation());
+		employeeInfo.setHireDate(employeeInfoDTO.getHireDate());
+		employeeInfo.setCurrSalary(employeeInfoDTO.getCurrSalary());
+		employeeInfo.setDob(employeeInfoDTO.getDob());
+		employeeInfo.setPassword(employeeInfoDTO.getPassword());
+		employeeInfo.setFatherName(employeeInfoDTO.getFatherName());
+		employeeInfo.setContactNo(employeeInfoDTO.getContactNo());
+		employeeInfo.setEmailId(employeeInfoDTO.getEmailId());
+		employeeInfo.setHomePhoneNo(employeeInfoDTO.getHomePhoneNo());
+		employeeInfo.setPassportNo(employeeInfoDTO.getPassportNo());
+		employeeInfo.setPanCardNo(employeeInfoDTO.getPanCardNo());
+		employeeInfo.setClientRegistrationInfo(clientRegInfo);
+		employeeInfo.setReportingManager(empManagerInfo);
+
+		return employeeInfo;
+	}
+
+	public EmployeeInfo createEmployee(EmployeeCreationDTO employeeCreationDTO) {
+		EmployeeInfo employeeInfo = new EmployeeInfo();
+
+		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
+				.clientRegistrationInfoByClientCode(employeeCreationDTO.getClientCode());
+
+		EmployeeInfo empManagerInfo = null;
+		if (employeeCreationDTO.getManagerCode() != null) {
+			empManagerInfo = employeeInfoRepository.findByEmpCode(employeeCreationDTO.getManagerCode());
+		}
+		employeeInfo.setEmpCode(employeeCreationDTO.getEmpCode());
+		employeeInfo.setFirstName(employeeCreationDTO.getFirstName());
+		employeeInfo.setLastName(employeeCreationDTO.getLastName());
+		employeeInfo.setPassword(employeeCreationDTO.getPassword());
+		employeeInfo.setContactNo(employeeCreationDTO.getContactNo());
+		employeeInfo.setClientRegistrationInfo(clientRegInfo);
+		employeeInfo.setReportingManager(empManagerInfo);
+
+		EmployeeInfo employeeInfoSaved = employeeInfoRepository.save(employeeInfo);
+
+		return employeeInfoSaved;
+	}
 
 	@Override
 	public List<EmployeeInfo> findAll() {
@@ -149,6 +185,73 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	@Override
 	public void deleteById(String id) {
 		employeeInfoRepository.deleteById(id);
+	}
+
+	@Override
+	public EmployeeInfoDTO findByEmpCode(String empCode) {
+		EmployeeInfoDTO responseEmployeeInfoDTO = new EmployeeInfoDTO();
+		EmployeeInfo employeeInfoSaved = employeeInfoRepository.findByEmpCode(empCode);
+
+		responseEmployeeInfoDTO.setEmpCode(employeeInfoSaved.getEmpCode());
+		responseEmployeeInfoDTO.setCreatedDate(employeeInfoSaved.getCreatedDate());
+		responseEmployeeInfoDTO.setFirstName(employeeInfoSaved.getFirstName());
+		responseEmployeeInfoDTO.setMiddleName(employeeInfoSaved.getMiddleName());
+		responseEmployeeInfoDTO.setLastName(employeeInfoSaved.getLastName());
+		responseEmployeeInfoDTO.setDesignation(employeeInfoSaved.getDesignation());
+		responseEmployeeInfoDTO.setHireDate(employeeInfoSaved.getHireDate());
+		responseEmployeeInfoDTO.setCurrSalary(employeeInfoSaved.getCurrSalary());
+		responseEmployeeInfoDTO.setDob(employeeInfoSaved.getDob());
+		responseEmployeeInfoDTO.setPassword(employeeInfoSaved.getPassword());
+		responseEmployeeInfoDTO.setFatherName(employeeInfoSaved.getFatherName());
+		responseEmployeeInfoDTO.setContactNo(employeeInfoSaved.getContactNo());
+		responseEmployeeInfoDTO.setEmailId(employeeInfoSaved.getEmailId());
+		responseEmployeeInfoDTO.setHomePhoneNo(employeeInfoSaved.getHomePhoneNo());
+		responseEmployeeInfoDTO.setPassportNo(employeeInfoSaved.getPassportNo());
+		responseEmployeeInfoDTO.setPanCardNo(employeeInfoSaved.getPanCardNo());
+		responseEmployeeInfoDTO.setClientCode(employeeInfoSaved.getClientRegistrationInfo().getClientCode());
+		responseEmployeeInfoDTO.setManagerCode(employeeInfoSaved.getReportingManager().getEmpCode());
+
+		List<QualificationInfo> qualificationInfoList = qualificationInfoRepository.findByEmpCode(empCode);
+		responseEmployeeInfoDTO.setQualificationInfo(qualificationInfoList);
+
+		List<BankInfo> bankInfoList = bankInfoRepository.findByEmpCode(empCode);
+		responseEmployeeInfoDTO.setBankInfo(bankInfoList);
+
+		List<AddressInfo> addressInfoList = addressInfoRepository.findByEmpCode(empCode);
+		responseEmployeeInfoDTO.setAddressInfo(addressInfoList);
+
+		List<CurrentExperience> currExperienceList = currentExperienceRepository.findByEmpCode(empCode);
+		responseEmployeeInfoDTO.setCurrentExperience(currExperienceList);
+
+		List<PreviousExperience> previousExperienceList = previousExperienceRepository.findByEmpCode(empCode);
+		responseEmployeeInfoDTO.setPreviousExperience(previousExperienceList);
+
+		return responseEmployeeInfoDTO;
+	}
+
+	@Override
+	public EmployeeInfo employeeLogin(String empCode, String password) {
+
+		EmployeeInfo employeeInfoOpt = employeeInfoRepository.findByEmpCode(empCode);
+		if (employeeInfoOpt != null) {
+			if (employeeInfoOpt.getEmpCode().equals(empCode) && employeeInfoOpt.getPassword().equals(password)) {
+				return employeeInfoOpt;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<EmployeeInfo> getEmployeeManagerList() {
+		List<EmployeeInfo> empList = employeeInfoRepository.getEmployeeManagerList();
+
+		return empList;
+	}
+
+	@Override
+	public List<EmployeeInfo> getEmployeeByManagerEmpCode(String managerCode) {
+		List<EmployeeInfo> empList = employeeInfoRepository.getEmployeeByManagerEmpCode(managerCode);
+		return empList;
 	}
 
 }

@@ -1,10 +1,4 @@
-<!-- <div class="embed-responsive embed-responsive-21by9">
-  <iframe class="embed-responsive-item" src="..."></iframe>
-</div> -->
-<div class="container">
-  <!-- <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8"> -->
+<!-- <div class="container">
       <div>
         <iframe
           width="900"
@@ -16,8 +10,18 @@
           allowfullscreen
         ></iframe>
         </div>
-    </div>
-    <!-- <div class="col-sm-2"></div>
-    <div class="col-sm-1"></div> -->
-  <!-- </div>
-</div> -->
+    </div> -->
+<section>
+  <div>
+    <!-- media player comes here -->
+
+    <app-mediaplayer [currentVideo]="currentVideo"></app-mediaplayer>
+  </div>
+  <div class="playList-view">
+    <!-- video playlist comes here -->
+    <app-playlist
+      [videos]="playlist"
+      (videoClicked)="onVideoChange($event)"
+    ></app-playlist>
+  </div>
+</section>

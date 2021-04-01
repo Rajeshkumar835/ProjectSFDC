@@ -1,0 +1,62 @@
+<!-- <div class="card ManagerTable" style="width: 75rem">
+  <div class="card-body">
+    <div class="empHeaderSec">
+      <h2 class="mangerHeading">Leave Details</h2>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">EmpCode</th>
+          <th scope="col">From Date</th>
+          <th scope="col">To Date</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Status</th>
+
+          <th scope="col">Leave Type</th>
+          <th scope="col">Leave Applied</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let l of LeavTypeData">
+        <tr>
+          <td>{{ l.empCode }}</td>
+          <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+          <td>{{ l.leaveReason }}</td>
+          <td>{{ l.status }}</td>
+
+          <td>{{ l.leaveInfo?.leaveName }}</td>
+          <td>{{ l.leaveApplied }}</td>
+          <td>
+            <input
+              type="checkbox"
+              (change)="
+                check(
+                  $event,
+                  l.leaveId,
+                  l.empCode,
+                  l.fromDate,
+                  l.toDate,
+                  l.leaveReason,
+                  l.status,
+                  l.leaveInfo,
+                  l.leaveApplied,
+                  l.totalLeaveGrant
+                )
+              "
+              [(ngModel)]="l.selected"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="abovebuttonBorder">
+      <button
+        type="button"
+        class="btn btn-primary btn-m approove"
+        (click)="withdrawLeave()"
+      >
+        Withdraw
+      </button>
+    </div>
+  </div>
+</div> -->

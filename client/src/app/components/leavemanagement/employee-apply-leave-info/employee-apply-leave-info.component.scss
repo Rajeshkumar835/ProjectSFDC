@@ -1,0 +1,235 @@
+.container {
+  margin-left: 5px;
+}
+mat-tab-group {
+  width: 76rem;
+}
+h2.heading_1 {
+  text-align: left;
+  font-weight: bolder;
+  font-size: 20px;
+  color: dodgerblue;
+  text-transform: none;
+
+  margin-bottom: 0;
+
+  padding-bottom: 15px;
+  line-height: 20px;
+}
+
+input[type="textarea"] {
+  height: 35px;
+  width: 190px;
+  margin-left: -2px;
+  margin-top: 0px;
+  background-color: white;
+}
+input[type="date"] {
+  height: 35px;
+  width: 170px;
+  margin-right: 0%;
+  margin-top: 0px;
+  margin-left: -2px;
+  background-color: white;
+}
+.abovebuttonBorder {
+  border-width: 2px;
+  border-top-style: groove;
+  color: lightgrey;
+}
+
+select.form-control {
+  height: 35px;
+
+  margin-right: -0px;
+  background-color: white;
+}
+inputPassword3 {
+  height: 30px;
+}
+.ManagerTable {
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.labMargin {
+  margin-left: -2px;
+  margin-top: -1px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.labMargin2 {
+  margin-left: -1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: 15px;
+}
+.labMargin1 {
+  margin-left: -0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.totalday {
+  margin-top: 25px;
+}
+.row {
+  margin-top: 40px;
+}
+.success {
+  background-color: rgb(145, 199, 145);
+  color: white;
+}
+
+// .labMargin1 {
+//   margin-left: 50px;
+//   margin-top: 0px;
+//   font-weight: bold;
+//   font-size: 16px;
+//   text-align: center;
+// }
+// .btnMargin {
+//   margin-left: 70px;
+//   margin-top: 15px;
+//   background-color: lightBlue;
+//   color: white;
+// }
+
+// @media (max-width: 1199.98px) {
+//   h2.heading_1 {
+//     font-size: 21px;
+//   }
+//   .btn-default:disabled {
+//     color: dodgerblue;
+//   }
+
+//   .top-gap {
+//     position: relative;
+//     top: 39px;
+//     padding-bottom: 130px;
+//     margin-bottom: 120px;
+//   }
+
+//   .h4Heading {
+//     position: relative;
+//     top: 100px;
+//     font-size: 26px;
+//   }
+//   .adv-main {
+//     margin: 85px 0 -137px;
+//   }
+
+//   .speaker {
+//     position: relative;
+//     top: 95px;
+//   }
+// }
+.card {
+  background-color: whitesmoke;
+}
+.heightselect {
+  height: 20px;
+}
+#ApplyLeave {
+  width: 100px;
+  height: 30px;
+
+  line-height: 10px;
+  margin-left: 340px;
+  margin-right: 0px;
+  margin-top: 76px;
+}
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+select.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+.ManagerTable1 {
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.card {
+  background-color: whitesmoke;
+}
+.mangerHeading {
+  font-size: 20px;
+  line-height: 25px;
+  padding-top: 20px;
+  color: dodgerblue;
+  padding-left: 10px;
+  font-weight: bold;
+}
+.approove {
+  width: 100px;
+  margin: 15px 10px 10px 10px;
+  height: 30px;
+  line-height: 10px;
+}
+.abovebuttonBorder {
+  border-width: 2px;
+  border-top-style: groove;
+  color: lightgrey;
+}
+.card {
+  background-color: whitesmoke;
+}
+.ManagerTable {
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.mangerHeading {
+  font-size: 20px;
+  line-height: 25px;
+
+  color: dodgerblue;
+}
+.approove {
+  width: 100px;
+  margin: 5px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 15px;
+}
+.reject {
+  width: 100px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 10px;
+}
+.abovebuttonBorder {
+  border-width: 2px;
+  border-top-style: groove;
+  margin-left: -4px;
+}
+.rejectform {
+  width: 25rem;
+  border-style: 5px solid darkgrey;
+  margin-top: 10px;
+}
+.col-sm-7 {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.col-sm-3 {
+  margin-left: 10px;
+}
+.submit {
+  width: 80px;
+  margin: 5px;
+  height: 30px;
+  line-height: 10px;
+  margin-top: 15px;
+  margin-left: 105px;
+}
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}

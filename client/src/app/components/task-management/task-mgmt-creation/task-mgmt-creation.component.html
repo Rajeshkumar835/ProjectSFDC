@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row pt-4" style="margin-top: 50px;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3 team-button">
+      <div class="pt-4">
+        <button type="button" class="btn btn-primary" (click)="teamDetails()">Create Your Team</button>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div>
+        <div class="team" *ngIf="teamCreation">
+          <h4>Enter Team Details</h4>
+          <form>
+            <div class="form-group input-field">
+              <label for="name" class="label">Team Name</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group input-field">
+              <label for="desc" class="label">Team Description</label>
+              <input type="text" class="form-control" id="desc">
+            </div>
+            <div>
+              <mat-form-field class="input-field">
+                <mat-select placeholder="Project List" [formControl]="projects" [(value)]="selectedProject" multiple>
+                  <mat-option *ngFor="let project of projectList" [value]="project">{{project}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="input-field">
+                <mat-select placeholder="Employee List" [formControl]="toppings" [(value)]="selectedToppings" multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

@@ -15,4 +15,6 @@ public interface QualificationInfoService {
 
 	public void deleteById(Long id);
 
+	public List<QualificationInfo> findByEmpCode(String empCode);
+
 }

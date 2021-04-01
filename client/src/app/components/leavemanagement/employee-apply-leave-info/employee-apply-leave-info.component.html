@@ -1,0 +1,709 @@
+<div class="container">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Apply Leave">
+      <div class="card ManagerTable" style="width: 54rem">
+        <div class="card-body">
+          <div class="container">
+            <!-- <div class="row top-head-1">
+        <h2 class="heading_1">Apply Leave</h2>
+        <form #myLeave="ngForm">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>LeaveType </label>
+                <select
+                  class="form-control"
+                  id="inputPassword3"
+                  name="leave"
+                  ngModel
+                  (change)="verifyLeave(leave.value)"
+                  #leave="ngModel"
+                  required
+                >
+                  <option value="noLeave">Select Leave Type</option>
+                  <option value="SickLeave">Sick Leave</option>
+                  <option value="AnnualLeave">Annual Leave</option>
+                  <option value="casualLeave">Casual Leave</option>
+                </select>
+                <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+                  <span *ngIf="IsLeaveInvalid" class="text-danger"
+                    >please select leave type</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group ml-1">
+                <label>FromDate </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="inputUsername"
+                  name="fDate"
+                  ngModel
+                  #fDate="ngModel"
+                  (change)="fromCoDate(fDate.value)"
+                  required
+                  placeholder="ent"
+                />
+                <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+                  <span *ngIf="fDate.errors.required"
+                    >fromDate is Required</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>ToDate </label>
+              <input
+                type="date"
+                class="form-control"
+                id="inputPassword3"
+                name="tdate"
+                ngModel
+                (change)="toDate(tdate.value)"
+                #tdate="ngModel"
+                required
+                placeholder="Enter date"
+              />
+              <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+                <span *ngIf="tdate.errors.required">ToDate is Required</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label>Reason </label>
+              <input
+                type="textarea"
+                class="form-control"
+                id="inputPassword3"
+                name="reason"
+                (change)="reason(reason.value)"
+                ngModel
+                #reason="ngModel"
+                required
+              />
+              <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+                <span *ngIf="reason.errors.required">Reason is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-sm-6 mt-2">
+              <ng-container *ngIf="show">
+                <label>TotalDays :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <small class="font-weight-bold pl-1" style="font-size: 16px">{{
+                  totalnOfDays
+                }}</small>
+              </ng-container>
+            </div>
+          </div>
+        </form>
+      </div> -->
+            <!-- <form #myLeave="ngForm">
+        <div class="form-group">
+          <h2 class="heading_1">Apply Leave</h2>
+          <div class="abovebuttonBorder"></div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">Leave Type </label>
+          <select
+            class="form-control heightselect"
+            id="inputPassword3"
+            name="leave"
+            [(ngModel)]="leaveType"
+            (ngModelChange)="chooseLeave(leaveType)"
+            #leave="ngModel"
+            required
+          >
+            <option *ngFor="let leaveItem of leaveTypeStore">
+              {{ leaveItem }}
+            </option>
+          </select>
+          <div *ngIf="leave.invalid && leave.touched" class="text-danger">
+            <span *ngIf="IsLeaveInvalid" class="text-danger" class="labMargin"
+              >Please select leave type</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">From Date </label>
+          <input
+            type="date"
+            class="form-control"
+            id="inputUsername"
+            name="fDate"
+            ngModel
+            #fDate="ngModel"
+            (change)="fromCoDate(fDate.value)"
+            required
+            placeholder="ent"
+          />
+          <div *ngIf="fDate.invalid && fDate.touched" class="text-danger">
+            <span *ngIf="fDate.errors.required" class="labMargin"
+              >From Date is Required</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">To Date </label>
+          <input
+            type="date"
+            class="form-control"
+            id="inputPassword3"
+            name="tdate"
+            ngModel
+            (change)="toDate(tdate.value)"
+            #tdate="ngModel"
+            required
+          />
+          <div *ngIf="tdate.invalid && tdate.touched" class="text-danger">
+            <span *ngIf="tdate.errors.required" class="labMargin"
+              >To Date is Required</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="labMargin">Reason </label>
+          <input
+            type="textarea"
+            class="form-control"
+            id="inputPassword3"
+            name="reason"
+            (change)="ChooseReason(reason.value)"
+            ngModel
+            #reason="ngModel"
+            required
+          />
+          <div *ngIf="reason.invalid && reason.touched" class="text-danger">
+            <span *ngIf="reason.errors.required" class="labMargin"
+              >Reason is Required</span
+            >
+          </div>
+        </div>
+        <div clss="form-group">
+          <ng-container *ngIf="show">
+            <label class="labMargin">TotalDays :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <small class="font-weight-bold pl-1" style="font-size: 16px">{{
+              totalnOfDays
+            }}</small>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <button
+            [disabled]="myLeave.invalid"
+            id="ApplyLeave"
+            class="btn btn-primary"
+            (click)="leaveApply(myLeave.value)"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+            <form #myLeave="ngForm">
+              <div class="form-group">
+                <h2 class="heading_1">Apply Leave</h2>
+                <div class="abovebuttonBorder"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <label class="labMargin1">Leave Type </label>
+                  <select
+                    class="form-control heightselect"
+                    id="inputPassword3"
+                    name="leave"
+                    [(ngModel)]="leaveItem"
+                    (ngModelChange)="chooseLeave(leaveItem)"
+                    #leave="ngModel"
+                    required
+                  >
+                    <option
+                      *ngFor="let leaveItem of LeaveData"
+                      leaveLimit=" leaveItem.leaveLimit "
+                      value="{{ leaveItem.leaveCode }}"
+                    >
+                      {{ leaveItem.leaveName }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="leave.invalid && leave.touched"
+                    class="text-danger"
+                  >
+                    <span
+                      *ngIf="IsLeaveInvalid"
+                      class="text-danger"
+                      class="labMargin2"
+                      >Please select leave type</span
+                    >
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <label class="labMargin">From Date </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="inputUsername"
+                    name="fDate"
+                    ngModel
+                    #fDate="ngModel"
+                    (change)="fromCoDate(fDate.value)"
+                    required
+                    placeholder="ent"
+                  />
+                  <div
+                    *ngIf="fDate.invalid && fDate.touched"
+                    class="text-danger"
+                  >
+                    <span *ngIf="fDate.errors.required" class="labMargin2"
+                      >From Date is Required</span
+                    >
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <label class="labMargin">To Date </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="inputPassword3"
+                    name="tdate"
+                    ngModel
+                    (change)="toDate(tdate.value)"
+                    #tdate="ngModel"
+                    required
+                  />
+                  <div
+                    *ngIf="tdate.invalid && tdate.touched"
+                    class="text-danger"
+                  >
+                    <span *ngIf="tdate.errors.required" class="labMargin2"
+                      >To Date is Required</span
+                    >
+                  </div>
+                </div>
+                <div class="col-sm">
+                  <label class="labMargin">Reason </label>
+                  <input
+                    type="textarea"
+                    class="form-control"
+                    id="inputPassword3"
+                    name="reason"
+                    (change)="ChooseReason1(reason.value)"
+                    ngModel
+                    #reason="ngModel"
+                    required
+                  />
+                  <div
+                    *ngIf="reason.invalid && reason.touched"
+                    class="text-danger"
+                  >
+                    <span *ngIf="reason.errors.required" class="labMargin2"
+                      >Reason is Required</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <ng-container *ngIf="show">
+                    <label class="labMargin1 totalday">Total Days :</label
+                    >&nbsp;&nbsp;&nbsp;&nbsp;
+                    <small
+                      class="font-weight-bold totalday pl-1"
+                      style="font-size: 16px"
+                      >{{ totalnOfDays }}</small
+                    >
+                  </ng-container>
+                </div>
+                <div class="col-sm-8">
+                  <ng-container *ngIf="show">
+                    <label
+                      *ngFor="let leave of availableLeave"
+                      class="labMargin1 totalday"
+                      >Your Remaining
+                      {{
+                        leave.leaveInfo.leaveName
+                      }}:&nbsp;&nbsp;&nbsp;&nbsp;<small
+                        class="font-weight-bold totalday pl-1"
+                        style="font-size: 16px"
+                        >{{ leave?.totalLeaveAvaiable }}</small
+                      ></label
+                    >
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button
+                  mat-stroked-button
+                  [disabled]="myLeave.invalid"
+                  id="ApplyLeave"
+                  class="btn btn-primary"
+                  (click)="leaveApply(myLeave.value)"
+                >
+                  Apply
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Manager Section -->
+
+    <mat-tab label="Leave Details">
+      <div class="card ManagerTable" style="width: 72rem">
+        <div class="card-body">
+          <div class="empHeaderSec">
+            <h2 class="mangerHeading">Leave Details</h2>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">From Date</th>
+                <th scope="col">To Date</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Status</th>
+
+                <th scope="col">Leave Type</th>
+                <th scope="col">Leave Applied</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let l of LeavTypeData">
+              <tr>
+                <td>{{ l.empName }}</td>
+                <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+                <td>
+                  <!-- Button trigger modal -->
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    {{ l.leaveReason }}
+                  </button>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="false"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            Modal title
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">...</div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td>{{ l.status }}</td>
+
+                <td>{{ l.leaveInfo?.leaveName }}</td>
+                <td>{{ l.leaveApplied }}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    (change)="
+                      checkEmployees(
+                        $event,
+                        l.leaveId,
+                        l.empCode,
+                        l.empName,
+                        l.fromDate,
+                        l.toDate,
+                        l.leaveReason,
+                        l.status,
+                        l.leaveInfo,
+                        l.leaveApplied,
+                        l.totalLeaveGranted,
+                        l.totalLeaveAvaiable
+                      )
+                    "
+                    [(ngModel)]="l.selected"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="abovebuttonBorder">
+            <button
+              type="button"
+              class="btn btn-primary btn-m approove"
+              (click)="withdrawLeave()"
+            >
+              Withdraw
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card ManagerTable1" style="width: 72rem">
+        <div class="card-body">
+          <h2 class="mangerHeading">Leave Approval</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email Id</th>
+                <th scope="col">From Date</th>
+                <th scope="col">To Date</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Status</th>
+                <th scope="col">Leave Type</th>
+
+                <th scope="col">Leave Applied</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let l of empData">
+                <td>{{ l.empName }}</td>
+                <td>{{ l.emailId }}</td>
+                <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ l.leaveReason }}</td>
+                <td>{{ l.status }}</td>
+
+                <td>{{ l.leaveInfo.leaveName }}</td>
+
+                <td>{{ l.leaveApplied }}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    (change)="
+                      checkManager(
+                        $event,
+                        l.leaveId,
+                        l.empCode,
+                        l.empName,
+                        l.fromDate,
+                        l.toDate,
+                        l.leaveReason,
+                        l.leaveInfo,
+                        l.leaveApplied,
+                        l.totalLeaveGranted,
+                        l.totalLeaveAvaiable
+                      )
+                    "
+                    [(ngModel)]="l.selected"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="abovebuttonBorder">
+            <button
+              type="button"
+              class="btn btn-primary btn-m approove"
+              (click)="aprroveLeave()"
+            >
+              Approve
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-m reject"
+              (click)="leaveReject()"
+            >
+              Reject
+            </button>
+          </div>
+
+          <div *ngIf="rejectReason" class="rejectform">
+            <div class="card" style="width: 22rem">
+              <div class="card-body">
+                <form #myReject="ngForm">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"> Reason</label>
+                    <div class="col-sm-7">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="reason"
+                        ngModel
+                        (change)="ChooseReason2(reason.value)"
+                        #reason="ngModel"
+                        required
+                      />
+                      <div
+                        *ngIf="reason.invalid && reason.touched"
+                        class="text-danger"
+                      >
+                        <span *ngIf="reason.errors.required"
+                          >Reason is Required</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="col-sm-12">
+                  <button
+                    type="button"
+                    [disabled]="myReject.invalid"
+                    class="btn btn-primary btn-m submit"
+                    (click)="RejectReasonLeave(myReject.value)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </mat-tab>
+
+    <!-- Employees Section -->
+
+    <mat-tab label="Leave Approval">
+      <div class="card ManagerTable1" style="width: 74rem">
+        <div class="card-body">
+          <h2 class="mangerHeading">Leave Approval</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email Id</th>
+                <th scope="col">From Date</th>
+                <th scope="col">To Date</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Status</th>
+                <th scope="col">Leave Type</th>
+
+                <th scope="col">Leave Applied</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let l of empData">
+                <td>{{ l.empName }}</td>
+                <td>{{ l.emailId }}</td>
+                <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+                <td>{{ l.leaveReason }}</td>
+                <td>{{ l.status }}</td>
+
+                <td>{{ l.leaveInfo.leaveName }}</td>
+
+                <td>{{ l.leaveApplied }}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    (change)="
+                      checkManager(
+                        $event,
+                        l.leaveId,
+                        l.empCode,
+                        l.empName,
+                        l.fromDate,
+                        l.toDate,
+                        l.leaveReason,
+                        l.leaveInfo,
+                        l.leaveApplied,
+                        l.totalLeaveGranted,
+                        l.totalLeaveAvaiable
+                      )
+                    "
+                    [(ngModel)]="l.selected"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="abovebuttonBorder">
+            <button
+              type="button"
+              class="btn btn-primary btn-m approove"
+              (click)="aprroveLeave()"
+            >
+              Approve
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-m reject"
+              (click)="leaveReject()"
+            >
+              Reject
+            </button>
+          </div>
+
+          <div *ngIf="rejectReason" class="rejectform">
+            <div class="card" style="width: 22rem">
+              <div class="card-body">
+                <form #myReject="ngForm">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label"> Reason</label>
+                    <div class="col-sm-7">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="reason"
+                        ngModel
+                        (change)="ChooseReason2(reason.value)"
+                        #reason="ngModel"
+                        required
+                      />
+                      <div
+                        *ngIf="reason.invalid && reason.touched"
+                        class="text-danger"
+                      >
+                        <span *ngIf="reason.errors.required"
+                          >Reason is Required</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="col-sm-12">
+                  <button
+                    type="button"
+                    [disabled]="myReject.invalid"
+                    class="btn btn-primary btn-m submit"
+                    (click)="RejectReasonLeave(myReject.value)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab> </mat-tab>
+  </mat-tab-group>
+</div>

@@ -13,7 +13,7 @@ export class OngoingCoursesComponent implements OnInit {
     name:"Python",
     title:"Python course",
     desc:"this is Python course",
-    img:""
+    img:"../../../../assets/python.png"
 
   },
   // {
