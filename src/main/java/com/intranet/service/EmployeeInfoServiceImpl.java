@@ -209,7 +209,11 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 		responseEmployeeInfoDTO.setPassportNo(employeeInfoSaved.getPassportNo());
 		responseEmployeeInfoDTO.setPanCardNo(employeeInfoSaved.getPanCardNo());
 		responseEmployeeInfoDTO.setClientCode(employeeInfoSaved.getClientRegistrationInfo().getClientCode());
-		responseEmployeeInfoDTO.setManagerCode(employeeInfoSaved.getReportingManager().getEmpCode());
+		if(employeeInfoSaved.getReportingManager()!=null)
+		{
+			responseEmployeeInfoDTO.setManagerCode(employeeInfoSaved.getReportingManager().getEmpCode());
+
+		}
 
 		List<QualificationInfo> qualificationInfoList = qualificationInfoRepository.findByEmpCode(empCode);
 		responseEmployeeInfoDTO.setQualificationInfo(qualificationInfoList);

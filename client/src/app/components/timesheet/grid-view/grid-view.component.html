@@ -5,9 +5,11 @@
   <select
     class="btn btn-light dropdown-toggle"
     style="padding-bottom: 13px; width: 300px; font-size: 18px"
+    [(ngModel)]="Id"
+    (change)="getEmployeeHierarchy(Id)"
   >
-    <option *ngFor="let use of users" [value]="use.Name">
-      {{ use.Name }}
+    <option *ngFor="let emp of users" [value]="emp.Id">
+      {{ emp.Name }}
     </option>
   </select>
 </div>
@@ -234,32 +236,33 @@
           </td>
         </tbody>
       </table>
-      <button
-        type="button"
-        class="btn btn-outline-info"
-        (click)="addRow()"
-        style="width: 140px"
-      >
-        Add New Row
-      </button>
-      <button
-        type="button"
-        class="btn btn-outline-info"
-        (click)="deleteRow()"
-        style="margin-left: 10px; width: 140px"
-      >
-        Delete Last Row
-      </button>
-      <button
-        type="button"
-        (click)="saveEx()"
-        style="margin-left: 10px"
-        class="btn btn-outline-info"
-        style="margin-left: 10px; width: 80px"
-      >
-        Save
-      </button>
-
+      <div *ngIf="SaveHierarchyTemp">
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          (click)="addRow()"
+          style="width: 140px"
+        >
+          Add New Row
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          (click)="deleteRow()"
+          style="margin-left: 10px; width: 140px"
+        >
+          Delete Last Row
+        </button>
+        <button
+          type="button"
+          (click)="saveEx()"
+          style="margin-left: 10px"
+          class="btn btn-outline-info"
+          style="margin-left: 10px; width: 80px"
+        >
+          Save
+        </button>
+      </div>
       <!--this div is for success message-->
       <div *ngIf="SaveMessageTemp" class="alert">
         <span
@@ -269,7 +272,10 @@
         >
         <strong> Your data is successfully saved!</strong>
       </div>
-      <div style="margin-left: 5px; margin-top: 2%">
+      <div
+        *ngIf="ApprovalHierarchyTemp"
+        style="margin-left: 5px; margin-top: 2%"
+      >
         <app-timesheetapproved></app-timesheetapproved>
       </div>
     </div>
