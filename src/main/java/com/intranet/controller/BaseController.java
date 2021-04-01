@@ -13,5 +13,6 @@ public abstract class BaseController {
 	public static final String LEAVE_INFO = "/api/v1/leaveInfo";
 	
 	public static final String COURSE ="/api/v1/Course";
+	public static final String FAVOURITE_COURSE="/api/v1/favouriteCourse";
 
 }
