@@ -83,4 +83,8 @@ export class AdminService {
       "http://localhost:8443/api/v1/employeeInfo/getEmployeeManagerList"
     );
   }
+
+  getAllHolidayList(){
+    return this.http.get("http://localhost:8443/api/v1/companyHolidayList/findAll");
+  }
 }
