@@ -27,9 +27,10 @@ export class LeaveMgmtService {
       "http://localhost:8443/api/v1/employeeLeaveInfo/findAll"
     );
   }
-  getEmployeeDataByStatus() {
+  getEmployeeDataByStatus(managCode) {
     return this._http.get(
-      "http://localhost:8443/api/v1/employeeLeaveInfo/findAllLeaveInfoByStatus"
+      "http://localhost:8443/api/v1/employeeLeaveInfo/findAllLeaveInfoByStatus/" +
+        managCode
     );
   }
   putEmployeeDataForApproval(leaveStatus, id) {
@@ -60,6 +61,12 @@ export class LeaveMgmtService {
   getHolidays() {
     return this._http.get(
       "http://localhost:8443/api/v1/companyHolidayList/findAll"
+    );
+  }
+  getAllEmployeeDataUnderManager(managerCode) {
+    return this._http.get(
+      "http://localhost:8443/api/v1/employeeInfo/getEmployeeByManagerEmpCode/" +
+        managerCode
     );
   }
 }

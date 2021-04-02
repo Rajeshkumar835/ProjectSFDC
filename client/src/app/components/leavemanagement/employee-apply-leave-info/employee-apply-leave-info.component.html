@@ -382,56 +382,7 @@
                 <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
                 <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
                 <td>
-                  <!-- Button trigger modal -->
-                  <button
-                    type="button"
-                    class="btn btn-default"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                  >
-                    {{ l.leaveReason }}
-                  </button>
-
-                  <!-- Modal -->
-                  <div
-                    class="modal fade"
-                    id="exampleModal"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="false"
-                  >
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">
-                            Modal title
-                          </h5>
-                          <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" class="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {{ l.leaveReason }}
                 </td>
 
                 <td>{{ l.status }}</td>
@@ -446,13 +397,16 @@
                         $event,
                         l.leaveId,
                         l.empCode,
+                        l.emailId,
                         l.empName,
                         l.fromDate,
                         l.toDate,
                         l.leaveReason,
                         l.status,
                         l.leaveInfo,
+                        l.managerCode,
                         l.leaveApplied,
+
                         l.totalLeaveGranted,
                         l.totalLeaveAvaiable
                       )
@@ -589,121 +543,124 @@
     </mat-tab>
 
     <!-- Employees Section -->
+    <ng-container *ngIf="roleValue">
+      <mat-tab label="Leave Approval">
+        <div class="card ManagerTable1" style="width: 74rem">
+          <div class="card-body">
+            <h2 class="mangerHeading">Leave Approval</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email Id</th>
+                  <th scope="col">From Date</th>
+                  <th scope="col">To Date</th>
+                  <th scope="col">Reason</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Leave Type</th>
 
-    <mat-tab label="Leave Approval">
-      <div class="card ManagerTable1" style="width: 74rem">
-        <div class="card-body">
-          <h2 class="mangerHeading">Leave Approval</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email Id</th>
-                <th scope="col">From Date</th>
-                <th scope="col">To Date</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Status</th>
-                <th scope="col">Leave Type</th>
+                  <th scope="col">Leave Applied</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let l of empData">
+                  <td>{{ l.empName }}</td>
+                  <td>{{ l.emailId }}</td>
+                  <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
+                  <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
+                  <td>{{ l.leaveReason }}</td>
+                  <td>{{ l.status }}</td>
 
-                <th scope="col">Leave Applied</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let l of empData">
-                <td>{{ l.empName }}</td>
-                <td>{{ l.emailId }}</td>
-                <td>{{ l.fromDate | date: "dd-MM-yyyy" }}</td>
-                <td>{{ l.toDate | date: "dd-MM-yyyy" }}</td>
-                <td>{{ l.leaveReason }}</td>
-                <td>{{ l.status }}</td>
+                  <td>{{ l.leaveInfo.leaveName }}</td>
 
-                <td>{{ l.leaveInfo.leaveName }}</td>
+                  <td>{{ l.leaveApplied }}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      (change)="
+                        checkManager(
+                          $event,
+                          l.leaveId,
+                          l.empCode,
+                          l.emailId,
+                          l.empName,
+                          l.fromDate,
+                          l.toDate,
+                          l.leaveReason,
+                          l.leaveInfo,
+                          l.managerCode,
+                          l.leaveApplied,
+                          l.totalLeaveGranted,
+                          l.totalLeaveAvaiable
+                        )
+                      "
+                      [(ngModel)]="l.selected"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="abovebuttonBorder">
+              <button
+                type="button"
+                class="btn btn-primary btn-m approove"
+                (click)="aprroveLeave()"
+              >
+                Approve
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-m reject"
+                (click)="leaveReject()"
+              >
+                Reject
+              </button>
+            </div>
 
-                <td>{{ l.leaveApplied }}</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    (change)="
-                      checkManager(
-                        $event,
-                        l.leaveId,
-                        l.empCode,
-                        l.empName,
-                        l.fromDate,
-                        l.toDate,
-                        l.leaveReason,
-                        l.leaveInfo,
-                        l.leaveApplied,
-                        l.totalLeaveGranted,
-                        l.totalLeaveAvaiable
-                      )
-                    "
-                    [(ngModel)]="l.selected"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="abovebuttonBorder">
-            <button
-              type="button"
-              class="btn btn-primary btn-m approove"
-              (click)="aprroveLeave()"
-            >
-              Approve
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger btn-m reject"
-              (click)="leaveReject()"
-            >
-              Reject
-            </button>
-          </div>
-
-          <div *ngIf="rejectReason" class="rejectform">
-            <div class="card" style="width: 22rem">
-              <div class="card-body">
-                <form #myReject="ngForm">
-                  <div class="form-group row">
-                    <label class="col-sm-3 col-form-label"> Reason</label>
-                    <div class="col-sm-7">
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="reason"
-                        ngModel
-                        (change)="ChooseReason2(reason.value)"
-                        #reason="ngModel"
-                        required
-                      />
-                      <div
-                        *ngIf="reason.invalid && reason.touched"
-                        class="text-danger"
-                      >
-                        <span *ngIf="reason.errors.required"
-                          >Reason is Required</span
+            <div *ngIf="rejectReason" class="rejectform">
+              <div class="card" style="width: 22rem">
+                <div class="card-body">
+                  <form #myReject="ngForm">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> Reason</label>
+                      <div class="col-sm-7">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="reason"
+                          ngModel
+                          (change)="ChooseReason2(reason.value)"
+                          #reason="ngModel"
+                          required
+                        />
+                        <div
+                          *ngIf="reason.invalid && reason.touched"
+                          class="text-danger"
                         >
+                          <span *ngIf="reason.errors.required"
+                            >Reason is Required</span
+                          >
+                        </div>
                       </div>
                     </div>
+                  </form>
+                  <div class="col-sm-12">
+                    <button
+                      type="button"
+                      [disabled]="myReject.invalid"
+                      class="btn btn-primary btn-m submit"
+                      (click)="RejectReasonLeave(myReject.value)"
+                    >
+                      Submit
+                    </button>
                   </div>
-                </form>
-                <div class="col-sm-12">
-                  <button
-                    type="button"
-                    [disabled]="myReject.invalid"
-                    class="btn btn-primary btn-m submit"
-                    (click)="RejectReasonLeave(myReject.value)"
-                  >
-                    Submit
-                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </mat-tab>
+      </mat-tab>
+    </ng-container>
     <mat-tab> </mat-tab>
   </mat-tab-group>
 </div>

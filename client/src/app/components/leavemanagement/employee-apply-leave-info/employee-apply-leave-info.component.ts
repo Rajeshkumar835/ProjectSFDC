@@ -26,6 +26,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   IsLeaveInvalid: boolean = true;
   show: boolean = false;
   leaveLimit: any;
+  roleValue: boolean = false;
   intialalLeaveValue: any;
   LeaveData: any;
   LeaveMgmt = {
@@ -44,6 +45,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     leaveInfo: {
       leaveLimit: 0,
     },
+    managerCode: "",
+    designation: "",
     rejectionReason: "",
   };
   LeaveObj = {
@@ -62,6 +65,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     totalLeaveGranted: 0,
   };
   ecode1: any;
+  managCode: any;
   constructor(
     private leaveService: LeaveMgmtService,
     private adminService: AdminService,
@@ -71,23 +75,23 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     public dialog: MatDialog,
     public router: Router
   ) {
-    console.log("value of LeaveLimit is", this.leaveLimit);
+    let userDataCode = localStorage.getItem("employeeInfo");
+    this.ecode1 = userDataCode;
+
+    this.getDataByLocalStorageByEmpCode(this.ecode1);
+    console.log("empcode is", this.ecode1);
+    this.getEmployeesLeaveInfoDataValues(this.ecode1);
   }
 
   ngOnInit() {
-    let userDataCode = localStorage.getItem("employeeInfo");
-    this.ecode1 = userDataCode;
-    this.getDataByLocalStorageByEmpCode(userDataCode);
-    console.log("empcode is", userDataCode);
-    this.getLeaveType();
-    this.getEmployeesLeaveInfoDataValues();
-    console.log("Manager Leave data isshown ", this.empData);
-    this.getAllEmployeeLeaveData();
-    this.getEmployeesLeaveInfoDataValue();
     this.getLeaveTypeDataValues();
+    this.getLeaveType();
     this.getWeeklyOfDays();
     this.getAllHolidays();
+    this.getAllEmployeeLeaveData();
     this.calculateToday();
+
+    this.showTabBasedOnRole();
     //this.getEmpDatabyLeaveCodeAndLeaveCode();
   }
 
@@ -179,6 +183,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   empName: any;
   empCodeVal: any;
   empEmailId: any;
+  degisnation: any;
   getDataByLocalStorageByEmpCode(userDataCode) {
     this.dashbordService
       .getEmployeeInfoByEmpCode(userDataCode)
@@ -189,11 +194,28 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
         console.log("LocalSotarage empCode Data ", this.empCodeVal);
         this.empName = response.firstName + " " + response.lastName;
         console.log("LocalSotarage this.empName ", this.empName);
+        this.degisnation = response.designation;
+        console.log("LocalSotarage this.degisnation ", this.degisnation);
+
         this.empEmailId = response.emailId;
         console.log("LocalSotarage this.empEmailId ", this.empEmailId);
+        this.managCode = response.reportingManager.empCode;
+        console.log("LocalSotarage this.managCode ", this.managCode);
       });
   }
-
+  roledesignationData: any;
+  showTabBasedOnRole() {
+    this.leaveService
+      .getAllEmployeeDataUnderManager(this.ecode1)
+      .subscribe((response: any) => {
+        console.log("empolyeedataUndermanager ", response);
+        this.roledesignationData = response;
+        console.log("datalength", this.roledesignationData.length);
+        if (this.roledesignationData.length != 0) {
+          this.roleValue = true;
+        }
+      });
+  }
   /*.....This calculateDay() function calculate  number of days between two dates to substract weekly off Daya and Holidays........*/
 
   calculateDay() {
@@ -383,7 +405,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       leaveValue.empCode = this.empCodeVal;
       leaveValue.status = "Applied";
       leaveValue.leaveReason = this.leaveReason;
-
+      leaveValue.managerCode = this.managCode;
+      console.log("leaveValue.managerCode value  is", leaveValue.managerCode);
       leaveValue.leaveCode = this.leavtype;
       console.log("leave type  check10", leaveValue.leaveCode);
 
@@ -427,7 +450,8 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
           "check leave totalLeaveAvaiable3 value",
           this.remainingAvaiable
         );
-
+        leaveValue.managerCode = this.managCode;
+        console.log("leaveValue.managerCode value  is", leaveValue.managerCode);
         leaveValue.empName = this.empName;
         leaveValue.emailId = this.empEmailId;
         leaveValue.empCode = this.empCodeVal;
@@ -456,7 +480,6 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
             panelClass: "success",
           });
         });
-        this.getEmployeesLeaveInfoDataValues();
       } else {
         this._snackBar.open("You have no leave balance", "OK", {
           duration: 5000,
@@ -520,12 +543,14 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   empData = [];
 
   getAllEmployeeLeaveData() {}
-  getEmployeesLeaveInfoDataValues() {
-    console.log("employee leave info");
-    this.leaveService.getEmployeeDataByStatus().subscribe((response1: any) => {
-      this.empData = response1;
-      console.log("Manager Leave data isshown ", this.empData);
-    });
+  getEmployeesLeaveInfoDataValues(mcode) {
+    console.log(" this.managCode", mcode);
+    this.leaveService
+      .getEmployeeDataByStatus(mcode)
+      .subscribe((response1: any) => {
+        this.empData = response1;
+        console.log("Manager Leave data isshown ", this.empData);
+      });
   }
   empCodeData: any;
   resultArray: any;
@@ -553,6 +578,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     values,
     leaveId1,
     empCode,
+    emailId,
     empName,
 
     fromDate,
@@ -560,11 +586,13 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     reason,
 
     leavename,
+    managerCode,
     leaveApplied,
     totalLeavegrant,
     totalLeaveAvaiable
   ) {
     this.LeaveMgmt.empCode = empCode;
+    this.LeaveMgmt.emailId = emailId;
     this.LeaveMgmt.empName = empName;
 
     this.LeaveMgmt.status = "Approved";
@@ -572,6 +600,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     this.LeaveMgmt.toDate = toDate;
     this.LeaveMgmt.leaveReason = reason;
     this.LeaveMgmt.leaveInfo = leavename;
+    this.LeaveMgmt.managerCode = managerCode;
     this.LeaveMgmt.leaveApplied = leaveApplied;
 
     this.LeaveMgmt.totalLeaveGranted = totalLeavegrant;
@@ -646,7 +675,6 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
         verticalPosition: "top",
         panelClass: "success",
       });
-      this.getEmployeesLeaveInfoDataValue();
     } else {
       this._snackBar.open("Please select any value to Approve", "OK", {
         duration: 5000,
@@ -678,7 +706,6 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
       verticalPosition: "top",
       panelClass: "success",
     });
-    this.getEmployeesLeaveInfoDataValue();
   }
 
   /*.................................Employees Leave Details Section................................*/
@@ -687,13 +714,13 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
   LeavTypeData: any;
   todayvalue: any;
   empcode1: any;
-  getEmployeesLeaveInfoDataValue() {
-    console.log("employee leave info");
-    this.leaveService.getAllLeaveData().subscribe((response1: any) => {
-      this.LeaveInfoData = response1;
-      console.log("Leave data is LeaveIfo method  shown", this.LeaveInfoData);
-    });
-  }
+  // getEmployeesLeaveInfoDataValue() {
+
+  //   this.leaveService.getAllLeaveData().subscribe((response1: any) => {
+  //     this.LeaveInfoData = response1;
+  //     console.log("Leave data is LeaveIfo method  shown", this.LeaveInfoData);
+  //   });
+  // }
   getLeaveTypeDataValues() {
     this.empcode1 = this.ecode1;
     this.leaveService
@@ -715,24 +742,29 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
     values,
     leaveId1,
     empCode,
+    emailId,
     empName,
     fromDate,
     toDate,
     reason,
     sataus,
     leavename,
+    managerCodeVal,
     leaveApplied,
     totalLeave,
     totalLeaveAvaiable
   ) {
     this.LeaveMgmt.empCode = empCode;
+    this.LeaveMgmt.emailId = emailId;
     this.LeaveMgmt.empName = empName;
     this.LeaveMgmt.status = sataus;
     console.log("leave Value", this.LeaveMgmt.status);
     this.LeaveMgmt.fromDate = fromDate;
     this.LeaveMgmt.toDate = toDate;
     this.LeaveMgmt.leaveReason = reason;
+    this.LeaveMgmt.managerCode = managerCodeVal;
     this.LeaveMgmt.leaveApplied = leaveApplied;
+    console.log("value of LeaveApplied is", leaveApplied);
     console.log("value of LeaveApplied is", this.LeaveMgmt.leaveApplied);
     this.leaveAppliedvalue = this.LeaveMgmt.leaveApplied;
     console.log("value of LeaveApplied is", this.leaveAppliedvalue);
@@ -797,7 +829,7 @@ export class EmployeeApplyLeaveInfoComponent implements OnInit {
         verticalPosition: "top",
         panelClass: "success",
       });
-      this.getEmployeesLeaveInfoDataValue();
+
       console.log("Withdraw leave Information");
     } else {
       this._snackBar.open("Please select any value to Retract", "OK", {
