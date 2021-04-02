@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intranet.dto.LeaveInfoDTO;
-import com.intranet.entity.ClientRegistrationInfo;
 import com.intranet.entity.LeaveInfo;
 import com.intranet.repository.LeaveInfoRepository;
 
@@ -21,26 +19,28 @@ public class LeaveInfoServiceImpl implements LeaveInfoService {
 	private ClientRegistrationInfoService clientRegistrationInfoService;
 
 	@Override
-	public LeaveInfo add(LeaveInfoDTO leaveInfoDTO) {
-		LeaveInfo leaveInfoObject = transformObject(leaveInfoDTO, new LeaveInfo());
+	public LeaveInfo add(LeaveInfo leaveInfo) {
 
-		LeaveInfo leaveInfoSaved = leaveInfoRepository.save(leaveInfoObject);
-		return leaveInfoSaved;
-	}
+		LeaveInfo LeaveInfoSaved = leaveInfoRepository.save(leaveInfo);
+//		LeaveInfo leaveInfoObject = transformObject(leaveInfoDTO, new LeaveInfo());
+//
+//		LeaveInfo leaveInfoSaved = leaveInfoRepository.save(leaveInfoObject);
+//		return leaveInfoSaved;
+//	}
+//
+//	private LeaveInfo transformObject(LeaveInfoDTO leaveInfoDTO, LeaveInfo leaveInfo) {
+//
+//		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
+//				.clientRegistrationInfoByClientCode(leaveInfoDTO.getClientCode());
+//
+//		leaveInfo.setId(leaveInfoDTO.getId());
+//		leaveInfo.setCreatedDate(leaveInfoDTO.getCreatedDate());
+//		leaveInfo.setLeaveCode(leaveInfoDTO.getLeaveCode());
+//		leaveInfo.setLeaveName(leaveInfoDTO.getLeaveName());
+//		leaveInfo.setLeaveLimit(leaveInfoDTO.getLeaveLimit());
+//		leaveInfo.setClientRegistrationInfo(clientRegInfo);
 
-	private LeaveInfo transformObject(LeaveInfoDTO leaveInfoDTO, LeaveInfo leaveInfo) {
-
-		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
-				.clientRegistrationInfoByClientCode(leaveInfoDTO.getClientCode());
-
-		leaveInfo.setId(leaveInfoDTO.getId());
-		leaveInfo.setCreatedDate(leaveInfoDTO.getCreatedDate());
-		leaveInfo.setLeaveCode(leaveInfoDTO.getLeaveCode());
-		leaveInfo.setLeaveName(leaveInfoDTO.getLeaveName());
-		leaveInfo.setLeaveLimit(leaveInfoDTO.getLeaveLimit());
-		leaveInfo.setClientRegistrationInfo(clientRegInfo);
-
-		return leaveInfo;
+		return LeaveInfoSaved;
 	}
 
 	@Override
