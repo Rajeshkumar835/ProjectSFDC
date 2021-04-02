@@ -25,6 +25,10 @@ export class GridViewComponent implements OnInit {
   SaveMessageTemp = false;
   // ApproveMessageTemp = false;
 
+  //this part for Hierarchy  of save / prev /next button if loginuser is not found then data will not save
+  SaveHierarchyTemp = true;
+  //this part for approval Hierarchy part if else
+  ApprovalHierarchyTemp = false;
   /*
   
   this is the part of date
@@ -107,7 +111,7 @@ export class GridViewComponent implements OnInit {
   */
   testDynamic: any = {};
 
-  empCode = "";
+  empCode: "";
   startDate = "";
   endDate = "";
   //variables of users/employee/manager
@@ -128,6 +132,9 @@ export class GridViewComponent implements OnInit {
     this.timesheetObject7.timesheet.empCode = empCode;
 
     this.getEmployeeInfoByEmpCode(empCode);
+    //for hierarchy data
+    this.getEmployeeInfoByEmpCodeHierarchy(empCode);
+
     //this part will store the info of Employee/manager
     this.users = [];
 
@@ -287,6 +294,7 @@ here we call main retrive
   }
   //this service is used to get the information of current login employee or user or manager
   empName: "";
+  Id: "";
   getEmployeeInfoByEmpCode(empCode) {
     this.timesheetService
       .getEmployeeInfoByEmpCode(empCode)
@@ -307,13 +315,37 @@ here we call main retrive
         //
         console.log("empName", this.empName);
         this.empNameEmp = {
+          Id: this.empCode,
           Name: this.empName,
         };
+         this.Id = this.empCode;
+        console.log("aaa" + this.empNameEmp);
+        console.log("aaa" + this.empNameEmp.Id);
         this.users.push(this.empNameEmp);
         if (this.mon) {
           this.getAllTimesheetByEmpCode();
         } else {
           console.log("Annn" + this.mon);
+        }
+      });
+  }
+  //get all employee in hierarchy
+  getEmployeeInfoByEmpCodeHierarchy(empCode) {
+    this.timesheetService
+      .getEmployeeInfoByEmpCodeHierarchy(empCode)
+      .subscribe((data: any) => {
+        console.log("hierarchy info data ", data);
+
+        for (let kk = 0; kk < data.length; kk++) {
+          let firstNameString: String = " ";
+          let empNameHierarchy =
+            data[kk].firstName + firstNameString + data[kk].lastName;
+
+          this.empNameEmp = {
+            Id: data[kk].empCode,
+            Name: empNameHierarchy,
+          };
+          this.users.push(this.empNameEmp);
         }
       });
   }
@@ -1733,9 +1765,93 @@ here we call main retrive
   getValidationOfProject(val) {
     console.log(val);
     this.EnterDropdownValidation = val;
-    console.log("hii");
+
     console.log(this.projects);
     // delete this.projects[val];
+  }
+  //when change the value of employee dropdoen then this function will be call
+  getEmployeeHierarchy(getId) {
+    console.log("Hierarchy" + getId);
+
+    this.empCode = getId;
+
+    //here we can Approval/save/next/prev button for hierarchy
+    let SavaHierarchy = localStorage.getItem("employeeInfo");
+    if (this.empCode == SavaHierarchy) {
+      this.SaveHierarchyTemp = true;
+      this.ApprovalHierarchyTemp = false;
+    } else {
+      this.SaveHierarchyTemp = false;
+      this.ApprovalHierarchyTemp = true;
+    }
+    //end
+    //implementation part of hierarchy
+    //this is for weekly approval
+    this.WeekApprovalTemp = 0;
+    //this is for ay wise approval
+    this.MonApprovalTemp = "NEW";
+    this.TueApprovalTemp = "NEW";
+    this.WedApprovalTemp = "NEW";
+    this.ThurApprovalTemp = "NEW";
+    this.FriApprovalTemp = "NEW";
+    this.SatApprovalTemp = "NEW";
+    this.SunApprovalTemp = "NEW";
+    //end
+
+    /*
+    api operation and push pop operation in prev date is 
+      performed here
+    */
+    //here first we delte the all value of dynamic array
+    this.dynamicArray.length = 0;
+    //this part for save sucess message
+
+    this.SaveMessageTemp = false;
+
+    /*
+     this is approval part variables
+  */
+    this.MonApproval = false;
+    this.TueApproval = false;
+    this.WedApproval = false;
+    this.ThurApproval = false;
+    this.FriApproval = false;
+    this.SatApproval = false;
+    this.SunApproval = false;
+    //here we add one single value which is empty
+    this.newDynamic = {
+      projectName: "",
+      Monday: "0",
+      Tuesday: "0",
+      Wednesday: "0",
+      thursday: "0",
+      Friday: "0",
+      Saturday: "0",
+      Sunday: "0",
+      TotaltimeRowwise: "0",
+    };
+    this.dynamicArray.push(this.newDynamic);
+    //here we zero the total time
+    this.totalTimeMonCol = 0;
+    this.totalTimeTueCol = 0;
+    this.totalTimeWedCol = 0;
+    this.totalTimeThurCol = 0;
+    this.totalTimeFriCol = 0;
+    // this.totalTimeSatCol = data[47].timesheet.totalTimeHour;
+    //    this.totalTimeSunCol = data[47].timesheet.totalTimeHour;
+    //   this.totalTimeCol = data[47].timesheet.totalTimeHour;
+    this.totalTimeCol =
+      this.totalTimeMonCol +
+      this.totalTimeTueCol +
+      this.totalTimeWedCol +
+      this.totalTimeThurCol +
+      this.totalTimeSunCol +
+      this.totalTimeFriCol +
+      this.totalTimeSatCol;
+
+    console.log("hello");
+    //calling a retrive data function
+    this.getAllTimesheetByEmpCode();
   }
   //common save for all the fill date
   saveEx() {

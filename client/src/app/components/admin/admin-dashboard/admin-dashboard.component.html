@@ -1,0 +1,174 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="pb-2 pt-2">
+        <h3>Admin Dashboard</h3>
+      </div>
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Company Personal Information">
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <div class="form-group pt-4">
+                <label for="exampleInputEmail1">Company Code</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Company Code"
+                  name="clientCode" [(ngModel)]="clientRegistrationInfo.clientCode" #ClientCode="ngModel" required
+                  minlength="3" maxlength="300">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Company Name</label>
+                <input type="text" class="form-control" placeholder="Company Name" name="companyName"
+                  [(ngModel)]="clientRegistrationInfo.companyName" #CompanyCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Company Website</label>
+                <input type="text" class="form-control" placeholder="Company Website" name="companyWebsite"
+                  [(ngModel)]="clientRegistrationInfo.website" #CompanyWebsite="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Company EmailI'd</label>
+                <input type="text" class="form-control" placeholder="Company EmailI'd" name="companyEmail"
+                  [(ngModel)]="clientRegistrationInfo.companyEmail" #CompanyEmail="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="text-center pt-4 submit-btn">
+                <button type="submit" class="btn btn-primary" (click)="clientRegistration()">Register</button>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group pt-4">
+                <label for="exampleInputEmail1">Company Location</label>
+                <input type="text" class="form-control" placeholder="Company Location" name="companyLocation"
+                  [(ngModel)]="clientRegistrationInfo.companyLocation" #CompanyLocation="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Company TIN/VAT No</label>
+                <input type="text" class="form-control" placeholder="Company TIN/VAT No" name="companyTinVatNo"
+                  [(ngModel)]="clientRegistrationInfo.companyTinVatNo" #CompanyTinVatNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="cPassword"
+                  [(ngModel)]="clientRegistrationInfo.passowrd" #CompanyTinVatNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1">Re-type Password</label>
+                <input type="password" class="form-control" placeholder="Re-type Password" name="cPassword"
+                  [(ngModel)]="clientRegistrationInfo.passowrd" #CompanyTinVatNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Company Holiday Type">
+          <div class="card-body table_invoice">
+            <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    #ID
+                  </th>
+                  <th scope="col" >
+                    Holiday Code
+                  </th>
+                  <th scope="col" >
+                    Holiday Name
+                  </th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="
+                    let data of holidayTypeList
+                  ">
+                  <td>{{ data?.holidayId }}</td>
+                  <td>
+                    {{ data?.holidayCode }}
+                  </td>
+                  <td>
+                    {{
+                    data?.holidayName
+                    }}
+                  </td>
+                  <td (click)="view(data)">
+                    <a style="cursor: pointer; color: black">
+                      <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-tab>
+        <mat-tab label="Company Holiday List">
+          <div class="card-body table_invoice">
+            <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    #ID
+                  </th>
+                  <th scope="col" >
+                    Holiday Date
+                  </th>
+                  <th scope="col" >
+                    Holiday Name
+                  </th>
+                  <th scope="col" >
+                    Holiday Type
+                  </th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="
+                    let data of holidayList
+                  ">
+                  <td>{{ data?.id }}</td>
+                  <td>
+                    {{
+                    data?.holidayDate | date: "dd-MMM-yyyy"
+                    }}
+                  </td>
+                  <td>
+                    {{
+                    data?.holidayName
+                    }}
+                  </td>
+                  <td>
+                    {{
+                    data?.holidayType?.holidayName
+                    }}
+                  </td>
+                  <td (click)="view(data)">
+                    <a style="cursor: pointer; color: black">
+                      <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-tab>
+        <mat-tab label="Company Weekly Off Days">
+
+        </mat-tab>
+        <mat-tab label="Company Leave Details ">
+
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>
