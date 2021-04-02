@@ -7,12 +7,28 @@ import { TimesheetService } from "src/app/services/timesheet.service";
 import { DynamicGrid } from "./grid.modal";
 import { project } from "./project";
 import { user } from "./user";
+import { FormBuilder, FormGroup, FormsModule } from "@angular/forms";
+import { TimesheetApprovedStatus } from "src/app/models/timesheet.model";
+
 @Component({
   selector: "app-grid-view",
   templateUrl: "./grid-view.component.html",
   styleUrls: ["./grid-view.component.scss"],
 })
 export class GridViewComponent implements OnInit {
+  //approval part start
+
+  timesheetApproval: TimesheetApprovedStatus = {
+    empCode: "",
+    startDate: "",
+    endDate: "",
+  };
+  ApprovalMessageTemp = false;
+
+  StartDate: Date;
+  StartRegisterForm;
+  EndDate: Date;
+  //approval part end
   testNumberSave: number = 0;
   /*
   validation part
@@ -98,7 +114,10 @@ export class GridViewComponent implements OnInit {
   */
   projects: project[];
 
-  constructor(private timesheetService: TimesheetService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private timesheetService: TimesheetService
+  ) {}
 
   /*this is the part of dynamic array
    */
@@ -112,8 +131,8 @@ export class GridViewComponent implements OnInit {
   testDynamic: any = {};
 
   empCode: "";
-  startDate = "";
-  endDate = "";
+  // startDate = "";
+  // endDate = "";
   //variables of users/employee/manager
   users: user[];
   empNameEmp: any = {};
@@ -247,7 +266,7 @@ this is the part of week wise date
   */
     this.projects = [
       { Id: 1, Name: "Intranet" },
-      { Id: 2, Name: "Timesheet" },
+      { Id: 2, Name: "Velocity" },
       { Id: 3, Name: "Aaonri" },
       { Id: 4, Name: "Goongcha" },
     ];
@@ -291,6 +310,18 @@ here we call main retrive
       TotaltimeRowwise: "0",
     };
     this.dynamicArray.push(this.newDynamic);
+
+    //approval part start
+    this.StartRegisterForm = this.formBuilder.group({
+      StartDate: "",
+      EndDate: "",
+    });
+
+    console.log(this.StartDate);
+    console.log(this.StartRegisterForm);
+
+    console.log(this.EndDate);
+    console.log(this.StartRegisterForm);
   }
   //this service is used to get the information of current login employee or user or manager
   empName: "";
@@ -318,7 +349,7 @@ here we call main retrive
           Id: this.empCode,
           Name: this.empName,
         };
-        // this.Id = this.empCode;
+        this.Id = this.empCode;
         console.log("aaa" + this.empNameEmp);
         console.log("aaa" + this.empNameEmp.Id);
         this.users.push(this.empNameEmp);
@@ -1202,7 +1233,20 @@ here we call main retrive
     this.SunApprovalTemp = "NEW";
     //end
     //let first: Date = new Date(this.date);
-    this.first.setDate(this.date.getDate() - 7);
+
+    //start
+    //console.log("anjDate" + this.date);
+    // console.log("anjDate" + this.date.getMonth());
+    this.first = this.date;
+    this.first.setDate(this.date.getDate() - 7); //no change here
+    /*
+    // console.log("anjFirst" + this.first);
+    //console.log("anjFirst" + this.first.getMonth());
+    if (this.date.getMonth() < this.first.getMonth()) {
+      this.first.setMonth(this.first.getMonth() - 1);
+    }
+    */
+    //end
     this.sun =
       this.first.getDate() -
       1 +
@@ -1358,7 +1402,15 @@ here we call main retrive
     this.SatApprovalTemp = "NEW";
     this.SunApprovalTemp = "NEW";
     //let first: Date = new Date(this.date);
-    this.first.setDate(this.date.getDate() + 7);
+
+    console.log("anjFirst1" + this.first);
+    this.first = this.date;
+    console.log("anjFirst2" + this.first);
+    this.first.setDate(this.date.getDate() + 7); //no change here
+    console.log("anjFirst3" + this.first);
+    console.log("anjFirst" + this.first.getMonth());
+    let testDatedate = this.date.getMonth();
+
     this.sun =
       this.first.getDate() -
       1 +
@@ -1774,6 +1826,9 @@ here we call main retrive
     console.log("Hierarchy" + getId);
 
     this.empCode = getId;
+
+    this.timesheetApproval.empCode = this.empCode;
+    console.log("Amish" + this.timesheetApproval.empCode);
 
     //here we can Approval/save/next/prev button for hierarchy
     let SavaHierarchy = localStorage.getItem("employeeInfo");
@@ -2275,4 +2330,49 @@ here we call main retrive
       alert("Can't be Saved");
     }
   }
+  // approval part start
+  ApproveButton() {
+    if (this.timesheetApproval.endDate < this.timesheetApproval.startDate) {
+      alert("Invalid date format");
+    } else {
+      this.timesheetService
+        .getAllApprovalByEmpCode(this.timesheetApproval)
+        .subscribe((data: any) => {
+          console.log("kkkkk", data);
+        });
+      this.ApprovalMessageTemp = true;
+    }
+  }
+  approvedTimesheetEnd(endDate) {
+    this.ApprovalMessageTemp = false;
+    this.timesheetApproval.endDate = endDate;
+    console.log("approved End Date", endDate);
+    console.log("timesheet approved End Date", this.timesheetApproval.endDate);
+    console.log("approved object", this.timesheetApproval);
+
+    this.EndDate = endDate;
+    if (this.EndDate < this.StartDate) {
+      this.EndDate = this.StartDate;
+      alert("Please enter valid Date");
+      // this.toastr.success("Hello, I'm the toastr message.");
+    }
+  }
+  approvedTimesheetStart(startDate) {
+    this.ApprovalMessageTemp = false;
+    this.StartDate = startDate;
+    this.timesheetApproval.startDate = startDate;
+    console.log("approved Start Date", startDate);
+    console.log(
+      "timesheet approved Start Date",
+      this.timesheetApproval.startDate
+    );
+    console.log("approved object", this.timesheetApproval);
+
+    if (this.EndDate < this.StartDate) {
+      this.EndDate = this.StartDate;
+      alert("Please enter valid Date");
+    }
+  }
+  // ApproveButton() {}
+  onSubmit() {}
 }
