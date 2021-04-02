@@ -61,9 +61,12 @@ public class EmployeeLeaveInfo {
 
 	@Column(nullable = true)
 	private Long leaveApplied;
-
+	
 	@Column(nullable = true)
 	private String rejectionReason;
+	
+	@Column(nullable = true)
+	private String managerCode;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "leave_code")

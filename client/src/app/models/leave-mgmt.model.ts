@@ -14,5 +14,7 @@ export class LeaveMgmt {
   totalLeaveGranted: number;
   totalLeaveAvaiable: number;
   leaveApplied: number;
+  managerCode: string;
+  designation: string;
   rejectionReason: string;
 }

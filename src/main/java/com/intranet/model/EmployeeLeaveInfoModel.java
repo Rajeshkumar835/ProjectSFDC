@@ -30,5 +30,7 @@ public class EmployeeLeaveInfoModel {
 	private String leaveCode;
 
 	private Long leaveApplied;
+	
+	private String managerCode;
 
 }
