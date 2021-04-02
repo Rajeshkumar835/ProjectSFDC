@@ -53,6 +53,7 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 		employeeLeaveInfo.setTotalLeaveGranted(employeeLeaveInfoDTO.getTotalLeaveGranted());
 		employeeLeaveInfo.setLeaveApplied(employeeLeaveInfoDTO.getLeaveApplied());
 		employeeLeaveInfo.setRejectionReason(employeeLeaveInfoDTO.getRejectionReason());
+		employeeLeaveInfo.setManagerCode(employeeLeaveInfoDTO.getManagerCode());
 		employeeLeaveInfo.setLeaveInfo(leaveInfo);
 
 		return employeeLeaveInfo;
@@ -77,8 +78,8 @@ public class EmployeeLeaveInfoServiceImpl implements EmployeeLeaveInfoService {
 	}
 
 	@Override
-	public List<EmployeeLeaveInfo> findAllLeaveInfoByStatus() {
-		List<EmployeeLeaveInfo> listEmpLeaveInfo2 = employeeLeaveInfoRepository.findAllLeaveInfoByStatus();
+	public List<EmployeeLeaveInfo> findAllLeaveInfoByStatus(String managerCode) {
+		List<EmployeeLeaveInfo> listEmpLeaveInfo2 = employeeLeaveInfoRepository.findAllLeaveInfoByStatus(managerCode);
 		return listEmpLeaveInfo2;
 	}
 
