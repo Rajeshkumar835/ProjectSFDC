@@ -173,7 +173,7 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	public EmployeeInfo createEmployee(EmployeeCreationDTO employeeCreationDTO) {
 		EmployeeInfo employeeInfo = new EmployeeInfo();
 
-		EmployeeInfo employeeInfoSaved=null;
+		EmployeeInfo employeeInfoSaved = null;
 		try {
 			ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
 					.clientRegistrationInfoByClientCode(employeeCreationDTO.getClientCode());
@@ -192,16 +192,16 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 
 			employeeInfoSaved = employeeInfoRepository.save(employeeInfo);
 		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Pass creation1: ", e);
+			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
 			e.printStackTrace();
 		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Pass creation2: ", e);
+			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
 			e.printStackTrace();
 		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Pass creation3: ", e);
+			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
 			e.printStackTrace();
 		} catch (Exception e) {
-			LOGGER.errorf("Error in Pass creation4: ", e);
+			LOGGER.errorf("Error in Passowrd Exception : ", e);
 			e.printStackTrace();
 		}
 
@@ -276,12 +276,30 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	@Override
 	public EmployeeInfo employeeLogin(String empCode, String password) {
 
-		EmployeeInfo employeeInfoOpt = employeeInfoRepository.findByEmpCode(empCode);
-		if (employeeInfoOpt != null) {
-			if (employeeInfoOpt.getEmpCode().equals(empCode) && employeeInfoOpt.getPassword().equals(password)) {
-				return employeeInfoOpt;
+		try {
+			String pass = AES.encrypt(password, AES.generateKey());
+
+			EmployeeInfo employeeInfoOpt = employeeInfoRepository.findByEmpCode(empCode);
+			if (employeeInfoOpt != null) {
+				if (employeeInfoOpt.getEmpCode().equals(empCode) && employeeInfoOpt.getPassword().equals(password)) {
+					return employeeInfoOpt;
+				}
 			}
+
+		} catch (NoSuchAlgorithmException e) {
+			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
+			e.printStackTrace();
+		} catch (Exception e) {
+			LOGGER.errorf("Error in Passowrd Exception : ", e);
+			e.printStackTrace();
 		}
+
 		return null;
 	}
 
