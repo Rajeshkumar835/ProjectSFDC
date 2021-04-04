@@ -24,6 +24,7 @@ import { AdminMasterDataComponent } from "./components/admin/admin-master-data/a
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdminDashboardComponent } from "./components/admin/admin-dashboard/admin-dashboard.component";
 import { RaiseTicketComponent } from "./components/ticket-management/raise-ticket/raise-ticket.component";
+import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path: "dashboard",component: DashboardComponent},
   {path: "admin-dashboard", component: AdminDashboardComponent},
   {path: "reiaeTicket",component: RaiseTicketComponent},
+  {path: "holiday-type-modal",component: CompanyHolidayModalComponent}
 ];
 
 @NgModule({

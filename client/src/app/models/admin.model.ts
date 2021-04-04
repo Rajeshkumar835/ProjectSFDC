@@ -4,7 +4,7 @@ export class ClientRegistrationInfo {
   public companyName: string;
   public companyTinVatNo: string;
   public clientCode: string;
-  public passowrd: string;
+  public password: string;
   public website: string;
 }
 

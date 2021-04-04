@@ -1,7 +1,7 @@
-<div class="container">
+<div class="">
   <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
       <div class="pb-2 pt-2">
         <h3>Admin Dashboard</h3>
       </div>
@@ -76,10 +76,10 @@
                   <th scope="col">
                     #ID
                   </th>
-                  <th scope="col" >
+                  <th scope="col">
                     Holiday Code
                   </th>
-                  <th scope="col" >
+                  <th scope="col">
                     Holiday Name
                   </th>
                   <th>View</th>
@@ -98,7 +98,7 @@
                     data?.holidayName
                     }}
                   </td>
-                  <td (click)="view(data)">
+                  <td (click)="openHolidayTypeModal(holidayTypeTemplate,data)">
                     <a style="cursor: pointer; color: black">
                       <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
                         aria-hidden="true"></i>
@@ -117,13 +117,13 @@
                   <th scope="col">
                     #ID
                   </th>
-                  <th scope="col" >
+                  <th scope="col">
                     Holiday Date
                   </th>
-                  <th scope="col" >
+                  <th scope="col">
                     Holiday Name
                   </th>
-                  <th scope="col" >
+                  <th scope="col">
                     Holiday Type
                   </th>
                   <th>View</th>
@@ -149,7 +149,7 @@
                     data?.holidayType?.holidayName
                     }}
                   </td>
-                  <td (click)="view(data)">
+                  <td (click)="openHolidayListModal(holidayListTemplate,data)">
                     <a style="cursor: pointer; color: black">
                       <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
                         aria-hidden="true"></i>
@@ -161,14 +161,243 @@
           </div>
         </mat-tab>
         <mat-tab label="Company Weekly Off Days">
-
+          <div class="card-body table_invoice">
+            <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    #ID
+                  </th>
+                  <th scope="col">
+                    Weekly off Day Code
+                  </th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="
+                    let data of weeklyOffDaysList
+                  ">
+                  <td>{{ data?.id }}</td>
+                  <td>
+                    {{ data?.dayCode }}
+                  </td>
+                  <td (click)="openWeeklyOffDaysModal(weeklyOffDayTemplate,data)">
+                    <a style="cursor: pointer; color: black">
+                      <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </mat-tab>
         <mat-tab label="Company Leave Details ">
-
+          <div class="card-body table_invoice">
+            <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    #ID
+                  </th>
+                  <th scope="col">
+                    Leave Code
+                  </th>
+                  <th scope="col">
+                    Leave Name
+                  </th>
+                  <th scope="col">
+                    Leave Limit
+                  </th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="
+                    let data of leaveInfoList
+                  ">
+                  <td>{{ data?.id }}</td>
+                  <td>
+                    {{
+                    data?.leaveCode
+                    }}
+                  </td>
+                  <td>
+                    {{
+                    data?.leaveName
+                    }}
+                  </td>
+                  <td>
+                    {{
+                    data?.leaveLimit
+                    }}
+                  </td>
+                  <td (click)="openLeaveInfoModal(leaveInfoTemplate,data)">
+                    <a style="cursor: pointer; color: black">
+                      <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </mat-tab>
 
       </mat-tab-group>
     </div>
-    <div class="col-sm-1"></div>
+    <div class="col-sm-2"></div>
   </div>
 </div>
+<!-- modal Code for holiday type -->
+<ng-template #holidayTypeTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title modal-head">Update Holiday Type</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Holiday Type Code</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Type Code"
+          name="clientCode" [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Holiday Type Name</label>
+        <input type="text" class="form-control" placeholder="Holiday Type Name" name="companyLocation"
+          [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3"
+          maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+
+  </div>
+      <div class="text-center mt-4 mb-4">
+        <button type="button" class="btn btn-primary" (click)="updateHolidayType()">Update</button>
+      </div>
+</ng-template>
+
+<!-- modal Code for holiday List -->
+<ng-template #holidayListTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title modal-head">Update Holiday List</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Holiday Date</label>
+        <input type="date" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Date"
+          name="clientCode" [(ngModel)]="holidayListUpdate.holidayDate" #ClientCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Holiday Name</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Name"
+          name="clientCode" [(ngModel)]="holidayListUpdate.holidayName" #ClientCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Holiday Type</label>
+        <input type="text" class="form-control" placeholder="Company Location" name="companyLocation"
+          [(ngModel)]="holidayListUpdate.holidayId" #CompanyLocation="ngModel" required minlength="3"
+          maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+
+  </div>
+      <div class="text-center mt-4 mb-4">
+        <button type="button" class="btn btn-primary" (click)="updateHolidayList()">Update</button>
+      </div>
+</ng-template>
+
+<!-- modal Code for weekly off days -->
+<ng-template #weeklyOffDayTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title modal-head">Update Weekly Off Days</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Day Code</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Day Code"
+          name="clientCode" [(ngModel)]="weeklyOffDayUpdate.dayCode" #ClientCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <!-- <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Company Location</label>
+        <input type="text" class="form-control" placeholder="Company Location" name="companyLocation"
+          [(ngModel)]="clientRegistrationInfo.companyLocation" #CompanyLocation="ngModel" required minlength="3"
+          maxlength="300">
+      </div> -->
+    </div>
+    <div class="col-sm-1"></div>
+
+  </div>
+      <div class="text-center mt-4 mb-4">
+        <button type="button" class="btn btn-primary" (click)="updateWeeklyOffDays()">Update</button>
+      </div>
+</ng-template>
+
+<!-- modal Code for leave info -->
+<ng-template #leaveInfoTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title modal-head">Update Leave Info</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Leave Code</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Code"
+          name="clientCode" [(ngModel)]="leaveInfoUpdate.leaveCode" #ClientCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Leave Name</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Name"
+          name="clientCode" [(ngModel)]="leaveInfoUpdate.leaveName" #ClientCode="ngModel" required
+          minlength="3" maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="form-group pt-4">
+        <label for="exampleInputEmail1">Leave Limit</label>
+        <input type="text" class="form-control" placeholder="Leave Limit" name="companyLocation"
+          [(ngModel)]="leaveInfoUpdate.leaveLimit" #CompanyLocation="ngModel" required minlength="3"
+          maxlength="300">
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+
+  </div>
+      <div class="text-center mt-4 mb-4">
+        <button type="button" class="btn btn-primary" (click)="updateLeaveInfo()">Update</button>
+      </div>
+</ng-template>
