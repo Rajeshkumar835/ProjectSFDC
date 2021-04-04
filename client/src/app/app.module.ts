@@ -65,7 +65,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { TicketManagementComponent } from './components/ticket-management/ticket-management.component';
 import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CompanyHolidayModalComponent } from './components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,6 +109,7 @@ import { RaiseTicketComponent } from './components/ticket-management/raise-ticke
     AdminDashboardComponent,
     TicketManagementComponent,
     RaiseTicketComponent,
+    CompanyHolidayModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,6 +137,7 @@ import { RaiseTicketComponent } from './components/ticket-management/raise-ticke
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    ModalModule.forRoot(),
   ],
 
   providers: [

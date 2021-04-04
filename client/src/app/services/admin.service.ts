@@ -87,4 +87,29 @@ export class AdminService {
   getAllHolidayList(){
     return this.http.get("http://localhost:8443/api/v1/companyHolidayList/findAll");
   }
+
+  getAllWeeklyOffDays(){
+    return this.http.get("http://localhost:8443/api/v1/companyWeeklyOff/findAll");
+  }
+
+  getAllLeaveInfo(){
+    return this.http.get("http://localhost:8443/api/v1/leaveInfo/findAll");
+  }
+
+  updateHolidayType(holidayType:HolidayType){
+    return this.http.put("http://localhost:8443/api/v1/holidayType/update",holidayType);
+  }
+
+  updateHolidayList(holidayList: HolidayList){
+    return this.http.put("http://localhost:8443/api/v1/companyHolidayList/update",holidayList)
+  }
+
+  updateWeeklyOffDays(companyOffDays: CompanyOffDays){
+    return this.http.put("http://localhost:8443/api/v1/companyWeeklyOff/update",companyOffDays)
+  }
+
+  updateLeaveInformation(leaveInfo: LeaveInfo){
+    return this.http.put("http://localhost:8443/api/v1/leaveInfo/update",leaveInfo)
+
+  }
 }

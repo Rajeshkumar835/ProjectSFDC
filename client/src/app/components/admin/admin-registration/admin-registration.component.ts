@@ -15,7 +15,7 @@ export class AdminRegistrationComponent implements OnInit {
     companyName: "",
     companyTinVatNo: "",
     clientCode:"",
-    passowrd: "",
+    password: "",
     website: ""
   }
   constructor(private router: Router,
@@ -24,6 +24,7 @@ export class AdminRegistrationComponent implements OnInit {
   ngOnInit() {
   }
   clientRegistration(){
+    console.log("client registration data",this.clientRegistrationInfo);
     this.adminService.clientRegistration(this.clientRegistrationInfo).subscribe((data:any)=>{
       console.log("client registration data",data);
       if(data!=null){
