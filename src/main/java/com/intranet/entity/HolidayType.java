@@ -35,9 +35,11 @@ public class HolidayType {
 
 	@Column(nullable = true)
 	private String holidayName;
+	
+	private String clientCode; 
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "clientCode")
-	private ClientRegistrationInfo clientRegistrationInfo;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "clientCode")
+//	private ClientRegistrationInfo clientRegistrationInfo;
 
 }

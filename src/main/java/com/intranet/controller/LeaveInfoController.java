@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intranet.dto.LeaveInfoDTO;
 import com.intranet.entity.LeaveInfo;
 import com.intranet.service.LeaveInfoService;
 
@@ -33,10 +32,10 @@ public class LeaveInfoController {
 
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<LeaveInfo> add(@RequestBody LeaveInfoDTO leaveInfoDTO) {
+	public ResponseEntity<LeaveInfo> add(@RequestBody LeaveInfo leaveInfoModel) {
 		LeaveInfo leaveInfo = null;
 		try {
-			leaveInfo = leaveInfoService.add(leaveInfoDTO);
+			leaveInfo = leaveInfoService.add(leaveInfoModel);
 		} catch (Exception e) {
 			LOGGER.error("Error while adding LeaveInfo -> ", e);
 		}

@@ -34,5 +34,7 @@ public class EmployeeLeaveInfoDTO {
 	private String rejectionReason;
 
 	private String leaveCode;
+	
+	private String managerCode;
 
 }

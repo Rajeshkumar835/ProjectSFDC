@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intranet.dto.CompanyWeeklyOffDaysDTO;
-import com.intranet.entity.ClientRegistrationInfo;
 import com.intranet.entity.CompanyWeeklyOffDaysList;
 import com.intranet.repository.CompanyWeeklyOffDaysListRepository;
 
@@ -15,52 +13,54 @@ import com.intranet.repository.CompanyWeeklyOffDaysListRepository;
 public class CompanyWeeklyOffDaysListServiceImpl implements CompanyWeeklyOffDaysListService {
 
 	@Autowired
-	private CompanyWeeklyOffDaysListRepository holidayTypeRepository;
+	private CompanyWeeklyOffDaysListRepository weeklyOffDaysRepository;
 
 	@Autowired
 	private ClientRegistrationInfoService clientRegistrationInfoService;
 
 	@Override
-	public CompanyWeeklyOffDaysList add(CompanyWeeklyOffDaysDTO companyWeeklyOffDaysDTO) {
-		CompanyWeeklyOffDaysList holidayTypeObject = transformObject(companyWeeklyOffDaysDTO,
-				new CompanyWeeklyOffDaysList());
+	public CompanyWeeklyOffDaysList add(CompanyWeeklyOffDaysList companyWeeklyOffDays) {
 
-		CompanyWeeklyOffDaysList holidayTypeSaved = holidayTypeRepository.save(holidayTypeObject);
-		return holidayTypeSaved;
-	}
+		CompanyWeeklyOffDaysList companyWeeklyOffDaysListSaved = weeklyOffDaysRepository.save(companyWeeklyOffDays);
+//		CompanyWeeklyOffDaysList holidayTypeObject = transformObject(companyWeeklyOffDaysDTO,
+//				new CompanyWeeklyOffDaysList());
+//
+//		CompanyWeeklyOffDaysList holidayTypeSaved = holidayTypeRepository.save(holidayTypeObject);
+//		return holidayTypeSaved;
+//	}
+//
+//	private CompanyWeeklyOffDaysList transformObject(CompanyWeeklyOffDaysDTO companyWeeklyOffDaysDTO,
+//			CompanyWeeklyOffDaysList companyWeeklyOffDaysList) {
+//
+//		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
+//				.clientRegistrationInfoByClientCode(companyWeeklyOffDaysDTO.getClientCode());
+//
+//		companyWeeklyOffDaysList.setId(companyWeeklyOffDaysDTO.getId());
+//		companyWeeklyOffDaysList.setCreatedDate(companyWeeklyOffDaysDTO.getCreatedDate());
+//		companyWeeklyOffDaysList.setDayCode(companyWeeklyOffDaysDTO.getDayCode());
+//		companyWeeklyOffDaysList.setClientRegistrationInfo(clientRegInfo);
 
-	private CompanyWeeklyOffDaysList transformObject(CompanyWeeklyOffDaysDTO companyWeeklyOffDaysDTO,
-			CompanyWeeklyOffDaysList companyWeeklyOffDaysList) {
-
-		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
-				.clientRegistrationInfoByClientCode(companyWeeklyOffDaysDTO.getClientCode());
-
-		companyWeeklyOffDaysList.setId(companyWeeklyOffDaysDTO.getId());
-		companyWeeklyOffDaysList.setCreatedDate(companyWeeklyOffDaysDTO.getCreatedDate());
-		companyWeeklyOffDaysList.setDayCode(companyWeeklyOffDaysDTO.getDayCode());
-		companyWeeklyOffDaysList.setClientRegistrationInfo(clientRegInfo);
-
-		return companyWeeklyOffDaysList;
+		return companyWeeklyOffDaysListSaved;
 	}
 
 	@Override
 	public List<CompanyWeeklyOffDaysList> findAll() {
-		return holidayTypeRepository.findAll();
+		return weeklyOffDaysRepository.findAll();
 	}
 
 	@Override
 	public CompanyWeeklyOffDaysList save(CompanyWeeklyOffDaysList companyWeeklyOffDaysList) {
-		return holidayTypeRepository.save(companyWeeklyOffDaysList);
+		return weeklyOffDaysRepository.save(companyWeeklyOffDaysList);
 	}
 
 	@Override
 	public Optional<CompanyWeeklyOffDaysList> findById(Long id) {
-		return holidayTypeRepository.findById(id);
+		return weeklyOffDaysRepository.findById(id);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		holidayTypeRepository.deleteById(id);
+		weeklyOffDaysRepository.deleteById(id);
 	}
 
 }

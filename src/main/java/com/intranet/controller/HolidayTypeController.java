@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intranet.dto.HolidayTypeDTO;
 import com.intranet.entity.HolidayType;
 import com.intranet.service.HolidayTypeService;
 
@@ -33,7 +32,7 @@ public class HolidayTypeController {
 
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<HolidayType> add(@RequestBody HolidayTypeDTO holidayTypeModel) {
+	public ResponseEntity<HolidayType> add(@RequestBody HolidayType holidayTypeModel) {
 		HolidayType holidayType = null;
 		try {
 			holidayType = holidayTypeService.add(holidayTypeModel);

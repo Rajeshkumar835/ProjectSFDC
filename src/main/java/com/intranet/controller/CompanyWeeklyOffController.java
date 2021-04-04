@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intranet.dto.CompanyWeeklyOffDaysDTO;
 import com.intranet.entity.CompanyWeeklyOffDaysList;
 import com.intranet.service.CompanyWeeklyOffDaysListService;
 
@@ -34,7 +33,7 @@ public class CompanyWeeklyOffController {
 	@CrossOrigin
 	@PostMapping(path = "/add")
 	public ResponseEntity<CompanyWeeklyOffDaysList> add(
-			@RequestBody CompanyWeeklyOffDaysDTO companyWeeklyOffDaysListModel) {
+			@RequestBody CompanyWeeklyOffDaysList companyWeeklyOffDaysListModel) {
 		CompanyWeeklyOffDaysList companyWeeklyOffDaysList = null;
 		try {
 			companyWeeklyOffDaysList = companyWeeklyOffDaysListService.add(companyWeeklyOffDaysListModel);
