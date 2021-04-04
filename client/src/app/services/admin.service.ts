@@ -96,20 +96,20 @@ export class AdminService {
     return this.http.get("http://localhost:8443/api/v1/leaveInfo/findAll");
   }
 
-  updateHolidayType(holidayType:HolidayType){
-    return this.http.put("http://localhost:8443/api/v1/holidayType/update",holidayType);
+  updateHolidayType(holidayType:HolidayType,holidayId){
+    return this.http.put("http://localhost:8443/api/v1/holidayType/update/"+holidayId,holidayType);
   }
 
   updateHolidayList(holidayList: HolidayList){
     return this.http.put("http://localhost:8443/api/v1/companyHolidayList/update",holidayList)
   }
 
-  updateWeeklyOffDays(companyOffDays: CompanyOffDays){
-    return this.http.put("http://localhost:8443/api/v1/companyWeeklyOff/update",companyOffDays)
+  updateWeeklyOffDays(companyOffDays: CompanyOffDays, weekId){
+    return this.http.put("http://localhost:8443/api/v1/companyWeeklyOff/update/"+weekId,companyOffDays)
   }
 
-  updateLeaveInformation(leaveInfo: LeaveInfo){
-    return this.http.put("http://localhost:8443/api/v1/leaveInfo/update",leaveInfo)
+  updateLeaveInformation(leaveInfo: LeaveInfo,leaveId){
+    return this.http.put("http://localhost:8443/api/v1/leaveInfo/update/"+leaveId,leaveInfo)
 
   }
 }

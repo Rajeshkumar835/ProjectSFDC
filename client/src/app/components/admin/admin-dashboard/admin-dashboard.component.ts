@@ -92,12 +92,16 @@ leaveInfoUpdate: LeaveInfo={
   view(data){
 
   }
-
+  holidayTypeId;
+  holidayListId;
+  WeeklyOffId;
+  leaveId;
   updateHolidayType(){
     console.log("Updated Holiday Type data",this.holidayTypeUpdate);
-    // this.adminService.updateHolidayType(this.holidayType).subscribe((data:any)=>{
-    //   console.log("Updated Holiday Type data",data);
-    // })
+    console.log("Updated Holiday Type Id",this.holidayTypeId);
+    this.adminService.updateHolidayType(this.holidayTypeUpdate,this.holidayTypeId).subscribe((data:any)=>{
+      console.log("Updated Holiday Type data",data);
+    })
   }
 
   updateHolidayList(){
@@ -105,13 +109,23 @@ leaveInfoUpdate: LeaveInfo={
   }
 
   updateWeeklyOffDays(){
-    console.log("Updated weekly off days list",this.weeklyOffDayUpdate)
+    console.log("Updated weekly off days list",this.weeklyOffDayUpdate);
+    console.log("Updated weekly off days list",this.WeeklyOffId);
+    this.adminService.updateWeeklyOffDays(this.weeklyOffDayUpdate,this.WeeklyOffId).subscribe((data:any)=>{
+      console.log("Weekly off updated data",data)
+    })
   }
 
   updateLeaveInfo(){
-    console.log("Updated leve info data",this.leaveInfoUpdate)
+    console.log("Updated leve info data",this.leaveInfoUpdate);
+    console.log("Updated leve info data",this.leaveId);
+    this.adminService.updateLeaveInformation(this.leaveInfoUpdate,this.leaveId).subscribe((data:any)=>{
+      console.log("leave info updated data",data)
+    })
+
   }
   openHolidayTypeModal(template: TemplateRef<any>,data) {
+    this.holidayTypeId=data.holidayId;
     this.holidayTypeUpdate.holidayCode=data.holidayCode;
     this.holidayTypeUpdate.holidayName=data.holidayName;
 
@@ -126,13 +140,14 @@ leaveInfoUpdate: LeaveInfo={
   }
   openWeeklyOffDaysModal(template: TemplateRef<any>, data) {
     this.weeklyOffDayUpdate.dayCode=data.dayCode;
-
+    this.WeeklyOffId=data.id;
     this.modalRef = this.modalService.show(template);
   }
   openLeaveInfoModal(template: TemplateRef<any>,data) {
     this.leaveInfoUpdate.leaveCode=data.leaveCode;
     this.leaveInfoUpdate.leaveName=data.leaveName;
     this.leaveInfoUpdate.leaveLimit=data.leaveLimit;
+    this.leaveId=data.id;
 
     this.modalRef = this.modalService.show(template);
   }
