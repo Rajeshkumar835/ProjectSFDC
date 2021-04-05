@@ -112,4 +112,8 @@ export class AdminService {
     return this.http.put("http://localhost:8443/api/v1/leaveInfo/update/"+leaveId,leaveInfo)
 
   }
+
+  findCompanyByCompanyCode(code){
+    return this.http.get("http://localhost:8443/api/v1/clientRegistrationInfo/findById/"+code);
+  }
 }

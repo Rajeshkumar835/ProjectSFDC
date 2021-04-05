@@ -2,6 +2,7 @@ import { Component, TemplateRef,OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClientRegistrationInfo, CompanyOffDays, HolidayList, HolidayType, LeaveInfo } from 'src/app/models/admin.model';
 import { AdminService } from 'src/app/services/admin.service';
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +10,10 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
+  companyCode;
+  toppings = new FormControl();
   modalRef: BsModalRef;
+  selectedToppings;
   clientRegistrationInfo: ClientRegistrationInfo={
     companyEmail: "",
     companyLocation:"",
@@ -45,25 +49,61 @@ leaveInfoUpdate: LeaveInfo={
   leaveName:"",
   leaveLimit:0
 }
+holidayTypeId;
+holidayListId;
+WeeklyOffId;
+leaveId;
+leaveInfo: LeaveInfo = {
+  clientCode: "",
+  leaveCode: "",
+  leaveName: "",
+  leaveLimit: 0,
+};
+companyOffDays: CompanyOffDays = {
+  clientCode: "",
+  dayCode: "",
+};
+postHoliday: HolidayType = {
+  clientCode: "",
+  holidayCode: "",
+  holidayName: "",
+};
   constructor(
     private adminService: AdminService,
     private modalService: BsModalService) { }
 
   ngOnInit() {
     let clientCode=localStorage.getItem("clientInfo");
+    this.companyCode=clientCode;
     this.holidayTypeUpdate.clientCode=clientCode;
     this.weeklyOffDayUpdate.clientCode=clientCode;
     this.leaveInfoUpdate.clientCode=clientCode;
+    this.leaveInfo.clientCode = clientCode;
+    this.companyOffDays.clientCode=clientCode;
+    this.postHoliday.clientCode=clientCode;
     this. getAllHolidayTypeByCompany();
     this.getAllHolidayListByCompanyCode();
     this. getAllWeeklyOffDaysByCompany();
     this.getAllLeaveInfoByCompany();
+    if(clientCode){
+      this.getCompanyInfoByCompanyCode();
+    }
+  }
+  getCompanyInfoByCompanyCode(){
+    this.adminService.findCompanyByCompanyCode(this.companyCode).subscribe((data:any)=>{
+      console.log("Company data",data);
+      this.clientRegistrationInfo=data;
+    })
   }
   getAllHolidayTypeByCompany(){
     this.adminService.getAllHolidayType().subscribe((data:any)=>{
       console.log("Holiday type data",data);
       this.holidayTypeList=data;
     })
+  }
+  holidayTypeSelection(id) {
+    console.log("holiday id dropdown", id);
+    this.holidayListUpdate.holidayId = id;
   }
   getAllHolidayListByCompanyCode(){
     this.adminService.getAllHolidayList().subscribe((data:any)=>{
@@ -92,10 +132,6 @@ leaveInfoUpdate: LeaveInfo={
   view(data){
 
   }
-  holidayTypeId;
-  holidayListId;
-  WeeklyOffId;
-  leaveId;
   updateHolidayType(){
     console.log("Updated Holiday Type data",this.holidayTypeUpdate);
     console.log("Updated Holiday Type Id",this.holidayTypeId);
@@ -150,5 +186,39 @@ leaveInfoUpdate: LeaveInfo={
     this.leaveId=data.id;
 
     this.modalRef = this.modalService.show(template);
+  }
+
+  createLeaveInfoModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
+  
+  createWeeklyOffDaysModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
+
+  createHolidayTypeModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
+
+  postLeaveInfo() {
+    this.adminService.postLeaveInfo(this.leaveInfo).subscribe((data: any) => {
+      console.log("Leave info post data", data);
+    });
+  }
+
+  postWeeklyOffDays() {
+    this.adminService
+      .postWeeklyOffDays(this.companyOffDays)
+      .subscribe((data: any) => {
+        console.log("Weekly off daya list", data);
+      });
+  }
+
+  postHolidayType() {
+    this.adminService
+      .addHolidayType(this.postHoliday)
+      .subscribe((data: any) => {
+        console.log("Holiday Type Posted", data);
+      });
   }
 }
