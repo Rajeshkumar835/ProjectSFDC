@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { AppConfig } from "../config/app.config";
 
 @Injectable({
   providedIn: "root",
@@ -7,9 +8,12 @@ import { HttpClient } from "@angular/common/http";
 export class DashbaordService {
   constructor(private http: HttpClient) {}
 
+  readonly rootUrl =AppConfig.API_URL;
+
+
   getEmployeeInfoByEmpCode(empCode) {
     return this.http.get(
-      "http://localhost:8443/api/v1/employeeInfo/findById/" + empCode
+      this.rootUrl +"/employeeInfo/findById/" + empCode
     );
   }
 }

@@ -1,11 +1,26 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
-  .submit-btn{
-    left: 156px;
-    position: relative;
-  }
-  .modal-head{
-    position: relative;
-    left: 25%;
-  }
+  flex: 1 1 auto;
+}
+.submit-btn {
+  left: 156px;
+  position: relative;
+}
+.pass-btn{
+  left: 156px;
+  position: relative;
+}
+.modal-head {
+  position: relative;
+  left: 25%;
+}
+.type-dropdown {
+  position: relative;
+  top: 8%;
+}
+.pass-div{
+  position: relative;
+  left: 52%;
+}
+.validation-messages {
+  color: red;
+}
