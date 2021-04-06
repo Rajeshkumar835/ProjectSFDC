@@ -1,17 +1,14 @@
 package com.intranet.service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Optional;
-
-import javax.crypto.NoSuchPaddingException;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intranet.entity.ClientRegistrationInfo;
+import com.intranet.model.AdminLogin;
 import com.intranet.repository.ClientRegistrationInfoRepository;
 import com.intranet.util.AES;
 
@@ -42,15 +39,6 @@ public class ClientRegistrationInfoServiceImpl implements ClientRegistrationInfo
 			clientRegistration.setWebsite(clientRegistrationInfo.getWebsite());
 
 			clientRegistration.setPassword(AES.encrypt(clientRegistrationInfo.getPassword(), AES.generateKey()));
-		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			LOGGER.errorf("Error in Passowrd Exception : ", e);
 			e.printStackTrace();
@@ -59,6 +47,29 @@ public class ClientRegistrationInfoServiceImpl implements ClientRegistrationInfo
 		ClientRegistrationInfo clientRegistrationInfoSaved = clientRegistrationInfoRepository.save(clientRegistration);
 
 		return clientRegistrationInfoSaved;
+	}
+
+	@Override
+	public ClientRegistrationInfo update(ClientRegistrationInfo clientRegistrationInfo, String code) {
+
+		Optional<ClientRegistrationInfo> clientRegistrationInfoOptional = clientRegistrationInfoRepository
+				.findById(code);
+		if (clientRegistrationInfoOptional.isPresent()) {
+
+			ClientRegistrationInfo clientRegistration = new ClientRegistrationInfo();
+
+			clientRegistration.setClientCode(code);
+			clientRegistration.setCompanyEmail(clientRegistrationInfo.getCompanyEmail());
+			clientRegistration.setCompanyLocation(clientRegistrationInfo.getCompanyLocation());
+			clientRegistration.setCompanyName(clientRegistrationInfo.getCompanyName());
+			clientRegistration.setCompanyTinVatNo(clientRegistrationInfo.getCompanyTinVatNo());
+			clientRegistration.setCreatedDate(clientRegistrationInfo.getCreatedDate());
+			clientRegistration.setWebsite(clientRegistrationInfo.getWebsite());
+			clientRegistration.setPassword(clientRegistrationInfoOptional.get().getPassword());
+
+			return clientRegistrationInfoRepository.save(clientRegistration);
+		}
+		return null;
 	}
 
 	@Override
@@ -79,33 +90,47 @@ public class ClientRegistrationInfoServiceImpl implements ClientRegistrationInfo
 	}
 
 	@Override
-	public ClientRegistrationInfo adminLogin(String companyEmail, String password) {
+	public ClientRegistrationInfo adminLogin(AdminLogin adminLogin) {
 
 		try {
-			String pass = AES.encrypt(password, AES.generateKey());
+			String pass = AES.encrypt(adminLogin.getPassword(), AES.generateKey());
 
 			ClientRegistrationInfo clientRegInfo = clientRegistrationInfoRepository
-					.getClientInfoByEmailId(companyEmail);
-			if (clientRegInfo.getCompanyEmail().equals(companyEmail) && clientRegInfo.getPassword().equals(pass)) {
+					.getClientInfoByEmailId(adminLogin.getCompanyEmail());
+			if (clientRegInfo.getCompanyEmail().equals(adminLogin.getCompanyEmail())
+					&& clientRegInfo.getPassword().equals(pass)) {
 				ClientRegistrationInfo clientRegistrationInfo = clientRegistrationInfoRepository
-						.getClientInfoByEmailId(companyEmail);
+						.getClientInfoByEmailId(adminLogin.getCompanyEmail());
+				String decryptPass = AES.decrypt(pass, AES.generateKey());
+				clientRegistrationInfo.setPassword(decryptPass);
 				return clientRegistrationInfo;
 			}
-		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			LOGGER.errorf("Error in Passowrd Exception : ", e);
 			e.printStackTrace();
 		}
 
 		return null;
+	}
+
+	@Override
+	public ClientRegistrationInfo changeAdminPassword(AdminLogin adminLogin) {
+		ClientRegistrationInfo clientRegInfo = new ClientRegistrationInfo();
+		try {
+			String pass = AES.encrypt(adminLogin.getPassword(), AES.generateKey());
+
+			clientRegInfo = clientRegistrationInfoRepository.getClientInfoByEmailId(adminLogin.getCompanyEmail());
+
+			clientRegInfo.setPassword(pass);
+
+			clientRegistrationInfoRepository.save(clientRegInfo);
+
+		} catch (Exception e) {
+			LOGGER.errorf("Error in Passowrd Exception : ", e);
+			e.printStackTrace();
+		}
+		return clientRegInfo;
+
 	}
 
 }

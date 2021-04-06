@@ -24,6 +24,7 @@ import com.intranet.entity.EmployeeInfo;
 import com.intranet.service.EmployeeInfoService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = BaseController.EMPLOYEE_INFO)
 public class EmployeeInfoController {
 
@@ -72,7 +73,14 @@ public class EmployeeInfoController {
 
 	@GetMapping("/findAll")
 	public ResponseEntity<List<EmployeeInfo>> findAll() {
-		return new ResponseEntity<List<EmployeeInfo>>(employeeInfoService.findAll(), HttpStatus.OK);
+		List<EmployeeInfo> empList = null;
+		try {
+			empList = employeeInfoService.findAll();
+		} catch (Exception e) {
+			LOGGER.error("Error while getting all emp list -> " + empList, e);
+		}
+		return new ResponseEntity<List<EmployeeInfo>>(empList, HttpStatus.OK);
+
 	}
 
 	@CrossOrigin
@@ -144,6 +152,17 @@ public class EmployeeInfoController {
 			LOGGER.error("Error while getting all emp list -> " + empInfoList, e);
 		}
 		return new ResponseEntity<List<EmployeeInfo>>(empInfoList, HttpStatus.OK);
+	}
+
+	@GetMapping("/getAllEmployeeInfoByClientCode/{clientCode}")
+	public ResponseEntity<List<EmployeeInfo>> getAllEmployeeInfoByClientCode(@PathVariable String clientCode) {
+		List<EmployeeInfo> empList = null;
+		try {
+			empList = employeeInfoService.getAllEmployeeInfoByClientCode(clientCode);
+		} catch (Exception e) {
+			LOGGER.error("Error while getting all emp list -> " + empList, e);
+		}
+		return new ResponseEntity<List<EmployeeInfo>>(empList, HttpStatus.OK);
 	}
 
 }
