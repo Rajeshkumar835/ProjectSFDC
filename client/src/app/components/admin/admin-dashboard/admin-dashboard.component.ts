@@ -221,4 +221,8 @@ postHoliday: HolidayType = {
         console.log("Holiday Type Posted", data);
       });
   }
+changePass:boolean=false;
+  changePassword(){
+    this.changePass=true;
+  }
 }
