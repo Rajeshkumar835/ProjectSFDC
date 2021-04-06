@@ -137,6 +137,58 @@
             <div class="col-sm-2"></div>
           </div>
         </mat-tab>
+         <!-- All Employee List Start -->
+         <mat-tab label="Company Employee List">
+          <div class="card-body table_invoice">
+            <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    Employee Code
+                  </th>
+                  <th scope="col">
+                    Employee Name
+                  </th>
+                  <th scope="col">
+                    Designation
+                  </th>
+                  <th scope="col">
+                    Joining Date
+                  </th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="
+                    let data of employeeList
+                  ">
+                  <td>{{ data?.empCode }}</td>
+                  <td>
+                    {{ data.firstName }} {{data.lastName}}
+                  </td>
+                  <td>
+                    {{
+                    data?.designation
+                    }}
+                  </td>
+                  <td>{{ data?.hireDate | date:"dd-MMM-yyyy" }}</td>
+                  <td (click)="openHolidayListModal(holidayListTemplate,data)">
+                    <a style="cursor: pointer; color: black">
+                      <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
+                        aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="create-btn">
+            <button type="button" class="btn btn-primary"
+            (click)="createHolidayTypeModal(createHolidayListTemplate)"
+            >Add New Employee</button>
+          </div>
+        </mat-tab>
+
         <mat-tab label="Company Holiday Type">
           <div class="card-body table_invoice">
             <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">

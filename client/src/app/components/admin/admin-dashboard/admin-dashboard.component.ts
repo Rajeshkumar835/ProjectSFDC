@@ -34,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
   holidayList;
   weeklyOffDaysList;
   leaveInfoList;
-
+  employeeList;
   holidayTypeUpdate: HolidayType = {
     clientCode: "",
     holidayCode: "",
@@ -103,6 +103,7 @@ export class AdminDashboardComponent implements OnInit {
     this.getAllLeaveInfoByCompany();
     if (clientCode) {
       this.getCompanyInfoByCompanyCode();
+      this.getAllEmployeeByClientCode();
     }
   }
   getCompanyInfoByCompanyCode() {
@@ -114,6 +115,13 @@ export class AdminDashboardComponent implements OnInit {
         this.clientRegistrationInfo = data;
       });
   }
+getAllEmployeeByClientCode(){
+  this.adminService.getAllEmployeeByClientCode(this.companyCode).subscribe((data:any)=>{
+    console.log("Employee Info by ClientCode",data);
+    this.employeeList=data;
+  })
+}
+
   getAllHolidayTypeByCompany() {
     this.adminService.getAllHolidayType().subscribe((data: any) => {
       console.log("Holiday type data", data);
@@ -167,7 +175,6 @@ export class AdminDashboardComponent implements OnInit {
       console.log("password matching", this.passMatched);
     }
   }
-  view(data) {}
   updateHolidayType() {
     console.log("Updated Holiday Type data", this.holidayTypeUpdate);
     console.log("Updated Holiday Type Id", this.holidayTypeId);
