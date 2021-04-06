@@ -8,6 +8,11 @@ export class ClientRegistrationInfo {
   public website: string;
 }
 
+export class ClientLogin {
+  public companyEmail: string;
+  public password: string;
+}
+
 export class HolidayType {
   public clientCode: string;
   public holidayCode: string;

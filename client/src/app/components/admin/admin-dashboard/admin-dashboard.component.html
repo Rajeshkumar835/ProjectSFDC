@@ -29,25 +29,74 @@
                   maxlength="300">
               </div>
               <div class="text-center pt-4 submit-btn">
-                <button type="submit" class="btn btn-primary" (click)="clientRegistration()">Update</button>
+                <button type="submit" class="btn btn-primary" (click)="updateClientPersonalInfo()" style="width: 138px;">Update Info</button>
               </div>
 
-              <div class=" text-center pt-4 pass-btn">
+              <div class=" text-center pt-4 pb-4 pass-btn">
                 <!-- <button type="submit" class="btn btn-primary" >Change Password</button> -->
-                <a (click)="changePassword()" style="cursor: pointer;">Change Password</a>
+                <!-- <a (click)="changePassword()" style="cursor: pointer;">Change Password</a> -->
+                  <button type="submit" class="btn btn-primary" (click)="changePasswordDivEnable()">Change Password</button>
               </div>
-             <div class="pass-div" *ngIf="changePass">
+             <div class="pass-div pt-2" *ngIf="changePass">
               <div class="form-group">
                 <label for="exampleInputPassword1">Current Password</label>
                 <input type="password" class="form-control" placeholder="Password" name="cPassword"
-                  [(ngModel)]="clientRegistrationInfo.password" #CompanyTinVatNo="ngModel" required minlength="3"
+                  [(ngModel)]="enterCurrentpass" (ngModelChange)="changeClientPass()" #currentPass="ngModel" required minlength="3"
                   maxlength="300">
+
+                  <div class="error_div_height">
+         
+                    <div
+                      *ngIf="
+                      currentPass.invalid &&
+                        (currentPass.dirty || currentPass.touched)
+                      "
+                    >
+                      <div *ngIf="currentPass.errors.required">
+                        <small class="validation-messages"
+                          >Please enter password</small
+                        >
+                      </div>
+                      <div *ngIf="currentPass.errors.minlength">
+                        <small class="validation-messages"
+                          >Password must be 3 characters long</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="passMatched">
+                    <small class="validation-messages"
+                      >Password didn't match</small
+                    >
+                  </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">New Password</label>
                 <input type="password" class="form-control" placeholder="New Password" name="cPassword"
-                  [(ngModel)]="clientRegistrationInfo.password" #CompanyTinVatNo="ngModel" required minlength="3"
-                  maxlength="300">
+                  [(ngModel)]="changeAdminPassword.password" #newPassword="ngModel" required minlength="3"
+                  maxlength="300" (ngModelChange)="newPasswordValidation()">
+                  <div class="error_div_height">
+                    <div
+                      *ngIf="
+                      newPassword.invalid &&
+                        (newPassword.dirty || newPassword.touched)
+                      "
+                    >
+                      <div *ngIf="newPassword.errors.required">
+                        <small class="validation-messages"
+                          >Please enter password</small
+                        >
+                      </div>
+                      <div *ngIf="newPassword.errors.minlength">
+                        <small class="validation-messages"
+                          >Password must be 3 characters long</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="text-center pt-4">
+                <button type="submit" class="btn btn-primary" (click)="updateAdminPassword()" [disabled]="passUpdatebtn || newPasswordFiledValidation">Submit</button>
               </div>
              </div>
 
