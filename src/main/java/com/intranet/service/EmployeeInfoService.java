@@ -29,4 +29,6 @@ public interface EmployeeInfoService {
 
 	public List<EmployeeInfo> getEmployeeByManagerEmpCode(String managerCode);
 
+	public List<EmployeeInfo> getAllEmployeeInfoByClientCode(String clientCode);
+
 }

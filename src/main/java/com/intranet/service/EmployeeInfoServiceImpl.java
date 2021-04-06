@@ -285,4 +285,10 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 		return empList;
 	}
 
+	@Override
+	public List<EmployeeInfo> getAllEmployeeInfoByClientCode(String clientCode) {
+		List<EmployeeInfo> empList = employeeInfoRepository.getAllEmployeeInfoByClientCode(clientCode);
+		return empList;
+	}
+
 }

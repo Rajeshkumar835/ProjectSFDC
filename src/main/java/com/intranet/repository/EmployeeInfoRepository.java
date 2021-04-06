@@ -25,4 +25,7 @@ public interface EmployeeInfoRepository
 	@Query(value = "select * from employee_info where manager_code=:managerCode", nativeQuery = true)
 	public List<EmployeeInfo> getEmployeeByManagerEmpCode(@Param("managerCode") String managerCode);
 
+	@Query(value = "select * from employee_info where client_code=:clientCode", nativeQuery = true)
+	public List<EmployeeInfo> getAllEmployeeInfoByClientCode(@Param("clientCode") String clientCode);
+
 }
