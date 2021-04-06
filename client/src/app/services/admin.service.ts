@@ -8,6 +8,7 @@ import {
   HolidayType,
   LeaveInfo,
 } from "../models/admin.model";
+import { AppConfig } from "../config/app.config";
 
 @Injectable({
   providedIn: "root",
@@ -15,17 +16,19 @@ import {
 export class AdminService {
   constructor(private http: HttpClient) {}
 
+  readonly rootUrl =AppConfig.API_URL;
+
   clientRegistration(clientRegistrationInfo: ClientRegistrationInfo) {
     const body = clientRegistrationInfo;
     return this.http.post(
-      "/api/v1/clientRegistrationInfo/add",
+      this.rootUrl +"/clientRegistrationInfo/add",
       body
     );
   }
 
   adminLoginAuthentication(companyEmail, password) {
     return this.http.get(
-      "/api/v1/clientRegistrationInfo/adminLogin/" +
+      this.rootUrl +"/clientRegistrationInfo/adminLogin/" +
         companyEmail +
         "/" +
         password
@@ -34,29 +37,29 @@ export class AdminService {
 
   addHolidayType(holidayType: HolidayType) {
     const body = holidayType;
-    return this.http.post("/api/v1/holidayType/add", body);
+    return this.http.post(this.rootUrl +"/holidayType/add", body);
   }
 
   getAllHolidayType() {
-    return this.http.get("/api/v1/holidayType/findAll");
+    return this.http.get(this.rootUrl +"/holidayType/findAll");
   }
   postHolidayList(holidayList: HolidayList) {
     const data = holidayList;
     return this.http.post(
-      "/api/v1/companyHolidayList/add",
+      this.rootUrl +"/companyHolidayList/add",
       data
     );
   }
   postWeeklyOffDays(companyOffDays: CompanyOffDays) {
     return this.http.post(
-      "/api/v1/companyWeeklyOff/add",
+      this.rootUrl +"/companyWeeklyOff/add",
       companyOffDays
     );
   }
 
   postLeaveInfo(leaveInfo: LeaveInfo) {
     return this.http.post(
-      "/api/v1/leaveInfo/add",
+      this.rootUrl +"/leaveInfo/add",
       leaveInfo
     );
   }
@@ -64,14 +67,14 @@ export class AdminService {
   createEmployeeInfo(createEmployee: CreateEmployee) {
     const body = createEmployee;
     return this.http.post(
-      "/api/v1/employeeInfo/createEmployee",
+      this.rootUrl +"/employeeInfo/createEmployee",
       body
     );
   }
 
   employeeLogin(empCode, password) {
     return this.http.get(
-      "/api/v1/employeeInfo/employeeLogin/" +
+      this.rootUrl +"/employeeInfo/employeeLogin/" +
         empCode +
         "/" +
         password
@@ -80,40 +83,40 @@ export class AdminService {
 
   getAllEmpManagerList() {
     return this.http.get(
-      "/api/v1/employeeInfo/getEmployeeManagerList"
+      this.rootUrl +"/employeeInfo/getEmployeeManagerList"
     );
   }
 
   getAllHolidayList(){
-    return this.http.get("/api/v1/companyHolidayList/findAll");
+    return this.http.get(this.rootUrl +"/companyHolidayList/findAll");
   }
 
   getAllWeeklyOffDays(){
-    return this.http.get("/api/v1/companyWeeklyOff/findAll");
+    return this.http.get(this.rootUrl +"/companyWeeklyOff/findAll");
   }
 
   getAllLeaveInfo(){
-    return this.http.get("/api/v1/leaveInfo/findAll");
+    return this.http.get(this.rootUrl +"/leaveInfo/findAll");
   }
 
   updateHolidayType(holidayType:HolidayType,holidayId){
-    return this.http.put("/api/v1/holidayType/update/"+holidayId,holidayType);
+    return this.http.put(this.rootUrl +"/holidayType/update/"+holidayId,holidayType);
   }
 
   updateHolidayList(holidayList: HolidayList){
-    return this.http.put("/api/v1/companyHolidayList/update",holidayList)
+    return this.http.put(this.rootUrl +"/companyHolidayList/update",holidayList)
   }
 
   updateWeeklyOffDays(companyOffDays: CompanyOffDays, weekId){
-    return this.http.put("/api/v1/companyWeeklyOff/update/"+weekId,companyOffDays)
+    return this.http.put(this.rootUrl +"/companyWeeklyOff/update/"+weekId,companyOffDays)
   }
 
   updateLeaveInformation(leaveInfo: LeaveInfo,leaveId){
-    return this.http.put("/api/v1/leaveInfo/update/"+leaveId,leaveInfo)
+    return this.http.put(this.rootUrl +"/leaveInfo/update/"+leaveId,leaveInfo)
 
   }
 
   findCompanyByCompanyCode(code){
-    return this.http.get("/api/v1/clientRegistrationInfo/findById/"+code);
+    return this.http.get(this.rootUrl +"/clientRegistrationInfo/findById/"+code);
   }
 }
