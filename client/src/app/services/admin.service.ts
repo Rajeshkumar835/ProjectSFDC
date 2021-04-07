@@ -125,11 +125,26 @@ export class AdminService {
     );
   }
 
-  changeAdminPassowrd(clientLogin:ClientLogin){
-   return this.http.put( this.rootUrl +"/clientRegistrationInfo/changeAdminPassword",clientLogin);
+  changeAdminPassowrd(clientLogin: ClientLogin) {
+    return this.http.put(
+      this.rootUrl + "/clientRegistrationInfo/changeAdminPassword",
+      clientLogin
+    );
   }
 
-  getAllEmployeeByClientCode(clientCode){
-    return this.http.get(this.rootUrl +"/employeeInfo/getAllEmployeeInfoByClientCode/"+clientCode);
+  getAllEmployeeByClientCode(clientCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/employeeInfo/getAllEmployeeInfoByClientCode/" +
+        clientCode
+    );
+  }
+
+  getAllQualificationByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/qualificationInfo/findAllQualificationByEmpCode/" +
+        empCode
+    );
   }
 }

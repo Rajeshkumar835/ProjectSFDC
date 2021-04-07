@@ -29,76 +29,65 @@
                   maxlength="300">
               </div>
               <div class="text-center pt-4 submit-btn">
-                <button type="submit" class="btn btn-primary" (click)="updateClientPersonalInfo()" style="width: 138px;">Update Info</button>
+                <button type="submit" class="btn btn-primary" (click)="updateClientPersonalInfo()"
+                  style="width: 138px;">Update Info</button>
               </div>
 
               <div class=" text-center pt-4 pb-4 pass-btn">
                 <!-- <button type="submit" class="btn btn-primary" >Change Password</button> -->
                 <!-- <a (click)="changePassword()" style="cursor: pointer;">Change Password</a> -->
-                  <button type="submit" class="btn btn-primary" (click)="changePasswordDivEnable()">Change Password</button>
+                <button type="submit" class="btn btn-primary" (click)="changePasswordDivEnable()">Change
+                  Password</button>
               </div>
-             <div class="pass-div pt-2" *ngIf="changePass">
-              <div class="form-group">
-                <label for="exampleInputPassword1">Current Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="cPassword"
-                  [(ngModel)]="enterCurrentpass" (ngModelChange)="changeClientPass()" #currentPass="ngModel" required minlength="3"
-                  maxlength="300">
+              <div class="pass-div pt-2" *ngIf="changePass">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Current Password</label>
+                  <input type="password" class="form-control" placeholder="Password" name="cPassword"
+                    [(ngModel)]="enterCurrentpass" (ngModelChange)="changeClientPass()" #currentPass="ngModel" required
+                    minlength="3" maxlength="300">
 
                   <div class="error_div_height">
-         
-                    <div
-                      *ngIf="
+
+                    <div *ngIf="
                       currentPass.invalid &&
                         (currentPass.dirty || currentPass.touched)
-                      "
-                    >
+                      ">
                       <div *ngIf="currentPass.errors.required">
-                        <small class="validation-messages"
-                          >Please enter password</small
-                        >
+                        <small class="validation-messages">Please enter password</small>
                       </div>
                       <div *ngIf="currentPass.errors.minlength">
-                        <small class="validation-messages"
-                          >Password must be 3 characters long</small
-                        >
+                        <small class="validation-messages">Password must be 3 characters long</small>
                       </div>
                     </div>
                   </div>
                   <div *ngIf="passMatched">
-                    <small class="validation-messages"
-                      >Password didn't match</small
-                    >
+                    <small class="validation-messages">Password didn't match</small>
                   </div>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">New Password</label>
-                <input type="password" class="form-control" placeholder="New Password" name="cPassword"
-                  [(ngModel)]="changeAdminPassword.password" #newPassword="ngModel" required minlength="3"
-                  maxlength="300" (ngModelChange)="newPasswordValidation()">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">New Password</label>
+                  <input type="password" class="form-control" placeholder="New Password" name="cPassword"
+                    [(ngModel)]="changeAdminPassword.password" #newPassword="ngModel" required minlength="3"
+                    maxlength="300" (ngModelChange)="newPasswordValidation()">
                   <div class="error_div_height">
-                    <div
-                      *ngIf="
+                    <div *ngIf="
                       newPassword.invalid &&
                         (newPassword.dirty || newPassword.touched)
-                      "
-                    >
+                      ">
                       <div *ngIf="newPassword.errors.required">
-                        <small class="validation-messages"
-                          >Please enter password</small
-                        >
+                        <small class="validation-messages">Please enter password</small>
                       </div>
                       <div *ngIf="newPassword.errors.minlength">
-                        <small class="validation-messages"
-                          >Password must be 3 characters long</small
-                        >
+                        <small class="validation-messages">Password must be 3 characters long</small>
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="text-center pt-4">
+                  <button type="submit" class="btn btn-primary" (click)="updateAdminPassword()"
+                    [disabled]="passUpdatebtn || newPasswordFiledValidation">Submit</button>
+                </div>
               </div>
-              <div class="text-center pt-4">
-                <button type="submit" class="btn btn-primary" (click)="updateAdminPassword()" [disabled]="passUpdatebtn || newPasswordFiledValidation">Submit</button>
-              </div>
-             </div>
 
             </div>
             <div class="col-sm-4">
@@ -115,8 +104,8 @@
                   maxlength="300">
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Company EmailI'd</label>
-                <input type="text" class="form-control" placeholder="Company EmailI'd" name="companyEmail"
+                <label for="exampleInputEmail1">Company Email Id</label>
+                <input type="text" class="form-control" placeholder="Company Email Id" name="companyEmail"
                   [(ngModel)]="clientRegistrationInfo.companyEmail" #CompanyEmail="ngModel" required minlength="3"
                   maxlength="300">
               </div>
@@ -137,8 +126,8 @@
             <div class="col-sm-2"></div>
           </div>
         </mat-tab>
-         <!-- All Employee List Start -->
-         <mat-tab label="Company Employee List">
+        <!-- All Employee List Start -->
+        <mat-tab label="Company Employee List">
           <div class="card-body table_invoice">
             <table id="bs5-table" class="table table-bordered table-striped table-responsive-sm">
               <thead>
@@ -172,7 +161,7 @@
                     }}
                   </td>
                   <td>{{ data?.hireDate | date:"dd-MMM-yyyy" }}</td>
-                  <td (click)="openHolidayListModal(holidayListTemplate,data)">
+                  <td (click)="employeeInfoListModal(employeeInfoTemplate,data)">
                     <a style="cursor: pointer; color: black">
                       <i class="fa fa-file-text-o" data-toggle="modal" data-target=".bd-example-modal-lg"
                         aria-hidden="true"></i>
@@ -184,8 +173,7 @@
           </div>
           <div class="create-btn">
             <button type="button" class="btn btn-primary"
-            (click)="createHolidayTypeModal(createHolidayListTemplate)"
-            >Add New Employee</button>
+              (click)="createHolidayTypeModal(createHolidayListTemplate)">Add New Employee</button>
           </div>
         </mat-tab>
 
@@ -231,8 +219,7 @@
           </div>
           <div class="create-btn">
             <button type="button" class="btn btn-primary"
-            (click)="createHolidayTypeModal(createHolidayTypeTemplate)"
-            >Add Holiday Type</button>
+              (click)="createHolidayTypeModal(createHolidayTypeTemplate)">Add Holiday Type</button>
           </div>
         </mat-tab>
         <mat-tab label="Company Holiday List">
@@ -287,8 +274,7 @@
           </div>
           <div class="create-btn">
             <button type="button" class="btn btn-primary"
-            (click)="createHolidayTypeModal(createHolidayListTemplate)"
-            >Add Holiday List</button>
+              (click)="createHolidayTypeModal(createHolidayListTemplate)">Add Holiday List</button>
           </div>
         </mat-tab>
         <mat-tab label="Company Weekly Off Days">
@@ -325,8 +311,7 @@
           </div>
           <div class="create-btn">
             <button type="button" class="btn btn-primary"
-            (click)="createWeeklyOffDaysModal(createWeeklyOffDayTemplate)"
-            >Add Weekly Off Days</button>
+              (click)="createWeeklyOffDaysModal(createWeeklyOffDayTemplate)">Add Weekly Off Days</button>
           </div>
         </mat-tab>
         <mat-tab label="Company Leave Details ">
@@ -380,9 +365,8 @@
             </table>
           </div>
           <div class="create-btn">
-            <button type="button" class="btn btn-primary"
-            (click)="createLeaveInfoModal(createLeaveInfoTemplate)"
-            >Add Leave Info</button>
+            <button type="button" class="btn btn-primary" (click)="createLeaveInfoModal(createLeaveInfoTemplate)">Add
+              Leave Info</button>
           </div>
         </mat-tab>
 
@@ -391,6 +375,339 @@
     <div class="col-sm-2"></div>
   </div>
 </div>
+
+<!-- modal Code for update and view EmpInfo -->
+<ng-template #employeeInfoTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title modal-head">Employee Information</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="container">
+    <mat-tab-group animationDuration="0ms" class="pt-4">
+      <mat-tab label="Personal Information">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Emp Code</label>
+                <input type="text" class="form-control" placeholder="Emp Code" name="clientCode"
+                  [(ngModel)]="employeeInfo.empCode" #EmpCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" name="clientCode"
+                  [(ngModel)]="employeeInfo.firstName" #FirstName="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Middle Name</label>
+                <input type="text" class="form-control" placeholder="Middle Name" name="clientCode"
+                  [(ngModel)]="employeeInfo.middleName" #MiddleName="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name"
+                  name="clientCode" [(ngModel)]="employeeInfo.lastName" #LastName="ngModel" required
+                  minlength="3" maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Designation</label>
+                <input type="text" class="form-control" placeholder="Designation" name="clientCode"
+                  [(ngModel)]="employeeInfo.designation" #Designation="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Joining Date</label>
+                <input type="text" class="form-control" placeholder="Joining Date" name="clientCode"
+                  [(ngModel)]="employeeInfo.hireDate" #JoiningDate="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Date of Birth</label>
+                <input type="text" class="form-control" placeholder="Date of Birth" name="clientCode"
+                  [(ngModel)]="employeeInfo.dob" #DOB="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Email Id</label>
+                <input type="email" class="form-control" placeholder="Email Id" name="companyLocation"
+                  [(ngModel)]="employeeInfo.emailId" #EmailId="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Contact No</label>
+                <input type="text" class="form-control" placeholder="Contact No" name="clientCode"
+                  [(ngModel)]="employeeInfo.contactNo" #ContactNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Home Phone No</label>
+                <input type="text" class="form-control" placeholder="Home Phone No" name="clientCode"
+                  [(ngModel)]="employeeInfo.homePhoneNo" #HomePhoneNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Passport No</label>
+                <input type="text" class="form-control" placeholder="Passport No" name="clientCode"
+                  [(ngModel)]="employeeInfo.passportNo" #PassportNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">PAN No</label>
+                <input type="text" class="form-control" placeholder="PAN No" name="clientCode"
+                  [(ngModel)]="employeeInfo.panCardNo" #PanNo="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Qualification">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Qualification Type</label>
+                <input type="text" class="form-control" placeholder="Qualification Type" name="clientCode"
+                  [(ngModel)]="qualificationInfo.type" #QualificationType="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Highest</label>
+                <input type="text" class="form-control" placeholder="Highest" name="clientCode"
+                  [(ngModel)]="qualificationInfo.highest" #Highest="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Qualification</label>
+                <input type="text" class="form-control" placeholder="Qualification" name="clientCode"
+                  [(ngModel)]="qualificationInfo.qualification" #Qualification="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Comments</label>
+                <input type="email" class="form-control" placeholder="Comments" name="companyLocation"
+                  [(ngModel)]="qualificationInfo.comments" #Comments="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Bank Information">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Bank Type</label>
+                <input type="text" class="form-control" placeholder="Bank Type" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Bank Name</label>
+                <input type="text" class="form-control" placeholder="Bank Name" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Bank Acc No</label>
+                <input type="text" class="form-control" placeholder="Bank Acc No" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Bank Address</label>
+                <input type="text" class="form-control" placeholder="Bank Address" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">IFS Code</label>
+                <input type="text" class="form-control" placeholder="IFS Code" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Routing Number</label>
+                <input type="email" class="form-control" placeholder="Routing Number" name="companyLocation"
+                  [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Employee Address">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Address Type</label>
+                <input type="text" class="form-control" placeholder="Address Type" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Address Line 1</label>
+                <input type="text" class="form-control" placeholder="Address Line 1" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Address Line 2</label>
+                <input type="text" class="form-control" placeholder="Address Line 2" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">City</label>
+                <input type="text" class="form-control" placeholder="City" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">State</label>
+                <input type="text" class="form-control" placeholder="State" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">ZIP Code</label>
+                <input type="text" class="form-control" placeholder="ZIP Code" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Current Experience">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Company Name</label>
+                <input type="text" class="form-control" placeholder="Company Name" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Designation</label>
+                <input type="text" class="form-control" placeholder="Designation" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Date of Joining</label>
+                <input type="text" class="form-control" placeholder="Date of joining" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Previous Experience">
+        <div>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Company Name</label>
+                <input type="text" class="form-control" placeholder="Company Name" name="clientCode"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Designation</label>
+                <input type="text" class="form-control" placeholder="Designation" name="designation"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #Designation="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Last CTC</label>
+                <input type="text" class="form-control" placeholder="Last CTC" name="lastCTC"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #LastCTC="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="pt-2">
+                <label for="exampleInputEmail1">Start Date</label>
+                <input type="text" class="form-control" placeholder="Start Date" name="startDate"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #StartDate="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+              <div class="pt-2">
+                <label for="exampleInputEmail1">End Date</label>
+                <input type="text" class="form-control" placeholder="End Date" name="endDate"
+                  [(ngModel)]="holidayTypeUpdate.holidayCode" #EndDate="ngModel" required minlength="3"
+                  maxlength="300">
+              </div>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+          <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-primary"
+              (click)="updatePersonalInformation();modalRef.hide();">Save</button>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ng-template>
 <!-- modal Code for update holiday type -->
 <ng-template #holidayTypeTemplate>
   <div class="modal-header">
@@ -414,71 +731,62 @@
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Holiday Type Name</label>
         <input type="text" class="form-control" placeholder="Holiday Type Name" name="companyLocation"
-          [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3"
-          maxlength="300">
+          [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="updateHolidayType();modalRef.hide();">Update</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="updateHolidayType();modalRef.hide();">Update</button>
+  </div>
 </ng-template>
 
 <!-- modal Code for update holiday List -->
 <ng-template #holidayListTemplate>
-<div class="class">
-  <div class="modal-header">
-    <h4 class="modal-title modal-head">Update Holiday List</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-5">
-      <div class="form-group pt-4">
-        <label for="exampleInputEmail1">Holiday Date</label>
-        <input type="date" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Date"
-          name="clientCode" [(ngModel)]="holidayListUpdate.holidayDate" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
-      </div>
-      <div class="form-group pt-4">
-        <label for="exampleInputEmail1">Holiday Name</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Name"
-          name="clientCode" [(ngModel)]="holidayListUpdate.holidayName" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
-      </div>
+  <div class="class">
+    <div class="modal-header">
+      <h4 class="modal-title modal-head">Update Holiday List</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-    <div class="col-sm-5">
-      <div class="form-group pt-4 type-dropdown">
-        <mat-form-field>
-          <mat-select 
-          placeholder="Holiday Type" 
-          [formControl]="toppings" 
-          [(value)]="selectedToppings" 
-          >
-            <mat-option 
-            *ngFor="let val of holidayTypeList" 
-            [value]="val.holidayName"
-            name="holidayCode"
-            (click)="holidayTypeSelection(val.holidayId)"
-            >
-            {{val.holidayName}}
-          </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="col-sm-1"></div>
 
-  </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="updateHolidayList();modalRef.hide();">Update</button>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <div class="form-group pt-4">
+          <label for="exampleInputEmail1">Holiday Date</label>
+          <input type="date" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Date"
+            name="clientCode" [(ngModel)]="holidayListUpdate.holidayDate" #ClientCode="ngModel" required minlength="3"
+            maxlength="300">
+        </div>
+        <div class="form-group pt-4">
+          <label for="exampleInputEmail1">Holiday Name</label>
+          <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Name"
+            name="clientCode" [(ngModel)]="holidayListUpdate.holidayName" #ClientCode="ngModel" required minlength="3"
+            maxlength="300">
+        </div>
       </div>
-</div>
+      <div class="col-sm-5">
+        <div class="form-group pt-4 type-dropdown">
+          <mat-form-field>
+            <mat-select placeholder="Holiday Type" [formControl]="toppings" [(value)]="selectedToppings">
+              <mat-option *ngFor="let val of holidayTypeList" [value]="val.holidayName" name="holidayCode"
+                (click)="holidayTypeSelection(val.holidayId)">
+                {{val.holidayName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+
+    </div>
+    <div class="text-center mt-4 mb-4">
+      <button type="button" class="btn btn-primary" (click)="updateHolidayList();modalRef.hide();">Update</button>
+    </div>
+  </div>
 </ng-template>
 
 <!-- modal Code for update weekly off days -->
@@ -488,16 +796,15 @@
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div> 
+  </div>
 
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Day Code</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Day Code"
-          name="clientCode" [(ngModel)]="weeklyOffDayUpdate.dayCode" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Day Code" name="clientCode"
+          [(ngModel)]="weeklyOffDayUpdate.dayCode" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-5">
@@ -511,9 +818,9 @@
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="updateWeeklyOffDays();modalRef.hide();">Update</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="updateWeeklyOffDays();modalRef.hide();">Update</button>
+  </div>
 </ng-template>
 
 <!-- modal Code for update leave info -->
@@ -530,31 +837,28 @@
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Code</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Code"
-          name="clientCode" [(ngModel)]="leaveInfoUpdate.leaveCode" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Code" name="clientCode"
+          [(ngModel)]="leaveInfoUpdate.leaveCode" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Name</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Name"
-          name="clientCode" [(ngModel)]="leaveInfoUpdate.leaveName" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Name" name="clientCode"
+          [(ngModel)]="leaveInfoUpdate.leaveName" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Limit</label>
         <input type="text" class="form-control" placeholder="Leave Limit" name="companyLocation"
-          [(ngModel)]="leaveInfoUpdate.leaveLimit" #CompanyLocation="ngModel" required minlength="3"
-          maxlength="300">
+          [(ngModel)]="leaveInfoUpdate.leaveLimit" #CompanyLocation="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="updateLeaveInfo();modalRef.hide();">Update</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="updateLeaveInfo();modalRef.hide();">Update</button>
+  </div>
 </ng-template>
 
 <!-- modal Code for add new leave info -->
@@ -571,31 +875,28 @@
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Code</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Code"
-          name="clientCode" [(ngModel)]="leaveInfo.leaveCode" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Code" name="clientCode"
+          [(ngModel)]="leaveInfo.leaveCode" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Name</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Name"
-          name="clientCode" [(ngModel)]="leaveInfo.leaveName" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Leave Name" name="clientCode"
+          [(ngModel)]="leaveInfo.leaveName" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Leave Limit</label>
         <input type="text" class="form-control" placeholder="Leave Limit" name="companyLocation"
-          [(ngModel)]="leaveInfo.leaveLimit" #CompanyLocation="ngModel" required minlength="3"
-          maxlength="300">
+          [(ngModel)]="leaveInfo.leaveLimit" #CompanyLocation="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="postLeaveInfo();modalRef.hide();">Save</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="postLeaveInfo();modalRef.hide();">Save</button>
+  </div>
 </ng-template>
 
 <!-- modal Code for add weekly off days -->
@@ -612,20 +913,19 @@
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Day Code</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Day Code"
-          name="clientCode" [(ngModel)]="companyOffDays.dayCode" #ClientCode="ngModel" required
-          minlength="3" maxlength="300">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Day Code" name="clientCode"
+          [(ngModel)]="companyOffDays.dayCode" #ClientCode="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-5">
-   
+
     </div>
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="postWeeklyOffDays();modalRef.hide();">Save</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="postWeeklyOffDays();modalRef.hide();">Save</button>
+  </div>
 </ng-template>
 
 <!-- modal Code for update holiday List -->
@@ -637,51 +937,43 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-  
+
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-5">
         <div class="form-group pt-4">
           <label for="exampleInputEmail1">Holiday Date</label>
           <input type="date" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Date"
-            name="clientCode" [(ngModel)]="holidayListUpdate.holidayDate" #ClientCode="ngModel" required
-            minlength="3" maxlength="300">
+            name="clientCode" [(ngModel)]="holidayListUpdate.holidayDate" #ClientCode="ngModel" required minlength="3"
+            maxlength="300">
         </div>
         <div class="form-group pt-4">
           <label for="exampleInputEmail1">Holiday Name</label>
           <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Name"
-            name="clientCode" [(ngModel)]="holidayListUpdate.holidayName" #ClientCode="ngModel" required
-            minlength="3" maxlength="300">
+            name="clientCode" [(ngModel)]="holidayListUpdate.holidayName" #ClientCode="ngModel" required minlength="3"
+            maxlength="300">
         </div>
       </div>
       <div class="col-sm-5">
         <div class="form-group pt-4 type-dropdown">
           <mat-form-field>
-            <mat-select 
-            placeholder="Holiday Type" 
-            [formControl]="toppings" 
-            [(value)]="selectedToppings" 
-            >
-              <mat-option 
-              *ngFor="let val of holidayTypeList" 
-              [value]="val.holidayName"
-              name="holidayCode"
-              (click)="holidayTypeSelection(val.holidayId)"
-              >
-              {{val.holidayName}}
-            </mat-option>
+            <mat-select placeholder="Holiday Type" [formControl]="toppings" [(value)]="selectedToppings">
+              <mat-option *ngFor="let val of holidayTypeList" [value]="val.holidayName" name="holidayCode"
+                (click)="holidayTypeSelection(val.holidayId)">
+                {{val.holidayName}}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
       <div class="col-sm-1"></div>
-  
+
     </div>
-        <div class="text-center mt-4 mb-4">
-          <button type="button" class="btn btn-primary" (click)="updateHolidayList();modalRef.hide();">Save</button>
-        </div>
+    <div class="text-center mt-4 mb-4">
+      <button type="button" class="btn btn-primary" (click)="updateHolidayList();modalRef.hide();">Save</button>
+    </div>
   </div>
-  </ng-template>
+</ng-template>
 
 <!-- modal Code for add holiday type -->
 <ng-template #createHolidayTypeTemplate>
@@ -698,22 +990,21 @@
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Holiday Type Code</label>
         <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Holiday Type Code"
-          name="clientCode" [(ngModel)]="postHoliday.holidayCode" #HolidayTypeCode="ngModel" required
-          minlength="3" maxlength="300">
+          name="clientCode" [(ngModel)]="postHoliday.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+          maxlength="300">
       </div>
     </div>
     <div class="col-sm-5">
       <div class="form-group pt-4">
         <label for="exampleInputEmail1">Holiday Type Name</label>
         <input type="text" class="form-control" placeholder="Holiday Type Name" name="companyLocation"
-          [(ngModel)]="postHoliday.holidayName" #HolidayTypeName="ngModel" required minlength="3"
-          maxlength="300">
+          [(ngModel)]="postHoliday.holidayName" #HolidayTypeName="ngModel" required minlength="3" maxlength="300">
       </div>
     </div>
     <div class="col-sm-1"></div>
 
   </div>
-      <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-primary" (click)="postHolidayType();modalRef.hide();">Save</button>
-      </div>
+  <div class="text-center mt-4 mb-4">
+    <button type="button" class="btn btn-primary" (click)="postHolidayType();modalRef.hide();">Save</button>
+  </div>
 </ng-template>

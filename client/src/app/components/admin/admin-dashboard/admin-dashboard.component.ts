@@ -1,5 +1,7 @@
 import { Component, TemplateRef, OnInit } from "@angular/core";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+import { TabsetConfig } from 'ngx-bootstrap/tabs';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import {
   ClientLogin,
   ClientRegistrationInfo,
@@ -10,6 +12,7 @@ import {
 } from "src/app/models/admin.model";
 import { AdminService } from "src/app/services/admin.service";
 import { FormControl } from "@angular/forms";
+import { EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -208,6 +211,59 @@ getAllEmployeeByClientCode(){
         console.log("leave info updated data", data);
       });
   }
+  viewEmpCode;
+  employeeInfo: EmployeeInfo={
+    currSalary: 0,
+    contactNo: "",
+    designation: "",
+    dob: null,
+    emailId: "",
+    empCode: "",
+    fatherName:"",
+    firstName:"",
+    hireDate: null,
+    homePhoneNo:"",
+    lastName:"",
+    middleName:"",
+    panCardNo:"",
+    passportNo:"",
+  }
+  qualificationInfo: QualificationInfo={
+    comments:"",
+    empCode: "",
+    highest: null,
+    qualification: "",
+    type: ""
+  }
+  employeeInfoListModal(template: TemplateRef<any>, data){
+    console.log("employee personal info data",data)
+    this.viewEmpCode=data.empCode;
+    this.employeeInfo.currSalary=data.currSalary;
+    this.employeeInfo.contactNo=data.contactNo;
+    this.employeeInfo.designation=data.designation;
+    this.employeeInfo.dob=data.dob;
+    this.employeeInfo.emailId=data.emailId;
+    this.employeeInfo.empCode=data.empCode;
+    this.employeeInfo.fatherName=data.fatherName;
+    this.employeeInfo.firstName=data.firstName;
+    this.employeeInfo.hireDate=data.hireDate;
+    this.employeeInfo.homePhoneNo=data.homePhoneNo;
+    this.employeeInfo.lastName=data.lastName;
+    this.employeeInfo.middleName=data.middleName;
+    this.employeeInfo.panCardNo=data.panCardNo;
+    this.employeeInfo.passportNo=data.passportNo;
+
+    this.modalRef = this.modalService.show(template);
+    this.getAllQualificationByEmpCode();
+
+  }
+
+  getAllQualificationByEmpCode(){
+    this.adminService.getAllQualificationByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Qualification Info Data",data);
+      this.qualificationInfo=data;
+    })
+  }
   openHolidayTypeModal(template: TemplateRef<any>, data) {
     this.holidayTypeId = data.holidayId;
     this.holidayTypeUpdate.holidayCode = data.holidayCode;
@@ -288,5 +344,8 @@ this.newPasswordFiledValidation=false;
 
       }
     })
+  }
+  updatePersonalInformation(){
+
   }
 }

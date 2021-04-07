@@ -67,6 +67,7 @@ import { TicketManagementComponent } from './components/ticket-management/ticket
 import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CompanyHolidayModalComponent } from './components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component';
+// import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,6 +139,7 @@ import { CompanyHolidayModalComponent } from './components/admin/admin-dashboard
     MatToolbarModule,
     MatListModule,
     ModalModule.forRoot(),
+    // TabsModule.forRoot(),
   ],
 
   providers: [
