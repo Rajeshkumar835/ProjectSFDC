@@ -29,7 +29,7 @@ import { TicketDetailComponent } from "./components/ticket-management/ticket-det
 import { TicketListGridComponent } from "./components/ticket-management/ticket-list-grid/ticket-list-grid.component";
 
 import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
-import { ProjectCreationComponent } from "./components/POM/project-creation/project-creation.component";
+// import { ProjectCreationComponent } from "./components/POM/project-creation/project-creation.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -82,7 +82,7 @@ const routes: Routes = [
   { path: "admin-dashboard", component: AdminDashboardComponent },
   { path: "reiaeTicket", component: RaiseTicketComponent },
   { path: "holiday-type-modal", component: CompanyHolidayModalComponent },
-  { path: "Project Creation", component: ProjectCreationComponent },
+  // { path: "Project Creation", component: ProjectCreationComponent },
 ];
 
 @NgModule({
