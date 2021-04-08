@@ -153,4 +153,10 @@ export class AdminService {
       this.rootUrl + "/bankInfo/findAllBankByEmpCode/" + empCode
     );
   }
+
+  getAllAddressByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl + "/addressInfo/findAllAddressByEmpCode/" + empCode
+    );
+  }
 }

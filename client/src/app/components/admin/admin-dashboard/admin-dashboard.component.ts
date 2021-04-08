@@ -12,7 +12,7 @@ import {
 } from "src/app/models/admin.model";
 import { AdminService } from "src/app/services/admin.service";
 import { FormControl } from "@angular/forms";
-import { BankInfo, EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
+import { AddressInfo, BankInfo, EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -228,22 +228,6 @@ getAllEmployeeByClientCode(){
     panCardNo:"",
     passportNo:"",
   }
-  qualificationInfo: QualificationInfo={
-    comments:"",
-    empCode: "",
-    highest: null,
-    qualification: "",
-    type: ""
-  }
-  bankInfo: BankInfo={
-    bankAccNo: "",
-    bankAddress: "",
-    bankName: "",
-    bankType: "",
-    empCode: "",
-    ifsCode:"",
-    routingNumber: ""
-  }
   employeeInfoListModal(template: TemplateRef<any>, data){
     console.log("employee personal info data",data)
     this.viewEmpCode=data.empCode;
@@ -264,9 +248,16 @@ getAllEmployeeByClientCode(){
 
     this.modalRef = this.modalService.show(template);
     this.getAllQualificationByEmpCode();
-    //this.getAllBankInfoByEmpCode();
+    this.getAllBankInfoByEmpCode();
+    this.getAllAddressByEmpCode();
   }
-
+  qualificationInfo: QualificationInfo={
+    comments:"",
+    empCode: "",
+    highest: null,
+    qualification: "",
+    type: ""
+  }
   getAllQualificationByEmpCode(){
     this.adminService.getAllQualificationByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
       console.log("Qualification Info Data",data);
@@ -280,19 +271,52 @@ getAllEmployeeByClientCode(){
 
     })
   }
-  // getAllBankInfoByEmpCode(){
-  //   this.adminService.getAllBankInfoByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
-  //     console.log("BankInfo Data",data);
-  //     this.bankInfo.bankAccNo=data[0].bankAccNo;
-  //     this.bankInfo.bankAddress=data[0].bankAddress;
-  //     this.bankInfo.bankName=data[0].bankName;
-  //     this.bankInfo.bankType=data[0].bankType;
-  //     this.bankInfo.empCode=data[0].empCode;
-  //     this.bankInfo.ifsCode=data[0].ifsCode;
-  //     this.bankInfo.routingNumber=data[0].routingNumber;
+  bankInfo: BankInfo={
+    bankAccNo: "",
+    bankAddress: "",
+    bankName: "",
+    bankType: "",
+    empCode: "",
+    ifsCode:"",
+    routingNumber: ""
+  }
+  getAllBankInfoByEmpCode(){
+    this.adminService.getAllBankInfoByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("BankInfo Data",data);
+      this.bankInfo.bankAccNo=data[0].bankAccNo;
+      this.bankInfo.bankAddress=data[0].bankAddress;
+      this.bankInfo.bankName=data[0].bankName;
+      this.bankInfo.bankType=data[0].bankType;
+      this.bankInfo.empCode=data[0].empCode;
+      this.bankInfo.ifsCode=data[0].ifsCode;
+      this.bankInfo.routingNumber=data[0].routingNumber;
 
-  //   })
-  // }
+    })
+  }
+  addressInfo: AddressInfo={
+    addressLine1:"",
+    addressLine2:"",
+    addressType:"",
+    city:"",
+    country:"",
+    empCode:"",
+    state:"",
+    zipCode:""
+  }
+  getAllAddressByEmpCode(){
+    this.adminService.getAllAddressByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Address Info data",data);
+      this.addressInfo.addressLine1=data[0].addressLine1;
+      this.addressInfo.addressLine2=data[0].addressLine2;
+      this.addressInfo.addressType=data[0].addressType;
+      this.addressInfo.city=data[0].city;
+      this.addressInfo.country=data[0].country;
+      this.addressInfo.empCode=data[0].empCode;
+      this.addressInfo.state=data[0].state;
+      this.addressInfo.zipCode=data[0].zipCode;
+
+    })
+  }
 
   openHolidayTypeModal(template: TemplateRef<any>, data) {
     this.holidayTypeId = data.holidayId;
