@@ -67,6 +67,8 @@ import { TicketManagementComponent } from './components/ticket-management/ticket
 import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CompanyHolidayModalComponent } from './components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component';
+import { POMComponent } from './components/pom/pom.component';
+import { ProjectCreationComponent } from './components/POM/project-creation/project-creation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,6 +112,8 @@ import { CompanyHolidayModalComponent } from './components/admin/admin-dashboard
     TicketManagementComponent,
     RaiseTicketComponent,
     CompanyHolidayModalComponent,
+    POMComponent,
+    ProjectCreationComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdminDashboardComponent } from "./components/admin/admin-dashboard/admin-dashboard.component";
 import { RaiseTicketComponent } from "./components/ticket-management/raise-ticket/raise-ticket.component";
 import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
+import { ProjectCreationComponent } from "./components/POM/project-creation/project-creation.component";
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -48,13 +49,20 @@ const routes: Routes = [
   { path: "welcome-timesheet", component: WelcometimesheetComponent },
   { path: "Leavevalue", component: LeavemanagementComponent },
   { path: "ApplyLeaveInfo", component: EmployeeApplyLeaveInfoComponent },
-  { path: "ManagerViewLeaveInfo",component: MangerViewEmployeeLeaveInfoComponent },
-  { path: "employeeOwnLeaveInfo",component: EmployeeViewOwnLeaveInfoComponent },
-  { path: "admin-master-add",component: AdminMasterDataComponent},
-  {path: "dashboard",component: DashboardComponent},
-  {path: "admin-dashboard", component: AdminDashboardComponent},
-  {path: "reiaeTicket",component: RaiseTicketComponent},
-  {path: "holiday-type-modal",component: CompanyHolidayModalComponent}
+  {
+    path: "ManagerViewLeaveInfo",
+    component: MangerViewEmployeeLeaveInfoComponent,
+  },
+  {
+    path: "employeeOwnLeaveInfo",
+    component: EmployeeViewOwnLeaveInfoComponent,
+  },
+  { path: "admin-master-add", component: AdminMasterDataComponent },
+  { path: "dashboard", component: DashboardComponent },
+  { path: "admin-dashboard", component: AdminDashboardComponent },
+  { path: "reiaeTicket", component: RaiseTicketComponent },
+  { path: "holiday-type-modal", component: CompanyHolidayModalComponent },
+  { path: "Project Creation", component: ProjectCreationComponent },
 ];
 
 @NgModule({

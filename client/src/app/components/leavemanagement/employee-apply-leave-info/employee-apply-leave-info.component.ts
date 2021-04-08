@@ -15,6 +15,7 @@ import { DashbaordService } from "src/app/services/dashbaord.service";
   styleUrls: ["./employee-apply-leave-info.component.scss"],
 })
 export class EmployeeApplyLeaveInfoComponent implements OnInit {
+  leaveItem;
   leavtype: string;
   leaveReason: string;
   fDate: Date;
