@@ -40,6 +40,6 @@ public class ClientRegistrationInfo {
 	private String companyTinVatNo;
 
 	@Column(nullable = true)
-	private String passowrd;
+	private String password;
 
 }

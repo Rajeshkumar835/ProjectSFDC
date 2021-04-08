@@ -1,7 +1,6 @@
 package com.intranet.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intranet.entity.ClientRegistrationInfo;
+import com.intranet.model.AdminLogin;
 import com.intranet.service.ClientRegistrationInfoService;
 
 @RestController
@@ -33,13 +33,13 @@ public class ClientRegistrationInfoController {
 	@CrossOrigin
 	@PostMapping(path = "/add")
 	public ResponseEntity<ClientRegistrationInfo> add(@RequestBody ClientRegistrationInfo clientRegistrationInfoModel) {
-		ClientRegistrationInfo leaveInfo = null;
+		ClientRegistrationInfo clientRegistrationInfo = null;
 		try {
-			leaveInfo = clientRegistrationInfoService.save(clientRegistrationInfoModel);
+			clientRegistrationInfo = clientRegistrationInfoService.save(clientRegistrationInfoModel);
 		} catch (Exception e) {
 			LOGGER.error("Error while adding ClientRegistrationInfo -> ", e);
 		}
-		return new ResponseEntity<ClientRegistrationInfo>(leaveInfo, HttpStatus.OK);
+		return new ResponseEntity<ClientRegistrationInfo>(clientRegistrationInfo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -47,14 +47,13 @@ public class ClientRegistrationInfoController {
 	public ResponseEntity<ClientRegistrationInfo> update(
 			@RequestBody ClientRegistrationInfo clientRegistrationInfoModel, @PathVariable String code) {
 
-		Optional<ClientRegistrationInfo> clientRegistrationInfoOptional = clientRegistrationInfoService.findById(code);
-		if (!clientRegistrationInfoOptional.isPresent()) {
-			return ResponseEntity.notFound().build();
+		ClientRegistrationInfo clientRegistrationInfo = null;
+		try {
+			clientRegistrationInfo = clientRegistrationInfoService.update(clientRegistrationInfoModel, code);
+		} catch (Exception e) {
+			LOGGER.error("Error while login -> " + clientRegistrationInfo, e);
 		}
-
-		clientRegistrationInfoModel.setClientCode(code);
-		clientRegistrationInfoService.save(clientRegistrationInfoModel);
-		return new ResponseEntity<ClientRegistrationInfo>(clientRegistrationInfoModel, HttpStatus.OK);
+		return new ResponseEntity<ClientRegistrationInfo>(clientRegistrationInfo, HttpStatus.OK);
 	}
 
 	@CrossOrigin
@@ -86,16 +85,27 @@ public class ClientRegistrationInfoController {
 	}
 
 	@CrossOrigin
-	@GetMapping(path = "/adminLogin/{companyEmail}/{password}")
-	public ResponseEntity<ClientRegistrationInfo> adminLogin(@PathVariable String companyEmail,
-			@PathVariable String password) {
-		ClientRegistrationInfo isVerified = null;
+	@PostMapping(path = "/adminLogin")
+	public ResponseEntity<ClientRegistrationInfo> adminLogin(@RequestBody AdminLogin adminLogin) {
+		ClientRegistrationInfo clientRegistrationInfo = null;
 		try {
-			isVerified = clientRegistrationInfoService.adminLogin(companyEmail, password);
+			clientRegistrationInfo = clientRegistrationInfoService.adminLogin(adminLogin);
 		} catch (Exception e) {
-			LOGGER.error("Error while login -> " + isVerified, e);
+			LOGGER.error("Error while login -> " + clientRegistrationInfo, e);
 		}
-		return new ResponseEntity<ClientRegistrationInfo>(isVerified, HttpStatus.OK);
+		return new ResponseEntity<ClientRegistrationInfo>(clientRegistrationInfo, HttpStatus.OK);
+	}
+
+	@CrossOrigin
+	@PutMapping(path = "/changeAdminPassword")
+	public ResponseEntity<ClientRegistrationInfo> changeAdminPassword(@RequestBody AdminLogin adminLogin) {
+		ClientRegistrationInfo clientRegistrationInfo = null;
+		try {
+			clientRegistrationInfo = clientRegistrationInfoService.changeAdminPassword(adminLogin);
+		} catch (Exception e) {
+			LOGGER.error("Error while Changing password -> " + clientRegistrationInfo, e);
+		}
+		return new ResponseEntity<ClientRegistrationInfo>(clientRegistrationInfo, HttpStatus.OK);
 	}
 
 }

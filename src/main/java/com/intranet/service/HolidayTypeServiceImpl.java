@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intranet.dto.HolidayTypeDTO;
-import com.intranet.entity.ClientRegistrationInfo;
 import com.intranet.entity.HolidayType;
 import com.intranet.repository.HolidayTypeRepository;
 
@@ -21,25 +19,26 @@ public class HolidayTypeServiceImpl implements HolidayTypeService {
 	private ClientRegistrationInfoService clientRegistrationInfoService;
 
 	@Override
-	public HolidayType add(HolidayTypeDTO holidayTypeDTO) {
-		HolidayType holidayTypeObject = transformObject(holidayTypeDTO, new HolidayType());
+	public HolidayType add(HolidayType holidayType) {
+		HolidayType holidayTypeSaved = holidayTypeRepository.save(holidayType);
+//		HolidayType holidayTypeObject = transformObject(holidayTypeDTO, new HolidayType());
+//
+//		HolidayType holidayTypeSaved = holidayTypeRepository.save(holidayTypeObject);
+//		return holidayTypeSaved;
+//	}
+//
+//	private HolidayType transformObject(HolidayTypeDTO holidayTypeDTO, HolidayType holidayType) {
+//
+//		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
+//				.clientRegistrationInfoByClientCode(holidayTypeDTO.getClientCode());
+//
+//		holidayType.setHolidayId(holidayTypeDTO.getHolidayId());
+//		holidayType.setCreatedDate(holidayTypeDTO.getCreatedDate());
+//		holidayType.setHolidayCode(holidayTypeDTO.getHolidayCode());
+//		holidayType.setHolidayName(holidayTypeDTO.getHolidayName());
+//		holidayType.setClientRegistrationInfo(clientRegInfo);
 
-		HolidayType holidayTypeSaved = holidayTypeRepository.save(holidayTypeObject);
 		return holidayTypeSaved;
-	}
-
-	private HolidayType transformObject(HolidayTypeDTO holidayTypeDTO, HolidayType holidayType) {
-
-		ClientRegistrationInfo clientRegInfo = clientRegistrationInfoService
-				.clientRegistrationInfoByClientCode(holidayTypeDTO.getClientCode());
-
-		holidayType.setHolidayId(holidayTypeDTO.getHolidayId());
-		holidayType.setCreatedDate(holidayTypeDTO.getCreatedDate());
-		holidayType.setHolidayCode(holidayTypeDTO.getHolidayCode());
-		holidayType.setHolidayName(holidayTypeDTO.getHolidayName());
-		holidayType.setClientRegistrationInfo(clientRegInfo);
-
-		return holidayType;
 	}
 
 	@Override

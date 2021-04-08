@@ -3,12 +3,11 @@ package com.intranet.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.intranet.dto.HolidayTypeDTO;
 import com.intranet.entity.HolidayType;
 
 public interface HolidayTypeService {
-	
-	public HolidayType add(HolidayTypeDTO holidayType);
+
+	public HolidayType add(HolidayType holidayType);
 
 	public List<HolidayType> findAll();
 

@@ -4,8 +4,13 @@ export class ClientRegistrationInfo {
   public companyName: string;
   public companyTinVatNo: string;
   public clientCode: string;
-  public passowrd: string;
+  public password: string;
   public website: string;
+}
+
+export class ClientLogin {
+  public companyEmail: string;
+  public password: string;
 }
 
 export class HolidayType {

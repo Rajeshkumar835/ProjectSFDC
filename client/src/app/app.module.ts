@@ -80,6 +80,17 @@ import { TicketDetailComponent } from "./components/ticket-management/ticket-det
 // import { TicketDetailComponent } from './ticket-detail/ticket-detail.component';
 // import { RootStoreModule } from './_store/root-store.module';
 
+// import { AdminDashboardComponent } from "./components/admin/admin-dashboard/admin-dashboard.component";
+// import { MatSidenavModule } from "@angular/material/sidenav";
+// import { MatToolbarModule } from "@angular/material/toolbar";
+// import { MatListModule } from "@angular/material/list";
+// import { TicketManagementComponent } from "./components/ticket-management/ticket-management.component";
+// import { RaiseTicketComponent } from "./components/ticket-management/raise-ticket/raise-ticket.component";
+import { ModalModule } from "ngx-bootstrap/modal";
+import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
+import { POMComponent } from "./components/pom/pom.component";
+import { ProjectCreationComponent } from "./components/POM/project-creation/project-creation.component";
+// import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,6 +145,9 @@ import { TicketDetailComponent } from "./components/ticket-management/ticket-det
     // AssignUserModalComponent,
     TicketDetailComponent,
 
+    CompanyHolidayModalComponent,
+    POMComponent,
+    ProjectCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -166,6 +180,8 @@ import { TicketDetailComponent } from "./components/ticket-management/ticket-det
     FormsModule,
     // RootStoreModule,
     // NgbModule,
+    ModalModule.forRoot(),
+    // TabsModule.forRoot(),
   ],
   // entryComponents: [CreateTicketModalComponent, AssignUserModalComponent],
   providers: [

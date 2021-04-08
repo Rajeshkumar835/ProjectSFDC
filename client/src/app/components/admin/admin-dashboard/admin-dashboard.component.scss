@@ -1,7 +1,38 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
-  .submit-btn{
-    left: 156px;
-    position: relative;
-  }
+  flex: 1 1 auto;
+}
+.submit-btn {
+  left: 156px;
+  position: relative;
+}
+.pass-btn{
+  left: 156px;
+  position: relative;
+}
+.modal-head {
+  position: relative;
+  left: 25%;
+}
+.type-dropdown {
+  position: relative;
+  top: 8%;
+}
+.pass-div{
+  position: relative;
+  left: 52%;
+}
+.validation-messages {
+  color: red;
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 125% !important;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  outline: 0;
+}

@@ -12,12 +12,16 @@ public interface ClientRegistrationInfoService {
 
 	public ClientRegistrationInfo save(ClientRegistrationInfo clientRegistrationInfo);
 
+	public ClientRegistrationInfo update(ClientRegistrationInfo clientRegistrationInfo, String code);
+
 	public Optional<ClientRegistrationInfo> findById(String id);
 
 	public void deleteById(String id);
 
 	public ClientRegistrationInfo clientRegistrationInfoByClientCode(String clientCode);
 
-	public ClientRegistrationInfo adminLogin(String companyEmail, String password);
+	public ClientRegistrationInfo adminLogin(AdminLogin adminLogin);
+
+	public ClientRegistrationInfo changeAdminPassword(AdminLogin adminLogin);
 
 }

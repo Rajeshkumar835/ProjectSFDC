@@ -1,7 +1,17 @@
 {
     "/api/v1": {
       "target": "http://localhost:8443",
-      "secure": true,
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/api/local": {
+      "target": "http://69.49.229.239:8443",
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/": {
+      "target": "http://69.49.229.239:8443",
+      "secure": false,
       "changeOrigin": true
     }
   }

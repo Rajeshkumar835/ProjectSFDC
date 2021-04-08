@@ -3,12 +3,11 @@ package com.intranet.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.intranet.dto.CompanyWeeklyOffDaysDTO;
 import com.intranet.entity.CompanyWeeklyOffDaysList;
 
 public interface CompanyWeeklyOffDaysListService {
 
-	public CompanyWeeklyOffDaysList add(CompanyWeeklyOffDaysDTO companyWeeklyOffDaysDTO);
+	public CompanyWeeklyOffDaysList add(CompanyWeeklyOffDaysList companyWeeklyOffDaysDTO);
 
 	public List<CompanyWeeklyOffDaysList> findAll();
 

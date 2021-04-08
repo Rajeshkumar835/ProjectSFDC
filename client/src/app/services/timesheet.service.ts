@@ -5,6 +5,7 @@ import {
   TimesheetObject,
 } from "../models/timesheet.model";
 import { HttpClient } from "@angular/common/http";
+import { AppConfig } from "../config/app.config";
 
 @Injectable({
   providedIn: "root",
@@ -12,16 +13,16 @@ import { HttpClient } from "@angular/common/http";
 export class TimesheetService {
   constructor(private http: HttpClient) {}
 
+  readonly rootUrl =AppConfig.API_URL;
+
+
   postTimesheet(timesheetObject: TimesheetObject) {
-    return this.http.post(
-      "http://localhost:8443/api/v1/timesheet/add",
-      timesheetObject
-    );
+    return this.http.post(this.rootUrl +"/timesheet/add", timesheetObject);
   }
 
   getAllTimesheetByEmpCode(empCode, startDate, endDate) {
     return this.http.get(
-      "http://localhost:8443/api/v1/timesheet/getAllTimesheetByEmpCode/" +
+      this.rootUrl +"/timesheet/getAllTimesheetByEmpCode/" +
         empCode +
         "/" +
         startDate +
@@ -33,23 +34,17 @@ export class TimesheetService {
 
   getAllApprovalByEmpCode(approvedStatus: TimesheetApprovedStatus) {
     const data = approvedStatus;
-    return this.http.post(
-      "http://localhost:8443/api/v1/timesheet/timesheetApprovalByEmpCode",
-      data
-    );
+    return this.http.post(this.rootUrl +"/timesheet/timesheetApprovalByEmpCode", data);
   }
 
   getEmployeeInfoByEmpCode(empCode) {
-    return this.http.get(
-      "http://localhost:8443/api/v1/employeeInfo/findById/" + empCode
-    );
+    return this.http.get(this.rootUrl +"/employeeInfo/findById/" + empCode);
   }
 
   //get all employee in hierarchy(manager h)
   getEmployeeInfoByEmpCodeHierarchy(empCode) {
     return this.http.get(
-      "http://localhost:8443/api/v1/employeeInfo/getEmployeeByManagerEmpCode/" +
-        empCode
+      this.rootUrl +"/employeeInfo/getEmployeeByManagerEmpCode/" + empCode
     );
   }
 }

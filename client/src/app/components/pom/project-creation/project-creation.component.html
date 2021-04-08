@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row pt-4" style="margin-top: 50px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3 team-button">
+      <div class="pt-4">
+        <button type="button" class="btn btn-primary" (click)="teamDetails()">
+          Create Project
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div>
+        <div class="team" *ngIf="teamCreation">
+          <h4>Enter Project Details</h4>
+          <form>
+            <div class="form-group input-field">
+              <label for="name" class="label">Project Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="pName"
+                name="pName"
+                ngModel
+                #pName="ngModel"
+                (change)="frompName(pName.value)"
+                id="name"
+              />
+            </div>
+            <div class="form-group input-field">
+              <label for="desc" class="label">Project Description</label>
+              <input type="text" class="form-control" id="desc" />
+            </div>
+            <div class="form-group input-field">
+              <label class="labMargin">Start Date </label>
+              <input
+                type="date"
+                class="form-control"
+                id="inputUsername"
+                name="fDate"
+                ngModel
+                #fDate="ngModel"
+                (change)="fromCoDate(fDate.value)"
+                required
+                placeholder="ent"
+              />
+            </div>
+            <div class="form-group input-field">
+              <label class="labMargin">End Date </label>
+              <input
+                type="date"
+                class="form-control"
+                id="inputPassword3"
+                name="tdate"
+                ngModel
+                (change)="toDate(tdate.value)"
+                #tdate="ngModel"
+                required
+              />
+            </div>
+            <div>
+              <mat-form-field class="input-field">
+                <mat-select
+                  placeholder="Employees List"
+                  [formControl]="projects"
+                  [(value)]="selectedProject"
+                  multiple
+                >
+                  <mat-option
+                    *ngFor="let project of projectList"
+                    (Change)="onselect($event, project)"
+                    [value]="project"
+                    >{{ project }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="input-field">
+                <mat-select
+                  placeholder=" Bench Employee List"
+                  [formControl]="toppings"
+                  [(value)]="selectedToppings"
+                  multiple
+                >
+                  <mat-option
+                    *ngFor="let topping of toppingList"
+                    [value]="topping"
+                    >{{ topping }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

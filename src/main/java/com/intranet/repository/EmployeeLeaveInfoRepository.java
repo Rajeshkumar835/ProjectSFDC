@@ -18,8 +18,8 @@ public interface EmployeeLeaveInfoRepository
 	@Query(value = "select * from employee_leave_info where  emp_code=:empCode", nativeQuery = true)
 	List<EmployeeLeaveInfo> findAllLeaveInfoByEmpCode(@Param("empCode") String empCode);
 	
-	@Query(value="select * from employee_leave_info where status='Applied' ", nativeQuery = true)
-	List<EmployeeLeaveInfo> findAllLeaveInfoByStatus();
+	@Query(value="select * from employee_leave_info where status='Applied' AND manager_code=:managerCode ", nativeQuery = true)
+	List<EmployeeLeaveInfo> findAllLeaveInfoByStatus(@Param("managerCode")String managerCode);
 	
 	@Query(value = "select * from employee_leave_info where  emp_code=:empCode AND leave_code=(select leave_info.id from leave_info where leave_code=:leaveCode) order by leave_code DESC limit 1", nativeQuery = true)
 	List<EmployeeLeaveInfo> findLeaveInfoByEmpCodeandLeaveCode(@Param("empCode")String empCode, @Param("leaveCode") String leaveCode);

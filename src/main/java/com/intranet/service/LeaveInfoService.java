@@ -8,7 +8,7 @@ import com.intranet.entity.LeaveInfo;
 
 public interface LeaveInfoService {
 
-	public LeaveInfo add(LeaveInfoDTO leaveInfoDTO);
+	public LeaveInfo add(LeaveInfo leaveInfo);
 
 	public List<LeaveInfo> findAll();
 
