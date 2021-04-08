@@ -17,7 +17,22 @@
   position: relative;
   top: 8%;
 }
-// .create-btn{
-//   position: relative;
-//     left: 2%;
-// }
+.pass-div{
+  position: relative;
+  left: 52%;
+}
+.validation-messages {
+  color: red;
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 125% !important;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  outline: 0;
+}

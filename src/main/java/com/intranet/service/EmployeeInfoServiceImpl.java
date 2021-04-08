@@ -1,11 +1,7 @@
 package com.intranet.service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Optional;
-
-import javax.crypto.NoSuchPaddingException;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,17 +149,8 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 			employeeInfo.setPanCardNo(employeeInfoDTO.getPanCardNo());
 			employeeInfo.setClientRegistrationInfo(clientRegInfo);
 			employeeInfo.setReportingManager(empManagerInfo);
-		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Pass creation1: ", e);
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Pass creation2: ", e);
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Pass creation3: ", e);
-			e.printStackTrace();
 		} catch (Exception e) {
-			LOGGER.errorf("Error in Pass creation4: ", e);
+			LOGGER.errorf("Error in Password Exception : ", e);
 			e.printStackTrace();
 		}
 
@@ -191,15 +178,6 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 			employeeInfo.setReportingManager(empManagerInfo);
 
 			employeeInfoSaved = employeeInfoRepository.save(employeeInfo);
-		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			LOGGER.errorf("Error in Passowrd Exception : ", e);
 			e.printStackTrace();
@@ -286,15 +264,6 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 				}
 			}
 
-		} catch (NoSuchAlgorithmException e) {
-			LOGGER.errorf("Error in Password NoSuchAlgorithm Exception : ", e);
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			LOGGER.errorf("Error in Password NoSuchPadding Exception : ", e);
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			LOGGER.errorf("Error in Password InvalidKeySpec Exception : ", e);
-			e.printStackTrace();
 		} catch (Exception e) {
 			LOGGER.errorf("Error in Passowrd Exception : ", e);
 			e.printStackTrace();
@@ -313,6 +282,12 @@ public class EmployeeInfoServiceImpl implements EmployeeInfoService {
 	@Override
 	public List<EmployeeInfo> getEmployeeByManagerEmpCode(String managerCode) {
 		List<EmployeeInfo> empList = employeeInfoRepository.getEmployeeByManagerEmpCode(managerCode);
+		return empList;
+	}
+
+	@Override
+	public List<EmployeeInfo> getAllEmployeeInfoByClientCode(String clientCode) {
+		List<EmployeeInfo> empList = employeeInfoRepository.getAllEmployeeInfoByClientCode(clientCode);
 		return empList;
 	}
 

@@ -40,7 +40,7 @@ export class PreviousExperience {
 
 export class EmployeeInfo {
   public contactNo: string;
-  public currSalary: string;
+  public currSalary: number;
   public designation: string;
   public dob: Date;
   public emailId: string;
@@ -52,7 +52,7 @@ export class EmployeeInfo {
   public lastName: string;
   public middleName: string;
   public panCardNo: string;
-  public passportN: string;
+  public passportNo: string;
 }
 
 export class QualificationInfo {
