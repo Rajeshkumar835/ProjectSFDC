@@ -525,19 +525,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Type</label>
                 <input type="text" class="form-control" placeholder="Bank Type" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankType" #BankType="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Name</label>
                 <input type="text" class="form-control" placeholder="Bank Name" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankName" #BankName="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Acc No</label>
                 <input type="text" class="form-control" placeholder="Bank Acc No" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankAccNo" #BankAccNo="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -545,19 +545,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Address</label>
                 <input type="text" class="form-control" placeholder="Bank Address" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="BankAddress" #BankAddress="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">IFS Code</label>
                 <input type="text" class="form-control" placeholder="IFS Code" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.ifsCode" #IfsCode="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Routing Number</label>
                 <input type="email" class="form-control" placeholder="Routing Number" name="companyLocation"
-                  [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.routingNumber" #RoutingNumber="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>

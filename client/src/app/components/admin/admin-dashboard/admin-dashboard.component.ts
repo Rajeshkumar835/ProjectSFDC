@@ -12,7 +12,7 @@ import {
 } from "src/app/models/admin.model";
 import { AdminService } from "src/app/services/admin.service";
 import { FormControl } from "@angular/forms";
-import { EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
+import { BankInfo, EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -235,6 +235,15 @@ getAllEmployeeByClientCode(){
     qualification: "",
     type: ""
   }
+  bankInfo: BankInfo={
+    bankAccNo: "",
+    bankAddress: "",
+    bankName: "",
+    bankType: "",
+    empCode: "",
+    ifsCode:"",
+    routingNumber: ""
+  }
   employeeInfoListModal(template: TemplateRef<any>, data){
     console.log("employee personal info data",data)
     this.viewEmpCode=data.empCode;
@@ -255,15 +264,36 @@ getAllEmployeeByClientCode(){
 
     this.modalRef = this.modalService.show(template);
     this.getAllQualificationByEmpCode();
-
+    //this.getAllBankInfoByEmpCode();
   }
 
   getAllQualificationByEmpCode(){
     this.adminService.getAllQualificationByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
       console.log("Qualification Info Data",data);
-      this.qualificationInfo=data;
+      console.log("Qualification Info Data comments",data[0].comments);
+
+      this.qualificationInfo.comments=data[0].comments;
+      this.qualificationInfo.empCode=data[0].empCode;
+      this.qualificationInfo.highest=data[0].highest;
+      this.qualificationInfo.qualification=data[0].qualification;
+      this.qualificationInfo.type=data[0].type;
+
     })
   }
+  // getAllBankInfoByEmpCode(){
+  //   this.adminService.getAllBankInfoByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+  //     console.log("BankInfo Data",data);
+  //     this.bankInfo.bankAccNo=data[0].bankAccNo;
+  //     this.bankInfo.bankAddress=data[0].bankAddress;
+  //     this.bankInfo.bankName=data[0].bankName;
+  //     this.bankInfo.bankType=data[0].bankType;
+  //     this.bankInfo.empCode=data[0].empCode;
+  //     this.bankInfo.ifsCode=data[0].ifsCode;
+  //     this.bankInfo.routingNumber=data[0].routingNumber;
+
+  //   })
+  // }
+
   openHolidayTypeModal(template: TemplateRef<any>, data) {
     this.holidayTypeId = data.holidayId;
     this.holidayTypeUpdate.holidayCode = data.holidayCode;

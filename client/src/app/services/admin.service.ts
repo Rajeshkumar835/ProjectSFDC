@@ -147,4 +147,10 @@ export class AdminService {
         empCode
     );
   }
+
+  getAllBankInfoByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl + "/bankInfo/findAllBankByEmpCode/" + empCode
+    );
+  }
 }
