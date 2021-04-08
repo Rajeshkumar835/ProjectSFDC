@@ -24,6 +24,10 @@ import { AdminMasterDataComponent } from "./components/admin/admin-master-data/a
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdminDashboardComponent } from "./components/admin/admin-dashboard/admin-dashboard.component";
 import { RaiseTicketComponent } from "./components/ticket-management/raise-ticket/raise-ticket.component";
+import { TicketListComponent } from "./components/ticket-management/ticket-list/ticket-list.component";
+import { TicketDetailComponent } from "./components/ticket-management/ticket-detail/ticket-detail.component";
+import { TicketListGridComponent } from "./components/ticket-management/ticket-list-grid/ticket-list-grid.component";
+
 
 const routes: Routes = [
   { path: "lms-landingPage", component: LmsLandingScreenComponent },
@@ -53,6 +57,16 @@ const routes: Routes = [
   {path: "dashboard",component: DashboardComponent},
   {path: "admin-dashboard", component: AdminDashboardComponent},
   {path: "reiaeTicket",component: RaiseTicketComponent},
+  {path: "ticketListGrid",component: TicketListGridComponent},
+
+  {
+    path: 'tickets',
+    component: TicketListComponent
+  },
+  {
+    path: 'tickets/:id',
+    component: TicketDetailComponent
+  }
 ];
 
 @NgModule({

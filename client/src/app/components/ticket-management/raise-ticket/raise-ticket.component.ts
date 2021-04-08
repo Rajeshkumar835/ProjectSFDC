@@ -17,10 +17,21 @@ export class RaiseTicketComponent implements OnInit {
     {name:"Not reprodusable", category:"Software"},
     {name:"other issue", category:"Software"},
 ];
+
+chatArray=[{
+  user:[{name:"", Comment:""}],
+  emp:[{name:"", Comment:""}]
+}];
+chatArraySecondIdea=[{
+  user:[{name:"", Comment:""}],
+  emp:[{name:"", Comment:""}]
+}];
+chatArraythirdIdea=[];
   subCategory;
   ticketFormData;
   formSectionFor1=true;
   editTicketData=false;
+  empReplyForm=false;
   constructor() {}
 
   ngOnInit() {}
@@ -48,7 +59,13 @@ export class RaiseTicketComponent implements OnInit {
 
   }
   replyTicket(){
+    this.empReplyForm=true;
+  }
 
+  empReplyForTicket(ticketReplyForm){
+    console.log("data received in emp reply on a ticket", ticketReplyForm);
+    this.chatArraythirdIdea.push(ticketReplyForm.value)
+    console.log("chatArraythirdIdea", this.chatArraythirdIdea)
   }
   public onSave() {
     this.closebutton.nativeElement.click();

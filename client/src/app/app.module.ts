@@ -65,6 +65,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { TicketManagementComponent } from './components/ticket-management/ticket-management.component';
 import { RaiseTicketComponent } from './components/ticket-management/raise-ticket/raise-ticket.component';
+import { TicketListComponent } from './components/ticket-management/ticket-list/ticket-list.component';
+import { TicketListFilterFormComponent } from './components/ticket-management/ticket-list-filter-form/ticket-list-filter-form.component';
+import { TicketListGridComponent } from './components/ticket-management/ticket-list-grid/ticket-list-grid.component';
+
+
+
+
+import { RouterModule } from '@angular/router';
+import { TicketDetailComponent } from "./components/ticket-management/ticket-detail/ticket-detail.component";
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { AssignUserModalComponent } from './assign-user-modal/assign-user-modal.component';
+// import { CreateTicketModalComponent } from './create-ticket-modal/create-ticket-modal.component';
+// import { TicketDetailComponent } from './ticket-detail/ticket-detail.component';
+// import { RootStoreModule } from './_store/root-store.module';
 
 @NgModule({
   declarations: [
@@ -108,6 +122,18 @@ import { RaiseTicketComponent } from './components/ticket-management/raise-ticke
     AdminDashboardComponent,
     TicketManagementComponent,
     RaiseTicketComponent,
+    TicketListComponent,
+    TicketListFilterFormComponent,
+    TicketListGridComponent,
+    AppComponent,
+    TicketListComponent,
+    TicketListFilterFormComponent,
+    TicketListGridComponent,
+    // TicketDetailComponent,
+    // CreateTicketModalComponent,
+    // AssignUserModalComponent,
+    TicketDetailComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -135,8 +161,13 @@ import { RaiseTicketComponent } from './components/ticket-management/raise-ticke
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    // RootStoreModule,
+    // NgbModule,
   ],
-
+  // entryComponents: [CreateTicketModalComponent, AssignUserModalComponent],
   providers: [
     MatDatepickerModule,
     LeaveMgmtService,
