@@ -65,10 +65,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { TicketManagementComponent } from "./components/ticket-management/ticket-management.component";
 import { RaiseTicketComponent } from "./components/ticket-management/raise-ticket/raise-ticket.component";
+import { TicketListComponent } from "./components/ticket-management/ticket-list/ticket-list.component";
+import { TicketListFilterFormComponent } from "./components/ticket-management/ticket-list-filter-form/ticket-list-filter-form.component";
+import { TicketListGridComponent } from "./components/ticket-management/ticket-list-grid/ticket-list-grid.component";
+import { RouterModule } from "@angular/router";
+import { TicketDetailComponent } from "./components/ticket-management/ticket-detail/ticket-detail.component";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
 import { POMComponent } from "./components/pom/pom.component";
-import { ProjectCreationComponent } from "./components/POM/project-creation/project-creation.component";
+import { ProjectCreationComponent } from "./components/pom/project-creation/project-creation.component";
+// import { ProjectCreationComponent } from "./components/pom/project-creation/project-creation.component";
 // import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [
@@ -112,6 +118,14 @@ import { ProjectCreationComponent } from "./components/POM/project-creation/proj
     AdminDashboardComponent,
     TicketManagementComponent,
     RaiseTicketComponent,
+    TicketListComponent,
+    TicketListFilterFormComponent,
+    TicketListGridComponent,
+    AppComponent,
+    TicketListComponent,
+    TicketListFilterFormComponent,
+    TicketListGridComponent,
+    TicketDetailComponent,
     CompanyHolidayModalComponent,
     POMComponent,
     ProjectCreationComponent,
@@ -142,10 +156,11 @@ import { ProjectCreationComponent } from "./components/POM/project-creation/proj
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     ModalModule.forRoot(),
-    // TabsModule.forRoot(),
   ],
-
   providers: [
     MatDatepickerModule,
     LeaveMgmtService,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 
 @Component({
   selector: 'app-raise-ticket',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./raise-ticket.component.scss'],
 })
 export class RaiseTicketComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   category = ["Hardware", "Software"];
   subCategoryList = [
@@ -16,10 +17,21 @@ export class RaiseTicketComponent implements OnInit {
     {name:"Not reprodusable", category:"Software"},
     {name:"other issue", category:"Software"},
 ];
+
+chatArray=[{
+  user:[{name:"", Comment:""}],
+  emp:[{name:"", Comment:""}]
+}];
+chatArraySecondIdea=[{
+  user:[{name:"", Comment:""}],
+  emp:[{name:"", Comment:""}]
+}];
+chatArraythirdIdea=[];
   subCategory;
   ticketFormData;
   formSectionFor1=true;
   editTicketData=false;
+  empReplyForm=false;
   constructor() {}
 
   ngOnInit() {}
@@ -31,6 +43,7 @@ export class RaiseTicketComponent implements OnInit {
     this.editTicketData=false;
     console.log("not true",!this.formSectionFor1)
     console.log("not not false",this.formSectionFor1)
+    localStorage.setItem("raisedTicket", JSON.stringify(this.ticketFormData))
   }
   categorySelected(event) {
     console.log('selected option', event)
@@ -44,5 +57,17 @@ export class RaiseTicketComponent implements OnInit {
   editTicket(ticketNumber){
     this.editTicketData=true;
 
+  }
+  replyTicket(){
+    this.empReplyForm=true;
+  }
+
+  empReplyForTicket(ticketReplyForm){
+    console.log("data received in emp reply on a ticket", ticketReplyForm);
+    this.chatArraythirdIdea.push(ticketReplyForm.value)
+    console.log("chatArraythirdIdea", this.chatArraythirdIdea)
+  }
+  public onSave() {
+    this.closebutton.nativeElement.click();
   }
 }

@@ -12,7 +12,7 @@ import {
 } from "src/app/models/admin.model";
 import { AdminService } from "src/app/services/admin.service";
 import { FormControl } from "@angular/forms";
-import { EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
+import { AddressInfo, BankInfo, CurrentExperience, EmployeeInfo, PreviousExperience, QualificationInfo } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -228,13 +228,6 @@ getAllEmployeeByClientCode(){
     panCardNo:"",
     passportNo:"",
   }
-  qualificationInfo: QualificationInfo={
-    comments:"",
-    empCode: "",
-    highest: null,
-    qualification: "",
-    type: ""
-  }
   employeeInfoListModal(template: TemplateRef<any>, data){
     console.log("employee personal info data",data)
     this.viewEmpCode=data.empCode;
@@ -255,15 +248,116 @@ getAllEmployeeByClientCode(){
 
     this.modalRef = this.modalService.show(template);
     this.getAllQualificationByEmpCode();
-
+    this.getAllBankInfoByEmpCode();
+    this.getAllAddressByEmpCode();
+    this.getCurrentExperienceByEmpCode();
+    this.getPreviousExperienceByEmpCode();
   }
-
+  qualificationInfo: QualificationInfo={
+    comments:"",
+    empCode: "",
+    highest: null,
+    qualification: "",
+    type: ""
+  }
   getAllQualificationByEmpCode(){
     this.adminService.getAllQualificationByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
       console.log("Qualification Info Data",data);
-      this.qualificationInfo=data;
+      console.log("Qualification Info Data comments",data[0].comments);
+
+      this.qualificationInfo.comments=data[0].comments;
+      this.qualificationInfo.empCode=data[0].empCode;
+      this.qualificationInfo.highest=data[0].highest;
+      this.qualificationInfo.qualification=data[0].qualification;
+      this.qualificationInfo.type=data[0].type;
+
     })
   }
+  bankInfo: BankInfo={
+    bankAccNo: "",
+    bankAddress: "",
+    bankName: "",
+    bankType: "",
+    empCode: "",
+    ifsCode:"",
+    routingNumber: ""
+  }
+  getAllBankInfoByEmpCode(){
+    this.adminService.getAllBankInfoByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("BankInfo Data",data);
+      this.bankInfo.bankAccNo=data[0].bankAccNo;
+      this.bankInfo.bankAddress=data[0].bankAddress;
+      this.bankInfo.bankName=data[0].bankName;
+      this.bankInfo.bankType=data[0].bankType;
+      this.bankInfo.empCode=data[0].empCode;
+      this.bankInfo.ifsCode=data[0].ifsCode;
+      this.bankInfo.routingNumber=data[0].routingNumber;
+
+    })
+  }
+  addressInfo: AddressInfo={
+    addressLine1:"",
+    addressLine2:"",
+    addressType:"",
+    city:"",
+    country:"",
+    empCode:"",
+    state:"",
+    zipCode:""
+  }
+  getAllAddressByEmpCode(){
+    this.adminService.getAllAddressByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Address Info data",data);
+      this.addressInfo.addressLine1=data[0].addressLine1;
+      this.addressInfo.addressLine2=data[0].addressLine2;
+      this.addressInfo.addressType=data[0].addressType;
+      this.addressInfo.city=data[0].city;
+      this.addressInfo.country=data[0].country;
+      this.addressInfo.empCode=data[0].empCode;
+      this.addressInfo.state=data[0].state;
+      this.addressInfo.zipCode=data[0].zipCode;
+
+    })
+  }
+  currentExperience: CurrentExperience={
+    company:"",
+    designation:"",
+    empCode: "",
+    endDate: null,
+    startDate:null
+  }
+  getCurrentExperienceByEmpCode(){
+    this.adminService.getCurrentExperienceByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Current experience data",data);
+      this.currentExperience.company=data[0].company;
+      this.currentExperience.designation=data[0].designation;
+      this.currentExperience.empCode=data[0].empCode;
+      this.currentExperience.endDate=data[0].endDate;
+      this.currentExperience.startDate=data[0].startDate;
+
+    })
+  }
+  previousExperience: PreviousExperience={
+    company: "",
+    designation: "",
+    empCode: "",
+    lastCtc: 0,
+    joiningdate: null,
+    leavingDate: null
+  }
+  getPreviousExperienceByEmpCode(){
+    this.adminService.getPreviousExperienceByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Previous Employee Data",data);
+      this.previousExperience.company=data[0].company;
+      this.previousExperience.designation=data[0].designation;
+      this.previousExperience.empCode=data[0].empCode;
+      this.previousExperience.lastCtc=data[0].lastCtc;
+      this.previousExperience.joiningdate=data[0].joiningdate;
+      this.previousExperience.leavingDate=data[0].leavingDate;
+
+    })
+  }
+
   openHolidayTypeModal(template: TemplateRef<any>, data) {
     this.holidayTypeId = data.holidayId;
     this.holidayTypeUpdate.holidayCode = data.holidayCode;

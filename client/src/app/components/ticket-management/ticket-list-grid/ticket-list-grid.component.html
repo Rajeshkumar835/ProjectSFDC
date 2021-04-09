@@ -1,0 +1,48 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      
+      <table *ngIf="!isLoading" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>View</th>
+            <th>Assign</th>
+            <th>Status</th>
+            <th>ID</th>
+            <th>Assigned</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ticket of ticketsWithUsers">
+            <td>
+              <button class="btn btn-secondary" (click)="view.emit(ticket.id)">
+                View
+              </button>
+              <button class="btn btn-secondary" (click)="assign.emit(ticket.id)">
+                Assign
+              </button>
+              <button
+                class="btn btn-secondary"
+                *ngIf="!ticket.completed"
+                (click)="complete.emit({ticketId: ticket.id, originalStatus: ticket.completed})"
+              >
+                Mark Complete
+              </button>
+            </td>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.assigneeName }}</td>
+            <td>{{ ticket.completed ? 'Yes' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>

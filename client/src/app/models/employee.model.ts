@@ -8,7 +8,7 @@ export class AddressInfo {
   public country: string;
   public empCode: string;
   public state: string;
-  public zipCod: string;
+  public zipCode: string;
 }
 
 export class BankInfo {

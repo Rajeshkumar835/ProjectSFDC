@@ -147,4 +147,32 @@ export class AdminService {
         empCode
     );
   }
+
+  getAllBankInfoByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl + "/bankInfo/findAllBankByEmpCode/" + empCode
+    );
+  }
+
+  getAllAddressByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl + "/addressInfo/findAllAddressByEmpCode/" + empCode
+    );
+  }
+
+  getCurrentExperienceByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/currentExperience/findAllCurrExperienceByEmpCode/" +
+        empCode
+    );
+  }
+
+  getPreviousExperienceByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/previousExperience/findAllPrevExperienceByEmpCode/" +
+        empCode
+    );
+  }
 }

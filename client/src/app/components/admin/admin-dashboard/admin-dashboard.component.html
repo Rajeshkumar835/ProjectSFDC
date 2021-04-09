@@ -525,19 +525,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Type</label>
                 <input type="text" class="form-control" placeholder="Bank Type" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankType" #BankType="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Name</label>
                 <input type="text" class="form-control" placeholder="Bank Name" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankName" #BankName="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Acc No</label>
                 <input type="text" class="form-control" placeholder="Bank Acc No" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankAccNo" #BankAccNo="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -545,19 +545,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Bank Address</label>
                 <input type="text" class="form-control" placeholder="Bank Address" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.bankAddress" #BankAddress="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">IFS Code</label>
                 <input type="text" class="form-control" placeholder="IFS Code" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.ifsCode" #IfsCode="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Routing Number</label>
                 <input type="email" class="form-control" placeholder="Routing Number" name="companyLocation"
-                  [(ngModel)]="holidayTypeUpdate.holidayName" #HolidayTypeName="ngModel" required minlength="3"
+                  [(ngModel)]="bankInfo.routingNumber" #RoutingNumber="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -578,19 +578,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Address Type</label>
                 <input type="text" class="form-control" placeholder="Address Type" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.addressType" #AddressType="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Address Line 1</label>
                 <input type="text" class="form-control" placeholder="Address Line 1" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.addressLine1" #AddressLine1="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Address Line 2</label>
                 <input type="text" class="form-control" placeholder="Address Line 2" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.addressLine2" #AddressLine2="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -598,19 +598,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">City</label>
                 <input type="text" class="form-control" placeholder="City" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.city" #City="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">State</label>
                 <input type="text" class="form-control" placeholder="State" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.state" #State="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">ZIP Code</label>
                 <input type="text" class="form-control" placeholder="ZIP Code" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="addressInfo.zipCode" #ZipCode="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -631,13 +631,13 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Company Name</label>
                 <input type="text" class="form-control" placeholder="Company Name" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="currentExperience.company" #CompanyName="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Designation</label>
                 <input type="text" class="form-control" placeholder="Designation" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="currentExperience.designation" #Designation="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -645,7 +645,7 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Date of Joining</label>
                 <input type="text" class="form-control" placeholder="Date of joining" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="currentExperience.startDate" #DateOfJoining="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -666,19 +666,19 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Company Name</label>
                 <input type="text" class="form-control" placeholder="Company Name" name="clientCode"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #HolidayTypeCode="ngModel" required minlength="3"
+                  [(ngModel)]="previousExperience.company" #CompanyName="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Designation</label>
                 <input type="text" class="form-control" placeholder="Designation" name="designation"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #Designation="ngModel" required minlength="3"
+                  [(ngModel)]="previousExperience.designation" #Designation="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">Last CTC</label>
                 <input type="text" class="form-control" placeholder="Last CTC" name="lastCTC"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #LastCTC="ngModel" required minlength="3"
+                  [(ngModel)]="previousExperience.lastCtc" #LastCTC="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
@@ -686,13 +686,13 @@
               <div class="pt-2">
                 <label for="exampleInputEmail1">Start Date</label>
                 <input type="text" class="form-control" placeholder="Start Date" name="startDate"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #StartDate="ngModel" required minlength="3"
+                  [(ngModel)]="previousExperience.joiningdate" #StartDate="ngModel" required minlength="3"
                   maxlength="300">
               </div>
               <div class="pt-2">
                 <label for="exampleInputEmail1">End Date</label>
                 <input type="text" class="form-control" placeholder="End Date" name="endDate"
-                  [(ngModel)]="holidayTypeUpdate.holidayCode" #EndDate="ngModel" required minlength="3"
+                  [(ngModel)]="previousExperience.leavingDate" #EndDate="ngModel" required minlength="3"
                   maxlength="300">
               </div>
             </div>
