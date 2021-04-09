@@ -12,7 +12,7 @@ import {
 } from "src/app/models/admin.model";
 import { AdminService } from "src/app/services/admin.service";
 import { FormControl } from "@angular/forms";
-import { AddressInfo, BankInfo, EmployeeInfo, QualificationInfo } from "src/app/models/employee.model";
+import { AddressInfo, BankInfo, CurrentExperience, EmployeeInfo, PreviousExperience, QualificationInfo } from "src/app/models/employee.model";
 
 @Component({
   selector: "app-admin-dashboard",
@@ -250,6 +250,8 @@ getAllEmployeeByClientCode(){
     this.getAllQualificationByEmpCode();
     this.getAllBankInfoByEmpCode();
     this.getAllAddressByEmpCode();
+    this.getCurrentExperienceByEmpCode();
+    this.getPreviousExperienceByEmpCode();
   }
   qualificationInfo: QualificationInfo={
     comments:"",
@@ -314,6 +316,44 @@ getAllEmployeeByClientCode(){
       this.addressInfo.empCode=data[0].empCode;
       this.addressInfo.state=data[0].state;
       this.addressInfo.zipCode=data[0].zipCode;
+
+    })
+  }
+  currentExperience: CurrentExperience={
+    company:"",
+    designation:"",
+    empCode: "",
+    endDate: null,
+    startDate:null
+  }
+  getCurrentExperienceByEmpCode(){
+    this.adminService.getCurrentExperienceByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Current experience data",data);
+      this.currentExperience.company=data[0].company;
+      this.currentExperience.designation=data[0].designation;
+      this.currentExperience.empCode=data[0].empCode;
+      this.currentExperience.endDate=data[0].endDate;
+      this.currentExperience.startDate=data[0].startDate;
+
+    })
+  }
+  previousExperience: PreviousExperience={
+    company: "",
+    designation: "",
+    empCode: "",
+    lastCtc: 0,
+    joiningdate: null,
+    leavingDate: null
+  }
+  getPreviousExperienceByEmpCode(){
+    this.adminService.getPreviousExperienceByEmpCode(this.viewEmpCode).subscribe((data:any)=>{
+      console.log("Previous Employee Data",data);
+      this.previousExperience.company=data[0].company;
+      this.previousExperience.designation=data[0].designation;
+      this.previousExperience.empCode=data[0].empCode;
+      this.previousExperience.lastCtc=data[0].lastCtc;
+      this.previousExperience.joiningdate=data[0].joiningdate;
+      this.previousExperience.leavingDate=data[0].leavingDate;
 
     })
   }

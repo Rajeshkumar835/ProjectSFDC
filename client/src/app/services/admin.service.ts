@@ -159,4 +159,20 @@ export class AdminService {
       this.rootUrl + "/addressInfo/findAllAddressByEmpCode/" + empCode
     );
   }
+
+  getCurrentExperienceByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/currentExperience/findAllCurrExperienceByEmpCode/" +
+        empCode
+    );
+  }
+
+  getPreviousExperienceByEmpCode(empCode) {
+    return this.http.get(
+      this.rootUrl +
+        "/previousExperience/findAllPrevExperienceByEmpCode/" +
+        empCode
+    );
+  }
 }
