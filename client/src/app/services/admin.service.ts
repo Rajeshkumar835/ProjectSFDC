@@ -24,10 +24,10 @@ export class AdminService {
     return this.http.post(this.rootUrl + "/clientRegistrationInfo/add", body);
   }
 
-  adminLoginAuthentication(clientLogin: ClientLogin) {
+  adminLoginAuthentication(cEmail, cPass) {
     return this.http.post(
       this.rootUrl + "/clientRegistrationInfo/adminLogin",
-      clientLogin
+      cEmail + "/" + cPass
     );
   }
 

@@ -8,40 +8,43 @@
       <form class="pt-4">
         <div class="form-group">
           <label for="exampleInputEmail1">Company Email Address</label>
-          <input 
-            type="email" 
-            class="form-control" 
-            id="exampleInputEmail1" 
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
             placeholder="Company Email Address"
             name="companyEmail"
-            [(ngModel)]="adminLogin.companyEmail" 
-            #CompanyEmail="ngModel" 
-            required minlength="3" 
+            [(ngModel)]="adminLogin.companyEmail"
+            #CompanyEmail="ngModel"
+            required
+            minlength="3"
             maxlength="300"
-            >
+          />
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input 
-          type="password" 
-          class="form-control" 
-          id="exampleInputPassword1" 
-          placeholder="Password"
-          name="cPassword"
-          [(ngModel)]="adminLogin.password" 
-          #Password="ngModel" 
-          required minlength="3" 
-          maxlength="300"
-
-          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="cPassword"
+            [(ngModel)]="adminLogin.password"
+            #Password="ngModel"
+            required
+            minlength="3"
+            maxlength="300"
+          />
         </div>
         <a routerLink="/admin-registration">Click here if not registered?</a>
         <div class="text-center pt-4">
-          <button 
-          type="submit" 
-          class="btn btn-primary"
-          (click)="adminLoginAuthenticate()"
-          >Login</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="adminLoginAuthenticate()"
+          >
+            Login
+          </button>
         </div>
       </form>
     </div>
