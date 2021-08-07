@@ -74,6 +74,7 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { CompanyHolidayModalComponent } from "./components/admin/admin-dashboard/company-holiday-modal/company-holiday-modal.component";
 import { POMComponent } from "./components/pom/pom.component";
 import { ProjectCreationComponent } from "./components/pom/project-creation/project-creation.component";
+import { BloodBankComponent } from './components/blood-bank/blood-bank.component';
 // import { ProjectCreationComponent } from "./components/pom/project-creation/project-creation.component";
 // import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
@@ -129,6 +130,7 @@ import { ProjectCreationComponent } from "./components/pom/project-creation/proj
     CompanyHolidayModalComponent,
     POMComponent,
     ProjectCreationComponent,
+    BloodBankComponent,
   ],
   imports: [
     BrowserModule,

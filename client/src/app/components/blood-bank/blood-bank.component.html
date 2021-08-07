@@ -1,0 +1,187 @@
+<div style="margin-bottom: 40px" class="container">
+  <h4>BLOOD BANK</h4>
+  <div style="margin-bottom: 40px" class="row">
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight1: bloodItem }"
+          style="background-color: lightgreen; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          A+
+        </div>
+        <div [ngClass]="{ highlight1: bloodItem }" class="example-box1" cdkDrag>
+          3
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight2: bloodItem }"
+          style="background-color: lightgrey; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          B+
+        </div>
+        <div [ngClass]="{ highlight2: bloodItem }" class="example-box1" cdkDrag>
+          8
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight3: bloodItem }"
+          style="background-color: lightgreen; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          O+
+        </div>
+        <div [ngClass]="{ highlight3: bloodItem }" class="example-box1" cdkDrag>
+          2
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight4: bloodItem }"
+          style="background-color: lightgrey; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          AB+
+        </div>
+        <div [ngClass]="{ highlight4: bloodItem }" class="example-box1" cdkDrag>
+          5
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight5: bloodItem }"
+          style="background-color: lightgreen; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          A-
+        </div>
+        <div [ngClass]="{ highlight5: bloodItem }" class="example-box1" cdkDrag>
+          1
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight6: bloodItem }"
+          style="background-color: lightgrey; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          B-
+        </div>
+        <div [ngClass]="{ highlight6: bloodItem }" class="example-box1" cdkDrag>
+          6
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight7: bloodItem }"
+          style="background-color: green; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          O-
+        </div>
+        <div [ngClass]="{ highlight7: bloodItem }" class="example-box1" cdkDrag>
+          8
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div
+          [ngClass]="{ highlight8: bloodItem }"
+          style="background-color: lightgrey; margin-right: 4px"
+          class="example-box"
+          cdkDrag
+        >
+          AB-
+        </div>
+        <div [ngClass]="{ highlight8: bloodItem }" class="example-box1" cdkDrag>
+          3
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px" class="row">
+    <h4>Requirement Form</h4>
+    <div style="margin-top: 40px; margin-left: -40px" class="row">
+      <div class="col-sm-6">
+        <form>
+          <div class="form-group row">
+            <label
+              for="Blood required"
+              style="border: 2px solid black"
+              class="col-sm-8 col-form-label"
+              >Blood Required</label
+            >
+            <div class="col-sm-4">
+              <select
+                class="form-control"
+                id="blood"
+                name="blood"
+                [(ngModel)]="bloodItem"
+                (ngModelChange)="chooseBlood(bloodItem)"
+                #blood="ngModel"
+                required
+              >
+                <option *ngFor="let blood of BloodList" value="{{ blood }}">
+                  {{ blood }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label
+              style="border: 2px solid black"
+              for="No of Bottole Avaiable"
+              class="col-sm-8 col-form-label"
+              >No of Bottole</label
+            >
+            <div class="col-sm-4">
+              <select
+                class="form-control"
+                id="bottle"
+                name="bottle"
+                [(ngModel)]="bottleItem"
+                (ngModelChange)="choosebottle(bottleItem)"
+                #bottle="ngModel"
+                required
+              >
+                <option *ngFor="let bottle of BottlesList" value="{{ blood }}">
+                  {{ bottle }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-6">
+        <div class="botop"></div>
+      </div>
+    </div>
+  </div>
+</div>
